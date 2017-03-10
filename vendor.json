@@ -1,4 +1,5 @@
 [
+	"jquery",
 	"react",
 	"react-router",
 	"babel-polyfill",

@@ -1,33 +1,66 @@
+import jQuery from 'jquery';
 import React from 'react';
+import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-router';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import App from './components/App';
 import reducer from './reducers';
+import WithStylesContex from './global/WithStylesContex';
 
-const firstState = {
-	list: [{
-		id: 0,
-		username: 'NGUYEN VAN A',
-		email: 'hoangvu@gmail.com'
-	},
-	{
-		id: 1,
-		username: 'NGUYEN VAN B',
-		email: 'hoangvu@gmail.com'
-	},
-	{
-		id: 2,
-		username: 'NGUYEN VAN C',
-		email: 'hoangvu@gmail.com'
-	}]
+import App from './components/App';
+import ContainerPlaylist from './containers/ContainerPlaylist';
+import ContainerPlaylistPopup from './containers/ContainerPlaylistPopup';
+import ContainerPlayer from './containers/ContainerPlayer';
+
+window.jQuery = jQuery;
+window.$ = jQuery;
+
+// const initState = {
+// 	search: 
+// };
+
+const promiseMiddleware = () => {
+    return next => action => {
+        const { promise, type, ...rest } = action;
+        if (!promise) return next(action);
+
+        const SUCCESS = type;
+        const REQUEST = `${type}_REQUEST`;
+        const FAILURE = `${type}_FAILURE`;
+        next({ ...rest, type: REQUEST });
+
+        return promise.then(res => {
+            next({ ...rest, res, type: SUCCESS });
+            return true;
+        }).catch(error => {
+            next({ ...rest, error, type: FAILURE });
+            console.log(error);
+            return false;
+        });
+    };
 };
 
-const store = createStore(reducer, firstState);
+const middleWare = [thunk, promiseMiddleware];
+
+const store = createStore(reducer, [], applyMiddleware(...middleWare));
 
 render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
+    <WithStylesContex onInsertCss={styles => styles._insertCss()}>
+        <Provider store={store}>
+            <Router history={browserHistory}>
+                <Route path="/" component={App}>
+                    <IndexRoute 
+                        components={
+                            ()=>(<div>
+                                    <ContainerPlaylist />
+                                    <ContainerPlaylistPopup />
+                                    <ContainerPlayer />
+                                    </div>
+                                )} />
+                </Route>
+            </Router>
+        </Provider>
+    </WithStylesContex>,
 	document.getElementById('root')
 );

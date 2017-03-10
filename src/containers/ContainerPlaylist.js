@@ -1,18 +1,17 @@
 import { connect } from 'react-redux';
-import List from '../components/List';
+import Playlist from '../components/Playlist';
 import { remove } from '../actions';
 
 const mapStateToProps = (state) => ({
-	list: state.list
+	state: state.playlist
 });
 
 const mapDispatchToProps = {
-	onRemoveClick: remove
 };
 
-const ContainerList = connect(
+const ContainerPlaylist = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(List);
+)(Playlist);
 
-export default ContainerList;
+export default ContainerPlaylist;

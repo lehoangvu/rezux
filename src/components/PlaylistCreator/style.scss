@@ -1,0 +1,20 @@
+.root{
+    position: fixed;
+    z-index: 999;
+    background: rgb(255, 255, 255);
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+}
+.container{
+    padding: 20px;
+}
+.heading{
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+.item{
+    color: #f00;
+    margin: 10px 0;
+}

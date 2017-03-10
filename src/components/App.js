@@ -1,14 +1,20 @@
 import React from 'react';
-import ContainerList from './../containers/ContainerList';
-import ContainerAddUser from './../containers/ContainerAddUser';
-// import AddTodo from '../containers/AddTodo'
-// import VisibleTodoList from '../containers/VisibleTodoList'
+import ContainerSearch from './../containers/ContainerSearch';
+import Player from './../components/Player';
 
-const App = () => (
-	<div>
-		<ContainerList />
-		<ContainerAddUser />
-	</div>
-);
+class App extends React.Component{
+   constructor(props){
+        super(props);
+   } 
+
+   render(){
+        return (
+            <div>
+                <ContainerSearch />
+                {this.props.children}
+            </div>
+        );
+   }
+}
 
 export default App;

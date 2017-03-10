@@ -13,7 +13,7 @@ const AddForm = ( {dispatch} ) => {
 			username: username,
 			email: useremail
 		}));
-
+		
 	};
 	return (
 		<div>

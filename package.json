@@ -4,7 +4,7 @@
   "description": "React, Redux, React Router, Universal",
   "main": "server/index.js",
   "scripts": {
-    "dev": "webpack -d --watch --color --config --progress webpack.js",
+    "dev": "webpack -d --watch --color  --progress --config webpack.babel.js",
     "start": "run-s build start-server-production",
     "build": "run-p build-server build-client",
     "watch": "run-p watch-client",
@@ -29,7 +29,7 @@
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.1",
     "express": "^4.14.0",
-    "isomorphic-style-loader": "^1.0.0",
+    "isomorphic-style-loader": "^1.1.0",
     "jquery": "^3.1.1",
     "moment": "^2.15.2",
     "pretty-error": "^2.0.1",

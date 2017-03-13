@@ -1,11 +1,24 @@
 import React from 'react';
-import { Route, IndexRoute} from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-router';
 
 import App from './../components/App';
-import ContainerSearch from './../containers/ContainerSearch';
+import ContainerPlaylist from './../containers/ContainerPlaylist';
+import ContainerPlaylistPopup from './../containers/ContainerPlaylistPopup';
+import ContainerPlayer from './../containers/ContainerPlayer';
 
-export default (
-    <Route path="/" component={App}>
-        <IndexRoute component={ContainerSearch} />
+const basePath = typeof _basePath !== 'undefined' ? _basePath : '/';
+
+const Routes = (
+    <Route component={App}>
+        <Route path="/" component={ContainerPlaylist} />
+        <Route path="/a" components={()=>(<div>
+            <ContainerPlaylist />
+            <ContainerPlaylistPopup />
+            <ContainerPlayer />
+            </div>
+        )} >
+        </Route>
     </Route>
 );
+
+export default Routes;

@@ -1,6 +1,7 @@
-export const showPopupAddToPlaylist = () => {
+export const showPopupAddToPlaylist = (songId) => {
     return {
-        type: 'SHOW_POPUP_ADDTOPLAYLIST'
+        type: 'SHOW_POPUP_ADDTOPLAYLIST',
+        id: songId
     };
 };
 
@@ -10,3 +11,14 @@ export const hidePopupAddToPlaylist = () => {
     };
 };
 
+export const createNew = (playlistName = 'Untitled', callbackSongId = []) => {
+    // store
+    const newPlaylist = {
+        name: playlistName,
+        list: Array.isArray(callbackSongId) && callbackSongId.length > 0 ? callbackSongId : [callbackSongId]
+    };
+    return {
+        type: 'CREATE_NEW_OK',
+        newPlaylist
+    }
+};

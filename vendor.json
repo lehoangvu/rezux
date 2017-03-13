@@ -16,5 +16,6 @@
 	"axios",
 	"react-router-redux",
 	"numeral",
-	"react-swipe"
+	"react-swipe",
+	"moment"
 ]

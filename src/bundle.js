@@ -5,20 +5,19 @@ import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
+// import Routes from './routes';
 import reducer from './reducers';
 import WithStylesContex from './global/WithStylesContex';
+
+window.jQuery = jQuery;
+window.$ = jQuery;
 
 import App from './components/App';
 import ContainerPlaylist from './containers/ContainerPlaylist';
 import ContainerPlaylistPopup from './containers/ContainerPlaylistPopup';
 import ContainerPlayer from './containers/ContainerPlayer';
 
-window.jQuery = jQuery;
-window.$ = jQuery;
-
-// const initState = {
-// 	search: 
-// };
+const basePath = typeof _basePath !== 'undefined' ? _basePath : '/';
 
 const promiseMiddleware = () => {
     return next => action => {
@@ -49,15 +48,13 @@ render(
     <WithStylesContex onInsertCss={styles => styles._insertCss()}>
         <Provider store={store}>
             <Router history={browserHistory}>
-                <Route path="/" component={App}>
-                    <IndexRoute 
-                        components={
-                            ()=>(<div>
-                                    <ContainerPlaylist />
-                                    <ContainerPlaylistPopup />
-                                    <ContainerPlayer />
-                                    </div>
-                                )} />
+                <Route component={App}>
+                    <Route path={basePath} components={()=>(<div>
+                        <ContainerPlaylist />
+                        <ContainerPlayer />
+                        </div>
+                    )} >
+                    </Route>
                 </Route>
             </Router>
         </Provider>

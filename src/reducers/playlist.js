@@ -1,5 +1,6 @@
 const intinalState = {    
     showAddPopup: false,
+    callbackSongId: false,
     data: [
         {
             name: 'Yêu thích',
@@ -18,15 +19,25 @@ export default (state = intinalState, action) => {
                 ...state
             };
             break;
+        case 'CREATE_NEW_OK':
+            let newData = state.data;
+            newData.push(action.newPlaylist);
+            return {
+                ...state,
+                data: newData
+            };
+            break;
         case 'SHOW_POPUP_ADDTOPLAYLIST':
             return {
                 ...state,
+                callbackSongId: action.songId,
                 showAddPopup: true
             };
             break;
         case 'HIDE_POPUP_ADDTOPLAYLIST':
             return {
                 ...state,
+                callbackSongId: false,
                 showAddPopup: false
             };
             break;

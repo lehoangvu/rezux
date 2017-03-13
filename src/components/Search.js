@@ -20,8 +20,8 @@ const Search = ({state, actions}) => {
         actions.hideSongOption()
     };
 
-    const _showPopupAddToPlaylist = () => {
-        actions.showPopupAddToPlaylist()
+    const _showPopupAddToPlaylist = (id) => {
+        actions.showPopupAddToPlaylist(id)
     };
 
     const _onChange = () => {

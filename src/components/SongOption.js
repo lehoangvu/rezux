@@ -1,6 +1,4 @@
 import React from 'react';
-import { hideSongOption } from './../actions/search';
-import { showPopupAddToPlaylist } from '../actions/playlist';
 
 const SongOption = (props) => {
     const s = props.s;
@@ -12,9 +10,9 @@ const SongOption = (props) => {
                             props.onHideSongOption();
                             props.onPlaySong(props.objectId);
                         }}>Nghe bây giờ</li>
-                        <li style={{display: 'none'}} onClick={()=>{
+                        <li onClick={()=>{
                             props.onHideSongOption();
-                            props.showPopupAddToPlaylist()
+                            props.showPopupAddToPlaylist(props.objectId)
                         }}>Lưu vào Playlist</li>
                         <li onClick={props.onHideSongOption}>Đóng</li>
                     </ul>

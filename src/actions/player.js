@@ -7,6 +7,15 @@ export const fetchById = (id) => {
             dataType: 'JSON',
             crossDomain: true
         }).done((json)=>{
+
+            // check error
+            if(typeof json.response.is_error !== 'undefined' && json.response.is_error){
+                dispatch({
+                    type: 'FETCH_ERROR',
+                    data: json.response
+                });                    
+            }
+
             dispatch({
                 type: 'FETCH',
                 data: json

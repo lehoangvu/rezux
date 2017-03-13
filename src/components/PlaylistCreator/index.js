@@ -2,29 +2,63 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './style.scss';
 
-const PlaylistCreator = (props) => {
-    const state = props.state;
-    let playlists;
-    if(state.data.length > 0){
-        playlists = state.data.map((playlist) => {
-            return (
-                <div className={s.item}>
-                    <h4>{playlist.name}</h4>
-                </div>
-            );
+class PlaylistCreator extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            ...props.state,
+            newPlaylistName: ''
+        };
+    }
+
+
+    inputChange(e) {
+        this.setState({
+            ...this.state,
+            newPlaylistName: e.target.value
+        })
+    }
+
+    savePlaylist() {
+        // const playListName;
+        this.props.onCreateNew(this.state.newPlaylistName, [1234, 1223]);
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            ...nextProps.state,
+            newPlaylistName: ''
         });
     }
 
-    return (
-        <div>
-            {state.showAddPopup && 
-            <div className={s.root}>
-                <div className={s.container}>
-                    <h3 className={s.heading}>Danh sách Playlist</h3>
-                    {playlists}
+    render() {
+        let playlists;
+        if(this.state.data.length > 0){
+            playlists = this.state.data.map((playlist) => {
+                return (
+                    <div className={s.item}>
+                        <h4>{playlist.name}</h4>
+                    </div>
+                );
+            });
+        }
+        return (
+            <div style={{display: this.state.showAddPopup ? 'block' : 'none'}}>
+                <div className={s.root}>
+                    <span className={s.hideLink} onClick={()=>{this.props.onHideClick()}}>Đóng</span>
+                    <div className={s.container}>
+                        <h3 className={s.heading}>Chọn từ danh sách Playlist</h3>
+                        {playlists}
+                        <div className={s.newForm}>
+                            <span>Hoặc tạo mới</span>
+                            <input onChange={this.inputChange.bind(this)} value={this.state.newPlaylistName} />
+                            <button disabled={this.state.newPlaylistName === ''} className={s.createNewBtn} onClick={this.savePlaylist.bind(this)}>Lưu</button>
+                        </div>
+                    </div>
                 </div>
-            </div>}
-        </div>
-        )
-};
+            </div>
+        );
+    }
+}
+
 export default withStyles(s)(PlaylistCreator);

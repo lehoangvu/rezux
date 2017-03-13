@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Playlist from '../components/Playlist';
-import { createNew, hidePopupAddToPlaylist } from '../actions/playlist';
+import PlaylistExplorer from '../components/PlaylistExplorer';
+import { createNew, hidePopupAddToPlaylist, addSongToPlaylist } from '../actions/playlist';
 
 const mapStateToProps = (state) => ({
 	state: state.playlist
@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators({
+    	addSongToPlaylist,
         createNew,
         onHideClick: hidePopupAddToPlaylist
     }, dispatch)
@@ -17,6 +18,6 @@ const mapDispatchToProps = (dispatch) => ({
 const ContainerPlaylist = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Playlist);
+)(PlaylistExplorer);
 
 export default ContainerPlaylist;

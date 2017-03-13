@@ -1,13 +1,21 @@
 export const showPopupAddToPlaylist = (songId) => {
     return {
         type: 'SHOW_POPUP_ADDTOPLAYLIST',
-        id: songId
+        songId: songId
     };
 };
 
 export const hidePopupAddToPlaylist = () => {
     return {
         type: 'HIDE_POPUP_ADDTOPLAYLIST'
+    };
+};
+
+export const addSongToPlaylist = (songId, playlistId) => {
+    return {
+        type: 'ADD_SONG',
+        songId,
+        playlistId
     };
 };
 

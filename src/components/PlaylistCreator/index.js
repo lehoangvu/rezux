@@ -21,7 +21,7 @@ class PlaylistCreator extends React.Component{
 
     savePlaylist() {
         // const playListName;
-        this.props.onCreateNew(this.state.newPlaylistName, [1234, 1223]);
+        this.props.onCreateNew(this.state.newPlaylistName, callbackSongId);
     }
 
     componentWillReceiveProps(nextProps){
@@ -34,9 +34,9 @@ class PlaylistCreator extends React.Component{
     render() {
         let playlists;
         if(this.state.data.length > 0){
-            playlists = this.state.data.map((playlist) => {
+            playlists = this.state.data.map((playlist, index) => {
                 return (
-                    <div className={s.item}>
+                    <div className={s.item} onClick={()=>{this.props.addSongToPlaylist(this.state.callbackSongId, index)}}>
                         <h4>{playlist.name}</h4>
                     </div>
                 );

@@ -1,8 +1,9 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import { getSuggess, showSuggess, hideSuggess, showSongOption, hideSongOption } from './../actions/search';
 import s from './css/search-suggess.scss';
 
-const SearchSuggess = ({suggess, onSongClick, onHideClick}) => {
+const SearchSuggess = ({dispatch, suggess, onSongClick, onHideClick}) => {
 
     let suggessArtist;
     let suggessAlbum;

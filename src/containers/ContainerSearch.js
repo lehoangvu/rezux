@@ -25,4 +25,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ContainerSearch = connect(mapStateToProps, mapDispatchToProps)(Search);
 export default ContainerSearch;
-    

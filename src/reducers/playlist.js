@@ -1,3 +1,22 @@
+const playlistDb = {
+    get: () => {
+        let playlist = localStorage.getItem('db_playlist');
+        if(playlist){
+            return JSON.parse(playlist);
+        }
+        return [];
+    },
+    set: (data) => {
+        localStorage.setItem('db_playlist', JSON.stringify(data));
+    }
+};
+
+function savePlaylistToDb(playlist){
+    localStorage.setItem('playlist_db', JSON.stringify(playlist));
+}
+function getPlaylistFromDb(playlist){
+    localStorage.setItem('playlist_db', JSON.stringify(playlist));
+}
 const intinalState = {    
     showAddPopup: false,
     callbackSongId: false,
@@ -12,6 +31,7 @@ const intinalState = {
             list: []
         }
     ]
+    // data: playlistDb.get()
 };
 
 const addToPlaylist = (list, songId) => {
@@ -40,6 +60,7 @@ export default (state = intinalState, action) => {
         case 'CREATE_NEW_OK':
             let newData = state.data;
             newData.push(action.newPlaylist);
+            playlistDb.set(newData);
             return {
                 ...state,
                 data: newData
@@ -60,10 +81,11 @@ export default (state = intinalState, action) => {
             };
             break;
         case 'ADD_SONG':
-            let originState = state;
-            originState.data[action.playlistId].list = addToPlaylist(originState.data[action.playlistId].list, action.songId);
+            let finalState = state;
+            finalState.data[action.playlistId].list = addToPlaylist(finalState.data[action.playlistId].list, action.songId);
+            playlistDb.set(finalState.data);
             return {
-                ...originState,
+                ...finalState,
                 callbackSongId: false,
                 showAddPopup: false
             };

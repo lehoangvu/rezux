@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import createLogger from 'redux-logger';
 
 import reducer from './..//reducers';
 const promiseMiddleware = () => {
@@ -23,7 +24,9 @@ const promiseMiddleware = () => {
     };
 };
 
-const middleWare = [thunk, promiseMiddleware];
+const preloadedState = {};
 
-const store = createStore(reducer, [], applyMiddleware(...middleWare));
+const middleWare = [thunk, promiseMiddleware, createLogger()];
+
+const store = createStore(reducer, preloadedState, applyMiddleware(...middleWare));
 export default store;

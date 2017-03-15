@@ -3,14 +3,14 @@ import PlaylistCreator from './PlaylistCreator/';
 
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './css/playlist.scss';
+import Player from './Player';
+const PlaylistExplorer = ({ state, player, ownProps, actions }) => {
+    
 
-const PlaylistExplorer = ({ state, actions }) => {
-
-    let playlists;
     if(state.data.length > 0){
-        playlists = state.data.map((playlist) => {
+        playlists = state.data.map((playlist, index) => {
             return (
-                <div className={s.item}>
+                <div className={s.item} key={index}>
                     <h4>{playlist.name}({playlist.list.length})</h4>
                 </div>
             );
@@ -21,11 +21,18 @@ const PlaylistExplorer = ({ state, actions }) => {
         actions.createNew(playlistName, callbackSongId);
     };
 
-	return (
-        <div className={s.root}>
-            <h3 className={s.heading}>Danh sách Playlist</h3>
-            {playlists}
-            <PlaylistCreator state={state} onCreateNew={_onCreateNew} onHideClick={actions.onHideClick} addSongToPlaylist={actions.addSongToPlaylist} />
+    if(typeof ownProps.params.song_id !== 'undefined'){
+        playerProps.
+    }
+    
+    return (
+        <div>
+            <div className={s.root}>
+                <h3 className={s.heading}>Danh sách Playlist</h3>
+                {playlists}
+                <PlaylistCreator state={state} onCreateNew={_onCreateNew} onHideClick={actions.onHideClick} addSongToPlaylist={actions.addSongToPlaylist} />
+            </div>
+            <Player state={player} />
         </div>
 	);
 };

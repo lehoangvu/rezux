@@ -1,22 +1,39 @@
+import axios from 'axios';
+
 export const getSuggess = (keyword) => {
     return dispatch => {
-        $.ajax({
-            url: "http://ac.mp3.zing.vn/complete/desktop",
-            type: 'GET',
-            data: {
+        // $.ajax({
+        //     url: "http://ac.mp3.zing.vn/complete/desktop",
+        //     type: 'GET',
+        //     data: {
+        //         type: 'artist,album,video,song',
+        //         num: 10,
+        //         query: keyword
+        //     },
+        //     dataType: 'JSON',
+        // }).done((json)=>{
+        //     dispatch({
+        //         type: 'GET_SUGGESS',    
+        //         keyword: keyword,
+        //         data: json.data
+        //     });
+            
+        // }).fail((xhr)=>{
+
+        // });
+        axios.get("http://ac.mp3.zing.vn/complete/desktop", {
+            params: {
                 type: 'artist,album,video,song',
-                num: 10,
+                num: 20,
                 query: keyword
-            },
-            dataType: 'JSON',
-        }).done((json)=>{
+            }
+        }).then((response)=>{
             dispatch({
                 type: 'GET_SUGGESS',    
                 keyword: keyword,
-                data: json.data
+                data: response.data.data
             });
-            
-        }).fail((xhr)=>{
+        }).catch((error)=>{
 
         });
     }

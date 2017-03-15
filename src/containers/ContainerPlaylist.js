@@ -3,8 +3,10 @@ import { bindActionCreators } from 'redux';
 import PlaylistExplorer from '../components/PlaylistExplorer';
 import { createNew, hidePopupAddToPlaylist, addSongToPlaylist } from '../actions/playlist';
 
-const mapStateToProps = (state) => ({
-	state: state.playlist
+const mapStateToProps = (state, ownProps) => ({
+	state: state.playlist,
+	player: state.player,
+	ownProps: ownProps,
 });
 
 const mapDispatchToProps = (dispatch) => ({

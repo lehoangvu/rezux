@@ -5,7 +5,7 @@ import SongOption from './SongOption';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './css/search.scss';
 
-const Search = ({state, dispatch, actions}) => {
+const Search = ({state, actions}) => {
     let keyword;
 
 
@@ -57,7 +57,7 @@ const Search = ({state, dispatch, actions}) => {
                     placeholder="Nhập từ khóa"
                 />
             </form>
-            <SearchSuggess dispatch={dispatch} suggess={state.suggess} onHideClick={()=>_onHideClick()} onSongClick={(id)=>{_onSongClick(id)}} />
+            <SearchSuggess suggess={state.suggess} onHideClick={()=>_onHideClick()} onSongClick={(id)=>{_onSongClick(id)}} />
             <SongOption
                 objectId={state.optionObjectId} 
                 show={state.showSongOption} 

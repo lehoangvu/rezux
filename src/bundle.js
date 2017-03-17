@@ -22,14 +22,10 @@ render(
         <Provider store={store}>
             <Router history={browserHistory}>
                 <Route component={App}>
-                    <Route path={basePath} components={ContainerPlaylist} >
-                    </Route>
-                    <Route path={basePath + 'all/:song_id'} components={ContainerPlaylist} >
-                    </Route>
-                    <Route path={basePath + 'all/:song_id.html'} components={ContainerPlaylist} >
-                    </Route>
-                    <Route path={basePath + ':playlist_id/:song_id.html'} components={ContainerPlaylist} >
-                    </Route>
+                    <Route path={basePath} components={ContainerPlaylist} ></Route>
+                    <Route path={basePath + 'all/:song_id'} components={ContainerPlaylist} ></Route>
+                    <Route path={basePath + 'all/:song_id.html'} components={ContainerPlaylist} ></Route>
+                    <Route path={basePath + ':playlist_id/:song_id.html'} components={ContainerPlaylist} ></Route>
                 </Route>
             </Router>
         </Provider>

@@ -23,12 +23,8 @@ class Player extends React.Component{
     }
 
     componentDidMount () {
-
-        if(this.state.player_id !== null && !this.state.fetched){
-            this.fetch(this.state.player_id);
-        }
-
         this.player = document.getElementById('player');
+        this.load();
         this.play();
     }
 

@@ -5,7 +5,7 @@ import { createNew, hidePopupAddToPlaylist, addSongToPlaylist } from '../actions
 import { fetchById, setPlayerId } from '../actions/player';
 
 const mapStateToProps = (state, ownProps) => ({
-	state: state.playlist,
+	playlist: state.playlist,
 	player: state.player,
 	ownProps: ownProps,
 });

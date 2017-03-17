@@ -26,3 +26,10 @@ export const fetchById = (id) => {
         });
     }
 };
+
+export const setPlayerId = (id) => {
+    return {
+        type: 'SET_ID',
+        id
+    };
+};

@@ -1,7 +1,7 @@
-if (typeof localStorage === "undefined" || localStorage === null) {
-  var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('./scratch');
-}
+// if (typeof localStorage === "undefined" || localStorage === null) {
+//   var LocalStorage = require('node-localstorage').LocalStorage;
+//   localStorage = new LocalStorage('./scratch');
+// }
 
 var express = require('express');
 var app = express();
@@ -14,7 +14,7 @@ app.use(
     express.static(__dirname) //where your static content is located in your filesystem
 );
 
-app.route('/:playlistId/:songId.html').get(function (req, res) {
+app.route('/:playlistId/:songId').get(function (req, res) {
 	res.sendfile(__dirname + '/index.html');
 });
 

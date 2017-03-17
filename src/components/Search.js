@@ -30,7 +30,8 @@ const Search = ({state, actions}) => {
     };
 
     const _onPlaySong = (id) => {
-        actions.fetchById(id);
+        // actions.fetchById(id);
+        actions.setPlayerId(id);
     };
 
     const _onFocus = () => {

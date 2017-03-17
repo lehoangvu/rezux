@@ -1,6 +1,6 @@
 import { getSuggess, showSuggess, hideSuggess, showSongOption, hideSongOption } from './../actions/search';
 import { showPopupAddToPlaylist, hidePopupAddToPlaylist } from '../actions/playlist';
-import { fetchById } from '../actions/player';
+import { setPlayerId } from '../actions/player';
 import Search from './../components/Search';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -19,7 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
         showSongOption,
         hideSongOption,
         showPopupAddToPlaylist,
-        fetchById
+        // fetchById
+        setPlayerId
     }, dispatch)
 });
 

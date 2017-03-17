@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, browserHistory } from 'react-router';
 
 const SongOption = (props) => {
     const s = props.s;
@@ -8,8 +9,9 @@ const SongOption = (props) => {
                     <ul>
                         <li onClick={()=>{
                             props.onHideSongOption();
-                            props.onPlaySong(props.objectId);
-                        }}>Nghe bây giờ</li>
+                            // props.onPlaySong(props.objectId);
+                            // browserHistory.push('/all/'+props.objectId);
+                        }}><Link to={'/all/'+props.objectId}>Nghe bây giờ</Link></li>
                         <li onClick={()=>{
                             props.onHideSongOption();
                             props.showPopupAddToPlaylist(props.objectId)

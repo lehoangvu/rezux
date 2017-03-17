@@ -6,6 +6,7 @@ import s from './css/playlist.scss';
 import Player from './Player';
 const PlaylistExplorer = ({ state, player, ownProps, actions }) => {
     
+    let playlists;
 
     if(state.data.length > 0){
         playlists = state.data.map((playlist, index) => {
@@ -21,8 +22,10 @@ const PlaylistExplorer = ({ state, player, ownProps, actions }) => {
         actions.createNew(playlistName, callbackSongId);
     };
 
+    let playerProps = player;
+
     if(typeof ownProps.params.song_id !== 'undefined'){
-        playerProps.
+        playerProps.player_id = ownProps.params.song_id;
     }
     
     return (
@@ -32,7 +35,7 @@ const PlaylistExplorer = ({ state, player, ownProps, actions }) => {
                 {playlists}
                 <PlaylistCreator state={state} onCreateNew={_onCreateNew} onHideClick={actions.onHideClick} addSongToPlaylist={actions.addSongToPlaylist} />
             </div>
-            <Player state={player} />
+            <Player state={playerProps} fetch={actions.fetchById} />
         </div>
 	);
 };

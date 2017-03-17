@@ -3,23 +3,6 @@ import moment from 'moment';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './css/player.scss';
 
-// const Player = ({state, action}) => {
-//     const componentDidMount = () => {
-//         console.log('OK');
-//     }
-//     return (
-//         <div className={s.root}>
-//             <video controls="true" autoPlay="true" name="media">
-//                 <source  
-//                     src={state.source["128"]}
-//                     type="audio/mpeg" >
-//                 </source>
-//             </video>
-//         </div>
-//     );
-// };
-
-
 class Player extends React.Component{
     constructor(props){
         super(props);
@@ -32,12 +15,21 @@ class Player extends React.Component{
             }
         };
         this.timeout = null;
+        this.slide = false;
+    }
+
+    fetch(id){
+        this.props.fetch(id);
     }
 
     componentDidMount () {
+
+        if(this.state.player_id !== null && !this.state.fetched){
+            this.fetch(this.state.player_id);
+        }
+
         this.player = document.getElementById('player');
         this.play();
-        console.log('play');
     }
 
     _onPlayToggleClick(e){
@@ -54,21 +46,26 @@ class Player extends React.Component{
     }
 
     updateDuration(e){
-        let state = this.state;
-        state.player.currentTime = this.player.currentTime;
-        this.setState(state);
+        if(!this.slide){
+            let state = this.state;
+            state.player.currentTime = this.player.currentTime;
+            this.setState(state);
+        }
     }
 
     sliderChange(e){
+        this.slide = true;
         this.setState({
             player: {
                 ...this.state.player,
                 currentTime: e.target.value
             }
         });
+
         let _this = this;
         clearTimeout(this.timeout);
         this.timeout = setTimeout(()=>{
+            _this.slide = false;
             _this.play();
         }, 300);
     }
@@ -80,6 +77,11 @@ class Player extends React.Component{
     play(){
         this.player.currentTime = this.state.player.currentTime;
         this.player.play();
+    }
+    
+    load(){
+        this.player.pause();
+        this.player.load();
     }
 
     toTime(s){
@@ -100,8 +102,15 @@ class Player extends React.Component{
                 }
             };
             this.setState(newState);
-            this.player.load();
-            this.play();
+            if(!newState.fetched){
+                if(newState.player_id !== null){
+                    this.fetch(newState.player_id);
+                }
+            }else{
+                this.setState(newState);
+                this.load();
+                this.play();
+            }
         }
     }
 

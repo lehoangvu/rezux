@@ -52,7 +52,7 @@ export default (state = intinalState, action) => {
         case 'SHOW_SONG_OPTION':
             return {
                 ...state,
-                optionObjectId: action.id,
+                object: action.object,
                 showSongOption: true
             };
             break;

@@ -14,15 +14,15 @@ import App from './components/App';
 import ContainerPlaylist from './containers/ContainerPlaylist';
 import ContainerPlayer from './containers/ContainerPlayer';
 
-const basePath = typeof _basePath !== 'undefined' ? _basePath : '';
+const basePath = typeof _basePath !== 'undefined' ? _basePath : '/';
 window.basePath = basePath;
 
 render(
-    <WithStylesContex onInsertCss={styles => styles._insertCss()}>
+    <WithStylesContex onInsertCss={styles => Array.isArray(styles) ? styles.map((style)=>{style._insertCss()}): styles._insertCss()}>
         <Provider store={store}>
             <Router history={hashHistory}>
-                <Route component={App}>
-                    <Route path={basePath} components={ContainerPlaylist} ></Route>
+                <Route path={basePath } component={App}>
+                    <IndexRoute components={ContainerPlaylist} ></IndexRoute>
                     <Route path={basePath + 'all/:song_id'} components={ContainerPlaylist} ></Route>
                     <Route path={basePath + 'all/:song_id.html'} components={ContainerPlaylist} ></Route>
                     <Route path={basePath + ':playlist_id/:song_id.html'} components={ContainerPlaylist} ></Route>

@@ -11,10 +11,10 @@ const SongOption = (props) => {
                             props.onHideSongOption();
                             // props.onPlaySong(props.objectId);
                             // browserHistory.push('/all/'+props.objectId);
-                        }}><Link to={window.basePath + '/all/'+props.objectId}>Nghe bây giờ</Link></li>
+                        }}><Link to={window.basePath + 'all/'+props.object.id}>Nghe bây giờ</Link></li>
                         <li onClick={()=>{
                             props.onHideSongOption();
-                            props.showPopupAddToPlaylist(props.objectId)
+                            props.showPopupAddToPlaylist(props.object)
                         }}>Lưu vào Playlist</li>
                         <li onClick={props.onHideSongOption}>Đóng</li>
                     </ul>

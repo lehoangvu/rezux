@@ -43,10 +43,10 @@ export const showSuggess = () => {
         type: 'SHOW_SUGGESS'
     };
 };
-export const showSongOption = (id) => {
+export const showSongOption = (object) => {
     return {
         type: 'SHOW_SONG_OPTION',
-        id: id
+        object
     };
 };
 export const hideSongOption = () => {

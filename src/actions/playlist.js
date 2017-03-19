@@ -11,10 +11,10 @@ export const hidePopupAddToPlaylist = () => {
     };
 };
 
-export const addSongToPlaylist = (songId, playlistId) => {
+export const addSongToPlaylist = (songObj, playlistId) => {
     return {
         type: 'ADD_SONG',
-        songId,
+        songObj,
         playlistId
     };
 };
@@ -28,5 +28,12 @@ export const createNew = (playlistName = 'Untitled', callbackSongId = []) => {
     return {
         type: 'CREATE_NEW_OK',
         newPlaylist
+    }
+};
+
+export const setCurentPlaylist = (index) => {
+    return {
+        type: 'SET_CURRENT',
+        index
     }
 };

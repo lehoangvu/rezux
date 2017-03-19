@@ -1,0 +1,33 @@
+.root {
+    display: inline-block;
+    width: 100%;
+    padding: 5px 0;
+}
+.link{
+    display: flex;
+    text-decoration: none;
+    img{
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+    }
+}
+.content{
+    margin-left: 10px;
+    color: #333;
+    align-self: center;
+    span{
+        &:first-child{
+            color: #333;
+            display: block;
+            text-decoration: none;
+            width: 100%;
+            font-size: 22px;
+        }
+        &:last-child{
+            color: #666;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    }
+}

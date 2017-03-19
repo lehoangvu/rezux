@@ -77,7 +77,7 @@ const SearchSuggess = ({suggess, onSongClick, onHideClick}) => {
             <h4 className={s.heading}>Bài hát</h4>
             {songs.map((song) => {
                 return <li className={s.item}>
-                    <a href="#" className={s.link} onClick={()=>{onSongClick(song.id)}} >
+                    <a href="#" className={s.link} onClick={()=>{onSongClick(song)}} >
                         <span className={s.content}>
                             <span>{song.name}</span>
                             <span>{song.artist}</span>

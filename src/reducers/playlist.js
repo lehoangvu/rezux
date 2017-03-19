@@ -20,18 +20,18 @@ function getPlaylistFromDb(playlist){
 const intinalState = {    
     showAddPopup: false,
     callbackSongId: false,
-    currentIndex: -1,
-    data: [
-        {
-            name: 'Yêu thích',
-            list: []
-        },
-        {
-            name: 'Nhạc trẻ',
-            list: []
-        }
-    ]
-    // data: playlistDb.get()
+    currentIndex: 1,
+    // data: [
+    //     {
+    //         name: 'Yêu thích',
+    //         list: []
+    //     },
+    //     {
+    //         name: 'Nhạc trẻ',
+    //         list: []
+    //     }
+    // ]
+    data: playlistDb.get()
 };
 
 const addToPlaylist = (list, songId) => {
@@ -82,12 +82,18 @@ export default (state = intinalState, action) => {
             break;
         case 'ADD_SONG':
             let finalState = state;
-            finalState.data[action.playlistId].list = addToPlaylist(finalState.data[action.playlistId].list, action.songId);
+            finalState.data[action.playlistId].list = addToPlaylist(finalState.data[action.playlistId].list, action.songObj);
             playlistDb.set(finalState.data);
             return {
                 ...finalState,
                 callbackSongId: false,
                 showAddPopup: false
+            };
+            break;
+        case 'SET_CURRENT':
+            return {
+                ...state,
+                currentIndex: action.index
             };
             break;
         default:

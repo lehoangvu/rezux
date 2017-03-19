@@ -13,8 +13,8 @@ const Search = ({state, actions}) => {
 
     };
 
-    const _onSongClick = (id) => {
-        actions.showSongOption(id)
+    const _onSongClick = (object) => {
+        actions.showSongOption(object)
     };
 
     const _onHideSongOption = () => {
@@ -60,7 +60,7 @@ const Search = ({state, actions}) => {
             </form>
             <SearchSuggess suggess={state.suggess} onHideClick={()=>_onHideClick()} onSongClick={(id)=>{_onSongClick(id)}} />
             <SongOption
-                objectId={state.optionObjectId} 
+                object={state.object} 
                 show={state.showSongOption} 
                 onHideSongOption={_onHideSongOption} 
                 showPopupAddToPlaylist={_showPopupAddToPlaylist} 

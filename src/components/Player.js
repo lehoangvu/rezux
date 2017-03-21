@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './css/player.scss';
+import {coloring} from './../helpers/colors';
 
 class Player extends React.Component{
     constructor(props){
@@ -123,9 +124,9 @@ class Player extends React.Component{
         };
         const player = this.state.player;
         return (
-            <div className={s.root}>
+            <div className={s.root} style={{backgroundColor: coloring(0)}}>
                 <audio src={this.getBestSource(source) } autoPlay="true" id="player" onTimeUpdate={this.updateDuration.bind(this)}></audio>
-                <div className={s.control}>
+                <div className={s.control} >
                     <button className={s.playBtn} onClick={this._onPlayToggleClick.bind(this)}>
                         <span className={player.play ? 'ion-ios-pause' : 'ion-ios-play'} />
                     </button>

@@ -1,6 +1,10 @@
 import React from 'react';
 import ContainerSearch from './../containers/ContainerSearch';
 import Player from './../components/Player';
+import {coloring} from './../helpers/colors';
+
+import s from './css/app.scss';
+import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 class App extends React.Component{
    constructor(props){
@@ -9,7 +13,7 @@ class App extends React.Component{
 
    render(){
         return (
-            <div>
+            <div className={s.root} style={{backgroundColor: coloring(8, 10, 5, 10)}}>
                 <ContainerSearch />
                 {this.props.children}
             </div>
@@ -17,4 +21,4 @@ class App extends React.Component{
    }
 }
 
-export default App;
+export default withStyles(s)(App);

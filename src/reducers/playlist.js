@@ -20,7 +20,7 @@ function getPlaylistFromDb(playlist){
 const intinalState = {    
     showAddPopup: false,
     callbackSongId: false,
-    currentIndex: 1,
+    currentIndex: -1,
     // data: [
     //     {
     //         name: 'Yêu thích',
@@ -91,9 +91,14 @@ export default (state = intinalState, action) => {
             };
             break;
         case 'SET_CURRENT':
+            if(action.index === -1 || typeof state.data[action.index] !== 'undefined'){
+                return {
+                    ...state,
+                    currentIndex: action.index
+                };
+            }
             return {
-                ...state,
-                currentIndex: action.index
+                ...state
             };
             break;
         default:

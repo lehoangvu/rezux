@@ -3,22 +3,17 @@ import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-ro
 
 import App from './../components/App';
 import ContainerPlaylist from './../containers/ContainerPlaylist';
-import ContainerPlaylistPopup from './../containers/ContainerPlaylistPopup';
-import ContainerPlayer from './../containers/ContainerPlayer';
 
 const basePath = typeof _basePath !== 'undefined' ? _basePath : '/';
+window.basePath = basePath;
 
-const Routes = (
-    <Route component={App}>
-        <Route path="/" component={ContainerPlaylist} />
-        <Route path="/a" components={()=>(<div>
-            <ContainerPlaylist />
-            <ContainerPlaylistPopup />
-            <ContainerPlayer />
-            </div>
-        )} >
-        </Route>
+const Routes = 
+    <Route path={basePath } component={App}>
+        <IndexRoute components={ContainerPlaylist} ></IndexRoute>
+        <Route path={basePath + 'all/:song_id'} components={ContainerPlaylist} ></Route>
+        <Route path={basePath + ':playlist_id'} components={ContainerPlaylist} ></Route>
+        <Route path={basePath + ':playlist_id/:song_id'} components={ContainerPlaylist} ></Route>
     </Route>
-);
+;
 
 export default Routes;

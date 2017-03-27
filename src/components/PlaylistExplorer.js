@@ -20,7 +20,6 @@ class PlaylistExplorer extends React.Component {
             player: props.player,
         };
         this.actions = props.actions;
-        this.parseProps(props);
     }
 
     parseProps(props){
@@ -42,13 +41,22 @@ class PlaylistExplorer extends React.Component {
         this.actions.createNew(playlistName, callbackSongId);
     }
 
-    componentDidMount(){
+    setTitle(){
+        const state = this.state;
+        if(state.playlist.currentIndex !== -1){
+            document.title = this.state.playlist[state.playlist.currentIndex].name;
+        }
+    }
 
+    componentDidMount(){
+        this.parseProps(this.props);
+        this.setTitle();
     }
 
     componentWillReceiveProps (nextProps) {
 
         this.parseProps(nextProps);
+        this.setTitle();
         
     }
     render(){
@@ -70,7 +78,7 @@ class PlaylistExplorer extends React.Component {
         } else {
             let selectedPlaylist = state.playlist.data[state.playlist.currentIndex];
             directoryTitle = <h3 className={s.directoryTitle}>
-                        <Link to={basePath}>
+                        <Link to={window.basePath}>
                             <span className="ion-ios-arrow-thin-left"/>
                         </Link>
                         {selectedPlaylist.name}
@@ -78,7 +86,7 @@ class PlaylistExplorer extends React.Component {
             if(selectedPlaylist.list.length > 0){
                 playlists = selectedPlaylist.list.map((song, index) => {
                     return <li className={i.root}>
-                        <Link to={ {query: { playlist_id: state.playlist.currentIndex, song_id: song.id } }} className={i.link} >
+                        <Link to={window.basePath + state.playlist.currentIndex + '/' + song.id} className={i.link} >
                             <span className={i.content}>
                                 <span>{song.name}</span>
                                 <span>{song.artist}</span>

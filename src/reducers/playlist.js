@@ -91,15 +91,13 @@ export default (state = intinalState, action) => {
             };
             break;
         case 'SET_CURRENT':
-            if(action.index === -1 || typeof state.data[action.index] !== 'undefined'){
+            if(state.currentIndex !== action.index && (action.index === -1 || typeof state.data[action.index] !== 'undefined')) {
                 return {
                     ...state,
                     currentIndex: action.index
                 };
             }
-            return {
-                ...state
-            };
+            return state;
             break;
         default:
             return state;

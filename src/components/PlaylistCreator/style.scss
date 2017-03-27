@@ -15,8 +15,13 @@
     font-size: 30px;
 }
 .item{
-    color: #f00;
+    color: #FF5722;
     margin: 10px 0;
+    font-size: 26px;
+    font-weight: 400;
+    display: inline-block;
+    width: 100%;
+    line-height: 16px;
 }
 .hideLink{
     position: absolute;
@@ -24,4 +29,23 @@
     font-size: 16px;
     color: #F44336;
     font-weight: bold;
+}
+.input{
+    border: 1px solid #F44336;
+    margin: 10px 0 0 0;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 6px 10px;
+    text-align: center;
+    color: #424242;
+    width: 100%;
+}
+.submit{
+    width: 100%;
+    border: 0px;
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px 0 0 0;
+    background: #FF9800;
+    color: #fff;
 }

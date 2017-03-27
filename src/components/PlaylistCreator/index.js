@@ -6,7 +6,7 @@ class PlaylistCreator extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            ...props.state,
+            ...props.playlist,
             newPlaylistName: ''
         };
     }
@@ -26,7 +26,7 @@ class PlaylistCreator extends React.Component{
 
     componentWillReceiveProps(nextProps){
         this.setState({
-            ...nextProps.state,
+            ...nextProps.playlist,
             newPlaylistName: ''
         });
     }
@@ -37,7 +37,7 @@ class PlaylistCreator extends React.Component{
             playlists = this.state.data.map((playlist, index) => {
                 return (
                     <div key={index} className={s.item} onClick={()=>{this.props.addSongToPlaylist(this.state.callbackSongId, index)}}>
-                        <h4>{playlist.name}</h4>
+                        {playlist.name}
                     </div>
                 );
             });
@@ -51,8 +51,8 @@ class PlaylistCreator extends React.Component{
                         {playlists}
                         <div className={s.newForm}>
                             <span>Hoặc tạo mới</span>
-                            <input onChange={this.inputChange.bind(this)} value={this.state.newPlaylistName} />
-                            <button disabled={this.state.newPlaylistName === ''} className={s.createNewBtn} onClick={this.savePlaylist.bind(this)}>Lưu</button>
+                            <input className={s.input} onChange={this.inputChange.bind(this)} value={this.state.newPlaylistName} />
+                            <button className={s.submit} disabled={this.state.newPlaylistName === ''} onClick={this.savePlaylist.bind(this)}>Lưu</button>
                         </div>
                     </div>
                 </div>

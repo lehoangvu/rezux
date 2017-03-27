@@ -9,9 +9,6 @@ import Player from './Player';
 
 import {coloring} from './../helpers/colors';
 
-// const PlaylistExplorer = ({ playlist, player, ownProps, actions }) => {
-// };
-
 class PlaylistExplorer extends React.Component {
     constructor(props){
         super(props);
@@ -23,18 +20,21 @@ class PlaylistExplorer extends React.Component {
     }
 
     parseProps(props){
-        if(typeof props.ownProps.params.song_id !== 'undefined' && props.ownProps.params.song_id !== this.state.player.player_id){
-            this.actions.setPlayerId(props.ownProps.params.song_id);     
-            this.fetchPlayerId = true;
-        }
         let playlist_id = typeof props.ownProps.params.playlist_id !== 'undefined' ? props.ownProps.params.playlist_id : -1;
-        if(playlist_id !== this.state.playlist.currentIndex){
+        if(playlist_id !== props.playlist.currentIndex){
             this.actions.setCurentPlaylist(playlist_id);
         }
-        this.setState ({
-            playlist: props.playlist,
-            player: props.player,
-        });
+
+        if(typeof props.ownProps.params.song_id !== 'undefined' && props.ownProps.params.song_id !== props.player.player_id){
+            this.actions.setPlayerId(props.ownProps.params.song_id);     
+            // this.fetchPlayerId = true;
+        }
+
+
+        // this.setState ({
+        //     playlist: props.playlist,
+        //     player: props.player,
+        // });
     }
 
     _onCreateNew (playlistName, callbackSongId) {
@@ -42,33 +42,43 @@ class PlaylistExplorer extends React.Component {
     }
 
     setTitle(){
-        const state = this.state;
-        if(state.playlist.currentIndex !== -1){
-            document.title = this.state.playlist[state.playlist.currentIndex].name;
+        const playlist = this.props.playlist;
+        if(parseInt(playlist.currentIndex) !== -1){
+            document.title = playlist.data[playlist.currentIndex].name;
+        }else{
+            document.title = 'Rezux - Chỉ để vui';
         }
+    }
+
+    componentDidUpdate(){
+        this.setTitle();
     }
 
     componentDidMount(){
         this.parseProps(this.props);
-        this.setTitle();
     }
 
     componentWillReceiveProps (nextProps) {
-
         this.parseProps(nextProps);
-        this.setTitle();
-        
     }
+
+
     render(){
-        const state = this.state;
+        const playlist = this.props.playlist;
+        const player = this.props.player;
         let directoryTitle = <h3>Danh sách Playlist</h3>;
-        let playlists;
-        if(state.playlist.currentIndex === -1){   
-            if(state.playlist.data.length > 0){
-                playlists = state.playlist.data.map((playlist, index) => {
+
+        let playlists, playerDom;
+
+        if(playlist.currentIndex === -1){   
+
+            playerDom = <Player key={player.player_id} state={player} fetch={this.actions.fetchById} />;
+
+            if(playlist.data.length > 0){
+                playlists = playlist.data.map((playlist, index) => {
                     return (
                         <Link to={window.basePath + index } className={s.item} key={index} >
-                            <h4>{playlist.name}({playlist.list.length})</h4>
+                            {playlist.name}({playlist.list.length})
                         </Link>
                     );
                 });
@@ -76,17 +86,20 @@ class PlaylistExplorer extends React.Component {
                 playlists = <p className={s.empty}>Chưa có Playlist nào!</p>
             }
         } else {
-            let selectedPlaylist = state.playlist.data[state.playlist.currentIndex];
+            let selectedPlaylist = playlist.data[playlist.currentIndex];
             directoryTitle = <h3 className={s.directoryTitle}>
                         <Link to={window.basePath}>
                             <span className="ion-ios-arrow-thin-left"/>
                         </Link>
                         {selectedPlaylist.name}
                     </h3>;
+
+            playerDom = <Player selectedPlaylist={selectedPlaylist} key={player.player_id} state={player} fetch={this.actions.fetchById} />;
+
             if(selectedPlaylist.list.length > 0){
                 playlists = selectedPlaylist.list.map((song, index) => {
                     return <li className={i.root}>
-                        <Link to={window.basePath + state.playlist.currentIndex + '/' + song.id} className={i.link} >
+                        <Link to={window.basePath + playlist.currentIndex + '/' + song.id} className={i.link} >
                             <span className={i.content}>
                                 <span>{song.name}</span>
                                 <span>{song.artist}</span>
@@ -105,10 +118,10 @@ class PlaylistExplorer extends React.Component {
                 <div className={s.root}>
                     {directoryTitle}
                     {playlists}
-                    <PlaylistCreator state={state.playlist} onCreateNew={this._onCreateNew.bind(this)} onHideClick={this.actions.onHideClick} addSongToPlaylist={this.actions.addSongToPlaylist} />
+                    <PlaylistCreator playlist={playlist} onCreateNew={this._onCreateNew.bind(this)} onHideClick={this.actions.onHideClick} addSongToPlaylist={this.actions.addSongToPlaylist} />
                 </div>
 
-                <Player key={state.player.player_id} state={state.player} fetch={this.actions.fetchById} />
+                {playerDom}
             </div>
         );
 

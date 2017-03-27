@@ -23,10 +23,44 @@ class Player extends React.Component{
         this.props.fetch(id);
     }
 
+    componentDidUpdate () {
+        this.setTitle();
+    }
+
+    setTitle(){
+        const state = this.state;
+        if(typeof state.title !== 'undefined'){
+            document.title = state.title;
+        }
+    }
+
     componentDidMount () {
         this.player = document.getElementById('player');
         this.load();
         this.play();
+    }
+
+    componentWillReceiveProps (nextProps) {
+        if(typeof nextProps.state.response.is_error !== 'undefined'){
+            alert(nextProps.state.response.msg);
+        }else{
+            const newState = {
+                ...nextProps.state,
+            };
+            if(!newState.fetched){
+                if(newState.player_id !== null){
+                    this.fetch(newState.player_id);
+                    newState.player = {
+                        play: true,
+                        currentTime: 0
+                    };
+                }
+            }else{
+                this.load();
+                this.play();
+            }
+            this.setState(newState);
+        }
     }
 
     _onPlayToggleClick(e){
@@ -47,6 +81,9 @@ class Player extends React.Component{
             let state = this.state;
             state.player.currentTime = this.player.currentTime;
             this.setState(state);
+        }
+        if(typeof this.props.selectedPlaylist !== 'undefined'){
+            console.log(this.props.selectedPlaylist);
         }
     }
 
@@ -82,33 +119,9 @@ class Player extends React.Component{
     }
 
     toTime(s){
-        return moment("2015-01-01").startOf('day')
+        return moment("1993-09-18").startOf('day')
             .seconds(s)
             .format('H:mm:ss');
-    }
-
-    componentWillReceiveProps (nextProps) {
-        if(typeof nextProps.state.response.is_error !== 'undefined'){
-            alert(nextProps.state.response.msg);
-        }else{
-            const newState = {
-                ...nextProps.state,
-                player: {
-                    play: true,
-                    currentTime: 0
-                }
-            };
-            this.setState(newState);
-            if(!newState.fetched){
-                if(newState.player_id !== null){
-                    this.fetch(newState.player_id);
-                }
-            }else{
-                this.setState(newState);
-                this.load();
-                this.play();
-            }
-        }
     }
 
     getBestSource(source){

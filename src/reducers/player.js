@@ -11,7 +11,6 @@ export default (state = intinalState, action) => {
     switch(action.type){
         case 'SET_ID':
             return {
-                ...state,
                 fetched: false,
                 player_id: action.id,
                 response: {
@@ -24,6 +23,10 @@ export default (state = intinalState, action) => {
             return {
                 ...state,
                 fetched: true,
+                response: {
+                    msgCode: 1,
+                    msg: ""
+                },
                 ...action.data
             };
             break;

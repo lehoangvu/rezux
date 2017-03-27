@@ -14,13 +14,12 @@ export const fetchById = (id) => {
                     type: 'FETCH_ERROR',
                     data: json.response
                 });                    
+            }else{
+                dispatch({
+                    type: 'FETCH',
+                    data: json
+                });
             }
-
-            dispatch({
-                type: 'FETCH',
-                data: json
-            });
-            
         }).fail((xhr)=>{
 
         });

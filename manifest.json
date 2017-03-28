@@ -3,13 +3,13 @@
   "name": "Z",
   "icons": [
     {
-      "src": "favicon.jpg",
+      "src": "favicon.png",
       "sizes": "96x96",
       "type": "image/png"
     }
   ],
-  "theme_color": "#00b7f1",
-  "background_color": "rgb(0, 188, 212)",
+  "theme_color": "#4267b2",
+  "background_color": "rgb(66, 103, 178)",
   "start_url": "",
   "display": "standalone",
   "orientation": "portrait",

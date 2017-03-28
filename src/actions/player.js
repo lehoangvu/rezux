@@ -32,3 +32,9 @@ export const setPlayerId = (id) => {
         id
     };
 };
+
+export const clearError = () => {
+    return {
+        type: 'CLEAR_ERROR'
+    };
+};

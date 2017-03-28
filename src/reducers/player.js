@@ -38,6 +38,15 @@ export default (state = intinalState, action) => {
                 }
             };
             break;
+        case 'CLEAR_ERROR':
+            return {
+                ...state,
+                response: {
+                    msgCode: 1,
+                    msg: ""
+                }
+            };
+            break;
         default:
             return state;
     }

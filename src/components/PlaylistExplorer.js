@@ -66,19 +66,20 @@ class PlaylistExplorer extends React.Component {
     render(){
         const playlist = this.props.playlist;
         const player = this.props.player;
-        let directoryTitle = <h3>Danh sách Playlist</h3>;
+        let directoryTitle = <h3 className={s.directoryTitle}>Danh sách Playlist</h3>;
 
         let playlists, playerDom;
 
         if(playlist.currentIndex === -1){   
 
-            playerDom = <Player key={player.player_id} state={player} fetch={this.actions.fetchById} />;
+            playerDom = <Player clearError={this.actions.clearError}  key={player.player_id} state={player} fetch={this.actions.fetchById} />;
 
             if(playlist.data.length > 0){
                 playlists = playlist.data.map((playlist, index) => {
                     return (
                         <Link to={window.basePath + index } className={s.item} key={index} >
-                            {playlist.name}({playlist.list.length})
+                            {playlist.name}<br/>
+                            <em>{playlist.list.length} bài hát</em>
                         </Link>
                     );
                 });
@@ -94,7 +95,7 @@ class PlaylistExplorer extends React.Component {
                         {selectedPlaylist.name}
                     </h3>;
 
-            playerDom = <Player selectedPlaylist={selectedPlaylist} key={player.player_id} state={player} fetch={this.actions.fetchById} />;
+            playerDom = <Player clearError={this.actions.clearError}  selectedPlaylist={selectedPlaylist} key={player.player_id} state={player} fetch={this.actions.fetchById} />;
 
             if(selectedPlaylist.list.length > 0){
                 playlists = selectedPlaylist.list.map((song, index) => {

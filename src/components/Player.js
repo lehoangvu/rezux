@@ -27,6 +27,18 @@ class Player extends React.Component{
         this.setTitle();
     }
 
+    getError(){
+        let _this = this;
+        let errorDiv;
+        if(typeof this.props.state.response.is_error !== 'undefined'){
+            errorDiv = <div className={s.error}>Có lỗi sảy ra, vui lòng thử lại bài khác</div>;
+            // setTimeout(()=>{
+            //     _this.props.clearError();
+            // }, 2000);
+        }
+        return errorDiv;
+    }
+
     setTitle(){
         const state = this.state;
         if(typeof state.title !== 'undefined'){
@@ -35,32 +47,23 @@ class Player extends React.Component{
     }
 
     componentDidMount () {
+        if(this.state.player_id !== null && !this.state.fetched){
+            this.fetch(this.state.player_id);
+        }
         this.player = document.getElementById('player');
         this.load();
         this.play();
     }
 
     componentWillReceiveProps (nextProps) {
-        if(typeof nextProps.state.response.is_error !== 'undefined'){
-            alert(nextProps.state.response.msg);
-        }else{
-            const newState = {
-                ...nextProps.state,
-            };
-            if(!newState.fetched){
-                if(newState.player_id !== null){
-                    this.fetch(newState.player_id);
-                    newState.player = {
-                        play: true,
-                        currentTime: 0
-                    };
-                }
-            }else{
-                this.load();
-                this.play();
-            }
-            this.setState(newState);
-        }
+        const newState = {
+            ...nextProps.state,
+        };
+
+        this.load();
+        this.play();
+    
+        this.setState(newState);
     }
 
     _onPlayToggleClick(e){
@@ -136,9 +139,13 @@ class Player extends React.Component{
             'lossless': ''
         };
         const player = this.state.player;
+        let errorDiv = this.getError();
+        
+
         return (
             <div className={s.root} style={{backgroundColor: coloring(0)}}>
                 <audio src={this.getBestSource(source) } autoPlay="true" id="player" onTimeUpdate={this.updateDuration.bind(this)}></audio>
+                {errorDiv}
                 <div className={s.control} >
                     <button className={s.playBtn} onClick={this._onPlayToggleClick.bind(this)}>
                         <span className={player.play ? 'ion-ios-pause' : 'ion-ios-play'} />

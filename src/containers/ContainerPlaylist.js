@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PlaylistExplorer from '../components/PlaylistExplorer';
 import { createNew, hidePopupAddToPlaylist, addSongToPlaylist, setCurentPlaylist } from '../actions/playlist';
-import { fetchById, setPlayerId } from '../actions/player';
+import { fetchById, setPlayerId, clearError } from '../actions/player';
 
 const mapStateToProps = (state, ownProps) => ({
 	playlist: state.playlist,
@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
         setCurentPlaylist: setCurentPlaylist,
         fetchById: fetchById,
         setPlayerId: setPlayerId,
+        clearError
     }, dispatch)
 });
 

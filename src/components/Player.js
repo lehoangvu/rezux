@@ -8,9 +8,10 @@ class Player extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            ...this.props.state,
+            ...props.state,
             duration: 0,
             player: {
+                disabled: true,
                 play: false,
                 currentTime: 0
             }
@@ -57,11 +58,17 @@ class Player extends React.Component{
 
     componentWillReceiveProps (nextProps) {
         const newState = {
+            ...this.state,
             ...nextProps.state,
         };
 
-        this.load();
-        this.play();
+        if(newState.fetched){
+            if(!this.state.player.play){
+                newState.player.play = true;
+                this.play();
+            }
+            newState.player.disabled = false;
+        }
     
         this.setState(newState);
     }
@@ -140,12 +147,13 @@ class Player extends React.Component{
         };
         const player = this.state.player;
         let errorDiv = this.getError();
-        
+        let disabledCover = player.disabled ? <div className={s.cover}></div> : '';
 
         return (
-            <div className={s.root} style={{backgroundColor: coloring(0)}}>
+            <div className={s.root} style={{backgroundColor: coloring(0), filter: player.disabled ? 'grayscale(100%)' : 'none'}}>
                 <audio src={this.getBestSource(source) } autoPlay="true" id="player" onTimeUpdate={this.updateDuration.bind(this)}></audio>
                 {errorDiv}
+                {disabledCover}
                 <div className={s.control} >
                     <button className={s.playBtn} onClick={this._onPlayToggleClick.bind(this)}>
                         <span className={player.play ? 'ion-ios-pause' : 'ion-ios-play'} />

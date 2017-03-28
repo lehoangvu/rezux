@@ -92,7 +92,7 @@ const SearchSuggess = ({suggess, onSongClick, onHideClick}) => {
         <div>
             {suggess.show && 
                 <div className={s.root}>
-                    <span className={s.hideLink} onClick={()=>{onHideClick()}}>Đóng</span>
+                    <span className={s.hideLink} onClick={()=>{onHideClick()}}><i className="ion-android-close"></i></span>
                     <p>{suggess.message}</p>
                     {suggessSong}
                     {suggessAlbum}

@@ -64,9 +64,10 @@ class PlaylistExplorer extends React.Component {
 
 
     render(){
+        console.log(s);
         const playlist = this.props.playlist;
         const player = this.props.player;
-        let directoryTitle = <h3 className={s.directoryTitle}>Danh sách Playlist</h3>;
+        let directoryTitle = <h3 className={s.directoryTitle}><span>Danh sách Playlist</span></h3>;
 
         let playlists, playerDom;
 
@@ -89,10 +90,10 @@ class PlaylistExplorer extends React.Component {
         } else {
             let selectedPlaylist = playlist.data[playlist.currentIndex];
             directoryTitle = <h3 className={s.directoryTitle}>
-                        <Link to={window.basePath}>
+                        <Link to={window.basePath} className={s.directoryTitle.icon}>
                             <span className="ion-ios-arrow-thin-left"/>
                         </Link>
-                        {selectedPlaylist.name}
+                        <span>{selectedPlaylist.name}</span>
                     </h3>;
 
             playerDom = <Player clearError={this.actions.clearError}  selectedPlaylist={selectedPlaylist} key={player.player_id} state={player} fetch={this.actions.fetchById} />;

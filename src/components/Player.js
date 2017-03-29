@@ -142,15 +142,17 @@ class Player extends React.Component{
     }
 
     render() {
+        const imageCdnUrl = 'http://image.mp3.zdn.vn/thumb/94_94/';
         const source = typeof this.state.source !== 'undefined' ? this.state.source : {
             'lossless': ''
         };
+        const image = this.state.album_cover !== '' ? imageCdnUrl + this.state.album_cover : imageCdnUrl + this.state.thumbnail;
         const player = this.state.player;
         let errorDiv = this.getError();
         let disabledCover = player.disabled ? <div className={s.cover}></div> : '';
 
         return (
-            <div className={s.root} style={{backgroundColor: coloring(0), filter: player.disabled ? 'grayscale(100%)' : 'none'}}>
+            <div className={s.root} style={{backgroundImage: "url("+image+")", filter: player.disabled ? 'grayscale(100%)' : 'none'}}>
                 <audio src={this.getBestSource(source) } autoPlay="true" id="player" onTimeUpdate={this.updateDuration.bind(this)}></audio>
                 {errorDiv}
                 {disabledCover}

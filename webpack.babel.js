@@ -5,7 +5,7 @@ import ModernizrPlugin from 'modernizr-webpack-plugin';
 import Package from './package.json';
 import Vendor from './vendor.json';
 
-export default {
+const config = {
 	cache: true,
 	debug: true,
     devtool: 'cheap-module-eval-source-map',
@@ -78,3 +78,10 @@ export default {
 		]
 	}
 };
+process.argv.indexOf('--minimize') !== -1 && config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+	compress:{
+		warnings: false
+	}
+}));
+
+export default config;

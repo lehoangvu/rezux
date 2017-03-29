@@ -3,7 +3,7 @@ import moment from 'moment';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './css/player.scss';
 import {coloring} from './../helpers/colors';
-
+import {browserHistory} from 'react-router';
 class Player extends React.Component{
     constructor(props){
         super(props);
@@ -33,9 +33,9 @@ class Player extends React.Component{
         let errorDiv;
         if(typeof this.props.state.response.is_error !== 'undefined'){
             errorDiv = <div className={s.error}>Có lỗi sảy ra, vui lòng thử lại bài khác</div>;
-            // setTimeout(()=>{
-            //     _this.props.clearError();
-            // }, 2000);
+            setTimeout(()=>{
+                _this.next();
+            }, 4000);
         }
         return errorDiv;
     }
@@ -92,9 +92,6 @@ class Player extends React.Component{
             state.player.currentTime = this.player.currentTime;
             this.setState(state);
         }
-        if(typeof this.props.selectedPlaylist !== 'undefined'){
-            console.log(this.props.selectedPlaylist);
-        }
     }
 
     sliderChange(e){
@@ -128,6 +125,33 @@ class Player extends React.Component{
         this.player.load();
     }
 
+    next(){
+        const nextSongId = this.getNextSongId();
+        const rolloutId = this.state.rolloutId;
+        if(nextSongId){
+            browserHistory.push(`/${rolloutId}/${nextSongId}`);
+        }
+    }
+
+    getNextSongId(){
+        const rolloutPlaylist = this.state.rolloutPlaylist;
+        const player_id = this.state.player_id;
+        if(rolloutPlaylist){
+            let nextId = false;
+            rolloutPlaylist.list.map((song, index)=>{
+                if(song.id === player_id){
+                    if(rolloutPlaylist.list.length - 1 <= index){
+                        nextId = rolloutPlaylist.list[0].id;
+                    }else{
+                        nextId = rolloutPlaylist.list[index + 1].id;
+                    }
+                }
+            });
+            return nextId;
+        }
+        return false;
+    }
+
     toTime(s){
         return moment("1993-09-18").startOf('day')
             .seconds(s)
@@ -142,7 +166,7 @@ class Player extends React.Component{
     }
 
     render() {
-        const imageCdnUrl = 'http://image.mp3.zdn.vn/thumb/94_94/';
+        const imageCdnUrl = 'http://image.mp3.zdn.vn/thumb/165_165/';
         const source = typeof this.state.source !== 'undefined' ? this.state.source : {
             'lossless': ''
         };
@@ -153,7 +177,9 @@ class Player extends React.Component{
 
         return (
             <div className={s.root} style={{backgroundImage: "url("+image+")", filter: player.disabled ? 'grayscale(100%)' : 'none'}}>
-                <audio src={this.getBestSource(source) } autoPlay="true" id="player" onTimeUpdate={this.updateDuration.bind(this)}></audio>
+                <audio src={this.getBestSource(source) } autoPlay="true" id="player" 
+                onEnded={this.next.bind(this)}
+                onTimeUpdate={this.updateDuration.bind(this)}></audio>
                 {errorDiv}
                 {disabledCover}
                 <div className={s.control} >

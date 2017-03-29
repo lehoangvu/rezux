@@ -13,6 +13,8 @@ export default (state = intinalState, action) => {
             return {
                 fetched: false,
                 player_id: action.id,
+                rolloutPlaylist: action.rolloutPlaylist,
+                rolloutId: action.rolloutId,
                 response: {
                     msgCode: 1,
                     msg: ""

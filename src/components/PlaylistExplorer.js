@@ -26,7 +26,8 @@ class PlaylistExplorer extends React.Component {
         }
 
         if(typeof props.ownProps.params.song_id !== 'undefined' && props.ownProps.params.song_id !== props.player.player_id){
-            this.actions.setPlayerId(props.ownProps.params.song_id);     
+            const rolloutPlaylist = this.getSelectedPlaylist(this.props.playlist, props.params.playlist_id, props.ownProps.params.song_id);
+            this.actions.setPlayerId(props.ownProps.params.song_id, rolloutPlaylist, props.params.playlist_id);     
             // this.fetchPlayerId = true;
         }
 
@@ -62,9 +63,24 @@ class PlaylistExplorer extends React.Component {
         this.parseProps(nextProps);
     }
 
+    getSelectedPlaylist(playlist, playlist_id, song_id){
+        if(typeof playlist.data[playlist_id] !== 'undefined'){
+            let currentPlaylist = playlist.data[playlist_id];
+            // check if list not contain song
+            let exist = false;
+            currentPlaylist.list.map((song)=>{
+                if(song.id === song_id){
+                    exist = true;
+                }
+            });
+            if(exist){
+                return currentPlaylist;
+            }
+        }
+        return false;
+    }
 
     render(){
-        console.log(s);
         const playlist = this.props.playlist;
         const player = this.props.player;
         let directoryTitle = <h3 className={s.directoryTitle}><span>Danh sách Playlist</span></h3>;
@@ -96,7 +112,7 @@ class PlaylistExplorer extends React.Component {
                         <span>{selectedPlaylist.name}</span>
                     </h3>;
 
-            playerDom = <Player clearError={this.actions.clearError}  selectedPlaylist={selectedPlaylist} key={player.player_id} state={player} fetch={this.actions.fetchById} />;
+            playerDom = <Player clearError={this.actions.clearError} key={player.player_id} state={player} fetch={this.actions.fetchById} />;
 
             if(selectedPlaylist.list.length > 0){
                 playlists = selectedPlaylist.list.map((song, index) => {

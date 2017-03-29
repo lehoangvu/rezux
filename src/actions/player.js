@@ -26,10 +26,12 @@ export const fetchById = (id) => {
     }
 };
 
-export const setPlayerId = (id) => {
+export const setPlayerId = (id, rolloutPlaylist, rolloutId) => {
     return {
         type: 'SET_ID',
-        id
+        id,
+        rolloutPlaylist,
+        rolloutId
     };
 };
 

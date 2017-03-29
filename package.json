@@ -5,15 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "dev": "webpack -d --watch --color  --progress --config webpack.babel.js",
-    "start": "run-s build start-server-production",
-    "build": "run-p build-server build-client",
-    "watch": "run-p watch-client",
-    "watch-client": "webpack -d --watch --color --config webpack.babel.js",
-    "watch-server": "webpack -d --watch --color --config webpack.server.babel.js",
-    "build-client": "webpack --color --config webpack.client.production.babel.js",
-    "build-server": "webpack --color --config webpack.server.production.babel.js",
-    "start-server-development": "supervisor --no-restart-on error -w server/index.js server",
-    "start-server-production": "node server"
+    "build": "webpack -d --color  --progress --config webpack.babel.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +14,7 @@
   "author": "Tan Ngo",
   "license": "MIT",
   "dependencies": {
+    "firebase": "^3.5.0",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.0.0",

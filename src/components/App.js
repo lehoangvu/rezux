@@ -1,5 +1,6 @@
 import React from 'react';
 import ContainerSearch from './../containers/ContainerSearch';
+import ContainerUser from './../containers/ContainerUser';
 import Player from './../components/Player';
 import {coloring} from './../helpers/colors';
 
@@ -15,6 +16,7 @@ class App extends React.Component{
         return (
             <div className={s.root} style={{backgroundColor: coloring(8, 10, 5, 10)}}>
                 <ContainerSearch />
+                <ContainerUser />
                 {this.props.children}
             </div>
         );

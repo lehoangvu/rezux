@@ -1,27 +1,41 @@
-import { loginWithGoogle, getUserData, setUserData } from './../actions/user';
-
+import { loginWithFacebook, parseUserData, commitUserData } from './../actions/user';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-const User = ({state, actions}) => {
-    let uid = localStorage.getItem('uid');
-    if(!uid){
-        actions.loginWithGoogle();
+
+export class User extends React.Component {
+    constructor(props){
+        super(props);
+        console.log(1);
+        let uid = localStorage.getItem('uid');
+        if(!uid){
+            props.actions.loginWithFacebook();
+        }else{
+            props.actions.parseUserData(uid);
+        }
     }
-    return null;
+
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps);
+    }
+
+    render(){
+        return null;
+    }
 }
 
 const mapStateToProps = (state) => {
     return {
-        state
+        user:state.user
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators({
-        loginWithGoogle,
-        getUserData,
-        setUserData
+        loginWithFacebook,
+        parseUserData,
+        commitUserData
     }, dispatch)
 });
 

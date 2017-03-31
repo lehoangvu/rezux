@@ -14,7 +14,8 @@ class App extends React.Component{
 
    render(){
         return (
-            <div className={s.root} style={{backgroundColor: coloring(8, 10, 5, 10)}}>
+            <div className={s.root}>
+                <ContainerUser />
                 <ContainerSearch />
                 {this.props.children}
             </div>

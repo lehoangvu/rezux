@@ -37,15 +37,15 @@ webpackJsonp([0],{
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _routes = __webpack_require__(/*! ./routes */ 557);
+	var _routes = __webpack_require__(/*! ./routes */ 598);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _store = __webpack_require__(/*! ./store */ 558);
+	var _store = __webpack_require__(/*! ./store */ 579);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _WithStylesContex = __webpack_require__(/*! ./global/WithStylesContex */ 571);
+	var _WithStylesContex = __webpack_require__(/*! ./global/WithStylesContex */ 599);
 	
 	var _WithStylesContex2 = _interopRequireDefault(_WithStylesContex);
 	
@@ -133,25 +133,25 @@ webpackJsonp([0],{
 	
 	var _ContainerUser2 = _interopRequireDefault(_ContainerUser);
 	
-	var _ContainerPlaylist = __webpack_require__(/*! ./../containers/ContainerPlaylist */ 420);
+	var _ContainerPlaylist = __webpack_require__(/*! ./../containers/ContainerPlaylist */ 444);
 	
 	var _ContainerPlaylist2 = _interopRequireDefault(_ContainerPlaylist);
 	
-	var _ContainerPhoto = __webpack_require__(/*! ./../containers/ContainerPhoto */ 547);
+	var _ContainerPhoto = __webpack_require__(/*! ./../containers/ContainerPhoto */ 571);
 	
 	var _ContainerPhoto2 = _interopRequireDefault(_ContainerPhoto);
 	
-	var _Player = __webpack_require__(/*! ./../components/Player */ 426);
+	var _Player = __webpack_require__(/*! ./../components/Player */ 450);
 	
 	var _Player2 = _interopRequireDefault(_Player);
 	
-	var _Tab = __webpack_require__(/*! ./../components/Tab */ 552);
+	var _Tab = __webpack_require__(/*! ./../components/Tab */ 593);
 	
 	var _Tab2 = _interopRequireDefault(_Tab);
 	
-	var _colors = __webpack_require__(/*! ./../helpers/colors */ 546);
+	var _colors = __webpack_require__(/*! ./../helpers/colors */ 570);
 	
-	var _app = __webpack_require__(/*! ./css/app.scss */ 555);
+	var _app = __webpack_require__(/*! ./css/app.scss */ 596);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
@@ -1684,7 +1684,7 @@ webpackJsonp([0],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _UserDashboard = __webpack_require__(/*! ./../components/UserDashboard */ 899);
+	var _UserDashboard = __webpack_require__(/*! ./../components/UserDashboard */ 441);
 	
 	var _UserDashboard2 = _interopRequireDefault(_UserDashboard);
 	
@@ -1730,11 +1730,11 @@ webpackJsonp([0],{
 	});
 	exports.appenUserData = exports.commitUserData = exports.parseUserData = exports.loginWithFacebook = exports.loginWithGoogle = exports.connectToDropbox = undefined;
 	
-	var _FirebaseInstance = __webpack_require__(/*! ./../store/FirebaseInstance */ 922);
+	var _FirebaseInstance = __webpack_require__(/*! ./../store/FirebaseInstance */ 413);
 	
 	var _FirebaseInstance2 = _interopRequireDefault(_FirebaseInstance);
 	
-	var _dropbox = __webpack_require__(/*! ./../store/dropbox */ 902);
+	var _dropbox = __webpack_require__(/*! ./../store/dropbox */ 421);
 	
 	var _dropbox2 = _interopRequireDefault(_dropbox);
 	
@@ -1863,6 +1863,42 @@ webpackJsonp([0],{
 			// ...
 		});
 	};
+
+/***/ },
+
+/***/ 413:
+/*!***************************************!*\
+  !*** ./src/store/FirebaseInstance.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _firebase = __webpack_require__(/*! firebase */ 414);
+	
+	var _firebase2 = _interopRequireDefault(_firebase);
+	
+	var _env = __webpack_require__(/*! ./../global/env */ 420);
+	
+	var _env2 = _interopRequireDefault(_env);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var config = {
+	    apiKey: _env2.default.FIREBASE_API_KEY,
+	    authDomain: _env2.default.FIREBASE_AUTH_DOMAIN,
+	    databaseURL: _env2.default.FIREBASE_DATABASE_URL,
+	    storageBucket: _env2.default.FIREBASE_STORAGE_BUCKET,
+	    messagingSenderId: _env2.default.FIREBASE_MESSAGING_SENDER_ID
+	};
+	
+	_firebase2.default.initializeApp(config);
+	
+	exports.default = _firebase2.default;
 
 /***/ },
 
@@ -2592,2196 +2628,31 @@ webpackJsonp([0],{
 /***/ },
 
 /***/ 420:
-/*!*********************************************!*\
-  !*** ./src/containers/ContainerPlaylist.js ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
+/*!***************************!*\
+  !*** ./src/global/env.js ***!
+  \***************************/
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 244);
-	
-	var _redux = __webpack_require__(/*! redux */ 251);
-	
-	var _PlaylistExplorer = __webpack_require__(/*! ../components/PlaylistExplorer */ 421);
-	
-	var _PlaylistExplorer2 = _interopRequireDefault(_PlaylistExplorer);
-	
-	var _playlist = __webpack_require__(/*! ../actions/playlist */ 300);
-	
-	var _player = __webpack_require__(/*! ../actions/player */ 299);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        playlist: state.playlist,
-	        player: state.player
-	    };
+	var env = {
+	    APP_ENV: 'development',
+	    FIREBASE_API_KEY: "AIzaSyBNiaBVWEvAg1HnN_XBlo70ATLT0ef6gJ0",
+	    FIREBASE_AUTH_DOMAIN: "luminous-heat-3458.firebaseapp.com",
+	    FIREBASE_DATABASE_URL: "https://luminous-heat-3458.firebaseio.com",
+	    FIREBASE_STORAGE_BUCKET: "luminous-heat-3458.appspot.com",
+	    FIREBASE_MESSAGING_SENDER_ID: "635828897166",
+	    DROPBOX_CLIENT_ID: "g048eqdv71saczl"
 	};
 	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	    return {
-	        actions: (0, _redux.bindActionCreators)({
-	            addSongToPlaylist: _playlist.addSongToPlaylist,
-	            createNew: _playlist.createNew,
-	            onHideClick: _playlist.hidePopupAddToPlaylist,
-	            setCurentPlaylist: _playlist.setCurentPlaylist,
-	            fetchById: _player.fetchById,
-	            setPlayerId: _player.setPlayerId,
-	            clearError: _player.clearError
-	        }, dispatch)
-	    };
-	};
-	
-	var ContainerPlaylist = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PlaylistExplorer2.default);
-	
-	exports.default = ContainerPlaylist;
+	exports.default = env;
 
 /***/ },
 
 /***/ 421:
-/*!********************************************!*\
-  !*** ./src/components/PlaylistExplorer.js ***!
-  \********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 35);
-	
-	var _PlaylistCreator = __webpack_require__(/*! ./PlaylistCreator/ */ 406);
-	
-	var _PlaylistCreator2 = _interopRequireDefault(_PlaylistCreator);
-	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
-	
-	var _withStyles2 = _interopRequireDefault(_withStyles);
-	
-	var _playlist = __webpack_require__(/*! ./css/playlist.scss */ 422);
-	
-	var _playlist2 = _interopRequireDefault(_playlist);
-	
-	var _songItem = __webpack_require__(/*! ./css/song-item.scss */ 424);
-	
-	var _songItem2 = _interopRequireDefault(_songItem);
-	
-	var _Player = __webpack_require__(/*! ./Player */ 426);
-	
-	var _Player2 = _interopRequireDefault(_Player);
-	
-	var _colors = __webpack_require__(/*! ./../helpers/colors */ 546);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var PlaylistExplorer = function (_React$Component) {
-	    _inherits(PlaylistExplorer, _React$Component);
-	
-	    function PlaylistExplorer(props) {
-	        _classCallCheck(this, PlaylistExplorer);
-	
-	        var _this = _possibleConstructorReturn(this, (PlaylistExplorer.__proto__ || Object.getPrototypeOf(PlaylistExplorer)).call(this, props));
-	
-	        _this.state = {
-	            playlist: props.playlist,
-	            player: props.player
-	        };
-	        _this.actions = props.actions;
-	        return _this;
-	    }
-	
-	    _createClass(PlaylistExplorer, [{
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            this.setTitle();
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.parseProps(this.props);
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            this.parseProps(nextProps);
-	        }
-	    }, {
-	        key: 'parseProps',
-	        value: function parseProps(props) {
-	            // let playlist_id = typeof props.ownProps.params.playlist_id !== 'undefined' ? props.ownProps.params.playlist_id : -1;
-	            // if(playlist_id !== props.playlist.currentIndex){
-	            //     this.actions.setCurentPlaylist(playlist_id);
-	            // }
-	
-	            // if(typeof props.ownProps.params.song_id !== 'undefined' && props.ownProps.params.song_id !== props.player.player_id){
-	            //     const rolloutPlaylist = this.getSelectedPlaylist(this.props.playlist, props.params.playlist_id, props.ownProps.params.song_id);
-	            //     this.actions.setPlayerId(props.ownProps.params.song_id, rolloutPlaylist, props.params.playlist_id);     
-	            //     // this.fetchPlayerId = true;
-	            // }
-	
-	            this.setState({
-	                playlist: props.playlist,
-	                player: props.player
-	            });
-	        }
-	    }, {
-	        key: '_onPlaylistClick',
-	        value: function _onPlaylistClick(index) {
-	            this.actions.setCurentPlaylist(index);
-	        }
-	    }, {
-	        key: '_onSongClick',
-	        value: function _onSongClick(index, rolloutPlaylist, currentIndex) {
-	            this.actions.setPlayerId(index, rolloutPlaylist, currentIndex);
-	        }
-	    }, {
-	        key: '_onCreateNew',
-	        value: function _onCreateNew(playlistName, callbackSongId) {
-	            this.actions.createNew(playlistName, callbackSongId);
-	        }
-	    }, {
-	        key: 'setTitle',
-	        value: function setTitle() {
-	            var playlist = this.props.playlist;
-	            if (parseInt(playlist.currentIndex) !== -1) {
-	                document.title = playlist.data[playlist.currentIndex].name;
-	            } else {
-	                document.title = 'Rezux - Chỉ để vui';
-	            }
-	        }
-	    }, {
-	        key: 'getSelectedPlaylist',
-	        value: function getSelectedPlaylist(playlist, playlist_id, song_id) {
-	            if (typeof playlist.data[playlist_id] !== 'undefined') {
-	                var currentPlaylist = playlist.data[playlist_id];
-	                // check if list not contain song
-	                var exist = false;
-	                currentPlaylist.list.map(function (song) {
-	                    if (song.id === song_id) {
-	                        exist = true;
-	                    }
-	                });
-	                if (exist) {
-	                    return currentPlaylist;
-	                }
-	            }
-	            return false;
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-	
-	            var playlist = this.props.playlist;
-	            var player = this.props.player;
-	            var directoryTitle = _react2.default.createElement(
-	                'h3',
-	                { className: _playlist2.default.directoryTitle },
-	                _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    'Danh s\xE1ch Playlist'
-	                )
-	            );
-	
-	            var playlists = void 0,
-	                playerDom = void 0;
-	
-	            if (playlist.currentIndex === -1) {
-	
-	                playerDom = _react2.default.createElement(_Player2.default, { clearError: this.actions.clearError, key: player.player_id, state: player, fetch: this.actions.fetchById });
-	
-	                if (playlist.data.length > 0) {
-	                    playlists = playlist.data.map(function (playlist, index) {
-	                        return _react2.default.createElement(
-	                            'div',
-	                            { onClick: function onClick() {
-	                                    _this2._onPlaylistClick(index);
-	                                }, className: _playlist2.default.item, key: index },
-	                            playlist.name,
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'em',
-	                                null,
-	                                playlist.list.length,
-	                                ' b\xE0i h\xE1t'
-	                            )
-	                        );
-	                    });
-	                } else {
-	                    playlists = _react2.default.createElement(
-	                        'p',
-	                        { className: _playlist2.default.empty },
-	                        'Ch\u01B0a c\xF3 Playlist n\xE0o!'
-	                    );
-	                }
-	            } else {
-	                var selectedPlaylist = playlist.data[playlist.currentIndex];
-	                directoryTitle = _react2.default.createElement(
-	                    'h3',
-	                    { className: _playlist2.default.directoryTitle },
-	                    _react2.default.createElement(
-	                        'span',
-	                        { className: _playlist2.default.icon, onClick: function onClick() {
-	                                _this2._onPlaylistClick(-1);
-	                            } },
-	                        _react2.default.createElement('i', { className: 'ion-ios-arrow-thin-left' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'span',
-	                        null,
-	                        selectedPlaylist.name
-	                    )
-	                );
-	
-	                playerDom = _react2.default.createElement(_Player2.default, { clearError: this.actions.clearError, key: player.player_id, state: player, fetch: this.actions.fetchById });
-	
-	                if (selectedPlaylist.list.length > 0) {
-	                    playlists = selectedPlaylist.list.map(function (song, index) {
-	                        return _react2.default.createElement(
-	                            'li',
-	                            { className: _songItem2.default.root, onClick: function onClick() {
-	                                    _this2._onSongClick(song.id, selectedPlaylist, playlist.currentIndex);
-	                                } },
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: _songItem2.default.link },
-	                                _react2.default.createElement(
-	                                    'span',
-	                                    { className: _songItem2.default.content },
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        song.name
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        song.artist
-	                                    )
-	                                )
-	                            )
-	                        );
-	                    });
-	                } else {
-	                    playlists = _react2.default.createElement(
-	                        'p',
-	                        { className: _playlist2.default.empty },
-	                        'Ch\u01B0a c\xF3 b\xE0i h\xE1t n\xE0o!'
-	                    );
-	                }
-	            }
-	
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: _playlist2.default.root },
-	                    directoryTitle,
-	                    playlists
-	                ),
-	                playerDom
-	            );
-	        }
-	    }]);
-	
-	    return PlaylistExplorer;
-	}(_react2.default.Component);
-	
-	exports.default = (0, _withStyles2.default)([_playlist2.default, _songItem2.default])(PlaylistExplorer);
-
-/***/ },
-
-/***/ 422:
-/*!******************************************!*\
-  !*** ./src/components/css/playlist.scss ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./playlist.scss */ 423);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./playlist.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./playlist.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 423:
-/*!*****************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/playlist.scss ***!
-  \*****************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".playlist_root_OT1 {\n  padding: 0 0 20px 0; }\n\n.playlist_heading_3MU {\n  margin-bottom: 20px;\n  font-size: 30px; }\n\n.playlist_empty_2ri {\n  margin: 0 20px; }\n\n.playlist_item_38V {\n  color: #fff;\n  padding: 10px;\n  font-size: 23px;\n  font-weight: 400;\n  display: inline-block;\n  width: 100%;\n  line-height: 16px;\n  background: #4267b2;\n  border-top: 1px solid #5776b7;\n  border-bottom: 1px solid #264d9a;\n  text-decoration: none; }\n\n.playlist_item_38V em {\n    color: #9E9E9E;\n    font-size: 16px;\n    display: block;\n    margin-top: 10px; }\n\n.playlist_directoryTitle_2yN {\n  margin: 0 0 10px 0;\n  font-size: 26px;\n  color: #4267b2; }\n\n.playlist_directoryTitle_2yN span:last-child {\n    margin-left: 20px;\n    line-height: 1;\n    padding: 12px 0;\n    vertical-align: middle;\n    font-size: 26px;\n    display: inline-block; }\n\n.playlist_directoryTitle_2yN .playlist_icon_b98 {\n    display: inline-block;\n    vertical-align: middle;\n    background: #4267b2;\n    color: #fff;\n    padding: 10px; }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "playlist_root_OT1",
-		"root": "playlist_root_OT1",
-		"heading": "playlist_heading_3MU",
-		"heading": "playlist_heading_3MU",
-		"empty": "playlist_empty_2ri",
-		"empty": "playlist_empty_2ri",
-		"item": "playlist_item_38V",
-		"item": "playlist_item_38V",
-		"directoryTitle": "playlist_directoryTitle_2yN",
-		"directoryTitle": "playlist_directoryTitle_2yN",
-		"icon": "playlist_icon_b98",
-		"icon": "playlist_icon_b98"
-	};
-
-/***/ },
-
-/***/ 424:
-/*!*******************************************!*\
-  !*** ./src/components/css/song-item.scss ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./song-item.scss */ 425);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./song-item.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./song-item.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 425:
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/song-item.scss ***!
-  \******************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".song-item_root_2nr {\n  display: inline-block;\n  width: 100%;\n  padding: 5px 0;\n  border-top: 1px solid #eef0f5; }\n\n.song-item_link_359 {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-decoration: none; }\n\n.song-item_link_359 img {\n    border-radius: 50%;\n    width: 60px;\n    height: 60px; }\n\n.song-item_content_K8p {\n  margin-left: 10px;\n  color: #333;\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center; }\n\n.song-item_content_K8p span:first-child {\n    color: #333;\n    display: block;\n    text-decoration: none;\n    width: 100%;\n    font-size: 22px; }\n\n.song-item_content_K8p span:last-child {\n    color: #666;\n    text-decoration: none;\n    font-size: 18px; }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "song-item_root_2nr",
-		"root": "song-item_root_2nr",
-		"link": "song-item_link_359",
-		"link": "song-item_link_359",
-		"content": "song-item_content_K8p",
-		"content": "song-item_content_K8p"
-	};
-
-/***/ },
-
-/***/ 426:
-/*!**********************************!*\
-  !*** ./src/components/Player.js ***!
-  \**********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _moment = __webpack_require__(/*! moment */ 427);
-	
-	var _moment2 = _interopRequireDefault(_moment);
-	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
-	
-	var _withStyles2 = _interopRequireDefault(_withStyles);
-	
-	var _player = __webpack_require__(/*! ./css/player.scss */ 544);
-	
-	var _player2 = _interopRequireDefault(_player);
-	
-	var _colors = __webpack_require__(/*! ./../helpers/colors */ 546);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 35);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Player = function (_React$Component) {
-	    _inherits(Player, _React$Component);
-	
-	    function Player(props) {
-	        _classCallCheck(this, Player);
-	
-	        var _this2 = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this, props));
-	
-	        _this2.state = _extends({}, props.state, {
-	            duration: 0,
-	            player: {
-	                disabled: true,
-	                play: false,
-	                currentTime: 0
-	            }
-	        });
-	        _this2.timeout = null;
-	        _this2.slide = false;
-	        return _this2;
-	    }
-	
-	    _createClass(Player, [{
-	        key: 'fetch',
-	        value: function fetch(id) {
-	            this.props.fetch(id);
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            this.setTitle();
-	        }
-	    }, {
-	        key: 'getError',
-	        value: function getError() {
-	            var _this = this;
-	            var errorDiv = void 0;
-	            if (typeof this.props.state.response.is_error !== 'undefined') {
-	                errorDiv = _react2.default.createElement(
-	                    'div',
-	                    { className: _player2.default.error },
-	                    'C\xF3 l\u1ED7i s\u1EA3y ra, vui l\xF2ng th\u1EED l\u1EA1i b\xE0i kh\xE1c'
-	                );
-	                setTimeout(function () {
-	                    _this.next();
-	                }, 4000);
-	            }
-	            return errorDiv;
-	        }
-	    }, {
-	        key: 'setTitle',
-	        value: function setTitle() {
-	            var state = this.state;
-	            if (typeof state.title !== 'undefined') {
-	                document.title = state.title;
-	            }
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            if (this.state.player_id !== null && !this.state.fetched) {
-	                this.fetch(this.state.player_id);
-	            }
-	            this.player = document.getElementById('player');
-	            this.load();
-	            this.play();
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            var newState = _extends({}, this.state, nextProps.state);
-	
-	            if (newState.fetched) {
-	                if (!this.state.player.play) {
-	                    newState.player.play = true;
-	                    this.load();
-	                    this.play();
-	                }
-	                newState.player.disabled = false;
-	            }
-	
-	            this.setState(newState);
-	        }
-	    }, {
-	        key: '_onPlayToggleClick',
-	        value: function _onPlayToggleClick(e) {
-	            var state = this.state;
-	            state.player.play = !state.player.play;
-	            state.player.play ? this.play() : this.stop();
-	            this.setState(state);
-	        }
-	    }, {
-	        key: '_onPlayerToggle',
-	        value: function _onPlayerToggle(e) {
-	            var state = this.state;
-	            state.player.play = !state.player.play;
-	            this.setState(state);
-	        }
-	    }, {
-	        key: 'updateDuration',
-	        value: function updateDuration(e) {
-	            if (!this.slide) {
-	                var state = this.state;
-	                state.player.currentTime = this.player.currentTime;
-	                this.setState(state);
-	            }
-	        }
-	    }, {
-	        key: 'sliderChange',
-	        value: function sliderChange(e) {
-	            this.slide = true;
-	            this.setState({
-	                player: _extends({}, this.state.player, {
-	                    currentTime: e.target.value
-	                })
-	            });
-	
-	            var _this = this;
-	            clearTimeout(this.timeout);
-	            this.timeout = setTimeout(function () {
-	                _this.slide = false;
-	                _this.play();
-	            }, 300);
-	        }
-	    }, {
-	        key: 'stop',
-	        value: function stop() {
-	            this.player.pause();
-	        }
-	    }, {
-	        key: 'play',
-	        value: function play() {
-	            this.player.currentTime = this.state.player.currentTime;
-	            this.player.play();
-	        }
-	    }, {
-	        key: 'load',
-	        value: function load() {
-	            this.player.pause();
-	            this.player.load();
-	        }
-	    }, {
-	        key: 'next',
-	        value: function next() {
-	            var nextSongId = this.getNextSongId();
-	            var rolloutId = this.state.rolloutId;
-	            if (nextSongId) {
-	                this.fetch(nextSongId);
-	            }
-	        }
-	    }, {
-	        key: 'getNextSongId',
-	        value: function getNextSongId() {
-	            var rolloutPlaylist = this.state.rolloutPlaylist;
-	            var player_id = this.state.player_id;
-	            if (rolloutPlaylist) {
-	                var nextId = false;
-	                rolloutPlaylist.list.map(function (song, index) {
-	                    if (song.id === player_id) {
-	                        if (rolloutPlaylist.list.length - 1 <= index) {
-	                            nextId = rolloutPlaylist.list[0].id;
-	                        } else {
-	                            nextId = rolloutPlaylist.list[index + 1].id;
-	                        }
-	                    }
-	                });
-	                return nextId;
-	            }
-	            return false;
-	        }
-	    }, {
-	        key: 'toTime',
-	        value: function toTime(s) {
-	            return (0, _moment2.default)("1993-09-18").startOf('day').seconds(s).format('H:mm:ss');
-	        }
-	    }, {
-	        key: 'getBestSource',
-	        value: function getBestSource(source) {
-	            // if(typeof source['lossless'] !== 'undefined') return source['lossless'];
-	            if (typeof source['320'] !== 'undefined') return source['320'];
-	            if (typeof source['128'] !== 'undefined') return source['128'];
-	            return '';
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var imageCdnUrl = 'http://image.mp3.zdn.vn/thumb/165_165/';
-	            var source = typeof this.state.source !== 'undefined' ? this.state.source : {
-	                'lossless': ''
-	            };
-	            var image = this.state.album_cover !== '' ? imageCdnUrl + this.state.album_cover : imageCdnUrl + this.state.thumbnail;
-	            var player = this.state.player;
-	            var errorDiv = this.getError();
-	            var disabledCover = player.disabled ? _react2.default.createElement('div', { className: _player2.default.cover }) : '';
-	
-	            return _react2.default.createElement(
-	                'div',
-	                { className: _player2.default.root, style: { backgroundImage: "url(" + image + ")", filter: player.disabled ? 'grayscale(100%)' : 'none' } },
-	                _react2.default.createElement('audio', { src: this.getBestSource(source), autoPlay: 'true', id: 'player',
-	                    onLoadedData: this.play.bind(this),
-	                    onEnded: this.next.bind(this),
-	                    onTimeUpdate: this.updateDuration.bind(this) }),
-	                errorDiv,
-	                disabledCover,
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: _player2.default.control },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { className: _player2.default.playBtn, onClick: this._onPlayToggleClick.bind(this) },
-	                        _react2.default.createElement('span', { className: player.play ? 'ion-ios-pause' : 'ion-ios-play' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: _player2.default.durationWrap },
-	                        _react2.default.createElement('input', { type: 'range', min: '0', max: this.state.duration, onChange: this.sliderChange.bind(this), value: player.currentTime }),
-	                        _react2.default.createElement(
-	                            'span',
-	                            { className: _player2.default.duration },
-	                            this.toTime(player.currentTime)
-	                        ),
-	                        _react2.default.createElement(
-	                            'span',
-	                            { className: _player2.default.totalDuration },
-	                            this.toTime(this.state.duration)
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return Player;
-	}(_react2.default.Component);
-	
-	exports.default = (0, _withStyles2.default)(_player2.default)(Player);
-
-/***/ },
-
-/***/ 544:
-/*!****************************************!*\
-  !*** ./src/components/css/player.scss ***!
-  \****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./player.scss */ 545);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./player.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./player.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 545:
-/*!***************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/player.scss ***!
-  \***************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".player_root_qfm {\n  background-repeat: no-repeat !important;\n  background-position: 100% 5% !important;\n  background-size: 53% !important;\n  position: fixed;\n  bottom: 40px;\n  left: 0;\n  width: 100%;\n  background: #4267b2;\n  padding: 10px 10px 5px 0;\n  box-shadow: 0 0 1px #4267b2 inset;\n  /* Special styling for WebKit/Blink */\n  /* All the same stuff for Firefox */\n  /* All the same stuff for IE */ }\n  .player_root_qfm [class^=ion] {\n    font-size: 30px;\n    line-height: 30px; }\n  .player_root_qfm video {\n    width: 100%;\n    height: 48px; }\n  .player_root_qfm input[type=range] {\n    -webkit-appearance: none;\n    /* Hides the slider so that custom slider can be made */\n    width: 100%;\n    /* Specific width is required for Firefox. */\n    background: transparent;\n    /* Otherwise white in Chrome */\n    float: left;\n    margin-top: 10px;\n    margin-bottom: 10px; }\n  .player_root_qfm input[type=range]::-webkit-slider-thumb {\n    -webkit-appearance: none; }\n  .player_root_qfm input[type=range]:focus {\n    outline: none;\n    /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ }\n  .player_root_qfm input[type=range]::-ms-track {\n    width: 100%;\n    cursor: pointer;\n    /* Hides the slider so custom styles can be added */\n    background: transparent;\n    border-color: transparent;\n    color: transparent; }\n  .player_root_qfm input[type=range]::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer;\n    margin-top: -6px; }\n  .player_root_qfm input[type=range]::-moz-range-thumb {\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer; }\n  .player_root_qfm input[type=range]::-ms-thumb {\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer; }\n  .player_root_qfm input[type=range]::-webkit-slider-runnable-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: #fff; }\n  .player_root_qfm input[type=range]:focus::-webkit-slider-runnable-track {\n    background: #fff; }\n  .player_root_qfm input[type=range]::-moz-range-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: #fff; }\n  .player_root_qfm input[type=range]::-ms-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: transparent;\n    border-color: transparent;\n    color: transparent; }\n  .player_root_qfm input[type=range]::-ms-fill-lower {\n    background: #fff; }\n  .player_root_qfm input[type=range]:focus::-ms-fill-lower {\n    background: #fff; }\n  .player_root_qfm input[type=range]::-ms-fill-upper {\n    background: #fff; }\n  .player_root_qfm input[type=range]:focus::-ms-fill-upper {\n    background: #fff; }\n  .player_error_x9V {\n  position: fixed;\n  top: -100%;\n  width: 100%;\n  left: 0;\n  background: #4267b2;\n  font-size: 20px;\n  text-align: center;\n  padding: 10px 0;\n  color: #ffffff;\n  -webkit-animation: player_faceOut_3wv 2.5s;\n          animation: player_faceOut_3wv 2.5s; }\n  .player_control_2O1 button {\n  border: 0;\n  font-size: 0;\n  padding: 0 5px;\n  background: transparent;\n  width: 40px;\n  color: #f5f8fd; }\n  .player_durationWrap_7kb {\n  float: right;\n  width: calc(100% - 40px);\n  color: #fff;\n  font-size: 16px; }\n  .player_duration_2KW {\n  float: left; }\n  .player_totalDuration_35Z {\n  float: right; }\n  .player_cover_3OU {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  width: 100%;\n  height: 100%; }\n  @-webkit-keyframes player_faceOut_3wv {\n  0% {\n    opacity: 1;\n    top: 0; }\n  60% {\n    opacity: 1;\n    top: 0%; }\n  80% {\n    opacity: 1;\n    top: 0%; }\n  90% {\n    opacity: 0;\n    top: -50%; }\n  95% {\n    opacity: 0;\n    top: -80%; }\n  100% {\n    opacity: 0;\n    top: -100%; } }\n  /* Standard syntax */\n  @keyframes player_faceOut_3wv {\n  0% {\n    opacity: 1;\n    top: 0; }\n  60% {\n    opacity: 1;\n    top: 0%; }\n  80% {\n    opacity: 1;\n    top: 0%; }\n  90% {\n    opacity: 0;\n    top: -50%; }\n  95% {\n    opacity: 0;\n    top: -80%; }\n  100% {\n    opacity: 0;\n    top: -100%; } }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "player_root_qfm",
-		"root": "player_root_qfm",
-		"error": "player_error_x9V",
-		"error": "player_error_x9V",
-		"faceOut": "player_faceOut_3wv",
-		"faceOut": "player_faceOut_3wv",
-		"control": "player_control_2O1",
-		"control": "player_control_2O1",
-		"durationWrap": "player_durationWrap_7kb",
-		"durationWrap": "player_durationWrap_7kb",
-		"duration": "player_duration_2KW",
-		"duration": "player_duration_2KW",
-		"totalDuration": "player_totalDuration_35Z",
-		"totalDuration": "player_totalDuration_35Z",
-		"cover": "player_cover_3OU",
-		"cover": "player_cover_3OU"
-	};
-
-/***/ },
-
-/***/ 546:
-/*!*******************************!*\
-  !*** ./src/helpers/colors.js ***!
-  \*******************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var materialColors = [["rgb(244, 67, 54)", "rgb(255, 235, 238)", "rgb(255, 205, 210)", "rgb(239, 154, 154)", "rgb(229, 115, 115)", "rgb(239, 83, 80)", "rgb(244, 67, 54)", "rgb(229, 57, 53)", "rgb(211, 47, 47)", "rgb(198, 40, 40)", "rgb(183, 28, 28)", "rgb(255, 138, 128)", "rgb(255, 82, 82)", "rgb(255, 23, 68)", "rgb(213, 0, 0)"], ["rgb(233, 30, 99)", "rgb(252, 228, 236)", "rgb(248, 187, 208)", "rgb(244, 143, 177)", "rgb(240, 98, 146)", "rgb(236, 64, 122)", "rgb(233, 30, 99)", "rgb(216, 27, 96)", "rgb(194, 24, 91)", "rgb(173, 20, 87)", "rgb(136, 14, 79)", "rgb(255, 128, 171)", "rgb(255, 64, 129)", "rgb(245, 0, 87)", "rgb(197, 17, 98)"], ["rgb(156, 39, 176)", "rgb(243, 229, 245)", "rgb(225, 190, 231)", "rgb(206, 147, 216)", "rgb(186, 104, 200)", "rgb(171, 71, 188)", "rgb(156, 39, 176)", "rgb(142, 36, 170)", "rgb(123, 31, 162)", "rgb(106, 27, 154)", "rgb(74, 20, 140)", "rgb(234, 128, 252)", "rgb(224, 64, 251)", "rgb(213, 0, 249)", "rgb(170, 0, 255)"], ["rgb(103, 58, 183)", "rgb(237, 231, 246)", "rgb(209, 196, 233)", "rgb(179, 157, 219)", "rgb(149, 117, 205)", "rgb(126, 87, 194)", "rgb(103, 58, 183)", "rgb(94, 53, 177)", "rgb(81, 45, 168)", "rgb(69, 39, 160)", "rgb(49, 27, 146)", "rgb(179, 136, 255)", "rgb(124, 77, 255)", "rgb(101, 31, 255)", "rgb(98, 0, 234)"], ["rgb(63, 81, 181)", "rgb(232, 234, 246)", "rgb(197, 202, 233)", "rgb(159, 168, 218)", "rgb(121, 134, 203)", "rgb(92, 107, 192)", "rgb(63, 81, 181)", "rgb(57, 73, 171)", "rgb(48, 63, 159)", "rgb(40, 53, 147)", "rgb(26, 35, 126)", "rgb(140, 158, 255)", "rgb(83, 109, 254)", "rgb(61, 90, 254)", "rgb(48, 79, 254)"], ["rgb(33, 150, 243)", "rgb(227, 242, 253)", "rgb(187, 222, 251)", "rgb(144, 202, 249)", "rgb(100, 181, 246)", "rgb(66, 165, 245)", "rgb(33, 150, 243)", "rgb(30, 136, 229)", "rgb(25, 118, 210)", "rgb(21, 101, 192)", "rgb(13, 71, 161)", "rgb(130, 177, 255)", "rgb(68, 138, 255)", "rgb(41, 121, 255)", "rgb(41, 98, 255)"], ["rgb(3, 169, 244)", "rgb(225, 245, 254)", "rgb(179, 229, 252)", "rgb(129, 212, 250)", "rgb(79, 195, 247)", "rgb(41, 182, 246)", "rgb(3, 169, 244)", "rgb(3, 155, 229)", "rgb(2, 136, 209)", "rgb(2, 119, 189)", "rgb(1, 87, 155)", "rgb(128, 216, 255)", "rgb(64, 196, 255)", "rgb(0, 176, 255)", "rgb(0, 145, 234)"], ["rgb(0, 188, 212)", "rgb(224, 247, 250)", "rgb(178, 235, 242)", "rgb(128, 222, 234)", "rgb(77, 208, 225)", "rgb(38, 198, 218)", "rgb(0, 188, 212)", "rgb(0, 172, 193)", "rgb(0, 151, 167)", "rgb(0, 131, 143)", "rgb(0, 96, 100)", "rgb(132, 255, 255)", "rgb(24, 255, 255)", "rgb(0, 229, 255)", "rgb(0, 184, 212)"], ["rgb(0, 150, 136)", "rgb(224, 242, 241)", "rgb(178, 223, 219)", "rgb(128, 203, 196)", "rgb(77, 182, 172)", "rgb(38, 166, 154)", "rgb(0, 150, 136)", "rgb(0, 137, 123)", "rgb(0, 121, 107)", "rgb(0, 105, 92)", "rgb(0, 77, 64)", "rgb(167, 255, 235)", "rgb(100, 255, 218)", "rgb(29, 233, 182)", "rgb(0, 191, 165)"], ["rgb(76, 175, 80)", "rgb(232, 245, 233)", "rgb(200, 230, 201)", "rgb(165, 214, 167)", "rgb(129, 199, 132)", "rgb(102, 187, 106)", "rgb(76, 175, 80)", "rgb(67, 160, 71)", "rgb(56, 142, 60)", "rgb(46, 125, 50)", "rgb(27, 94, 32)", "rgb(185, 246, 202)", "rgb(105, 240, 174)", "rgb(0, 230, 118)", "rgb(0, 200, 83)"], ["rgb(139, 195, 74)", "rgb(241, 248, 233)", "rgb(220, 237, 200)", "rgb(197, 225, 165)", "rgb(174, 213, 129)", "rgb(156, 204, 101)", "rgb(139, 195, 74)", "rgb(124, 179, 66)", "rgb(104, 159, 56)", "rgb(85, 139, 47)", "rgb(51, 105, 30)", "rgb(204, 255, 144)", "rgb(178, 255, 89)", "rgb(118, 255, 3)", "rgb(100, 221, 23)"], ["rgb(205, 220, 57)", "rgb(249, 251, 231)", "rgb(240, 244, 195)", "rgb(230, 238, 156)", "rgb(220, 231, 117)", "rgb(212, 225, 87)", "rgb(205, 220, 57)", "rgb(192, 202, 51)", "rgb(175, 180, 43)", "rgb(158, 157, 36)", "rgb(130, 119, 23)", "rgb(244, 255, 129)", "rgb(238, 255, 65)", "rgb(198, 255, 0)", "rgb(174, 234, 0)"], ["rgb(255, 235, 59)", "rgb(255, 253, 231)", "rgb(255, 249, 196)", "rgb(255, 245, 157)", "rgb(255, 241, 118)", "rgb(255, 238, 88)", "rgb(255, 235, 59)", "rgb(253, 216, 53)", "rgb(251, 192, 45)", "rgb(249, 168, 37)", "rgb(245, 127, 23)", "rgb(255, 255, 141)", "rgb(255, 255, 0)", "rgb(255, 234, 0)", "rgb(255, 214, 0)"], ["rgb(255, 193, 7)", "rgb(255, 248, 225)", "rgb(255, 236, 179)", "rgb(255, 224, 130)", "rgb(255, 213, 79)", "rgb(255, 202, 40)", "rgb(255, 193, 7)", "rgb(255, 179, 0)", "rgb(255, 160, 0)", "rgb(255, 143, 0)", "rgb(255, 111, 0)", "rgb(255, 229, 127)", "rgb(255, 215, 64)", "rgb(255, 196, 0)", "rgb(255, 171, 0)"], ["rgb(255, 152, 0)", "rgb(255, 243, 224)", "rgb(255, 224, 178)", "rgb(255, 204, 128)", "rgb(255, 183, 77)", "rgb(255, 167, 38)", "rgb(255, 152, 0)", "rgb(251, 140, 0)", "rgb(245, 124, 0)", "rgb(239, 108, 0)", "rgb(230, 81, 0)", "rgb(255, 209, 128)", "rgb(255, 171, 64)", "rgb(255, 145, 0)", "rgb(255, 109, 0)"], ["rgb(255, 87, 34)", "rgb(251, 233, 231)", "rgb(255, 204, 188)", "rgb(255, 171, 145)", "rgb(255, 138, 101)", "rgb(255, 112, 67)", "rgb(255, 87, 34)", "rgb(244, 81, 30)", "rgb(230, 74, 25)", "rgb(216, 67, 21)", "rgb(191, 54, 12)", "rgb(255, 158, 128)", "rgb(255, 110, 64)", "rgb(255, 61, 0)", "rgb(221, 44, 0)"], ["rgb(121, 85, 72)", "rgb(239, 235, 233)", "rgb(215, 204, 200)", "rgb(188, 170, 164)", "rgb(161, 136, 127)", "rgb(141, 110, 99)", "rgb(121, 85, 72)", "rgb(109, 76, 65)", "rgb(93, 64, 55)", "rgb(78, 52, 46)", "rgb(62, 39, 35)"], ["rgb(158, 158, 158)", "rgb(250, 250, 250)", "rgb(245, 245, 245)", "rgb(238, 238, 238)", "rgb(224, 224, 224)", "rgb(189, 189, 189)", "rgb(158, 158, 158)", "rgb(117, 117, 117)", "rgb(97, 97, 97)", "rgb(66, 66, 66)", "rgb(33, 33, 33)"], ["rgb(96, 125, 139)", "rgb(236, 239, 241)", "rgb(207, 216, 220)", "rgb(176, 190, 197)", "rgb(144, 164, 174)", "rgb(120, 144, 156)", "rgb(96, 125, 139)", "rgb(84, 110, 122)", "rgb(69, 90, 100)", "rgb(55, 71, 79)", "rgb(38, 50, 56)"]];
-	
-	var coloring = exports.coloring = function coloring(index1) {
-	  var total1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-	  var index2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-	  var total2 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-	
-	  return '';
-	  if (!total1) {
-	    total1 = materialColors.length;
-	  }
-	  var color1 = Math.floor(index1 * materialColors.length / total1);
-	  if (!index2) {
-	    return materialColors[color1][0];
-	  } else {
-	    return materialColors[color1][Math.floor(index2 * materialColors.length / total2)];
-	  }
-	};
-
-/***/ },
-
-/***/ 547:
-/*!******************************************!*\
-  !*** ./src/containers/ContainerPhoto.js ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 244);
-	
-	var _redux = __webpack_require__(/*! redux */ 251);
-	
-	var _PhotoExplorer = __webpack_require__(/*! ../components/PhotoExplorer */ 548);
-	
-	var _PhotoExplorer2 = _interopRequireDefault(_PhotoExplorer);
-	
-	var _photo = __webpack_require__(/*! ../actions/photo */ 551);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        photo: state.photo
-	    };
-	};
-	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	    return {
-	        actions: (0, _redux.bindActionCreators)({
-	            upload: _photo.upload,
-	            getThumbnail: _photo.getThumbnail
-	        }, dispatch)
-	    };
-	};
-	
-	var ContainerPhoto = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PhotoExplorer2.default);
-	
-	exports.default = ContainerPhoto;
-
-/***/ },
-
-/***/ 548:
-/*!*****************************************!*\
-  !*** ./src/components/PhotoExplorer.js ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 35);
-	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
-	
-	var _withStyles2 = _interopRequireDefault(_withStyles);
-	
-	var _PhotoItem = __webpack_require__(/*! ./PhotoItem */ 924);
-	
-	var _PhotoItem2 = _interopRequireDefault(_PhotoItem);
-	
-	var _photoexplorer = __webpack_require__(/*! ./css/photoexplorer.scss */ 549);
-	
-	var _photoexplorer2 = _interopRequireDefault(_photoexplorer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var PhotoExplorer = function (_React$Component) {
-	    _inherits(PhotoExplorer, _React$Component);
-	
-	    function PhotoExplorer(props) {
-	        _classCallCheck(this, PhotoExplorer);
-	
-	        return _possibleConstructorReturn(this, (PhotoExplorer.__proto__ || Object.getPrototypeOf(PhotoExplorer)).call(this, props));
-	    }
-	
-	    _createClass(PhotoExplorer, [{
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {}
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {}
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {}
-	    }, {
-	        key: 'submit',
-	        value: function submit(e) {
-	            e.preventDefault();
-	        }
-	    }, {
-	        key: 'cameraChange',
-	        value: function cameraChange(e) {
-	            var file = e.target.files[0];
-	            this.props.actions.upload(file);
-	            e.target.value = '';
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-	
-	            var photo = this.props.photo;
-	            var photoHtml = Object.keys(photo.albums[0].list).map(function (key) {
-	                return _react2.default.createElement(_PhotoItem2.default, { getThumbnail: _this2.props.actions.getThumbnail, _key: key, key: key, photo: photo.albums[0].list[key] });
-	            });
-	            return _react2.default.createElement(
-	                'div',
-	                { className: _photoexplorer2.default.root },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: _photoexplorer2.default.photoList },
-	                    photoHtml
-	                ),
-	                _react2.default.createElement(
-	                    'label',
-	                    { 'for': 'capture', className: _photoexplorer2.default.captureBtn },
-	                    _react2.default.createElement('input', { type: 'file', accept: 'image/*', id: 'capture', capture: 'camera', onChange: this.cameraChange.bind(this) }),
-	                    _react2.default.createElement('i', { className: 'ion-ios-camera' })
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return PhotoExplorer;
-	}(_react2.default.Component);
-	
-	exports.default = (0, _withStyles2.default)(_photoexplorer2.default)(PhotoExplorer);
-
-/***/ },
-
-/***/ 549:
-/*!***********************************************!*\
-  !*** ./src/components/css/photoexplorer.scss ***!
-  \***********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./photoexplorer.scss */ 550);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photoexplorer.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photoexplorer.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 550:
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/photoexplorer.scss ***!
-  \**********************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".photoexplorer_root_3PP {\n  padding: 20px 0;\n  background: #fff;\n  position: fixed;\n  top: 0;\n  bottom: 100px;\n  width: 100%;\n  overflow: auto; }\n\n.photoexplorer_photoList_1Id {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap; }\n\n.photoexplorer_captureBtn_3ep {\n  width: 100%;\n  display: inline-block;\n  text-align: center;\n  position: fixed;\n  bottom: 40px;\n  background: #ffffff; }\n\n.photoexplorer_captureBtn_3ep input {\n    display: none; }\n\n.photoexplorer_captureBtn_3ep i {\n    font-size: 56px;\n    width: 60px;\n    height: 60px;\n    display: inline-block;\n    line-height: 60px;\n    text-align: center;\n    color: #E91E63; }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "photoexplorer_root_3PP",
-		"root": "photoexplorer_root_3PP",
-		"photoList": "photoexplorer_photoList_1Id",
-		"photoList": "photoexplorer_photoList_1Id",
-		"captureBtn": "photoexplorer_captureBtn_3ep",
-		"captureBtn": "photoexplorer_captureBtn_3ep"
-	};
-
-/***/ },
-
-/***/ 551:
-/*!******************************!*\
-  !*** ./src/actions/photo.js ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getThumbnail = exports.upload = undefined;
-	
-	var _FirebaseInstance = __webpack_require__(/*! ./../store/FirebaseInstance */ 922);
-	
-	var _FirebaseInstance2 = _interopRequireDefault(_FirebaseInstance);
-	
-	var _dropbox = __webpack_require__(/*! ./../store/dropbox */ 902);
-	
-	var _dropbox2 = _interopRequireDefault(_dropbox);
-	
-	var _store = __webpack_require__(/*! ./../store */ 558);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var upload = exports.upload = function upload(file) {
-	    var user = _store2.default.getState().user;
-	    if (user.uid && user.dxToken !== '') {
-	        return function (dispatch) {
-	            _dropbox2.default.accessToken = user.dxToken;
-	            _dropbox2.default.filesUpload({ path: '/' + file.name, contents: file }).then(function (response) {
-	                _dropbox2.default.filesGetThumbnail({
-	                    path: response.path_lower,
-	                    format: 'png',
-	                    size: 'w128h128'
-	                }).then(function (thumbResponse) {
-	                    response.thumbnail = thumbResponse;
-	                    dispatch({
-	                        type: 'UPLOAD_SUCCESS',
-	                        response: response
-	                    });
-	                });
-	            }).catch(function (error) {
-	                dispatch({
-	                    type: 'UPLOAD_ERROR',
-	                    error: error
-	                });
-	            });
-	        };
-	    } else {
-	        return {
-	            type: 'UPLOAD_REQUIRE_LOGIN'
-	        };
-	    }
-	};
-	
-	var getThumbnail = exports.getThumbnail = function getThumbnail(photo, key) {
-	    var user = _store2.default.getState().user;
-	    if (user.uid && user.dxToken !== '') {
-	        return function (dispatch) {
-	            _dropbox2.default.accessToken = user.dxToken;
-	            _dropbox2.default.filesGetThumbnail({
-	                path: photo.path_lower,
-	                format: 'png',
-	                size: 'w128h128'
-	            }).then(function (response) {
-	                photo.thumbnail = response;
-	                dispatch({
-	                    type: 'GET_THUMB_SUCCESS',
-	                    photo: photo,
-	                    key: key
-	                });
-	            });
-	        };
-	    }
-	};
-
-/***/ },
-
-/***/ 552:
-/*!*******************************!*\
-  !*** ./src/components/Tab.js ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _tab = __webpack_require__(/*! ./css/tab.scss */ 553);
-	
-	var _tab2 = _interopRequireDefault(_tab);
-	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
-	
-	var _withStyles2 = _interopRequireDefault(_withStyles);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Tab = function (_React$Component) {
-	    _inherits(Tab, _React$Component);
-	
-	    function Tab(props) {
-	        _classCallCheck(this, Tab);
-	
-	        return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).call(this, props));
-	    }
-	
-	    _createClass(Tab, [{
-	        key: 'render',
-	        value: function render() {
-	            var props = this.props;
-	            var tabs = props.tabs.map(function (tabComponent, index) {
-	                if (tabComponent !== null) {
-	                    return _react2.default.createElement(
-	                        'div',
-	                        { className: props.currentTab === index + 1 ? _tab2.default.tabActive : _tab2.default.tab },
-	                        tabComponent
-	                    );
-	                }
-	            });
-	            return _react2.default.createElement(
-	                'div',
-	                { className: _tab2.default.root },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: _tab2.default.tabList },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: props.currentTab === 1 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
-	                                props.setCurrentTab(1);
-	                            } },
-	                        _react2.default.createElement('span', { className: 'ion-ios-personadd' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: props.currentTab === 2 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
-	                                props.setCurrentTab(2);
-	                            } },
-	                        _react2.default.createElement('span', { className: 'ion-images' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: props.currentTab === 3 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
-	                                props.setCurrentTab(3);
-	                            } },
-	                        _react2.default.createElement('span', { className: 'ion-music-note' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: props.currentTab === 4 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
-	                                props.setCurrentTab(4);
-	                            } },
-	                        _react2.default.createElement('span', { className: 'ion-ios-search-strong' })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: _tab2.default.tabContent },
-	                    tabs
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return Tab;
-	}(_react2.default.Component);
-	
-	exports.default = (0, _withStyles2.default)(_tab2.default)(Tab);
-
-/***/ },
-
-/***/ 553:
-/*!*************************************!*\
-  !*** ./src/components/css/tab.scss ***!
-  \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./tab.scss */ 554);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./tab.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./tab.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 554:
-/*!************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/tab.scss ***!
-  \************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".tab_root_2wR {\n  background: #4267b2;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  height: 40px; }\n\n.tab_tabList_8VU {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.tab_item_fvy {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 0%;\n          flex: 1 1 0%;\n  text-align: center;\n  color: #fff;\n  line-height: 47px;\n  font-size: 30px;\n  border-top: 1px solid #375dab;\n  box-shadow: 0 1px 0 #4c6daf inset; }\n\n.tab_itemActive_PfX {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 0%;\n          flex: 1 1 0%;\n  text-align: center;\n  color: #4267b2;\n  background: #fff;\n  line-height: 47px;\n  font-size: 30px; }\n\n.tab_tab_2LT {\n  display: none; }\n\n.tab_tabActive_oVl {\n  display: block; }\n\n.tab_tabContent_1Ng {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  bottom: 40px; }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "tab_root_2wR",
-		"root": "tab_root_2wR",
-		"tabList": "tab_tabList_8VU",
-		"tabList": "tab_tabList_8VU",
-		"item": "tab_item_fvy",
-		"item": "tab_item_fvy",
-		"itemActive": "tab_itemActive_PfX",
-		"itemActive": "tab_itemActive_PfX",
-		"tab": "tab_tab_2LT",
-		"tab": "tab_tab_2LT",
-		"tabActive": "tab_tabActive_oVl",
-		"tabActive": "tab_tabActive_oVl",
-		"tabContent": "tab_tabContent_1Ng",
-		"tabContent": "tab_tabContent_1Ng"
-	};
-
-/***/ },
-
-/***/ 555:
-/*!*************************************!*\
-  !*** ./src/components/css/app.scss ***!
-  \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./app.scss */ 556);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./app.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./app.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 556:
-/*!************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/app.scss ***!
-  \************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".app_root_1Ax {\n  position: fixed;\n  bottom: 0;\n  top: 0;\n  left: 0;\n  right: 0;\n  background: rgba(234, 240, 251, 0.5); }\n  .app_root_1Ax * {\n    font-family: 'Yanone Kaffeesatz', sans-serif; }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "app_root_1Ax",
-		"root": "app_root_1Ax"
-	};
-
-/***/ },
-
-/***/ 557:
-/*!*****************************!*\
-  !*** ./src/routes/index.js ***!
-  \*****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 35);
-	
-	var _App = __webpack_require__(/*! ./../components/App */ 271);
-	
-	var _App2 = _interopRequireDefault(_App);
-	
-	var _ContainerPlaylist = __webpack_require__(/*! ./../containers/ContainerPlaylist */ 420);
-	
-	var _ContainerPlaylist2 = _interopRequireDefault(_ContainerPlaylist);
-	
-	var _ContainerPhoto = __webpack_require__(/*! ./../containers/ContainerPhoto */ 547);
-	
-	var _ContainerPhoto2 = _interopRequireDefault(_ContainerPhoto);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var basePath = typeof _basePath !== 'undefined' ? _basePath : '/';
-	window.basePath = basePath;
-	
-	var Routes = _react2.default.createElement(
-	    _reactRouter.Route,
-	    { path: basePath, component: _App2.default },
-	    _react2.default.createElement(_reactRouter.IndexRoute, { components: _ContainerPlaylist2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: basePath + 'all/:song_id', components: _ContainerPlaylist2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: basePath + ':playlist_id', components: _ContainerPlaylist2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: basePath + ':playlist_id/:song_id', components: _ContainerPlaylist2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: basePath + 'photos/', components: _ContainerPhoto2.default })
-	);
-	
-	exports.default = Routes;
-
-/***/ },
-
-/***/ 558:
-/*!****************************!*\
-  !*** ./src/store/index.js ***!
-  \****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _redux = __webpack_require__(/*! redux */ 251);
-	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 559);
-	
-	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-	
-	var _reduxLogger = __webpack_require__(/*! redux-logger */ 560);
-	
-	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
-	
-	var _reducers = __webpack_require__(/*! ./..//reducers */ 566);
-	
-	var _reducers2 = _interopRequireDefault(_reducers);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	var promiseMiddleware = function promiseMiddleware() {
-	    return function (next) {
-	        return function (action) {
-	            if (typeof action !== 'undefined') {
-	                var promise = action.promise,
-	                    type = action.type,
-	                    rest = _objectWithoutProperties(action, ['promise', 'type']);
-	
-	                if (!promise) return next(action);
-	
-	                var SUCCESS = type;
-	                var REQUEST = type + '_REQUEST';
-	                var FAILURE = type + '_FAILURE';
-	                next(_extends({}, rest, { type: REQUEST }));
-	
-	                return promise.then(function (res) {
-	                    next(_extends({}, rest, { res: res, type: SUCCESS }));
-	                    return true;
-	                }).catch(function (error) {
-	                    next(_extends({}, rest, { error: error, type: FAILURE }));
-	                    console.log(error);
-	                    return false;
-	                });
-	            }
-	            return false;
-	        };
-	    };
-	};
-	
-	var preloadedState = {};
-	
-	var middleWare = [_reduxThunk2.default, promiseMiddleware, (0, _reduxLogger2.default)()];
-	
-	var store = (0, _redux.createStore)(_reducers2.default, preloadedState, _redux.applyMiddleware.apply(undefined, middleWare));
-	exports.default = store;
-
-/***/ },
-
-/***/ 566:
-/*!*******************************!*\
-  !*** ./src/reducers/index.js ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-				value: true
-	});
-	
-	var _redux = __webpack_require__(/*! redux */ 251);
-	
-	var _search = __webpack_require__(/*! ./search */ 567);
-	
-	var _search2 = _interopRequireDefault(_search);
-	
-	var _playlist = __webpack_require__(/*! ./playlist */ 568);
-	
-	var _playlist2 = _interopRequireDefault(_playlist);
-	
-	var _player = __webpack_require__(/*! ./player */ 569);
-	
-	var _player2 = _interopRequireDefault(_player);
-	
-	var _user = __webpack_require__(/*! ./user */ 570);
-	
-	var _user2 = _interopRequireDefault(_user);
-	
-	var _photo = __webpack_require__(/*! ./photo */ 923);
-	
-	var _photo2 = _interopRequireDefault(_photo);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var reducer = (0, _redux.combineReducers)({
-				search: _search2.default,
-				player: _player2.default,
-				playlist: _playlist2.default,
-				user: _user2.default,
-				photo: _photo2.default
-	});
-	
-	exports.default = reducer;
-
-/***/ },
-
-/***/ 567:
-/*!********************************!*\
-  !*** ./src/reducers/search.js ***!
-  \********************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var intinalState = {
-	    suggess: {
-	        show: false,
-	        message: 'Gõ để tìm kiếm',
-	        result: false,
-	        data: [{
-	            "artist": []
-	        }, {
-	            "album": []
-	        }, {
-	            "video": []
-	        }, {
-	            "song": []
-	        }]
-	    },
-	    showAddPopup: false,
-	    keyword: '',
-	    showSongOption: false,
-	    optionObjectId: -1
-	};
-	
-	var getMessage = function getMessage(search) {
-	    var artists = search.suggess.data[0].artist;
-	    var albums = search.suggess.data[1].album;
-	    var videos = search.suggess.data[2].video;
-	    var songs = search.suggess.data[3].song;
-	    if (search.keyword.length === 0) return 'Gõ để tìm kiếm bài hát';
-	    if (artists.length === 0 && albums.length === 0 && videos.length === 0 && songs.length === 0) {
-	        return 'Không có kết quả';
-	    }
-	
-	    return '';
-	};
-	
-	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
-	    var action = arguments[1];
-	
-	    switch (action.type) {
-	        case 'SHOW_POPUP_ADDTOPLAYLIST':
-	            return _extends({}, state, {
-	                callbackSongId: action.songId,
-	                showAddPopup: true
-	            });
-	            break;
-	        case 'HIDE_POPUP_ADDTOPLAYLIST':
-	            return _extends({}, state, {
-	                callbackSongId: false,
-	                showAddPopup: false
-	            });
-	            break;
-	        case 'HIDE_SONG_OPTION':
-	            return _extends({}, state, {
-	                showSongOption: false
-	            });
-	            break;
-	        case 'SHOW_SONG_OPTION':
-	            return _extends({}, state, {
-	                object: action.object,
-	                showSongOption: true
-	            });
-	            break;
-	        case 'GET_SUGGESS':
-	            return _extends({}, state, {
-	                keyword: action.keyword,
-	                suggess: _extends({}, state.suggess, {
-	                    data: action.data
-	                })
-	            });
-	            break;
-	        case 'SHOW_SUGGESS':
-	            return _extends({}, state, {
-	                suggess: _extends({}, state.suggess, {
-	                    message: getMessage(state),
-	                    show: true
-	                })
-	            });
-	            break;
-	        case 'HIDE_SUGGESS':
-	            return _extends({}, state, {
-	                suggess: _extends({}, state.suggess, {
-	                    show: false
-	                })
-	            });
-	            break;
-	        default:
-	            return state;
-	    }
-	};
-
-/***/ },
-
-/***/ 568:
-/*!**********************************!*\
-  !*** ./src/reducers/playlist.js ***!
-  \**********************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var playlistDb = {
-	    get: function get() {
-	        var playlist = localStorage.getItem('db_playlist');
-	        if (playlist) {
-	            return JSON.parse(playlist);
-	        }
-	        return [];
-	    },
-	    set: function set(data) {
-	        localStorage.setItem('db_playlist', JSON.stringify(data));
-	    }
-	};
-	
-	function savePlaylistToDb(playlist) {
-	    localStorage.setItem('playlist_db', JSON.stringify(playlist));
-	}
-	function getPlaylistFromDb(playlist) {
-	    localStorage.setItem('playlist_db', JSON.stringify(playlist));
-	}
-	var intinalState = {
-	    showAddPopup: false,
-	    callbackSongId: false,
-	    currentIndex: -1,
-	    // data: [
-	    //     {
-	    //         name: 'Yêu thích',
-	    //         list: []
-	    //     },
-	    //     {
-	    //         name: 'Nhạc trẻ',
-	    //         list: []
-	    //     }
-	    // ]
-	    data: playlistDb.get()
-	};
-	
-	var addToPlaylist = function addToPlaylist(list, songId) {
-	    var newList = list;
-	    if (Array.isArray(songId)) {
-	        songId.map(function (id, index) {
-	            if (newList.indexOf(id) === -1) {
-	                newList.push(id);
-	            }
-	        });
-	    } else {
-	        if (newList.indexOf(songId) === -1) {
-	            newList.push(songId);
-	        }
-	    }
-	    return newList;
-	};
-	
-	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
-	    var action = arguments[1];
-	
-	    switch (action.type) {
-	        case 'GET_PLAYLIST':
-	            return _extends({}, state);
-	            break;
-	        case 'CREATE_NEW_OK':
-	            var newData = state.data;
-	            newData.push(action.newPlaylist);
-	            playlistDb.set(newData);
-	            return _extends({}, state, {
-	                data: newData
-	            });
-	            break;
-	        case 'SHOW_POPUP_ADDTOPLAYLIST':
-	            return _extends({}, state, {
-	                callbackSongId: action.songId,
-	                showAddPopup: true
-	            });
-	            break;
-	        case 'HIDE_POPUP_ADDTOPLAYLIST':
-	            return _extends({}, state, {
-	                callbackSongId: false,
-	                showAddPopup: false
-	            });
-	            break;
-	        case 'ADD_SONG':
-	            var finalState = state;
-	            finalState.data[action.playlistId].list = addToPlaylist(finalState.data[action.playlistId].list, action.songObj);
-	            playlistDb.set(finalState.data);
-	            return _extends({}, finalState, {
-	                callbackSongId: false,
-	                showAddPopup: false
-	            });
-	            break;
-	        case 'SET_CURRENT':
-	            if (state.currentIndex !== action.index && (action.index === -1 || typeof state.data[action.index] !== 'undefined')) {
-	                return _extends({}, state, {
-	                    currentIndex: action.index
-	                });
-	            }
-	            return state;
-	            break;
-	        default:
-	            return state;
-	    }
-	};
-
-/***/ },
-
-/***/ 569:
-/*!********************************!*\
-  !*** ./src/reducers/player.js ***!
-  \********************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var intinalState = {
-	    player_id: null,
-	    fetched: false,
-	    response: {
-	        msgCode: 1,
-	        msg: ""
-	    }
-	};
-	
-	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
-	    var action = arguments[1];
-	
-	    switch (action.type) {
-	        case 'SET_ID':
-	            return {
-	                fetched: false,
-	                player_id: action.id,
-	                rolloutPlaylist: action.rolloutPlaylist,
-	                rolloutId: action.rolloutId,
-	                response: {
-	                    msgCode: 1,
-	                    msg: ""
-	                }
-	            };
-	            break;
-	        case 'FETCH':
-	            return _extends({}, state, {
-	                fetched: true,
-	                response: {
-	                    msgCode: 1,
-	                    msg: ""
-	                }
-	            }, action.data);
-	            break;
-	        case 'FETCH_ERROR':
-	            return _extends({}, state, {
-	                response: _extends({}, action.data)
-	            });
-	            break;
-	        case 'CLEAR_ERROR':
-	            return _extends({}, state, {
-	                response: {
-	                    msgCode: 1,
-	                    msg: ""
-	                }
-	            });
-	            break;
-	        default:
-	            return state;
-	    }
-	};
-
-/***/ },
-
-/***/ 570:
-/*!******************************!*\
-  !*** ./src/reducers/user.js ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _user = __webpack_require__(/*! ./../actions/user */ 412);
-	
-	var intinalState = {
-	    uid: false,
-	    fbToken: '',
-	    ggToken: '',
-	    dxToken: '',
-	    email: '',
-	    name: '',
-	    displayName: ''
-	};
-	
-	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
-	    var action = arguments[1];
-	
-	    switch (action.type) {
-	        case 'USERDATA_PARSED':
-	            // action[user]
-	            return _extends({}, state, action.userData.user);
-	        case 'USERDATA_COMMITED':
-	            return _extends({}, state);
-	            break;
-	        case 'CONNECT_DX_SUCCESS':
-	            var newState = _extends({}, state, {
-	                dxToken: action.accessToken
-	            });
-	            if (state.uid !== false) {
-	                (0, _user.commitUserData)(newState.uid, newState, 'user');
-	            }
-	            return newState;
-	            break;
-	        case 'LOGIN_SOCIAL_SUCCESS':
-	            {
-	                // save uid to local
-	                var _newState = _extends({}, state, action.user);
-	                localStorage.setItem('uid', action.user.uid);
-	                (0, _user.commitUserData)(_newState.uid, _newState, 'user');
-	                return _newState;
-	                break;
-	            }
-	        default:
-	            return state;
-	    }
-	};
-
-/***/ },
-
-/***/ 571:
-/*!****************************************!*\
-  !*** ./src/global/WithStylesContex.js ***!
-  \****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var WithStylesContext = function (_React$Component) {
-	    _inherits(WithStylesContext, _React$Component);
-	
-	    function WithStylesContext() {
-	        _classCallCheck(this, WithStylesContext);
-	
-	        return _possibleConstructorReturn(this, (WithStylesContext.__proto__ || Object.getPrototypeOf(WithStylesContext)).apply(this, arguments));
-	    }
-	
-	    _createClass(WithStylesContext, [{
-	        key: 'getChildContext',
-	        value: function getChildContext() {
-	            return { insertCss: this.props.onInsertCss };
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react.Children.only(this.props.children);
-	        }
-	    }]);
-	
-	    return WithStylesContext;
-	}(_react2.default.Component);
-	
-	WithStylesContext.childContextTypes = {
-	    insertCss: _react.PropTypes.func.isRequired
-	};
-	
-	WithStylesContext.propTypes = {
-	    children: _react.PropTypes.element.isRequired,
-	    onInsertCss: _react.PropTypes.func.isRequired
-	};
-	
-	exports.default = WithStylesContext;
-
-/***/ },
-
-/***/ 899:
-/*!*****************************************!*\
-  !*** ./src/components/UserDashboard.js ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _userDashboard = __webpack_require__(/*! ./css/user-dashboard.scss */ 900);
-	
-	var _userDashboard2 = _interopRequireDefault(_userDashboard);
-	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
-	
-	var _withStyles2 = _interopRequireDefault(_withStyles);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var UserDashboard = function (_React$Component) {
-	    _inherits(UserDashboard, _React$Component);
-	
-	    function UserDashboard(props) {
-	        _classCallCheck(this, UserDashboard);
-	
-	        return _possibleConstructorReturn(this, (UserDashboard.__proto__ || Object.getPrototypeOf(UserDashboard)).call(this, props));
-	    }
-	
-	    _createClass(UserDashboard, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var uid = localStorage.getItem('uid');
-	            if (uid) {
-	                this.props.actions.parseUserData(uid);
-	            }
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            console.log(nextProps);
-	        }
-	    }, {
-	        key: 'getUserLoginBlock',
-	        value: function getUserLoginBlock() {
-	            var _this2 = this;
-	
-	            var user = this.props.user;
-	            if (!user.uid) {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { className: _userDashboard2.default.loginMethod },
-	                    _react2.default.createElement(
-	                        'h3',
-	                        { className: _userDashboard2.default.blockHeading },
-	                        'Ch\u1ECDn c\xE1ch \u0111\u0103ng nh\u1EADp'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { onClick: function onClick() {
-	                                _this2.props.actions.loginWithFacebook();
-	                            }, className: _userDashboard2.default.btn + ' ' + _userDashboard2.default.btnFb },
-	                        _react2.default.createElement('i', { className: 'ion-social-facebook' }),
-	                        'Facebook'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { onClick: function onClick() {
-	                                _this2.props.actions.loginWithGoogle();
-	                            }, className: _userDashboard2.default.btn + ' ' + _userDashboard2.default.btnGg },
-	                        _react2.default.createElement('i', { className: 'ion-social-google' }),
-	                        'Google'
-	                    )
-	                );
-	            } else {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { className: _userDashboard2.default.userInfo },
-	                    _react2.default.createElement(
-	                        'h3',
-	                        { className: _userDashboard2.default.blockHeading },
-	                        user.displayName
-	                    )
-	                );
-	            }
-	        }
-	    }, {
-	        key: 'getUserDropboxStatusBlock',
-	        value: function getUserDropboxStatusBlock() {
-	            var _this3 = this;
-	
-	            var user = this.props.user;
-	            if (user.dxToken === '') {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { className: _userDashboard2.default.dropboxStatus },
-	                    _react2.default.createElement(
-	                        'h3',
-	                        { className: _userDashboard2.default.blockHeading },
-	                        'K\u1EBFt n\u1ED1i v\u1EDBi Dropbox'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: _userDashboard2.default.btn + ' ' + _userDashboard2.default.btnDx, onClick: function onClick() {
-	                                _this3.props.actions.connectToDropbox();
-	                            } },
-	                        _react2.default.createElement('i', { className: 'ion-social-dropbox' }),
-	                        'Dropbox'
-	                    )
-	                );
-	            } else {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { className: _userDashboard2.default.dropboxStatusSuccess },
-	                    _react2.default.createElement('i', { className: 'ion-social-dropbox' }),
-	                    '\u0110\xE3 k\u1EBFt n\u1ED1i'
-	                );
-	            }
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: _userDashboard2.default.root },
-	                this.getUserLoginBlock(),
-	                _react2.default.createElement('span', { className: _userDashboard2.default.breakLine }),
-	                this.getUserDropboxStatusBlock(),
-	                _react2.default.createElement('span', { className: _userDashboard2.default.breakLine })
-	            );
-	        }
-	    }]);
-	
-	    return UserDashboard;
-	}(_react2.default.Component);
-	
-	exports.default = (0, _withStyles2.default)(_userDashboard2.default)(UserDashboard);
-
-/***/ },
-
-/***/ 900:
-/*!************************************************!*\
-  !*** ./src/components/css/user-dashboard.scss ***!
-  \************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./user-dashboard.scss */ 901);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./user-dashboard.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./user-dashboard.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 901:
-/*!***********************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/user-dashboard.scss ***!
-  \***********************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".user-dashboard_root_1mJ {\n  padding: 20px 0; }\n\n.user-dashboard_blockHeading_3m0 {\n  padding: 0 20px;\n  font-size: 24px;\n  font-weight: 300; }\n\n.user-dashboard_breakLine_1Pg {\n  margin: 20px 0;\n  width: 100%;\n  height: 1px;\n  background: #ddd;\n  display: block; }\n\n.user-dashboard_btn_3km {\n  border: 1px solid;\n  max-width: 275px;\n  margin: 20px auto 20px auto;\n  border-radius: 5px;\n  font-size: 38px;\n  color: #fff; }\n\n.user-dashboard_btn_3km i {\n    font-size: 42px;\n    margin-right: 39px;\n    padding: 10px 20px;\n    display: inline-block;\n    border-right: 1px solid; }\n\n.user-dashboard_btnFb_lVa {\n  background: #4267b2;\n  border-color: #2d55a7; }\n\n.user-dashboard_btnGg_32U {\n  background: #ea4335;\n  border-color: #c52e22; }\n\n.user-dashboard_btnDx_c8H {\n  background: #1081de;\n  border: 1px solid #0967b5; }\n\n.user-dashboard_dropboxStatusSuccess_3WS {\n  text-align: center;\n  font-size: 26px;\n  background: #A5D6A7;\n  color: #3c5d3d;\n  padding: 14px 0 10px 0; }\n\n.user-dashboard_dropboxStatusSuccess_3WS i {\n    color: #4CAF50;\n    font-size: 47px;\n    display: inline-block;\n    vertical-align: middle;\n    margin-right: 10px; }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "user-dashboard_root_1mJ",
-		"root": "user-dashboard_root_1mJ",
-		"blockHeading": "user-dashboard_blockHeading_3m0",
-		"blockHeading": "user-dashboard_blockHeading_3m0",
-		"breakLine": "user-dashboard_breakLine_1Pg",
-		"breakLine": "user-dashboard_breakLine_1Pg",
-		"btn": "user-dashboard_btn_3km",
-		"btn": "user-dashboard_btn_3km",
-		"btnFb": "user-dashboard_btnFb_lVa",
-		"btnFb": "user-dashboard_btnFb_lVa",
-		"btnGg": "user-dashboard_btnGg_32U",
-		"btnGg": "user-dashboard_btnGg_32U",
-		"btnDx": "user-dashboard_btnDx_c8H",
-		"btnDx": "user-dashboard_btnDx_c8H",
-		"dropboxStatusSuccess": "user-dashboard_dropboxStatusSuccess_3WS",
-		"dropboxStatusSuccess": "user-dashboard_dropboxStatusSuccess_3WS"
-	};
-
-/***/ },
-
-/***/ 902:
 /*!******************************!*\
   !*** ./src/store/dropbox.js ***!
   \******************************/
@@ -4793,41 +2664,43 @@ webpackJsonp([0],{
 	  value: true
 	});
 	
-	var _dropbox = __webpack_require__(/*! dropbox */ 903);
+	var _dropbox = __webpack_require__(/*! dropbox */ 422);
 	
 	var _dropbox2 = _interopRequireDefault(_dropbox);
 	
+	var _env = __webpack_require__(/*! ./../global/env */ 420);
+	
+	var _env2 = _interopRequireDefault(_env);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var CLIENT_ID = 'g048eqdv71saczl';
-	
-	var dx = new _dropbox2.default({ clientId: CLIENT_ID });
+	var dx = new _dropbox2.default({ clientId: _env2.default.DROPBOX_CLIENT_ID });
 	
 	exports.default = dx;
 
 /***/ },
 
-/***/ 903:
+/***/ 422:
 /*!********************************!*\
   !*** ./~/dropbox/src/index.js ***!
   \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Dropbox = __webpack_require__(/*! ./dropbox */ 904);
+	var Dropbox = __webpack_require__(/*! ./dropbox */ 423);
 	
 	module.exports = Dropbox;
 
 
 /***/ },
 
-/***/ 904:
+/***/ 423:
 /*!**********************************!*\
   !*** ./~/dropbox/src/dropbox.js ***!
   \**********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var DropboxBase = __webpack_require__(/*! ./dropbox-base */ 905);
-	var routes = __webpack_require__(/*! ./routes */ 921);
+	var DropboxBase = __webpack_require__(/*! ./dropbox-base */ 424);
+	var routes = __webpack_require__(/*! ./routes */ 440);
 	var Dropbox;
 	
 	/**
@@ -4863,17 +2736,17 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 905:
+/***/ 424:
 /*!***************************************!*\
   !*** ./~/dropbox/src/dropbox-base.js ***!
   \***************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var REQUEST_CONSTANTS = __webpack_require__(/*! ./request-constants */ 906);
+	var REQUEST_CONSTANTS = __webpack_require__(/*! ./request-constants */ 425);
 	var DropboxBase;
 	
 	// Polyfill Object.assign() for older browsers
-	__webpack_require__(/*! ./object-assign-polyfill */ 907);
+	__webpack_require__(/*! ./object-assign-polyfill */ 426);
 	
 	/**
 	 * @private
@@ -4984,7 +2857,7 @@ webpackJsonp([0],{
 	
 	DropboxBase.prototype.getRpcRequest = function () {
 	  if (DropboxBase.prototype.rpcRequest === undefined) {
-	    DropboxBase.prototype.rpcRequest = __webpack_require__(/*! ./rpc-request */ 908);
+	    DropboxBase.prototype.rpcRequest = __webpack_require__(/*! ./rpc-request */ 427);
 	  }
 	
 	  return DropboxBase.prototype.rpcRequest;
@@ -4996,7 +2869,7 @@ webpackJsonp([0],{
 	
 	DropboxBase.prototype.getDownloadRequest = function () {
 	  if (DropboxBase.prototype.downloadRequest === undefined) {
-	    DropboxBase.prototype.downloadRequest = __webpack_require__(/*! ./download-request */ 918);
+	    DropboxBase.prototype.downloadRequest = __webpack_require__(/*! ./download-request */ 437);
 	  }
 	
 	  return DropboxBase.prototype.downloadRequest;
@@ -5008,7 +2881,7 @@ webpackJsonp([0],{
 	
 	DropboxBase.prototype.getUploadRequest = function () {
 	  if (DropboxBase.prototype.uploadRequest === undefined) {
-	    DropboxBase.prototype.uploadRequest = __webpack_require__(/*! ./upload-request */ 920);
+	    DropboxBase.prototype.uploadRequest = __webpack_require__(/*! ./upload-request */ 439);
 	  }
 	
 	  return DropboxBase.prototype.uploadRequest;
@@ -5019,7 +2892,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 906:
+/***/ 425:
 /*!********************************************!*\
   !*** ./~/dropbox/src/request-constants.js ***!
   \********************************************/
@@ -5036,7 +2909,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 907:
+/***/ 426:
 /*!*************************************************!*\
   !*** ./~/dropbox/src/object-assign-polyfill.js ***!
   \*************************************************/
@@ -5075,15 +2948,15 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 908:
+/***/ 427:
 /*!**************************************!*\
   !*** ./~/dropbox/src/rpc-request.js ***!
   \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var request = __webpack_require__(/*! superagent */ 909);
-	var Promise = __webpack_require__(/*! es6-promise */ 915).Promise;
-	var getBaseURL = __webpack_require__(/*! ./get-base-url */ 917);
+	var request = __webpack_require__(/*! superagent */ 428);
+	var Promise = __webpack_require__(/*! es6-promise */ 434).Promise;
+	var getBaseURL = __webpack_require__(/*! ./get-base-url */ 436);
 	
 	// This doesn't match what was spec'd in paper doc yet
 	var buildCustomError = function (error, response) {
@@ -5154,7 +3027,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 909:
+/***/ 428:
 /*!************************************!*\
   !*** ./~/superagent/lib/client.js ***!
   \************************************/
@@ -5164,10 +3037,10 @@ webpackJsonp([0],{
 	 * Module dependencies.
 	 */
 	
-	var Emitter = __webpack_require__(/*! emitter */ 910);
-	var reduce = __webpack_require__(/*! reduce */ 911);
-	var requestBase = __webpack_require__(/*! ./request-base */ 912);
-	var isObject = __webpack_require__(/*! ./is-object */ 913);
+	var Emitter = __webpack_require__(/*! emitter */ 429);
+	var reduce = __webpack_require__(/*! reduce */ 430);
+	var requestBase = __webpack_require__(/*! ./request-base */ 431);
+	var isObject = __webpack_require__(/*! ./is-object */ 432);
 	
 	/**
 	 * Root reference for iframes.
@@ -5216,7 +3089,7 @@ webpackJsonp([0],{
 	 * Expose `request`.
 	 */
 	
-	var request = module.exports = __webpack_require__(/*! ./request */ 914).bind(null, Request);
+	var request = module.exports = __webpack_require__(/*! ./request */ 433).bind(null, Request);
 	
 	/**
 	 * Determine XHR.
@@ -6241,7 +4114,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 910:
+/***/ 429:
 /*!**************************************!*\
   !*** ./~/component-emitter/index.js ***!
   \**************************************/
@@ -6414,7 +4287,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 911:
+/***/ 430:
 /*!*************************************!*\
   !*** ./~/reduce-component/index.js ***!
   \*************************************/
@@ -6447,7 +4320,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 912:
+/***/ 431:
 /*!******************************************!*\
   !*** ./~/superagent/lib/request-base.js ***!
   \******************************************/
@@ -6456,7 +4329,7 @@ webpackJsonp([0],{
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
-	var isObject = __webpack_require__(/*! ./is-object */ 913);
+	var isObject = __webpack_require__(/*! ./is-object */ 432);
 	
 	/**
 	 * Clear previous timeout.
@@ -6623,7 +4496,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 913:
+/***/ 432:
 /*!***************************************!*\
   !*** ./~/superagent/lib/is-object.js ***!
   \***************************************/
@@ -6646,7 +4519,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 914:
+/***/ 433:
 /*!*************************************!*\
   !*** ./~/superagent/lib/request.js ***!
   \*************************************/
@@ -6688,7 +4561,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 915:
+/***/ 434:
 /*!*****************************************************!*\
   !*** ./~/dropbox/~/es6-promise/dist/es6-promise.js ***!
   \*****************************************************/
@@ -6826,7 +4699,7 @@ webpackJsonp([0],{
 	function attemptVertx() {
 	  try {
 	    var r = require;
-	    var vertx = __webpack_require__(/*! vertx */ 916);
+	    var vertx = __webpack_require__(/*! vertx */ 435);
 	    vertxNext = vertx.runOnLoop || vertx.runOnContext;
 	    return useVertxTimer();
 	  } catch (e) {
@@ -7852,7 +5725,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 916:
+/***/ 435:
 /*!***********************!*\
   !*** vertx (ignored) ***!
   \***********************/
@@ -7862,7 +5735,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 917:
+/***/ 436:
 /*!***************************************!*\
   !*** ./~/dropbox/src/get-base-url.js ***!
   \***************************************/
@@ -7877,16 +5750,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 918:
+/***/ 437:
 /*!*******************************************!*\
   !*** ./~/dropbox/src/download-request.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var request = __webpack_require__(/*! superagent */ 909);
-	var Promise = __webpack_require__(/*! es6-promise */ 915).Promise;
-	var getBaseURL = __webpack_require__(/*! ./get-base-url */ 917);
-	var httpHeaderSafeJson = __webpack_require__(/*! ./http-header-safe-json */ 919);
+	var request = __webpack_require__(/*! superagent */ 428);
+	var Promise = __webpack_require__(/*! es6-promise */ 434).Promise;
+	var getBaseURL = __webpack_require__(/*! ./get-base-url */ 436);
+	var httpHeaderSafeJson = __webpack_require__(/*! ./http-header-safe-json */ 438);
 	
 	var buildCustomError;
 	var downloadRequest;
@@ -7984,7 +5857,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 919:
+/***/ 438:
 /*!************************************************!*\
   !*** ./~/dropbox/src/http-header-safe-json.js ***!
   \************************************************/
@@ -8004,16 +5877,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 920:
+/***/ 439:
 /*!*****************************************!*\
   !*** ./~/dropbox/src/upload-request.js ***!
   \*****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var request = __webpack_require__(/*! superagent */ 909);
-	var Promise = __webpack_require__(/*! es6-promise */ 915).Promise;
-	var getBaseURL = __webpack_require__(/*! ./get-base-url */ 917);
-	var httpHeaderSafeJson = __webpack_require__(/*! ./http-header-safe-json */ 919);
+	var request = __webpack_require__(/*! superagent */ 428);
+	var Promise = __webpack_require__(/*! es6-promise */ 434).Promise;
+	var getBaseURL = __webpack_require__(/*! ./get-base-url */ 436);
+	var httpHeaderSafeJson = __webpack_require__(/*! ./http-header-safe-json */ 438);
 	
 	// This doesn't match what was spec'd in paper doc yet
 	var buildCustomError = function (error, response) {
@@ -8079,7 +5952,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 921:
+/***/ 440:
 /*!*********************************!*\
   !*** ./~/dropbox/src/routes.js ***!
   \*********************************/
@@ -9339,42 +7212,694 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 922:
-/*!***************************************!*\
-  !*** ./src/store/FirebaseInstance.js ***!
-  \***************************************/
+/***/ 441:
+/*!*****************************************!*\
+  !*** ./src/components/UserDashboard.js ***!
+  \*****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
-	var _firebase = __webpack_require__(/*! firebase */ 414);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _firebase2 = _interopRequireDefault(_firebase);
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _userDashboard = __webpack_require__(/*! ./css/user-dashboard.scss */ 442);
+	
+	var _userDashboard2 = _interopRequireDefault(_userDashboard);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var config = {
-	    apiKey: "AIzaSyBNiaBVWEvAg1HnN_XBlo70ATLT0ef6gJ0",
-	    authDomain: "luminous-heat-3458.firebaseapp.com",
-	    databaseURL: "https://luminous-heat-3458.firebaseio.com",
-	    storageBucket: "luminous-heat-3458.appspot.com",
-	    messagingSenderId: "635828897166"
-	};
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	_firebase2.default.initializeApp(config);
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	exports.default = _firebase2.default;
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var UserDashboard = function (_React$Component) {
+	    _inherits(UserDashboard, _React$Component);
+	
+	    function UserDashboard(props) {
+	        _classCallCheck(this, UserDashboard);
+	
+	        return _possibleConstructorReturn(this, (UserDashboard.__proto__ || Object.getPrototypeOf(UserDashboard)).call(this, props));
+	    }
+	
+	    _createClass(UserDashboard, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var uid = localStorage.getItem('uid');
+	            if (uid) {
+	                this.props.actions.parseUserData(uid);
+	            }
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            console.log(nextProps);
+	        }
+	    }, {
+	        key: 'getUserLoginBlock',
+	        value: function getUserLoginBlock() {
+	            var _this2 = this;
+	
+	            var user = this.props.user;
+	            if (!user.uid) {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: _userDashboard2.default.loginMethod },
+	                    _react2.default.createElement(
+	                        'h3',
+	                        { className: _userDashboard2.default.blockHeading },
+	                        'Ch\u1ECDn c\xE1ch \u0111\u0103ng nh\u1EADp'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { onClick: function onClick() {
+	                                _this2.props.actions.loginWithFacebook();
+	                            }, className: _userDashboard2.default.btn + ' ' + _userDashboard2.default.btnFb },
+	                        _react2.default.createElement('i', { className: 'ion-social-facebook' }),
+	                        'Facebook'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { onClick: function onClick() {
+	                                _this2.props.actions.loginWithGoogle();
+	                            }, className: _userDashboard2.default.btn + ' ' + _userDashboard2.default.btnGg },
+	                        _react2.default.createElement('i', { className: 'ion-social-google' }),
+	                        'Google'
+	                    )
+	                );
+	            } else {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: _userDashboard2.default.userInfo },
+	                    _react2.default.createElement(
+	                        'h3',
+	                        { className: _userDashboard2.default.blockHeading },
+	                        user.displayName
+	                    )
+	                );
+	            }
+	        }
+	    }, {
+	        key: 'getUserDropboxStatusBlock',
+	        value: function getUserDropboxStatusBlock() {
+	            var _this3 = this;
+	
+	            var user = this.props.user;
+	            if (user.dxToken === '') {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: _userDashboard2.default.dropboxStatus },
+	                    _react2.default.createElement(
+	                        'h3',
+	                        { className: _userDashboard2.default.blockHeading },
+	                        'K\u1EBFt n\u1ED1i v\u1EDBi Dropbox'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: _userDashboard2.default.btn + ' ' + _userDashboard2.default.btnDx, onClick: function onClick() {
+	                                _this3.props.actions.connectToDropbox();
+	                            } },
+	                        _react2.default.createElement('i', { className: 'ion-social-dropbox' }),
+	                        'Dropbox'
+	                    )
+	                );
+	            } else {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: _userDashboard2.default.dropboxStatusSuccess },
+	                    _react2.default.createElement('i', { className: 'ion-social-dropbox' }),
+	                    '\u0110\xE3 k\u1EBFt n\u1ED1i'
+	                );
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: _userDashboard2.default.root },
+	                this.getUserLoginBlock(),
+	                _react2.default.createElement('span', { className: _userDashboard2.default.breakLine }),
+	                this.getUserDropboxStatusBlock(),
+	                _react2.default.createElement('span', { className: _userDashboard2.default.breakLine })
+	            );
+	        }
+	    }]);
+	
+	    return UserDashboard;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)(_userDashboard2.default)(UserDashboard);
 
 /***/ },
 
-/***/ 923:
-/*!*******************************!*\
-  !*** ./src/reducers/photo.js ***!
-  \*******************************/
+/***/ 442:
+/*!************************************************!*\
+  !*** ./src/components/css/user-dashboard.scss ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./user-dashboard.scss */ 443);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./user-dashboard.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./user-dashboard.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 443:
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/user-dashboard.scss ***!
+  \***********************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".user-dashboard_root_1mJ {\n  padding: 20px 0; }\n\n.user-dashboard_blockHeading_3m0 {\n  padding: 0 20px;\n  font-size: 24px;\n  font-weight: 300; }\n\n.user-dashboard_breakLine_1Pg {\n  margin: 20px 0;\n  width: 100%;\n  height: 1px;\n  background: #ddd;\n  display: block; }\n\n.user-dashboard_btn_3km {\n  border: 1px solid;\n  max-width: 275px;\n  margin: 20px auto 20px auto;\n  border-radius: 5px;\n  font-size: 38px;\n  color: #fff; }\n\n.user-dashboard_btn_3km i {\n    font-size: 42px;\n    margin-right: 39px;\n    padding: 10px 20px;\n    display: inline-block;\n    border-right: 1px solid; }\n\n.user-dashboard_btnFb_lVa {\n  background: #4267b2;\n  border-color: #2d55a7; }\n\n.user-dashboard_btnGg_32U {\n  background: #ea4335;\n  border-color: #c52e22; }\n\n.user-dashboard_btnDx_c8H {\n  background: #1081de;\n  border: 1px solid #0967b5; }\n\n.user-dashboard_dropboxStatusSuccess_3WS {\n  text-align: center;\n  font-size: 26px;\n  background: #A5D6A7;\n  color: #3c5d3d;\n  padding: 14px 0 10px 0; }\n\n.user-dashboard_dropboxStatusSuccess_3WS i {\n    color: #4CAF50;\n    font-size: 47px;\n    display: inline-block;\n    vertical-align: middle;\n    margin-right: 10px; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "user-dashboard_root_1mJ",
+		"root": "user-dashboard_root_1mJ",
+		"blockHeading": "user-dashboard_blockHeading_3m0",
+		"blockHeading": "user-dashboard_blockHeading_3m0",
+		"breakLine": "user-dashboard_breakLine_1Pg",
+		"breakLine": "user-dashboard_breakLine_1Pg",
+		"btn": "user-dashboard_btn_3km",
+		"btn": "user-dashboard_btn_3km",
+		"btnFb": "user-dashboard_btnFb_lVa",
+		"btnFb": "user-dashboard_btnFb_lVa",
+		"btnGg": "user-dashboard_btnGg_32U",
+		"btnGg": "user-dashboard_btnGg_32U",
+		"btnDx": "user-dashboard_btnDx_c8H",
+		"btnDx": "user-dashboard_btnDx_c8H",
+		"dropboxStatusSuccess": "user-dashboard_dropboxStatusSuccess_3WS",
+		"dropboxStatusSuccess": "user-dashboard_dropboxStatusSuccess_3WS"
+	};
+
+/***/ },
+
+/***/ 444:
+/*!*********************************************!*\
+  !*** ./src/containers/ContainerPlaylist.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 244);
+	
+	var _redux = __webpack_require__(/*! redux */ 251);
+	
+	var _PlaylistExplorer = __webpack_require__(/*! ../components/PlaylistExplorer */ 445);
+	
+	var _PlaylistExplorer2 = _interopRequireDefault(_PlaylistExplorer);
+	
+	var _playlist = __webpack_require__(/*! ../actions/playlist */ 300);
+	
+	var _player = __webpack_require__(/*! ../actions/player */ 299);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        playlist: state.playlist,
+	        player: state.player
+	    };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        actions: (0, _redux.bindActionCreators)({
+	            addSongToPlaylist: _playlist.addSongToPlaylist,
+	            createNew: _playlist.createNew,
+	            onHideClick: _playlist.hidePopupAddToPlaylist,
+	            setCurentPlaylist: _playlist.setCurentPlaylist,
+	            fetchById: _player.fetchById,
+	            setPlayerId: _player.setPlayerId,
+	            clearError: _player.clearError
+	        }, dispatch)
+	    };
+	};
+	
+	var ContainerPlaylist = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PlaylistExplorer2.default);
+	
+	exports.default = ContainerPlaylist;
+
+/***/ },
+
+/***/ 445:
+/*!********************************************!*\
+  !*** ./src/components/PlaylistExplorer.js ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 35);
+	
+	var _PlaylistCreator = __webpack_require__(/*! ./PlaylistCreator/ */ 406);
+	
+	var _PlaylistCreator2 = _interopRequireDefault(_PlaylistCreator);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
+	
+	var _playlist = __webpack_require__(/*! ./css/playlist.scss */ 446);
+	
+	var _playlist2 = _interopRequireDefault(_playlist);
+	
+	var _songItem = __webpack_require__(/*! ./css/song-item.scss */ 448);
+	
+	var _songItem2 = _interopRequireDefault(_songItem);
+	
+	var _Player = __webpack_require__(/*! ./Player */ 450);
+	
+	var _Player2 = _interopRequireDefault(_Player);
+	
+	var _colors = __webpack_require__(/*! ./../helpers/colors */ 570);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PlaylistExplorer = function (_React$Component) {
+	    _inherits(PlaylistExplorer, _React$Component);
+	
+	    function PlaylistExplorer(props) {
+	        _classCallCheck(this, PlaylistExplorer);
+	
+	        var _this = _possibleConstructorReturn(this, (PlaylistExplorer.__proto__ || Object.getPrototypeOf(PlaylistExplorer)).call(this, props));
+	
+	        _this.state = {
+	            playlist: props.playlist,
+	            player: props.player
+	        };
+	        _this.actions = props.actions;
+	        return _this;
+	    }
+	
+	    _createClass(PlaylistExplorer, [{
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            this.setTitle();
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.parseProps(this.props);
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            this.parseProps(nextProps);
+	        }
+	    }, {
+	        key: 'parseProps',
+	        value: function parseProps(props) {
+	            // let playlist_id = typeof props.ownProps.params.playlist_id !== 'undefined' ? props.ownProps.params.playlist_id : -1;
+	            // if(playlist_id !== props.playlist.currentIndex){
+	            //     this.actions.setCurentPlaylist(playlist_id);
+	            // }
+	
+	            // if(typeof props.ownProps.params.song_id !== 'undefined' && props.ownProps.params.song_id !== props.player.player_id){
+	            //     const rolloutPlaylist = this.getSelectedPlaylist(this.props.playlist, props.params.playlist_id, props.ownProps.params.song_id);
+	            //     this.actions.setPlayerId(props.ownProps.params.song_id, rolloutPlaylist, props.params.playlist_id);     
+	            //     // this.fetchPlayerId = true;
+	            // }
+	
+	            this.setState({
+	                playlist: props.playlist,
+	                player: props.player
+	            });
+	        }
+	    }, {
+	        key: '_onPlaylistClick',
+	        value: function _onPlaylistClick(index) {
+	            this.actions.setCurentPlaylist(index);
+	        }
+	    }, {
+	        key: '_onSongClick',
+	        value: function _onSongClick(index, rolloutPlaylist, currentIndex) {
+	            this.actions.setPlayerId(index, rolloutPlaylist, currentIndex);
+	        }
+	    }, {
+	        key: '_onCreateNew',
+	        value: function _onCreateNew(playlistName, callbackSongId) {
+	            this.actions.createNew(playlistName, callbackSongId);
+	        }
+	    }, {
+	        key: 'setTitle',
+	        value: function setTitle() {
+	            var playlist = this.props.playlist;
+	            if (parseInt(playlist.currentIndex) !== -1) {
+	                document.title = playlist.data[playlist.currentIndex].name;
+	            } else {
+	                document.title = 'Rezux - Chỉ để vui';
+	            }
+	        }
+	    }, {
+	        key: 'getSelectedPlaylist',
+	        value: function getSelectedPlaylist(playlist, playlist_id, song_id) {
+	            if (typeof playlist.data[playlist_id] !== 'undefined') {
+	                var currentPlaylist = playlist.data[playlist_id];
+	                // check if list not contain song
+	                var exist = false;
+	                currentPlaylist.list.map(function (song) {
+	                    if (song.id === song_id) {
+	                        exist = true;
+	                    }
+	                });
+	                if (exist) {
+	                    return currentPlaylist;
+	                }
+	            }
+	            return false;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var playlist = this.props.playlist;
+	            var player = this.props.player;
+	            var directoryTitle = _react2.default.createElement(
+	                'h3',
+	                { className: _playlist2.default.directoryTitle },
+	                _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    'Danh s\xE1ch Playlist'
+	                )
+	            );
+	
+	            var playlists = void 0,
+	                playerDom = void 0;
+	
+	            if (playlist.currentIndex === -1) {
+	
+	                playerDom = _react2.default.createElement(_Player2.default, { clearError: this.actions.clearError, key: player.player_id, state: player, fetch: this.actions.fetchById });
+	
+	                if (playlist.data.length > 0) {
+	                    playlists = playlist.data.map(function (playlist, index) {
+	                        return _react2.default.createElement(
+	                            'div',
+	                            { onClick: function onClick() {
+	                                    _this2._onPlaylistClick(index);
+	                                }, className: _playlist2.default.item, key: index },
+	                            playlist.name,
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement(
+	                                'em',
+	                                null,
+	                                playlist.list.length,
+	                                ' b\xE0i h\xE1t'
+	                            )
+	                        );
+	                    });
+	                } else {
+	                    playlists = _react2.default.createElement(
+	                        'p',
+	                        { className: _playlist2.default.empty },
+	                        'Ch\u01B0a c\xF3 Playlist n\xE0o!'
+	                    );
+	                }
+	            } else {
+	                var selectedPlaylist = playlist.data[playlist.currentIndex];
+	                directoryTitle = _react2.default.createElement(
+	                    'h3',
+	                    { className: _playlist2.default.directoryTitle },
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: _playlist2.default.icon, onClick: function onClick() {
+	                                _this2._onPlaylistClick(-1);
+	                            } },
+	                        _react2.default.createElement('i', { className: 'ion-ios-arrow-thin-left' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        selectedPlaylist.name
+	                    )
+	                );
+	
+	                playerDom = _react2.default.createElement(_Player2.default, { clearError: this.actions.clearError, key: player.player_id, state: player, fetch: this.actions.fetchById });
+	
+	                if (selectedPlaylist.list.length > 0) {
+	                    playlists = selectedPlaylist.list.map(function (song, index) {
+	                        return _react2.default.createElement(
+	                            'li',
+	                            { className: _songItem2.default.root, onClick: function onClick() {
+	                                    _this2._onSongClick(song.id, selectedPlaylist, playlist.currentIndex);
+	                                } },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: _songItem2.default.link },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: _songItem2.default.content },
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        null,
+	                                        song.name
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        null,
+	                                        song.artist
+	                                    )
+	                                )
+	                            )
+	                        );
+	                    });
+	                } else {
+	                    playlists = _react2.default.createElement(
+	                        'p',
+	                        { className: _playlist2.default.empty },
+	                        'Ch\u01B0a c\xF3 b\xE0i h\xE1t n\xE0o!'
+	                    );
+	                }
+	            }
+	
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _playlist2.default.root },
+	                    directoryTitle,
+	                    playlists
+	                ),
+	                playerDom
+	            );
+	        }
+	    }]);
+	
+	    return PlaylistExplorer;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)([_playlist2.default, _songItem2.default])(PlaylistExplorer);
+
+/***/ },
+
+/***/ 446:
+/*!******************************************!*\
+  !*** ./src/components/css/playlist.scss ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./playlist.scss */ 447);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./playlist.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./playlist.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 447:
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/playlist.scss ***!
+  \*****************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".playlist_root_OT1 {\n  padding: 0 0 20px 0; }\n\n.playlist_heading_3MU {\n  margin-bottom: 20px;\n  font-size: 30px; }\n\n.playlist_empty_2ri {\n  margin: 0 20px; }\n\n.playlist_item_38V {\n  color: #fff;\n  padding: 10px;\n  font-size: 23px;\n  font-weight: 400;\n  display: inline-block;\n  width: 100%;\n  line-height: 16px;\n  background: #4267b2;\n  border-top: 1px solid #5776b7;\n  border-bottom: 1px solid #264d9a;\n  text-decoration: none; }\n\n.playlist_item_38V em {\n    color: #9E9E9E;\n    font-size: 16px;\n    display: block;\n    margin-top: 10px; }\n\n.playlist_directoryTitle_2yN {\n  margin: 0 0 10px 0;\n  font-size: 26px;\n  color: #4267b2; }\n\n.playlist_directoryTitle_2yN span:last-child {\n    margin-left: 20px;\n    line-height: 1;\n    padding: 12px 0;\n    vertical-align: middle;\n    font-size: 26px;\n    display: inline-block; }\n\n.playlist_directoryTitle_2yN .playlist_icon_b98 {\n    display: inline-block;\n    vertical-align: middle;\n    background: #4267b2;\n    color: #fff;\n    padding: 10px; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "playlist_root_OT1",
+		"root": "playlist_root_OT1",
+		"heading": "playlist_heading_3MU",
+		"heading": "playlist_heading_3MU",
+		"empty": "playlist_empty_2ri",
+		"empty": "playlist_empty_2ri",
+		"item": "playlist_item_38V",
+		"item": "playlist_item_38V",
+		"directoryTitle": "playlist_directoryTitle_2yN",
+		"directoryTitle": "playlist_directoryTitle_2yN",
+		"icon": "playlist_icon_b98",
+		"icon": "playlist_icon_b98"
+	};
+
+/***/ },
+
+/***/ 448:
+/*!*******************************************!*\
+  !*** ./src/components/css/song-item.scss ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./song-item.scss */ 449);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./song-item.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./song-item.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 449:
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/song-item.scss ***!
+  \******************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".song-item_root_2nr {\n  display: inline-block;\n  width: 100%;\n  padding: 5px 0;\n  border-top: 1px solid #eef0f5; }\n\n.song-item_link_359 {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-decoration: none; }\n\n.song-item_link_359 img {\n    border-radius: 50%;\n    width: 60px;\n    height: 60px; }\n\n.song-item_content_K8p {\n  margin-left: 10px;\n  color: #333;\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center; }\n\n.song-item_content_K8p span:first-child {\n    color: #333;\n    display: block;\n    text-decoration: none;\n    width: 100%;\n    font-size: 22px; }\n\n.song-item_content_K8p span:last-child {\n    color: #666;\n    text-decoration: none;\n    font-size: 18px; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "song-item_root_2nr",
+		"root": "song-item_root_2nr",
+		"link": "song-item_link_359",
+		"link": "song-item_link_359",
+		"content": "song-item_content_K8p",
+		"content": "song-item_content_K8p"
+	};
+
+/***/ },
+
+/***/ 450:
+/*!**********************************!*\
+  !*** ./src/components/Player.js ***!
+  \**********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9385,56 +7910,530 @@ webpackJsonp([0],{
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _user = __webpack_require__(/*! ./../actions/user */ 412);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _store = __webpack_require__(/*! ./../store */ 558);
+	var _react = __webpack_require__(/*! react */ 4);
 	
-	var _store2 = _interopRequireDefault(_store);
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _moment = __webpack_require__(/*! moment */ 451);
+	
+	var _moment2 = _interopRequireDefault(_moment);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
+	
+	var _player = __webpack_require__(/*! ./css/player.scss */ 568);
+	
+	var _player2 = _interopRequireDefault(_player);
+	
+	var _colors = __webpack_require__(/*! ./../helpers/colors */ 570);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 35);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var intinalState = {
-	    albums: [{
-	        name: 'Ảnh mới',
-	        list: {}
-	    }]
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	};
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
-	    var action = arguments[1];
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	    switch (action.type) {
-	        case 'USERDATA_PARSED':
-	            return _extends({}, state, action.userData.photo);
-	            break;
+	var Player = function (_React$Component) {
+	    _inherits(Player, _React$Component);
 	
-	        case 'GET_THUMB_SUCCESS':
-	            {
-	                var _newState = _extends({}, state);
-	                _newState.albums[0].list[action.key] = action.photo;
-	                return _newState;
-	                break;
+	    function Player(props) {
+	        _classCallCheck(this, Player);
+	
+	        var _this2 = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this, props));
+	
+	        _this2.state = _extends({}, props.state, {
+	            duration: 0,
+	            player: {
+	                disabled: true,
+	                play: false,
+	                currentTime: 0
 	            }
-	        case 'UPLOAD_SUCCESS':
-	            var newState = _extends({}, state);
-	
-	            newState.albums[0].list[action.response.id] = action.response;
-	            (0, _user.appenUserData)(_store2.default.getState().user.uid, _extends({}, action.response, {
-	                thumbnail: null
-	            }), 'photo/albums/0/list');
-	            return _extends({}, newState);
-	            break;
-	
-	        default:
-	            return state;
+	        });
+	        _this2.timeout = null;
+	        _this2.slide = false;
+	        return _this2;
 	    }
+	
+	    _createClass(Player, [{
+	        key: 'fetch',
+	        value: function fetch(id) {
+	            this.props.fetch(id);
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            this.setTitle();
+	        }
+	    }, {
+	        key: 'getError',
+	        value: function getError() {
+	            var _this = this;
+	            var errorDiv = void 0;
+	            if (typeof this.props.state.response.is_error !== 'undefined') {
+	                errorDiv = _react2.default.createElement(
+	                    'div',
+	                    { className: _player2.default.error },
+	                    'C\xF3 l\u1ED7i s\u1EA3y ra, vui l\xF2ng th\u1EED l\u1EA1i b\xE0i kh\xE1c'
+	                );
+	                setTimeout(function () {
+	                    _this.next();
+	                }, 4000);
+	            }
+	            return errorDiv;
+	        }
+	    }, {
+	        key: 'setTitle',
+	        value: function setTitle() {
+	            var state = this.state;
+	            if (typeof state.title !== 'undefined') {
+	                document.title = state.title;
+	            }
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            if (this.state.player_id !== null && !this.state.fetched) {
+	                this.fetch(this.state.player_id);
+	            }
+	            this.player = document.getElementById('player');
+	            this.load();
+	            this.play();
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            var newState = _extends({}, this.state, nextProps.state);
+	
+	            if (newState.fetched) {
+	                if (!this.state.player.play) {
+	                    newState.player.play = true;
+	                    this.load();
+	                    this.play();
+	                }
+	                newState.player.disabled = false;
+	            }
+	
+	            this.setState(newState);
+	        }
+	    }, {
+	        key: '_onPlayToggleClick',
+	        value: function _onPlayToggleClick(e) {
+	            var state = this.state;
+	            state.player.play = !state.player.play;
+	            state.player.play ? this.play() : this.stop();
+	            this.setState(state);
+	        }
+	    }, {
+	        key: '_onPlayerToggle',
+	        value: function _onPlayerToggle(e) {
+	            var state = this.state;
+	            state.player.play = !state.player.play;
+	            this.setState(state);
+	        }
+	    }, {
+	        key: 'updateDuration',
+	        value: function updateDuration(e) {
+	            if (!this.slide) {
+	                var state = this.state;
+	                state.player.currentTime = this.player.currentTime;
+	                this.setState(state);
+	            }
+	        }
+	    }, {
+	        key: 'sliderChange',
+	        value: function sliderChange(e) {
+	            this.slide = true;
+	            this.setState({
+	                player: _extends({}, this.state.player, {
+	                    currentTime: e.target.value
+	                })
+	            });
+	
+	            var _this = this;
+	            clearTimeout(this.timeout);
+	            this.timeout = setTimeout(function () {
+	                _this.slide = false;
+	                _this.play();
+	            }, 300);
+	        }
+	    }, {
+	        key: 'stop',
+	        value: function stop() {
+	            this.player.pause();
+	        }
+	    }, {
+	        key: 'play',
+	        value: function play() {
+	            this.player.currentTime = this.state.player.currentTime;
+	            this.player.play();
+	        }
+	    }, {
+	        key: 'load',
+	        value: function load() {
+	            this.player.pause();
+	            this.player.load();
+	        }
+	    }, {
+	        key: 'next',
+	        value: function next() {
+	            var nextSongId = this.getNextSongId();
+	            var rolloutId = this.state.rolloutId;
+	            if (nextSongId) {
+	                this.fetch(nextSongId);
+	            }
+	        }
+	    }, {
+	        key: 'getNextSongId',
+	        value: function getNextSongId() {
+	            var rolloutPlaylist = this.state.rolloutPlaylist;
+	            var player_id = this.state.player_id;
+	            if (rolloutPlaylist) {
+	                var nextId = false;
+	                rolloutPlaylist.list.map(function (song, index) {
+	                    if (song.id === player_id) {
+	                        if (rolloutPlaylist.list.length - 1 <= index) {
+	                            nextId = rolloutPlaylist.list[0].id;
+	                        } else {
+	                            nextId = rolloutPlaylist.list[index + 1].id;
+	                        }
+	                    }
+	                });
+	                return nextId;
+	            }
+	            return false;
+	        }
+	    }, {
+	        key: 'toTime',
+	        value: function toTime(s) {
+	            return (0, _moment2.default)("1993-09-18").startOf('day').seconds(s).format('H:mm:ss');
+	        }
+	    }, {
+	        key: 'getBestSource',
+	        value: function getBestSource(source) {
+	            // if(typeof source['lossless'] !== 'undefined') return source['lossless'];
+	            if (typeof source['320'] !== 'undefined') return source['320'];
+	            if (typeof source['128'] !== 'undefined') return source['128'];
+	            return '';
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var imageCdnUrl = 'http://image.mp3.zdn.vn/thumb/165_165/';
+	            var source = typeof this.state.source !== 'undefined' ? this.state.source : {
+	                'lossless': ''
+	            };
+	            var image = this.state.album_cover !== '' ? imageCdnUrl + this.state.album_cover : imageCdnUrl + this.state.thumbnail;
+	            var player = this.state.player;
+	            var errorDiv = this.getError();
+	            var disabledCover = player.disabled ? _react2.default.createElement('div', { className: _player2.default.cover }) : '';
+	
+	            return _react2.default.createElement(
+	                'div',
+	                { className: _player2.default.root, style: { backgroundImage: "url(" + image + ")", filter: player.disabled ? 'grayscale(100%)' : 'none' } },
+	                _react2.default.createElement('audio', { src: this.getBestSource(source), autoPlay: 'true', id: 'player',
+	                    onLoadedData: this.play.bind(this),
+	                    onEnded: this.next.bind(this),
+	                    onTimeUpdate: this.updateDuration.bind(this) }),
+	                errorDiv,
+	                disabledCover,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _player2.default.control },
+	                    _react2.default.createElement(
+	                        'button',
+	                        { className: _player2.default.playBtn, onClick: this._onPlayToggleClick.bind(this) },
+	                        _react2.default.createElement('span', { className: player.play ? 'ion-ios-pause' : 'ion-ios-play' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: _player2.default.durationWrap },
+	                        _react2.default.createElement('input', { type: 'range', min: '0', max: this.state.duration, onChange: this.sliderChange.bind(this), value: player.currentTime }),
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: _player2.default.duration },
+	                            this.toTime(player.currentTime)
+	                        ),
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: _player2.default.totalDuration },
+	                            this.toTime(this.state.duration)
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Player;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)(_player2.default)(Player);
+
+/***/ },
+
+/***/ 568:
+/*!****************************************!*\
+  !*** ./src/components/css/player.scss ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./player.scss */ 569);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./player.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./player.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 569:
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/player.scss ***!
+  \***************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".player_root_qfm {\n  background-repeat: no-repeat !important;\n  background-position: 100% 5% !important;\n  background-size: 53% !important;\n  position: fixed;\n  bottom: 40px;\n  left: 0;\n  width: 100%;\n  background: #4267b2;\n  padding: 10px 10px 5px 0;\n  box-shadow: 0 0 1px #4267b2 inset;\n  /* Special styling for WebKit/Blink */\n  /* All the same stuff for Firefox */\n  /* All the same stuff for IE */ }\n  .player_root_qfm [class^=ion] {\n    font-size: 30px;\n    line-height: 30px; }\n  .player_root_qfm video {\n    width: 100%;\n    height: 48px; }\n  .player_root_qfm input[type=range] {\n    -webkit-appearance: none;\n    /* Hides the slider so that custom slider can be made */\n    width: 100%;\n    /* Specific width is required for Firefox. */\n    background: transparent;\n    /* Otherwise white in Chrome */\n    float: left;\n    margin-top: 10px;\n    margin-bottom: 10px; }\n  .player_root_qfm input[type=range]::-webkit-slider-thumb {\n    -webkit-appearance: none; }\n  .player_root_qfm input[type=range]:focus {\n    outline: none;\n    /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ }\n  .player_root_qfm input[type=range]::-ms-track {\n    width: 100%;\n    cursor: pointer;\n    /* Hides the slider so custom styles can be added */\n    background: transparent;\n    border-color: transparent;\n    color: transparent; }\n  .player_root_qfm input[type=range]::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer;\n    margin-top: -6px; }\n  .player_root_qfm input[type=range]::-moz-range-thumb {\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer; }\n  .player_root_qfm input[type=range]::-ms-thumb {\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer; }\n  .player_root_qfm input[type=range]::-webkit-slider-runnable-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: #fff; }\n  .player_root_qfm input[type=range]:focus::-webkit-slider-runnable-track {\n    background: #fff; }\n  .player_root_qfm input[type=range]::-moz-range-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: #fff; }\n  .player_root_qfm input[type=range]::-ms-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: transparent;\n    border-color: transparent;\n    color: transparent; }\n  .player_root_qfm input[type=range]::-ms-fill-lower {\n    background: #fff; }\n  .player_root_qfm input[type=range]:focus::-ms-fill-lower {\n    background: #fff; }\n  .player_root_qfm input[type=range]::-ms-fill-upper {\n    background: #fff; }\n  .player_root_qfm input[type=range]:focus::-ms-fill-upper {\n    background: #fff; }\n  .player_error_x9V {\n  position: fixed;\n  top: -100%;\n  width: 100%;\n  left: 0;\n  background: #4267b2;\n  font-size: 20px;\n  text-align: center;\n  padding: 10px 0;\n  color: #ffffff;\n  -webkit-animation: player_faceOut_3wv 2.5s;\n          animation: player_faceOut_3wv 2.5s; }\n  .player_control_2O1 button {\n  border: 0;\n  font-size: 0;\n  padding: 0 5px;\n  background: transparent;\n  width: 40px;\n  color: #f5f8fd; }\n  .player_durationWrap_7kb {\n  float: right;\n  width: calc(100% - 40px);\n  color: #fff;\n  font-size: 16px; }\n  .player_duration_2KW {\n  float: left; }\n  .player_totalDuration_35Z {\n  float: right; }\n  .player_cover_3OU {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  width: 100%;\n  height: 100%; }\n  @-webkit-keyframes player_faceOut_3wv {\n  0% {\n    opacity: 1;\n    top: 0; }\n  60% {\n    opacity: 1;\n    top: 0%; }\n  80% {\n    opacity: 1;\n    top: 0%; }\n  90% {\n    opacity: 0;\n    top: -50%; }\n  95% {\n    opacity: 0;\n    top: -80%; }\n  100% {\n    opacity: 0;\n    top: -100%; } }\n  /* Standard syntax */\n  @keyframes player_faceOut_3wv {\n  0% {\n    opacity: 1;\n    top: 0; }\n  60% {\n    opacity: 1;\n    top: 0%; }\n  80% {\n    opacity: 1;\n    top: 0%; }\n  90% {\n    opacity: 0;\n    top: -50%; }\n  95% {\n    opacity: 0;\n    top: -80%; }\n  100% {\n    opacity: 0;\n    top: -100%; } }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "player_root_qfm",
+		"root": "player_root_qfm",
+		"error": "player_error_x9V",
+		"error": "player_error_x9V",
+		"faceOut": "player_faceOut_3wv",
+		"faceOut": "player_faceOut_3wv",
+		"control": "player_control_2O1",
+		"control": "player_control_2O1",
+		"durationWrap": "player_durationWrap_7kb",
+		"durationWrap": "player_durationWrap_7kb",
+		"duration": "player_duration_2KW",
+		"duration": "player_duration_2KW",
+		"totalDuration": "player_totalDuration_35Z",
+		"totalDuration": "player_totalDuration_35Z",
+		"cover": "player_cover_3OU",
+		"cover": "player_cover_3OU"
 	};
 
 /***/ },
 
-/***/ 924:
+/***/ 570:
+/*!*******************************!*\
+  !*** ./src/helpers/colors.js ***!
+  \*******************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var materialColors = [["rgb(244, 67, 54)", "rgb(255, 235, 238)", "rgb(255, 205, 210)", "rgb(239, 154, 154)", "rgb(229, 115, 115)", "rgb(239, 83, 80)", "rgb(244, 67, 54)", "rgb(229, 57, 53)", "rgb(211, 47, 47)", "rgb(198, 40, 40)", "rgb(183, 28, 28)", "rgb(255, 138, 128)", "rgb(255, 82, 82)", "rgb(255, 23, 68)", "rgb(213, 0, 0)"], ["rgb(233, 30, 99)", "rgb(252, 228, 236)", "rgb(248, 187, 208)", "rgb(244, 143, 177)", "rgb(240, 98, 146)", "rgb(236, 64, 122)", "rgb(233, 30, 99)", "rgb(216, 27, 96)", "rgb(194, 24, 91)", "rgb(173, 20, 87)", "rgb(136, 14, 79)", "rgb(255, 128, 171)", "rgb(255, 64, 129)", "rgb(245, 0, 87)", "rgb(197, 17, 98)"], ["rgb(156, 39, 176)", "rgb(243, 229, 245)", "rgb(225, 190, 231)", "rgb(206, 147, 216)", "rgb(186, 104, 200)", "rgb(171, 71, 188)", "rgb(156, 39, 176)", "rgb(142, 36, 170)", "rgb(123, 31, 162)", "rgb(106, 27, 154)", "rgb(74, 20, 140)", "rgb(234, 128, 252)", "rgb(224, 64, 251)", "rgb(213, 0, 249)", "rgb(170, 0, 255)"], ["rgb(103, 58, 183)", "rgb(237, 231, 246)", "rgb(209, 196, 233)", "rgb(179, 157, 219)", "rgb(149, 117, 205)", "rgb(126, 87, 194)", "rgb(103, 58, 183)", "rgb(94, 53, 177)", "rgb(81, 45, 168)", "rgb(69, 39, 160)", "rgb(49, 27, 146)", "rgb(179, 136, 255)", "rgb(124, 77, 255)", "rgb(101, 31, 255)", "rgb(98, 0, 234)"], ["rgb(63, 81, 181)", "rgb(232, 234, 246)", "rgb(197, 202, 233)", "rgb(159, 168, 218)", "rgb(121, 134, 203)", "rgb(92, 107, 192)", "rgb(63, 81, 181)", "rgb(57, 73, 171)", "rgb(48, 63, 159)", "rgb(40, 53, 147)", "rgb(26, 35, 126)", "rgb(140, 158, 255)", "rgb(83, 109, 254)", "rgb(61, 90, 254)", "rgb(48, 79, 254)"], ["rgb(33, 150, 243)", "rgb(227, 242, 253)", "rgb(187, 222, 251)", "rgb(144, 202, 249)", "rgb(100, 181, 246)", "rgb(66, 165, 245)", "rgb(33, 150, 243)", "rgb(30, 136, 229)", "rgb(25, 118, 210)", "rgb(21, 101, 192)", "rgb(13, 71, 161)", "rgb(130, 177, 255)", "rgb(68, 138, 255)", "rgb(41, 121, 255)", "rgb(41, 98, 255)"], ["rgb(3, 169, 244)", "rgb(225, 245, 254)", "rgb(179, 229, 252)", "rgb(129, 212, 250)", "rgb(79, 195, 247)", "rgb(41, 182, 246)", "rgb(3, 169, 244)", "rgb(3, 155, 229)", "rgb(2, 136, 209)", "rgb(2, 119, 189)", "rgb(1, 87, 155)", "rgb(128, 216, 255)", "rgb(64, 196, 255)", "rgb(0, 176, 255)", "rgb(0, 145, 234)"], ["rgb(0, 188, 212)", "rgb(224, 247, 250)", "rgb(178, 235, 242)", "rgb(128, 222, 234)", "rgb(77, 208, 225)", "rgb(38, 198, 218)", "rgb(0, 188, 212)", "rgb(0, 172, 193)", "rgb(0, 151, 167)", "rgb(0, 131, 143)", "rgb(0, 96, 100)", "rgb(132, 255, 255)", "rgb(24, 255, 255)", "rgb(0, 229, 255)", "rgb(0, 184, 212)"], ["rgb(0, 150, 136)", "rgb(224, 242, 241)", "rgb(178, 223, 219)", "rgb(128, 203, 196)", "rgb(77, 182, 172)", "rgb(38, 166, 154)", "rgb(0, 150, 136)", "rgb(0, 137, 123)", "rgb(0, 121, 107)", "rgb(0, 105, 92)", "rgb(0, 77, 64)", "rgb(167, 255, 235)", "rgb(100, 255, 218)", "rgb(29, 233, 182)", "rgb(0, 191, 165)"], ["rgb(76, 175, 80)", "rgb(232, 245, 233)", "rgb(200, 230, 201)", "rgb(165, 214, 167)", "rgb(129, 199, 132)", "rgb(102, 187, 106)", "rgb(76, 175, 80)", "rgb(67, 160, 71)", "rgb(56, 142, 60)", "rgb(46, 125, 50)", "rgb(27, 94, 32)", "rgb(185, 246, 202)", "rgb(105, 240, 174)", "rgb(0, 230, 118)", "rgb(0, 200, 83)"], ["rgb(139, 195, 74)", "rgb(241, 248, 233)", "rgb(220, 237, 200)", "rgb(197, 225, 165)", "rgb(174, 213, 129)", "rgb(156, 204, 101)", "rgb(139, 195, 74)", "rgb(124, 179, 66)", "rgb(104, 159, 56)", "rgb(85, 139, 47)", "rgb(51, 105, 30)", "rgb(204, 255, 144)", "rgb(178, 255, 89)", "rgb(118, 255, 3)", "rgb(100, 221, 23)"], ["rgb(205, 220, 57)", "rgb(249, 251, 231)", "rgb(240, 244, 195)", "rgb(230, 238, 156)", "rgb(220, 231, 117)", "rgb(212, 225, 87)", "rgb(205, 220, 57)", "rgb(192, 202, 51)", "rgb(175, 180, 43)", "rgb(158, 157, 36)", "rgb(130, 119, 23)", "rgb(244, 255, 129)", "rgb(238, 255, 65)", "rgb(198, 255, 0)", "rgb(174, 234, 0)"], ["rgb(255, 235, 59)", "rgb(255, 253, 231)", "rgb(255, 249, 196)", "rgb(255, 245, 157)", "rgb(255, 241, 118)", "rgb(255, 238, 88)", "rgb(255, 235, 59)", "rgb(253, 216, 53)", "rgb(251, 192, 45)", "rgb(249, 168, 37)", "rgb(245, 127, 23)", "rgb(255, 255, 141)", "rgb(255, 255, 0)", "rgb(255, 234, 0)", "rgb(255, 214, 0)"], ["rgb(255, 193, 7)", "rgb(255, 248, 225)", "rgb(255, 236, 179)", "rgb(255, 224, 130)", "rgb(255, 213, 79)", "rgb(255, 202, 40)", "rgb(255, 193, 7)", "rgb(255, 179, 0)", "rgb(255, 160, 0)", "rgb(255, 143, 0)", "rgb(255, 111, 0)", "rgb(255, 229, 127)", "rgb(255, 215, 64)", "rgb(255, 196, 0)", "rgb(255, 171, 0)"], ["rgb(255, 152, 0)", "rgb(255, 243, 224)", "rgb(255, 224, 178)", "rgb(255, 204, 128)", "rgb(255, 183, 77)", "rgb(255, 167, 38)", "rgb(255, 152, 0)", "rgb(251, 140, 0)", "rgb(245, 124, 0)", "rgb(239, 108, 0)", "rgb(230, 81, 0)", "rgb(255, 209, 128)", "rgb(255, 171, 64)", "rgb(255, 145, 0)", "rgb(255, 109, 0)"], ["rgb(255, 87, 34)", "rgb(251, 233, 231)", "rgb(255, 204, 188)", "rgb(255, 171, 145)", "rgb(255, 138, 101)", "rgb(255, 112, 67)", "rgb(255, 87, 34)", "rgb(244, 81, 30)", "rgb(230, 74, 25)", "rgb(216, 67, 21)", "rgb(191, 54, 12)", "rgb(255, 158, 128)", "rgb(255, 110, 64)", "rgb(255, 61, 0)", "rgb(221, 44, 0)"], ["rgb(121, 85, 72)", "rgb(239, 235, 233)", "rgb(215, 204, 200)", "rgb(188, 170, 164)", "rgb(161, 136, 127)", "rgb(141, 110, 99)", "rgb(121, 85, 72)", "rgb(109, 76, 65)", "rgb(93, 64, 55)", "rgb(78, 52, 46)", "rgb(62, 39, 35)"], ["rgb(158, 158, 158)", "rgb(250, 250, 250)", "rgb(245, 245, 245)", "rgb(238, 238, 238)", "rgb(224, 224, 224)", "rgb(189, 189, 189)", "rgb(158, 158, 158)", "rgb(117, 117, 117)", "rgb(97, 97, 97)", "rgb(66, 66, 66)", "rgb(33, 33, 33)"], ["rgb(96, 125, 139)", "rgb(236, 239, 241)", "rgb(207, 216, 220)", "rgb(176, 190, 197)", "rgb(144, 164, 174)", "rgb(120, 144, 156)", "rgb(96, 125, 139)", "rgb(84, 110, 122)", "rgb(69, 90, 100)", "rgb(55, 71, 79)", "rgb(38, 50, 56)"]];
+	
+	var coloring = exports.coloring = function coloring(index1) {
+	  var total1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+	  var index2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+	  var total2 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+	
+	  return '';
+	  if (!total1) {
+	    total1 = materialColors.length;
+	  }
+	  var color1 = Math.floor(index1 * materialColors.length / total1);
+	  if (!index2) {
+	    return materialColors[color1][0];
+	  } else {
+	    return materialColors[color1][Math.floor(index2 * materialColors.length / total2)];
+	  }
+	};
+
+/***/ },
+
+/***/ 571:
+/*!******************************************!*\
+  !*** ./src/containers/ContainerPhoto.js ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 244);
+	
+	var _redux = __webpack_require__(/*! redux */ 251);
+	
+	var _PhotoExplorer = __webpack_require__(/*! ../components/PhotoExplorer */ 572);
+	
+	var _PhotoExplorer2 = _interopRequireDefault(_PhotoExplorer);
+	
+	var _photo = __webpack_require__(/*! ../actions/photo */ 578);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        photo: state.photo
+	    };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        actions: (0, _redux.bindActionCreators)({
+	            upload: _photo.upload,
+	            getThumbnail: _photo.getThumbnail
+	        }, dispatch)
+	    };
+	};
+	
+	var ContainerPhoto = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PhotoExplorer2.default);
+	
+	exports.default = ContainerPhoto;
+
+/***/ },
+
+/***/ 572:
+/*!*****************************************!*\
+  !*** ./src/components/PhotoExplorer.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 35);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
+	
+	var _PhotoItem = __webpack_require__(/*! ./PhotoItem */ 573);
+	
+	var _PhotoItem2 = _interopRequireDefault(_PhotoItem);
+	
+	var _photoexplorer = __webpack_require__(/*! ./css/photoexplorer.scss */ 576);
+	
+	var _photoexplorer2 = _interopRequireDefault(_photoexplorer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PhotoExplorer = function (_React$Component) {
+	    _inherits(PhotoExplorer, _React$Component);
+	
+	    function PhotoExplorer(props) {
+	        _classCallCheck(this, PhotoExplorer);
+	
+	        return _possibleConstructorReturn(this, (PhotoExplorer.__proto__ || Object.getPrototypeOf(PhotoExplorer)).call(this, props));
+	    }
+	
+	    _createClass(PhotoExplorer, [{
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {}
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {}
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {}
+	    }, {
+	        key: 'submit',
+	        value: function submit(e) {
+	            e.preventDefault();
+	        }
+	    }, {
+	        key: 'cameraChange',
+	        value: function cameraChange(e) {
+	            var file = e.target.files[0];
+	            this.props.actions.upload(file);
+	            e.target.value = '';
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var photo = this.props.photo;
+	            var photoHtml = Object.keys(photo.albums[0].list).map(function (key) {
+	                return _react2.default.createElement(_PhotoItem2.default, { getThumbnail: _this2.props.actions.getThumbnail, _key: key, key: key, photo: photo.albums[0].list[key] });
+	            });
+	            return _react2.default.createElement(
+	                'div',
+	                { className: _photoexplorer2.default.root },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _photoexplorer2.default.photoList },
+	                    photoHtml
+	                ),
+	                _react2.default.createElement(
+	                    'label',
+	                    { 'for': 'capture', className: _photoexplorer2.default.captureBtn },
+	                    _react2.default.createElement('input', { type: 'file', accept: 'image/*', id: 'capture', capture: 'camera', onChange: this.cameraChange.bind(this) }),
+	                    _react2.default.createElement('i', { className: 'ion-ios-camera' })
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return PhotoExplorer;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)(_photoexplorer2.default)(PhotoExplorer);
+
+/***/ },
+
+/***/ 573:
 /*!*************************************!*\
   !*** ./src/components/PhotoItem.js ***!
   \*************************************/
@@ -9458,7 +8457,7 @@ webpackJsonp([0],{
 	
 	var _withStyles2 = _interopRequireDefault(_withStyles);
 	
-	var _photoItem = __webpack_require__(/*! ./css/photo-item.scss */ 925);
+	var _photoItem = __webpack_require__(/*! ./css/photo-item.scss */ 574);
 	
 	var _photoItem2 = _interopRequireDefault(_photoItem);
 	
@@ -9537,14 +8536,14 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 925:
+/***/ 574:
 /*!********************************************!*\
   !*** ./src/components/css/photo-item.scss ***!
   \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./photo-item.scss */ 926);
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./photo-item.scss */ 575);
 	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
 	
 	    if (typeof content === 'string') {
@@ -9576,7 +8575,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 926:
+/***/ 575:
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/photo-item.scss ***!
   \*******************************************************************************************************************************************************************/
@@ -9598,6 +8597,1038 @@ webpackJsonp([0],{
 		"placeHolderShimmer": "photo-item_placeHolderShimmer_22q",
 		"placeHolderShimmer": "photo-item_placeHolderShimmer_22q"
 	};
+
+/***/ },
+
+/***/ 576:
+/*!***********************************************!*\
+  !*** ./src/components/css/photoexplorer.scss ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./photoexplorer.scss */ 577);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photoexplorer.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photoexplorer.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 577:
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/photoexplorer.scss ***!
+  \**********************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".photoexplorer_root_3PP {\n  padding: 20px 0;\n  background: #fff;\n  position: fixed;\n  top: 0;\n  bottom: 100px;\n  width: 100%;\n  overflow: auto; }\n\n.photoexplorer_photoList_1Id {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap; }\n\n.photoexplorer_captureBtn_3ep {\n  width: 100%;\n  display: inline-block;\n  text-align: center;\n  position: fixed;\n  bottom: 40px;\n  background: #ffffff; }\n\n.photoexplorer_captureBtn_3ep input {\n    display: none; }\n\n.photoexplorer_captureBtn_3ep i {\n    font-size: 56px;\n    width: 60px;\n    height: 60px;\n    display: inline-block;\n    line-height: 60px;\n    text-align: center;\n    color: #E91E63; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "photoexplorer_root_3PP",
+		"root": "photoexplorer_root_3PP",
+		"photoList": "photoexplorer_photoList_1Id",
+		"photoList": "photoexplorer_photoList_1Id",
+		"captureBtn": "photoexplorer_captureBtn_3ep",
+		"captureBtn": "photoexplorer_captureBtn_3ep"
+	};
+
+/***/ },
+
+/***/ 578:
+/*!******************************!*\
+  !*** ./src/actions/photo.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getThumbnail = exports.upload = undefined;
+	
+	var _FirebaseInstance = __webpack_require__(/*! ./../store/FirebaseInstance */ 413);
+	
+	var _FirebaseInstance2 = _interopRequireDefault(_FirebaseInstance);
+	
+	var _dropbox = __webpack_require__(/*! ./../store/dropbox */ 421);
+	
+	var _dropbox2 = _interopRequireDefault(_dropbox);
+	
+	var _store = __webpack_require__(/*! ./../store */ 579);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var upload = exports.upload = function upload(file) {
+	    var user = _store2.default.getState().user;
+	    if (user.uid && user.dxToken !== '') {
+	        return function (dispatch) {
+	            _dropbox2.default.accessToken = user.dxToken;
+	            _dropbox2.default.filesUpload({ path: '/' + file.name, contents: file }).then(function (response) {
+	                _dropbox2.default.filesGetThumbnail({
+	                    path: response.path_lower,
+	                    format: 'png',
+	                    size: 'w128h128'
+	                }).then(function (thumbResponse) {
+	                    response.thumbnail = thumbResponse;
+	                    dispatch({
+	                        type: 'UPLOAD_SUCCESS',
+	                        response: response
+	                    });
+	                });
+	            }).catch(function (error) {
+	                dispatch({
+	                    type: 'UPLOAD_ERROR',
+	                    error: error
+	                });
+	            });
+	        };
+	    } else {
+	        return {
+	            type: 'UPLOAD_REQUIRE_LOGIN'
+	        };
+	    }
+	};
+	
+	var getThumbnail = exports.getThumbnail = function getThumbnail(photo, key) {
+	    var user = _store2.default.getState().user;
+	    if (user.uid && user.dxToken !== '') {
+	        return function (dispatch) {
+	            _dropbox2.default.accessToken = user.dxToken;
+	            _dropbox2.default.filesGetThumbnail({
+	                path: photo.path_lower,
+	                format: 'png',
+	                size: 'w128h128'
+	            }).then(function (response) {
+	                photo.thumbnail = response;
+	                dispatch({
+	                    type: 'GET_THUMB_SUCCESS',
+	                    photo: photo,
+	                    key: key
+	                });
+	            });
+	        };
+	    }
+	};
+
+/***/ },
+
+/***/ 579:
+/*!****************************!*\
+  !*** ./src/store/index.js ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _redux = __webpack_require__(/*! redux */ 251);
+	
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 580);
+	
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+	
+	var _reduxLogger = __webpack_require__(/*! redux-logger */ 581);
+	
+	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
+	
+	var _reducers = __webpack_require__(/*! ./..//reducers */ 587);
+	
+	var _reducers2 = _interopRequireDefault(_reducers);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	var promiseMiddleware = function promiseMiddleware() {
+	    return function (next) {
+	        return function (action) {
+	            if (typeof action !== 'undefined') {
+	                var promise = action.promise,
+	                    type = action.type,
+	                    rest = _objectWithoutProperties(action, ['promise', 'type']);
+	
+	                if (!promise) return next(action);
+	
+	                var SUCCESS = type;
+	                var REQUEST = type + '_REQUEST';
+	                var FAILURE = type + '_FAILURE';
+	                next(_extends({}, rest, { type: REQUEST }));
+	
+	                return promise.then(function (res) {
+	                    next(_extends({}, rest, { res: res, type: SUCCESS }));
+	                    return true;
+	                }).catch(function (error) {
+	                    next(_extends({}, rest, { error: error, type: FAILURE }));
+	                    console.log(error);
+	                    return false;
+	                });
+	            }
+	            return false;
+	        };
+	    };
+	};
+	
+	var preloadedState = {};
+	
+	var middleWare = [_reduxThunk2.default, promiseMiddleware, (0, _reduxLogger2.default)()];
+	
+	var store = (0, _redux.createStore)(_reducers2.default, preloadedState, _redux.applyMiddleware.apply(undefined, middleWare));
+	exports.default = store;
+
+/***/ },
+
+/***/ 587:
+/*!*******************************!*\
+  !*** ./src/reducers/index.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+				value: true
+	});
+	
+	var _redux = __webpack_require__(/*! redux */ 251);
+	
+	var _search = __webpack_require__(/*! ./search */ 588);
+	
+	var _search2 = _interopRequireDefault(_search);
+	
+	var _playlist = __webpack_require__(/*! ./playlist */ 589);
+	
+	var _playlist2 = _interopRequireDefault(_playlist);
+	
+	var _player = __webpack_require__(/*! ./player */ 590);
+	
+	var _player2 = _interopRequireDefault(_player);
+	
+	var _user = __webpack_require__(/*! ./user */ 591);
+	
+	var _user2 = _interopRequireDefault(_user);
+	
+	var _photo = __webpack_require__(/*! ./photo */ 592);
+	
+	var _photo2 = _interopRequireDefault(_photo);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var reducer = (0, _redux.combineReducers)({
+				search: _search2.default,
+				player: _player2.default,
+				playlist: _playlist2.default,
+				user: _user2.default,
+				photo: _photo2.default
+	});
+	
+	exports.default = reducer;
+
+/***/ },
+
+/***/ 588:
+/*!********************************!*\
+  !*** ./src/reducers/search.js ***!
+  \********************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var intinalState = {
+	    suggess: {
+	        show: false,
+	        message: 'Gõ để tìm kiếm',
+	        result: false,
+	        data: [{
+	            "artist": []
+	        }, {
+	            "album": []
+	        }, {
+	            "video": []
+	        }, {
+	            "song": []
+	        }]
+	    },
+	    showAddPopup: false,
+	    keyword: '',
+	    showSongOption: false,
+	    optionObjectId: -1
+	};
+	
+	var getMessage = function getMessage(search) {
+	    var artists = search.suggess.data[0].artist;
+	    var albums = search.suggess.data[1].album;
+	    var videos = search.suggess.data[2].video;
+	    var songs = search.suggess.data[3].song;
+	    if (search.keyword.length === 0) return 'Gõ để tìm kiếm bài hát';
+	    if (artists.length === 0 && albums.length === 0 && videos.length === 0 && songs.length === 0) {
+	        return 'Không có kết quả';
+	    }
+	
+	    return '';
+	};
+	
+	exports.default = function () {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case 'SHOW_POPUP_ADDTOPLAYLIST':
+	            return _extends({}, state, {
+	                callbackSongId: action.songId,
+	                showAddPopup: true
+	            });
+	            break;
+	        case 'HIDE_POPUP_ADDTOPLAYLIST':
+	            return _extends({}, state, {
+	                callbackSongId: false,
+	                showAddPopup: false
+	            });
+	            break;
+	        case 'HIDE_SONG_OPTION':
+	            return _extends({}, state, {
+	                showSongOption: false
+	            });
+	            break;
+	        case 'SHOW_SONG_OPTION':
+	            return _extends({}, state, {
+	                object: action.object,
+	                showSongOption: true
+	            });
+	            break;
+	        case 'GET_SUGGESS':
+	            return _extends({}, state, {
+	                keyword: action.keyword,
+	                suggess: _extends({}, state.suggess, {
+	                    data: action.data
+	                })
+	            });
+	            break;
+	        case 'SHOW_SUGGESS':
+	            return _extends({}, state, {
+	                suggess: _extends({}, state.suggess, {
+	                    message: getMessage(state),
+	                    show: true
+	                })
+	            });
+	            break;
+	        case 'HIDE_SUGGESS':
+	            return _extends({}, state, {
+	                suggess: _extends({}, state.suggess, {
+	                    show: false
+	                })
+	            });
+	            break;
+	        default:
+	            return state;
+	    }
+	};
+
+/***/ },
+
+/***/ 589:
+/*!**********************************!*\
+  !*** ./src/reducers/playlist.js ***!
+  \**********************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var playlistDb = {
+	    get: function get() {
+	        var playlist = localStorage.getItem('db_playlist');
+	        if (playlist) {
+	            return JSON.parse(playlist);
+	        }
+	        return [];
+	    },
+	    set: function set(data) {
+	        localStorage.setItem('db_playlist', JSON.stringify(data));
+	    }
+	};
+	
+	function savePlaylistToDb(playlist) {
+	    localStorage.setItem('playlist_db', JSON.stringify(playlist));
+	}
+	function getPlaylistFromDb(playlist) {
+	    localStorage.setItem('playlist_db', JSON.stringify(playlist));
+	}
+	var intinalState = {
+	    showAddPopup: false,
+	    callbackSongId: false,
+	    currentIndex: -1,
+	    // data: [
+	    //     {
+	    //         name: 'Yêu thích',
+	    //         list: []
+	    //     },
+	    //     {
+	    //         name: 'Nhạc trẻ',
+	    //         list: []
+	    //     }
+	    // ]
+	    data: playlistDb.get()
+	};
+	
+	var addToPlaylist = function addToPlaylist(list, songId) {
+	    var newList = list;
+	    if (Array.isArray(songId)) {
+	        songId.map(function (id, index) {
+	            if (newList.indexOf(id) === -1) {
+	                newList.push(id);
+	            }
+	        });
+	    } else {
+	        if (newList.indexOf(songId) === -1) {
+	            newList.push(songId);
+	        }
+	    }
+	    return newList;
+	};
+	
+	exports.default = function () {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case 'GET_PLAYLIST':
+	            return _extends({}, state);
+	            break;
+	        case 'CREATE_NEW_OK':
+	            var newData = state.data;
+	            newData.push(action.newPlaylist);
+	            playlistDb.set(newData);
+	            return _extends({}, state, {
+	                data: newData
+	            });
+	            break;
+	        case 'SHOW_POPUP_ADDTOPLAYLIST':
+	            return _extends({}, state, {
+	                callbackSongId: action.songId,
+	                showAddPopup: true
+	            });
+	            break;
+	        case 'HIDE_POPUP_ADDTOPLAYLIST':
+	            return _extends({}, state, {
+	                callbackSongId: false,
+	                showAddPopup: false
+	            });
+	            break;
+	        case 'ADD_SONG':
+	            var finalState = state;
+	            finalState.data[action.playlistId].list = addToPlaylist(finalState.data[action.playlistId].list, action.songObj);
+	            playlistDb.set(finalState.data);
+	            return _extends({}, finalState, {
+	                callbackSongId: false,
+	                showAddPopup: false
+	            });
+	            break;
+	        case 'SET_CURRENT':
+	            if (state.currentIndex !== action.index && (action.index === -1 || typeof state.data[action.index] !== 'undefined')) {
+	                return _extends({}, state, {
+	                    currentIndex: action.index
+	                });
+	            }
+	            return state;
+	            break;
+	        default:
+	            return state;
+	    }
+	};
+
+/***/ },
+
+/***/ 590:
+/*!********************************!*\
+  !*** ./src/reducers/player.js ***!
+  \********************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var intinalState = {
+	    player_id: null,
+	    fetched: false,
+	    response: {
+	        msgCode: 1,
+	        msg: ""
+	    }
+	};
+	
+	exports.default = function () {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case 'SET_ID':
+	            return {
+	                fetched: false,
+	                player_id: action.id,
+	                rolloutPlaylist: action.rolloutPlaylist,
+	                rolloutId: action.rolloutId,
+	                response: {
+	                    msgCode: 1,
+	                    msg: ""
+	                }
+	            };
+	            break;
+	        case 'FETCH':
+	            return _extends({}, state, {
+	                fetched: true,
+	                response: {
+	                    msgCode: 1,
+	                    msg: ""
+	                }
+	            }, action.data);
+	            break;
+	        case 'FETCH_ERROR':
+	            return _extends({}, state, {
+	                response: _extends({}, action.data)
+	            });
+	            break;
+	        case 'CLEAR_ERROR':
+	            return _extends({}, state, {
+	                response: {
+	                    msgCode: 1,
+	                    msg: ""
+	                }
+	            });
+	            break;
+	        default:
+	            return state;
+	    }
+	};
+
+/***/ },
+
+/***/ 591:
+/*!******************************!*\
+  !*** ./src/reducers/user.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _user = __webpack_require__(/*! ./../actions/user */ 412);
+	
+	var intinalState = {
+	    uid: false,
+	    fbToken: '',
+	    ggToken: '',
+	    dxToken: '',
+	    email: '',
+	    name: '',
+	    displayName: ''
+	};
+	
+	exports.default = function () {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case 'USERDATA_PARSED':
+	            // action[user]
+	            return _extends({}, state, action.userData.user);
+	        case 'USERDATA_COMMITED':
+	            return _extends({}, state);
+	            break;
+	        case 'CONNECT_DX_SUCCESS':
+	            var newState = _extends({}, state, {
+	                dxToken: action.accessToken
+	            });
+	            if (state.uid !== false) {
+	                (0, _user.commitUserData)(newState.uid, newState, 'user');
+	            }
+	            return newState;
+	            break;
+	        case 'LOGIN_SOCIAL_SUCCESS':
+	            {
+	                // save uid to local
+	                var _newState = _extends({}, state, action.user);
+	                localStorage.setItem('uid', action.user.uid);
+	                (0, _user.commitUserData)(_newState.uid, _newState, 'user');
+	                return _newState;
+	                break;
+	            }
+	        default:
+	            return state;
+	    }
+	};
+
+/***/ },
+
+/***/ 592:
+/*!*******************************!*\
+  !*** ./src/reducers/photo.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _user = __webpack_require__(/*! ./../actions/user */ 412);
+	
+	var _store = __webpack_require__(/*! ./../store */ 579);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var intinalState = {
+	    albums: [{
+	        name: 'Ảnh mới',
+	        list: {}
+	    }]
+	
+	};
+	
+	exports.default = function () {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case 'USERDATA_PARSED':
+	            return _extends({}, state, action.userData.photo);
+	            break;
+	
+	        case 'GET_THUMB_SUCCESS':
+	            {
+	                var _newState = _extends({}, state);
+	                _newState.albums[0].list[action.key] = action.photo;
+	                return _newState;
+	                break;
+	            }
+	        case 'UPLOAD_SUCCESS':
+	            var newState = _extends({}, state);
+	
+	            newState.albums[0].list[action.response.id] = action.response;
+	            (0, _user.appenUserData)(_store2.default.getState().user.uid, _extends({}, action.response, {
+	                thumbnail: null
+	            }), 'photo/albums/0/list');
+	            return _extends({}, newState);
+	            break;
+	
+	        default:
+	            return state;
+	    }
+	};
+
+/***/ },
+
+/***/ 593:
+/*!*******************************!*\
+  !*** ./src/components/Tab.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _tab = __webpack_require__(/*! ./css/tab.scss */ 594);
+	
+	var _tab2 = _interopRequireDefault(_tab);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Tab = function (_React$Component) {
+	    _inherits(Tab, _React$Component);
+	
+	    function Tab(props) {
+	        _classCallCheck(this, Tab);
+	
+	        return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).call(this, props));
+	    }
+	
+	    _createClass(Tab, [{
+	        key: 'render',
+	        value: function render() {
+	            var props = this.props;
+	            var tabs = props.tabs.map(function (tabComponent, index) {
+	                if (tabComponent !== null) {
+	                    return _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === index + 1 ? _tab2.default.tabActive : _tab2.default.tab },
+	                        tabComponent
+	                    );
+	                }
+	            });
+	            return _react2.default.createElement(
+	                'div',
+	                { className: _tab2.default.root },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _tab2.default.tabList },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === 1 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
+	                                props.setCurrentTab(1);
+	                            } },
+	                        _react2.default.createElement('span', { className: 'ion-ios-personadd' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === 2 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
+	                                props.setCurrentTab(2);
+	                            } },
+	                        _react2.default.createElement('span', { className: 'ion-images' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === 3 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
+	                                props.setCurrentTab(3);
+	                            } },
+	                        _react2.default.createElement('span', { className: 'ion-music-note' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === 4 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
+	                                props.setCurrentTab(4);
+	                            } },
+	                        _react2.default.createElement('span', { className: 'ion-ios-search-strong' })
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _tab2.default.tabContent },
+	                    tabs
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Tab;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)(_tab2.default)(Tab);
+
+/***/ },
+
+/***/ 594:
+/*!*************************************!*\
+  !*** ./src/components/css/tab.scss ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./tab.scss */ 595);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./tab.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./tab.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 595:
+/*!************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/tab.scss ***!
+  \************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".tab_root_2wR {\n  background: #4267b2;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  height: 40px; }\n\n.tab_tabList_8VU {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.tab_item_fvy {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 0%;\n          flex: 1 1 0%;\n  text-align: center;\n  color: #fff;\n  line-height: 47px;\n  font-size: 30px;\n  border-top: 1px solid #375dab;\n  box-shadow: 0 1px 0 #4c6daf inset; }\n\n.tab_itemActive_PfX {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 0%;\n          flex: 1 1 0%;\n  text-align: center;\n  color: #4267b2;\n  background: #fff;\n  line-height: 47px;\n  font-size: 30px; }\n\n.tab_tab_2LT {\n  display: none; }\n\n.tab_tabActive_oVl {\n  display: block; }\n\n.tab_tabContent_1Ng {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  bottom: 40px; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "tab_root_2wR",
+		"root": "tab_root_2wR",
+		"tabList": "tab_tabList_8VU",
+		"tabList": "tab_tabList_8VU",
+		"item": "tab_item_fvy",
+		"item": "tab_item_fvy",
+		"itemActive": "tab_itemActive_PfX",
+		"itemActive": "tab_itemActive_PfX",
+		"tab": "tab_tab_2LT",
+		"tab": "tab_tab_2LT",
+		"tabActive": "tab_tabActive_oVl",
+		"tabActive": "tab_tabActive_oVl",
+		"tabContent": "tab_tabContent_1Ng",
+		"tabContent": "tab_tabContent_1Ng"
+	};
+
+/***/ },
+
+/***/ 596:
+/*!*************************************!*\
+  !*** ./src/components/css/app.scss ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./app.scss */ 597);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./app.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./app.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 597:
+/*!************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/app.scss ***!
+  \************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".app_root_1Ax {\n  position: fixed;\n  bottom: 0;\n  top: 0;\n  left: 0;\n  right: 0;\n  background: rgba(234, 240, 251, 0.5); }\n  .app_root_1Ax * {\n    font-family: 'Yanone Kaffeesatz', sans-serif; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "app_root_1Ax",
+		"root": "app_root_1Ax"
+	};
+
+/***/ },
+
+/***/ 598:
+/*!*****************************!*\
+  !*** ./src/routes/index.js ***!
+  \*****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 35);
+	
+	var _App = __webpack_require__(/*! ./../components/App */ 271);
+	
+	var _App2 = _interopRequireDefault(_App);
+	
+	var _ContainerPlaylist = __webpack_require__(/*! ./../containers/ContainerPlaylist */ 444);
+	
+	var _ContainerPlaylist2 = _interopRequireDefault(_ContainerPlaylist);
+	
+	var _ContainerPhoto = __webpack_require__(/*! ./../containers/ContainerPhoto */ 571);
+	
+	var _ContainerPhoto2 = _interopRequireDefault(_ContainerPhoto);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var basePath = typeof _basePath !== 'undefined' ? _basePath : '/';
+	window.basePath = basePath;
+	
+	var Routes = _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: basePath, component: _App2.default },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { components: _ContainerPlaylist2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: basePath + 'all/:song_id', components: _ContainerPlaylist2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: basePath + ':playlist_id', components: _ContainerPlaylist2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: basePath + ':playlist_id/:song_id', components: _ContainerPlaylist2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: basePath + 'photos/', components: _ContainerPhoto2.default })
+	);
+	
+	exports.default = Routes;
+
+/***/ },
+
+/***/ 599:
+/*!****************************************!*\
+  !*** ./src/global/WithStylesContex.js ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var WithStylesContext = function (_React$Component) {
+	    _inherits(WithStylesContext, _React$Component);
+	
+	    function WithStylesContext() {
+	        _classCallCheck(this, WithStylesContext);
+	
+	        return _possibleConstructorReturn(this, (WithStylesContext.__proto__ || Object.getPrototypeOf(WithStylesContext)).apply(this, arguments));
+	    }
+	
+	    _createClass(WithStylesContext, [{
+	        key: 'getChildContext',
+	        value: function getChildContext() {
+	            return { insertCss: this.props.onInsertCss };
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react.Children.only(this.props.children);
+	        }
+	    }]);
+	
+	    return WithStylesContext;
+	}(_react2.default.Component);
+	
+	WithStylesContext.childContextTypes = {
+	    insertCss: _react.PropTypes.func.isRequired
+	};
+	
+	WithStylesContext.propTypes = {
+	    children: _react.PropTypes.element.isRequired,
+	    onInsertCss: _react.PropTypes.func.isRequired
+	};
+	
+	exports.default = WithStylesContext;
 
 /***/ }
 

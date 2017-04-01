@@ -1,11 +1,12 @@
 import firebase from 'firebase';
+import env from './../global/env';
 
 const config = {
-    apiKey: "AIzaSyBNiaBVWEvAg1HnN_XBlo70ATLT0ef6gJ0",
-    authDomain: "luminous-heat-3458.firebaseapp.com",
-    databaseURL: "https://luminous-heat-3458.firebaseio.com",
-    storageBucket: "luminous-heat-3458.appspot.com",
-    messagingSenderId: "635828897166"
+    apiKey: env.FIREBASE_API_KEY,
+    authDomain: env.FIREBASE_AUTH_DOMAIN,
+    databaseURL: env.FIREBASE_DATABASE_URL,
+    storageBucket: env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: env.FIREBASE_MESSAGING_SENDER_ID
 }; 
 
 firebase.initializeApp(config);

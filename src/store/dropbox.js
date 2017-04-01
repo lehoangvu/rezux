@@ -1,7 +1,6 @@
 import Dropbox from 'dropbox';
+import env from './../global/env';
 
-const CLIENT_ID = 'g048eqdv71saczl';
-
-let dx = new Dropbox({ clientId: CLIENT_ID });
+let dx = new Dropbox({ clientId: env.DROPBOX_CLIENT_ID });
 
 export default dx;

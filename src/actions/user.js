@@ -12,7 +12,8 @@ const parseParram = (parramStr) => {
 
 export const connectToDropbox = () => {
 	return dispatch => {
-		let authUrl = dx.getAuthenticationUrl(window.location.protocol + '//' + window.location.hostname + ':' +window.location.port + '/auth');
+		let port = window.location.port !== '' ? ':' +window.location.port : '';
+		let authUrl = dx.getAuthenticationUrl(window.location.protocol + '//' + window.location.hostname + port + '/auth');
 		let form = window.open(authUrl, true);
 		window.connectSuccess = (parramStr)=>{
 			const parram = parseParram(parramStr);

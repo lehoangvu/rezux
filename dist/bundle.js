@@ -1751,7 +1751,8 @@ webpackJsonp([0],{
 	
 	var connectToDropbox = exports.connectToDropbox = function connectToDropbox() {
 		return function (dispatch) {
-			var authUrl = _dropbox2.default.getAuthenticationUrl(window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/auth');
+			var port = window.location.port !== '' ? ':' + window.location.port : '';
+			var authUrl = _dropbox2.default.getAuthenticationUrl(window.location.protocol + '//' + window.location.hostname + port + '/auth');
 			var form = window.open(authUrl, true);
 			window.connectSuccess = function (parramStr) {
 				var parram = parseParram(parramStr);

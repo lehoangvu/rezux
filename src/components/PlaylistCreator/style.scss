@@ -8,11 +8,12 @@
     right: 0;
 }
 .container{
-    padding: 20px;
+    padding: 20px 0;
 }
 .heading{
     margin-bottom: 20px;
     font-size: 30px;
+    padding: 0 20px;
 }
 .item{
     color: #fff;
@@ -41,16 +42,21 @@
 }
 .newForm{
     margin-top: 40px;
+    padding: 0 20px;
+    span{
+        font-size: 24px;
+    }
 }
 .input{
     border: 0px;
-    background: #4267b2;
+    background: #ffffff;
+    border: 1px solid #375ca8;
     margin: 10px 0 0 0;
     font-size: 22px;
-    font-weight: 300;
+    font-weight: bold;
     padding: 10px 10px;
     text-align: center;
-    color: #fff;
+    color: #424242;
     width: 100%;
 }
 .submit{    

@@ -1,4 +1,28 @@
-import firebase from './../store/firebase';
+import firebase from './../store/FirebaseInstance';
+import dx from './../store/dropbox';
+
+const parseParram = (parramStr) => {
+	let parrams = {};
+	parramStr.split('&').map((item)=>{
+		const itemArr = item.split('=');
+		parrams[itemArr[0]] = itemArr[1];
+	});
+	return parrams;
+}
+
+export const connectToDropbox = () => {
+	return dispatch => {
+		let authUrl = dx.getAuthenticationUrl(window.location.protocol + '//' + window.location.hostname + ':' +window.location.port + '/auth');
+		let form = window.open(authUrl, true);
+		window.connectSuccess = (parramStr)=>{
+			const parram = parseParram(parramStr);
+			dispatch({
+				type: 'CONNECT_DX_SUCCESS',
+				accessToken: parram.access_token
+			});
+		};
+	};
+}
 
 export const loginWithGoogle = () => {
 	return dispatch => {
@@ -7,13 +31,20 @@ export const loginWithGoogle = () => {
 		provider.addScope('email');
 		firebase.auth().signInWithPopup(provider)
 		.then((result) => {
+
 			// The signed-in user info.
-			let user = result.user;
-			localStorage.setItem('uid', user.uid);
-			// dispatch({
-			// 	type: 'LOGIN_GG_SUCCESS',
-			// 	uid: user.uid
-			// });
+			let user = {
+				uid: result.user.uid,
+				ggToken: result.credential.accessToken,
+				name: result.user.displayName,
+				email: result.user.email,
+				displayName: result.user.displayName,
+			};
+
+			dispatch({
+				type: 'LOGIN_SOCIAL_SUCCESS',
+				user
+			});
 		}).catch(function(error) {
 			// Handle Errors here.
 			let errorCode = error.code;
@@ -33,18 +64,14 @@ export const loginWithFacebook = () => {
 			let user = {
 				uid: result.user.uid,
 				fbToken: result.credential.accessToken,
-				ggToken: '',
 				name: result.user.displayName,
 				email: result.user.email,
-				displayName: result.user.displayName
+				displayName: result.user.displayName,
 			};
 
-			console.log('loged with fb: ', user);
-			dispatch(commitUserData(user.uid, user));
 			dispatch({
-				type: 'LOGIN_FB_SUCCESS',
+				type: 'LOGIN_SOCIAL_SUCCESS',
 				user
-
 			});
 		}).catch(function(error) {
 			// Handle Errors here.
@@ -61,23 +88,41 @@ export const parseUserData = (uid) => {
 	return dispatch => {
 		const db = firebase.database();
 		db.ref('/users/' + uid).once('value').then((snap)=>{
-			let user = snap.val();
+			let userData = snap.val();
 			dispatch({
 				type: 'USERDATA_PARSED',
-				user
+				userData
 			});
 		})
 	}
 }
 
-export const commitUserData = (uid, data) => {
+export const commitUserData = (uid, data, path) => {
 	console.log("commit data: ", data, uid);
-	return dispatch => {
-		const db = firebase.database();
-		db.ref('/users/' + uid).set(data).then(()=>{
-			dispatch({
-				type: 'USERDATA_COMMITED'
-			});
-		});
-	}
+
+	const db = firebase.database();
+	db.ref('/users/' + uid + '/' + path).set(data).then((res)=>{
+		console.log(res);
+	}).catch(function(error) {
+		// Handle Errors here.
+		let errorCode = error.code;
+		let errorMessage = error.message;
+		console.log(errorCode, errorMessage);
+		// ...
+	});
+}
+
+export const appenUserData = (uid, data, path) => {
+	console.log("commit data: ", data, uid);
+
+	const db = firebase.database();
+	db.ref('/users/' + uid + '/' + path).push(data).then((res)=>{
+		console.log(res);
+	}).catch(function(error) {
+		// Handle Errors here.
+		let errorCode = error.code;
+		let errorMessage = error.message;
+		console.log(errorCode, errorMessage);
+		// ...
+	});
 }

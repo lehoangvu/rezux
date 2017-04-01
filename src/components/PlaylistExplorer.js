@@ -19,23 +19,42 @@ class PlaylistExplorer extends React.Component {
         this.actions = props.actions;
     }
 
+    componentDidUpdate(){
+        this.setTitle();
+    }
+
+    componentDidMount(){
+        this.parseProps(this.props);
+    }
+
+    componentWillReceiveProps (nextProps) {
+        this.parseProps(nextProps);
+    }
+
     parseProps(props){
-        let playlist_id = typeof props.ownProps.params.playlist_id !== 'undefined' ? props.ownProps.params.playlist_id : -1;
-        if(playlist_id !== props.playlist.currentIndex){
-            this.actions.setCurentPlaylist(playlist_id);
-        }
+        // let playlist_id = typeof props.ownProps.params.playlist_id !== 'undefined' ? props.ownProps.params.playlist_id : -1;
+        // if(playlist_id !== props.playlist.currentIndex){
+        //     this.actions.setCurentPlaylist(playlist_id);
+        // }
 
-        if(typeof props.ownProps.params.song_id !== 'undefined' && props.ownProps.params.song_id !== props.player.player_id){
-            const rolloutPlaylist = this.getSelectedPlaylist(this.props.playlist, props.params.playlist_id, props.ownProps.params.song_id);
-            this.actions.setPlayerId(props.ownProps.params.song_id, rolloutPlaylist, props.params.playlist_id);     
-            // this.fetchPlayerId = true;
-        }
+        // if(typeof props.ownProps.params.song_id !== 'undefined' && props.ownProps.params.song_id !== props.player.player_id){
+        //     const rolloutPlaylist = this.getSelectedPlaylist(this.props.playlist, props.params.playlist_id, props.ownProps.params.song_id);
+        //     this.actions.setPlayerId(props.ownProps.params.song_id, rolloutPlaylist, props.params.playlist_id);     
+        //     // this.fetchPlayerId = true;
+        // }
 
+        this.setState ({
+            playlist: props.playlist,
+            player: props.player,
+        });
+    }
 
-        // this.setState ({
-        //     playlist: props.playlist,
-        //     player: props.player,
-        // });
+    _onPlaylistClick(index){
+        this.actions.setCurentPlaylist(index);
+    }
+
+    _onSongClick(index, rolloutPlaylist, currentIndex){
+        this.actions.setPlayerId(index, rolloutPlaylist, currentIndex);
     }
 
     _onCreateNew (playlistName, callbackSongId) {
@@ -49,18 +68,6 @@ class PlaylistExplorer extends React.Component {
         }else{
             document.title = 'Rezux - Chỉ để vui';
         }
-    }
-
-    componentDidUpdate(){
-        this.setTitle();
-    }
-
-    componentDidMount(){
-        this.parseProps(this.props);
-    }
-
-    componentWillReceiveProps (nextProps) {
-        this.parseProps(nextProps);
     }
 
     getSelectedPlaylist(playlist, playlist_id, song_id){
@@ -94,10 +101,10 @@ class PlaylistExplorer extends React.Component {
             if(playlist.data.length > 0){
                 playlists = playlist.data.map((playlist, index) => {
                     return (
-                        <Link to={window.basePath + index } className={s.item} key={index} >
+                        <div onClick={()=>{this._onPlaylistClick(index)}} className={s.item} key={index} >
                             {playlist.name}<br/>
                             <em>{playlist.list.length} bài hát</em>
-                        </Link>
+                        </div>
                     );
                 });
             }else{
@@ -106,9 +113,9 @@ class PlaylistExplorer extends React.Component {
         } else {
             let selectedPlaylist = playlist.data[playlist.currentIndex];
             directoryTitle = <h3 className={s.directoryTitle}>
-                        <Link to={window.basePath} className={s.directoryTitle.icon}>
-                            <span className="ion-ios-arrow-thin-left"/>
-                        </Link>
+                        <span className={s.icon} onClick={()=>{this._onPlaylistClick(-1)}}>
+                            <i className="ion-ios-arrow-thin-left"/>
+                        </span>
                         <span>{selectedPlaylist.name}</span>
                     </h3>;
 
@@ -116,13 +123,13 @@ class PlaylistExplorer extends React.Component {
 
             if(selectedPlaylist.list.length > 0){
                 playlists = selectedPlaylist.list.map((song, index) => {
-                    return <li className={i.root}>
-                        <Link to={window.basePath + playlist.currentIndex + '/' + song.id} className={i.link} >
+                    return <li className={i.root} onClick={()=>{this._onSongClick(song.id, selectedPlaylist, playlist.currentIndex)}}>
+                        <div className={i.link} >
                             <span className={i.content}>
                                 <span>{song.name}</span>
                                 <span>{song.artist}</span>
                             </span>
-                        </Link>
+                        </div>
                     </li>;
                 });
             }else{
@@ -136,7 +143,7 @@ class PlaylistExplorer extends React.Component {
                 <div className={s.root}>
                     {directoryTitle}
                     {playlists}
-                    <PlaylistCreator playlist={playlist} onCreateNew={this._onCreateNew.bind(this)} onHideClick={this.actions.onHideClick} addSongToPlaylist={this.actions.addSongToPlaylist} />
+                    
                 </div>
 
                 {playerDom}

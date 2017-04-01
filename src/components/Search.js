@@ -1,11 +1,12 @@
 import React from 'react';
 import SearchSuggess from './SearchSuggess';
 import SongOption from './SongOption';
+import PlaylistCreator from './PlaylistCreator';
 
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './css/search.scss';
 
-const Search = ({state, actions}) => {
+const Search = ({state, playlist, actions}) => {
     let keyword;
 
 
@@ -43,6 +44,11 @@ const Search = ({state, actions}) => {
         actions.hideSuggess();
     };
 
+
+    const _onCreateNew = (playlistName, callbackSongId) => {
+        actions.createNew(playlistName, callbackSongId);
+    };
+
     return (
         <div className={s.root}>
             <form className={s.form} onSubmit={_onSubmit}>
@@ -67,6 +73,7 @@ const Search = ({state, actions}) => {
                 onPlaySong={_onPlaySong}
                 s={s}
              />
+            <PlaylistCreator playlist={playlist} onCreateNew={actions.createPlaylist} onHideClick={actions.hidePopupAddToPlaylist} addSongToPlaylist={actions.addSongToPlaylist} />
         </div>
     );
 };

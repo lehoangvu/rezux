@@ -4,10 +4,9 @@ import PlaylistExplorer from '../components/PlaylistExplorer';
 import { createNew, hidePopupAddToPlaylist, addSongToPlaylist, setCurentPlaylist } from '../actions/playlist';
 import { fetchById, setPlayerId, clearError } from '../actions/player';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
 	playlist: state.playlist,
-	player: state.player,
-	ownProps: ownProps,
+	player: state.player
 });
 
 const mapDispatchToProps = (dispatch) => ({

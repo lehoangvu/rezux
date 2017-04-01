@@ -65,6 +65,7 @@ class Player extends React.Component{
         if(newState.fetched){
             if(!this.state.player.play){
                 newState.player.play = true;
+                this.load();
                 this.play();
             }
             newState.player.disabled = false;
@@ -129,7 +130,7 @@ class Player extends React.Component{
         const nextSongId = this.getNextSongId();
         const rolloutId = this.state.rolloutId;
         if(nextSongId){
-            browserHistory.push(`/${rolloutId}/${nextSongId}`);
+            this.fetch(nextSongId);
         }
     }
 
@@ -178,6 +179,7 @@ class Player extends React.Component{
         return (
             <div className={s.root} style={{backgroundImage: "url("+image+")", filter: player.disabled ? 'grayscale(100%)' : 'none'}}>
                 <audio src={this.getBestSource(source) } autoPlay="true" id="player" 
+                onLoadedData={this.play.bind(this)}
                 onEnded={this.next.bind(this)}
                 onTimeUpdate={this.updateDuration.bind(this)}></audio>
                 {errorDiv}

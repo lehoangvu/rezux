@@ -18,7 +18,8 @@ const intinalState = {
           "song": []
         }
       ]
-    },
+    }, 
+    showAddPopup: false,
     keyword: '',
     showSongOption: false,
     optionObjectId: -1
@@ -43,6 +44,20 @@ const getMessage = (search) => {
 
 export default (state = intinalState, action) => {
     switch(action.type){
+        case 'SHOW_POPUP_ADDTOPLAYLIST':
+            return {
+                ...state,
+                callbackSongId: action.songId,
+                showAddPopup: true
+            };
+            break;
+        case 'HIDE_POPUP_ADDTOPLAYLIST':
+            return {
+                ...state,
+                callbackSongId: false,
+                showAddPopup: false
+            };
+            break;
         case 'HIDE_SONG_OPTION':
             return {
                 ...state,

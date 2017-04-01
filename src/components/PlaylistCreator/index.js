@@ -38,7 +38,7 @@ class PlaylistCreator extends React.Component{
                 return (
                     <div key={index} className={s.item} onClick={()=>{this.props.addSongToPlaylist(this.state.callbackSongId, index)}}>
                         {playlist.name}
-                        <em>{playlist.list.length}</em>
+                        <em>{playlist.list.length} bài hát</em>
                     </div>
                 );
             });

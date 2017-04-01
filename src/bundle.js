@@ -3,11 +3,10 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-router';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import App from './components/App';
 import Routes from './routes';
 import store from './store';
 import WithStylesContex from './global/WithStylesContex';
-
-import firebase from './store/firebase';
 
 window.jQuery = jQuery;
 window.$ = jQuery;
@@ -17,9 +16,7 @@ window.basePath = basePath;
 render(
     <WithStylesContex onInsertCss={styles => Array.isArray(styles) ? styles.map((style)=>{style._insertCss()}): styles._insertCss()}>
         <Provider store={store}>
-            <Router history={browserHistory}>
-                {Routes}
-            </Router>
+            <App />
         </Provider>
     </WithStylesContex>,
 	document.getElementById('root')

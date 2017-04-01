@@ -38,6 +38,14 @@ export const getSuggess = (keyword) => {
         });
     }
 };
+export const addSongToPlaylist = (songObj, playlistId) => {
+    return {
+        type: 'ADD_SONG',
+        songObj,
+        playlistId
+    };
+};
+
 export const showSuggess = () => {
     return {
         type: 'SHOW_SUGGESS'
@@ -61,5 +69,17 @@ export const hideSuggess = () => {
                 type: 'HIDE_SUGGESS'
             })
         }, 500);
+    };
+};
+export const showPopupAddToPlaylist = (songId) => {
+    return {
+        type: 'SHOW_POPUP_ADDTOPLAYLIST',
+        songId: songId
+    };
+};
+
+export const hidePopupAddToPlaylist = () => {
+    return {
+        type: 'HIDE_POPUP_ADDTOPLAYLIST'
     };
 };

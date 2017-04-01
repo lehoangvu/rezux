@@ -29,25 +29,25 @@ webpackJsonp([0],{
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 35);
 	
-	var _reactDom = __webpack_require__(/*! react-dom */ 421);
+	var _reactDom = __webpack_require__(/*! react-dom */ 98);
 	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 394);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 244);
 	
-	var _routes = __webpack_require__(/*! ./routes */ 834);
+	var _App = __webpack_require__(/*! ./components/App */ 271);
+	
+	var _App2 = _interopRequireDefault(_App);
+	
+	var _routes = __webpack_require__(/*! ./routes */ 557);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _store = __webpack_require__(/*! ./store */ 884);
+	var _store = __webpack_require__(/*! ./store */ 558);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _WithStylesContex = __webpack_require__(/*! ./global/WithStylesContex */ 889);
+	var _WithStylesContex = __webpack_require__(/*! ./global/WithStylesContex */ 571);
 	
 	var _WithStylesContex2 = _interopRequireDefault(_WithStylesContex);
-	
-	var _firebase = __webpack_require__(/*! ./store/firebase */ 862);
-	
-	var _firebase2 = _interopRequireDefault(_firebase);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -66,11 +66,7 @@ webpackJsonp([0],{
 	    _react2.default.createElement(
 	        _reactRedux.Provider,
 	        { store: _store2.default },
-	        _react2.default.createElement(
-	            _reactRouter.Router,
-	            { history: _reactRouter.browserHistory },
-	            _routes2.default
-	        )
+	        _react2.default.createElement(_App2.default, null)
 	    )
 	), document.getElementById('root'));
 	
@@ -111,56 +107,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 834:
-/*!*****************************!*\
-  !*** ./src/routes/index.js ***!
-  \*****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 35);
-	
-	var _App = __webpack_require__(/*! ./../components/App */ 835);
-	
-	var _App2 = _interopRequireDefault(_App);
-	
-	var _ContainerPlaylist = __webpack_require__(/*! ./../containers/ContainerPlaylist */ 875);
-	
-	var _ContainerPlaylist2 = _interopRequireDefault(_ContainerPlaylist);
-	
-	var _ContainerPhoto = __webpack_require__(/*! ./../containers/ContainerPhoto */ 890);
-	
-	var _ContainerPhoto2 = _interopRequireDefault(_ContainerPhoto);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var basePath = typeof _basePath !== 'undefined' ? _basePath : '/';
-	window.basePath = basePath;
-	
-	var Routes = _react2.default.createElement(
-	    _reactRouter.Route,
-	    { path: basePath, component: _App2.default },
-	    _react2.default.createElement(_reactRouter.IndexRoute, { components: _ContainerPlaylist2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: basePath + 'all/:song_id', components: _ContainerPlaylist2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: basePath + ':playlist_id', components: _ContainerPlaylist2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: basePath + ':playlist_id/:song_id', components: _ContainerPlaylist2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: basePath + 'photos/', components: _ContainerPhoto2.default })
-	);
-	
-	exports.default = Routes;
-
-/***/ },
-
-/***/ 835:
+/***/ 271:
 /*!*******************************!*\
   !*** ./src/components/App.js ***!
   \*******************************/
@@ -169,7 +116,7 @@ webpackJsonp([0],{
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	   value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -178,25 +125,37 @@ webpackJsonp([0],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ContainerSearch = __webpack_require__(/*! ./../containers/ContainerSearch */ 836);
+	var _ContainerSearch = __webpack_require__(/*! ./../containers/ContainerSearch */ 272);
 	
 	var _ContainerSearch2 = _interopRequireDefault(_ContainerSearch);
 	
-	var _ContainerUser = __webpack_require__(/*! ./../containers/ContainerUser */ 860);
+	var _ContainerUser = __webpack_require__(/*! ./../containers/ContainerUser */ 411);
 	
 	var _ContainerUser2 = _interopRequireDefault(_ContainerUser);
 	
-	var _Player = __webpack_require__(/*! ./../components/Player */ 869);
+	var _ContainerPlaylist = __webpack_require__(/*! ./../containers/ContainerPlaylist */ 420);
+	
+	var _ContainerPlaylist2 = _interopRequireDefault(_ContainerPlaylist);
+	
+	var _ContainerPhoto = __webpack_require__(/*! ./../containers/ContainerPhoto */ 547);
+	
+	var _ContainerPhoto2 = _interopRequireDefault(_ContainerPhoto);
+	
+	var _Player = __webpack_require__(/*! ./../components/Player */ 426);
 	
 	var _Player2 = _interopRequireDefault(_Player);
 	
-	var _colors = __webpack_require__(/*! ./../helpers/colors */ 872);
+	var _Tab = __webpack_require__(/*! ./../components/Tab */ 552);
 	
-	var _app = __webpack_require__(/*! ./css/app.scss */ 873);
+	var _Tab2 = _interopRequireDefault(_Tab);
+	
+	var _colors = __webpack_require__(/*! ./../helpers/colors */ 546);
+	
+	var _app = __webpack_require__(/*! ./css/app.scss */ 555);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 577);
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
 	
 	var _withStyles2 = _interopRequireDefault(_withStyles);
 	
@@ -209,35 +168,53 @@ webpackJsonp([0],{
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var App = function (_React$Component) {
-	    _inherits(App, _React$Component);
+	   _inherits(App, _React$Component);
 	
-	    function App(props) {
-	        _classCallCheck(this, App);
+	   function App(props) {
+	      _classCallCheck(this, App);
 	
-	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-	    }
+	      var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
-	    _createClass(App, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: _app2.default.root },
-	                _react2.default.createElement(_ContainerUser2.default, null),
-	                _react2.default.createElement(_ContainerSearch2.default, null),
-	                this.props.children
-	            );
-	        }
-	    }]);
+	      _this.state = {
+	         currentTab: 1
+	      };
+	      return _this;
+	   }
 	
-	    return App;
+	   _createClass(App, [{
+	      key: 'setCurrentTab',
+	      value: function setCurrentTab(index) {
+	         this.setState({
+	            currentTab: index
+	         });
+	      }
+	   }, {
+	      key: 'render',
+	      value: function render() {
+	         var _this2 = this;
+	
+	         return _react2.default.createElement(
+	            'div',
+	            { className: _app2.default.root },
+	            _react2.default.createElement(_Tab2.default, {
+	               tabs: [_react2.default.createElement(_ContainerUser2.default, null), _react2.default.createElement(_ContainerPhoto2.default, null), _react2.default.createElement(_ContainerPlaylist2.default, null), _react2.default.createElement(_ContainerSearch2.default, null)],
+	               currentTab: this.state.currentTab,
+	               setCurrentTab: function setCurrentTab(index) {
+	                  _this2.setCurrentTab(index);
+	               }
+	            })
+	         );
+	      }
+	   }]);
+	
+	   return App;
 	}(_react2.default.Component);
 	
 	exports.default = (0, _withStyles2.default)(_app2.default)(App);
 
 /***/ },
 
-/***/ 836:
+/***/ 272:
 /*!*******************************************!*\
   !*** ./src/containers/ContainerSearch.js ***!
   \*******************************************/
@@ -249,25 +226,26 @@ webpackJsonp([0],{
 	    value: true
 	});
 	
-	var _search = __webpack_require__(/*! ./../actions/search */ 837);
+	var _search = __webpack_require__(/*! ./../actions/search */ 273);
 	
-	var _playlist = __webpack_require__(/*! ../actions/playlist */ 838);
+	var _player = __webpack_require__(/*! ../actions/player */ 299);
 	
-	var _player = __webpack_require__(/*! ../actions/player */ 839);
+	var _playlist = __webpack_require__(/*! ../actions/playlist */ 300);
 	
-	var _Search = __webpack_require__(/*! ./../components/Search */ 840);
+	var _Search = __webpack_require__(/*! ./../components/Search */ 301);
 	
 	var _Search2 = _interopRequireDefault(_Search);
 	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 394);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 244);
 	
-	var _redux = __webpack_require__(/*! redux */ 401);
+	var _redux = __webpack_require__(/*! redux */ 251);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	    return {
-	        state: state.search
+	        state: state.search,
+	        playlist: state.playlist
 	    };
 	};
 	
@@ -279,7 +257,10 @@ webpackJsonp([0],{
 	            showSuggess: _search.showSuggess,
 	            showSongOption: _search.showSongOption,
 	            hideSongOption: _search.hideSongOption,
-	            showPopupAddToPlaylist: _playlist.showPopupAddToPlaylist,
+	            showPopupAddToPlaylist: _search.showPopupAddToPlaylist,
+	            hidePopupAddToPlaylist: _search.hidePopupAddToPlaylist,
+	            addSongToPlaylist: _search.addSongToPlaylist,
+	            createPlaylist: _playlist.createNew,
 	            // fetchById
 	            setPlayerId: _player.setPlayerId
 	        }, dispatch)
@@ -291,7 +272,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 837:
+/***/ 273:
 /*!*******************************!*\
   !*** ./src/actions/search.js ***!
   \*******************************/
@@ -302,9 +283,9 @@ webpackJsonp([0],{
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.hideSuggess = exports.hideSongOption = exports.showSongOption = exports.showSuggess = exports.getSuggess = undefined;
+	exports.hidePopupAddToPlaylist = exports.showPopupAddToPlaylist = exports.hideSuggess = exports.hideSongOption = exports.showSongOption = exports.showSuggess = exports.addSongToPlaylist = exports.getSuggess = undefined;
 	
-	var _axios = __webpack_require__(/*! axios */ 684);
+	var _axios = __webpack_require__(/*! axios */ 274);
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
@@ -346,6 +327,14 @@ webpackJsonp([0],{
 	        }).catch(function (error) {});
 	    };
 	};
+	var addSongToPlaylist = exports.addSongToPlaylist = function addSongToPlaylist(songObj, playlistId) {
+	    return {
+	        type: 'ADD_SONG',
+	        songObj: songObj,
+	        playlistId: playlistId
+	    };
+	};
+	
 	var showSuggess = exports.showSuggess = function showSuggess() {
 	    return {
 	        type: 'SHOW_SUGGESS'
@@ -371,10 +360,76 @@ webpackJsonp([0],{
 	        }, 500);
 	    };
 	};
+	var showPopupAddToPlaylist = exports.showPopupAddToPlaylist = function showPopupAddToPlaylist(songId) {
+	    return {
+	        type: 'SHOW_POPUP_ADDTOPLAYLIST',
+	        songId: songId
+	    };
+	};
+	
+	var hidePopupAddToPlaylist = exports.hidePopupAddToPlaylist = function hidePopupAddToPlaylist() {
+	    return {
+	        type: 'HIDE_POPUP_ADDTOPLAYLIST'
+	    };
+	};
 
 /***/ },
 
-/***/ 838:
+/***/ 299:
+/*!*******************************!*\
+  !*** ./src/actions/player.js ***!
+  \*******************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var fetchById = exports.fetchById = function fetchById(id) {
+	    return function (dispatch) {
+	        $.ajax({
+	            url: "http://trondesign.vn/parser.php",
+	            data: { request: "http://api.mp3.zing.vn/api/mobile/song/getsonginfo?requestdata={%22id%22:%22" + id + "%22}" },
+	            type: 'POST',
+	            dataType: 'JSON',
+	            crossDomain: true
+	        }).done(function (json) {
+	
+	            // check error
+	            if (typeof json.response.is_error !== 'undefined' && json.response.is_error) {
+	                dispatch({
+	                    type: 'FETCH_ERROR',
+	                    data: json.response
+	                });
+	            } else {
+	                dispatch({
+	                    type: 'FETCH',
+	                    data: json
+	                });
+	            }
+	        }).fail(function (xhr) {});
+	    };
+	};
+	
+	var setPlayerId = exports.setPlayerId = function setPlayerId(id, rolloutPlaylist, rolloutId) {
+	    return {
+	        type: 'SET_ID',
+	        id: id,
+	        rolloutPlaylist: rolloutPlaylist,
+	        rolloutId: rolloutId
+	    };
+	};
+	
+	var clearError = exports.clearError = function clearError() {
+	    return {
+	        type: 'CLEAR_ERROR'
+	    };
+	};
+
+/***/ },
+
+/***/ 300:
 /*!*********************************!*\
   !*** ./src/actions/playlist.js ***!
   \*********************************/
@@ -430,61 +485,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 839:
-/*!*******************************!*\
-  !*** ./src/actions/player.js ***!
-  \*******************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	var fetchById = exports.fetchById = function fetchById(id) {
-	    return function (dispatch) {
-	        $.ajax({
-	            url: "http://trondesign.vn/parser.php",
-	            data: { request: "http://api.mp3.zing.vn/api/mobile/song/getsonginfo?requestdata={%22id%22:%22" + id + "%22}" },
-	            type: 'POST',
-	            dataType: 'JSON',
-	            crossDomain: true
-	        }).done(function (json) {
-	
-	            // check error
-	            if (typeof json.response.is_error !== 'undefined' && json.response.is_error) {
-	                dispatch({
-	                    type: 'FETCH_ERROR',
-	                    data: json.response
-	                });
-	            } else {
-	                dispatch({
-	                    type: 'FETCH',
-	                    data: json
-	                });
-	            }
-	        }).fail(function (xhr) {});
-	    };
-	};
-	
-	var setPlayerId = exports.setPlayerId = function setPlayerId(id, rolloutPlaylist, rolloutId) {
-	    return {
-	        type: 'SET_ID',
-	        id: id,
-	        rolloutPlaylist: rolloutPlaylist,
-	        rolloutId: rolloutId
-	    };
-	};
-	
-	var clearError = exports.clearError = function clearError() {
-	    return {
-	        type: 'CLEAR_ERROR'
-	    };
-	};
-
-/***/ },
-
-/***/ 840:
+/***/ 301:
 /*!**********************************!*\
   !*** ./src/components/Search.js ***!
   \**********************************/
@@ -500,19 +501,23 @@ webpackJsonp([0],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SearchSuggess = __webpack_require__(/*! ./SearchSuggess */ 841);
+	var _SearchSuggess = __webpack_require__(/*! ./SearchSuggess */ 302);
 	
 	var _SearchSuggess2 = _interopRequireDefault(_SearchSuggess);
 	
-	var _SongOption = __webpack_require__(/*! ./SongOption */ 857);
+	var _SongOption = __webpack_require__(/*! ./SongOption */ 405);
 	
 	var _SongOption2 = _interopRequireDefault(_SongOption);
 	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 577);
+	var _PlaylistCreator = __webpack_require__(/*! ./PlaylistCreator */ 406);
+	
+	var _PlaylistCreator2 = _interopRequireDefault(_PlaylistCreator);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
 	
 	var _withStyles2 = _interopRequireDefault(_withStyles);
 	
-	var _search = __webpack_require__(/*! ./css/search.scss */ 858);
+	var _search = __webpack_require__(/*! ./css/search.scss */ 409);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
@@ -520,6 +525,7 @@ webpackJsonp([0],{
 	
 	var Search = function Search(_ref) {
 	    var state = _ref.state,
+	        playlist = _ref.playlist,
 	        actions = _ref.actions;
 	
 	    var keyword = void 0;
@@ -556,6 +562,10 @@ webpackJsonp([0],{
 	        actions.hideSuggess();
 	    };
 	
+	    var _onCreateNew = function _onCreateNew(playlistName, callbackSongId) {
+	        actions.createNew(playlistName, callbackSongId);
+	    };
+	
 	    return _react2.default.createElement(
 	        'div',
 	        { className: _search2.default.root },
@@ -586,7 +596,8 @@ webpackJsonp([0],{
 	            showPopupAddToPlaylist: _showPopupAddToPlaylist,
 	            onPlaySong: _onPlaySong,
 	            s: _search2.default
-	        })
+	        }),
+	        _react2.default.createElement(_PlaylistCreator2.default, { playlist: playlist, onCreateNew: actions.createPlaylist, onHideClick: actions.hidePopupAddToPlaylist, addSongToPlaylist: actions.addSongToPlaylist })
 	    );
 	};
 	
@@ -594,7 +605,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 841:
+/***/ 302:
 /*!*****************************************!*\
   !*** ./src/components/SearchSuggess.js ***!
   \*****************************************/
@@ -610,13 +621,13 @@ webpackJsonp([0],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 577);
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
 	
 	var _withStyles2 = _interopRequireDefault(_withStyles);
 	
-	var _search = __webpack_require__(/*! ./../actions/search */ 837);
+	var _search = __webpack_require__(/*! ./../actions/search */ 273);
 	
-	var _searchSuggess = __webpack_require__(/*! ./css/search-suggess.scss */ 842);
+	var _searchSuggess = __webpack_require__(/*! ./css/search-suggess.scss */ 390);
 	
 	var _searchSuggess2 = _interopRequireDefault(_searchSuggess);
 	
@@ -812,15 +823,15 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 842:
+/***/ 390:
 /*!************************************************!*\
   !*** ./src/components/css/search-suggess.scss ***!
   \************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./search-suggess.scss */ 843);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 845);
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./search-suggess.scss */ 391);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
 	
 	    if (typeof content === 'string') {
 	      content = [[module.id, content, '']];
@@ -851,38 +862,38 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 843:
+/***/ 391:
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/search-suggess.scss ***!
   \***********************************************************************************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 844)();
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".search-suggess_root_28n {\n  position: fixed;\n  top: 50px;\n  width: 100%;\n  background: #fff;\n  padding: 10px 20px;\n  bottom: 63px;\n  left: 0;\n  overflow: scroll; }\n\n.search-suggess_item_3jP {\n  display: inline-block;\n  width: 100%;\n  padding: 5px 0; }\n\n.search-suggess_hideLink_fzJ {\n  position: fixed;\n  right: 10px;\n  font-size: 30px;\n  color: #4267b2;\n  top: 48px; }\n\n.search-suggess_link_3OK {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-decoration: none; }\n\n.search-suggess_link_3OK img {\n    border-radius: 50%;\n    width: 60px;\n    height: 60px; }\n\n.search-suggess_link_3OK .search-suggess_content_38k {\n    margin-left: 10px;\n    color: #333;\n    -ms-flex-item-align: center;\n        -ms-grid-row-align: center;\n        align-self: center; }\n\n.search-suggess_link_3OK .search-suggess_content_38k span:first-child {\n      color: #333;\n      display: block;\n      text-decoration: none;\n      width: 100%;\n      font-size: 22px; }\n\n.search-suggess_link_3OK .search-suggess_content_38k span:last-child {\n      color: #666;\n      text-decoration: none;\n      font-size: 18px; }\n\n.search-suggess_heading_3mF {\n  margin: 10px 0 5px 0;\n  font-size: 30px; }\n", ""]);
+	exports.push([module.id, ".search-suggess_root_1T1 {\n  position: fixed;\n  top: 50px;\n  width: 100%;\n  background: #fff;\n  padding: 10px 20px;\n  bottom: 40px;\n  left: 0;\n  overflow: scroll; }\n\n.search-suggess_item_3yI {\n  display: inline-block;\n  width: 100%;\n  padding: 5px 0; }\n\n.search-suggess_hideLink_2Bf {\n  position: fixed;\n  right: 10px;\n  font-size: 30px;\n  color: #4267b2;\n  top: 48px; }\n\n.search-suggess_link_3Jc {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-decoration: none; }\n\n.search-suggess_link_3Jc img {\n    border-radius: 50%;\n    width: 60px;\n    height: 60px; }\n\n.search-suggess_link_3Jc .search-suggess_content_3q7 {\n    margin-left: 10px;\n    color: #333;\n    -ms-flex-item-align: center;\n        -ms-grid-row-align: center;\n        align-self: center; }\n\n.search-suggess_link_3Jc .search-suggess_content_3q7 span:first-child {\n      color: #333;\n      display: block;\n      text-decoration: none;\n      width: 100%;\n      font-size: 22px; }\n\n.search-suggess_link_3Jc .search-suggess_content_3q7 span:last-child {\n      color: #666;\n      text-decoration: none;\n      font-size: 18px; }\n\n.search-suggess_heading_2Q4 {\n  margin: 10px 0 5px 0;\n  font-size: 30px; }\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"root": "search-suggess_root_28n",
-		"root": "search-suggess_root_28n",
-		"item": "search-suggess_item_3jP",
-		"item": "search-suggess_item_3jP",
-		"hideLink": "search-suggess_hideLink_fzJ",
-		"hideLink": "search-suggess_hideLink_fzJ",
-		"link": "search-suggess_link_3OK",
-		"link": "search-suggess_link_3OK",
-		"content": "search-suggess_content_38k",
-		"content": "search-suggess_content_38k",
-		"heading": "search-suggess_heading_3mF",
-		"heading": "search-suggess_heading_3mF"
+		"root": "search-suggess_root_1T1",
+		"root": "search-suggess_root_1T1",
+		"item": "search-suggess_item_3yI",
+		"item": "search-suggess_item_3yI",
+		"hideLink": "search-suggess_hideLink_2Bf",
+		"hideLink": "search-suggess_hideLink_2Bf",
+		"link": "search-suggess_link_3Jc",
+		"link": "search-suggess_link_3Jc",
+		"content": "search-suggess_content_3q7",
+		"content": "search-suggess_content_3q7",
+		"heading": "search-suggess_heading_2Q4",
+		"heading": "search-suggess_heading_2Q4"
 	};
 
 /***/ },
 
-/***/ 844:
+/***/ 392:
 /*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
   \**************************************/
@@ -942,7 +953,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 845:
+/***/ 393:
 /*!****************************************************!*\
   !*** ./~/isomorphic-style-loader/lib/insertCss.js ***!
   \****************************************************/
@@ -950,15 +961,15 @@ webpackJsonp([0],{
 
 	'use strict';
 	
-	var _stringify = __webpack_require__(/*! babel-runtime/core-js/json/stringify */ 846);
+	var _stringify = __webpack_require__(/*! babel-runtime/core-js/json/stringify */ 394);
 	
 	var _stringify2 = _interopRequireDefault(_stringify);
 	
-	var _slicedToArray2 = __webpack_require__(/*! babel-runtime/helpers/slicedToArray */ 848);
+	var _slicedToArray2 = __webpack_require__(/*! babel-runtime/helpers/slicedToArray */ 396);
 	
 	var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 	
-	var _getIterator2 = __webpack_require__(/*! babel-runtime/core-js/get-iterator */ 853);
+	var _getIterator2 = __webpack_require__(/*! babel-runtime/core-js/get-iterator */ 401);
 	
 	var _getIterator3 = _interopRequireDefault(_getIterator2);
 	
@@ -1100,23 +1111,23 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 846:
+/***/ 394:
 /*!***************************************************!*\
   !*** ./~/babel-runtime/core-js/json/stringify.js ***!
   \***************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/json/stringify */ 847), __esModule: true };
+	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/json/stringify */ 395), __esModule: true };
 
 /***/ },
 
-/***/ 847:
+/***/ 395:
 /*!************************************************!*\
   !*** ./~/core-js/library/fn/json/stringify.js ***!
   \************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(/*! ../../modules/_core */ 591)
+	var core  = __webpack_require__(/*! ../../modules/_core */ 317)
 	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
@@ -1124,7 +1135,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 848:
+/***/ 396:
 /*!**************************************************!*\
   !*** ./~/babel-runtime/helpers/slicedToArray.js ***!
   \**************************************************/
@@ -1134,11 +1145,11 @@ webpackJsonp([0],{
 	
 	exports.__esModule = true;
 	
-	var _isIterable2 = __webpack_require__(/*! ../core-js/is-iterable */ 849);
+	var _isIterable2 = __webpack_require__(/*! ../core-js/is-iterable */ 397);
 	
 	var _isIterable3 = _interopRequireDefault(_isIterable2);
 	
-	var _getIterator2 = __webpack_require__(/*! ../core-js/get-iterator */ 853);
+	var _getIterator2 = __webpack_require__(/*! ../core-js/get-iterator */ 401);
 	
 	var _getIterator3 = _interopRequireDefault(_getIterator2);
 	
@@ -1184,38 +1195,38 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 849:
+/***/ 397:
 /*!************************************************!*\
   !*** ./~/babel-runtime/core-js/is-iterable.js ***!
   \************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/is-iterable */ 850), __esModule: true };
+	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/is-iterable */ 398), __esModule: true };
 
 /***/ },
 
-/***/ 850:
+/***/ 398:
 /*!*********************************************!*\
   !*** ./~/core-js/library/fn/is-iterable.js ***!
   \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(/*! ../modules/web.dom.iterable */ 635);
-	__webpack_require__(/*! ../modules/es6.string.iterator */ 613);
-	module.exports = __webpack_require__(/*! ../modules/core.is-iterable */ 851);
+	__webpack_require__(/*! ../modules/web.dom.iterable */ 361);
+	__webpack_require__(/*! ../modules/es6.string.iterator */ 339);
+	module.exports = __webpack_require__(/*! ../modules/core.is-iterable */ 399);
 
 /***/ },
 
-/***/ 851:
+/***/ 399:
 /*!*******************************************************!*\
   !*** ./~/core-js/library/modules/core.is-iterable.js ***!
   \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var classof   = __webpack_require__(/*! ./_classof */ 852)
-	  , ITERATOR  = __webpack_require__(/*! ./_wks */ 634)('iterator')
-	  , Iterators = __webpack_require__(/*! ./_iterators */ 619);
-	module.exports = __webpack_require__(/*! ./_core */ 591).isIterable = function(it){
+	var classof   = __webpack_require__(/*! ./_classof */ 400)
+	  , ITERATOR  = __webpack_require__(/*! ./_wks */ 360)('iterator')
+	  , Iterators = __webpack_require__(/*! ./_iterators */ 345);
+	module.exports = __webpack_require__(/*! ./_core */ 317).isIterable = function(it){
 	  var O = Object(it);
 	  return O[ITERATOR] !== undefined
 	    || '@@iterator' in O
@@ -1224,15 +1235,15 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 852:
+/***/ 400:
 /*!***********************************************!*\
   !*** ./~/core-js/library/modules/_classof.js ***!
   \***********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// getting tag from 19.1.3.6 Object.prototype.toString()
-	var cof = __webpack_require__(/*! ./_cof */ 627)
-	  , TAG = __webpack_require__(/*! ./_wks */ 634)('toStringTag')
+	var cof = __webpack_require__(/*! ./_cof */ 353)
+	  , TAG = __webpack_require__(/*! ./_wks */ 360)('toStringTag')
 	  // ES3 wrong here
 	  , ARG = cof(function(){ return arguments; }()) == 'Arguments';
 	
@@ -1256,37 +1267,37 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 853:
+/***/ 401:
 /*!*************************************************!*\
   !*** ./~/babel-runtime/core-js/get-iterator.js ***!
   \*************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/get-iterator */ 854), __esModule: true };
+	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/get-iterator */ 402), __esModule: true };
 
 /***/ },
 
-/***/ 854:
+/***/ 402:
 /*!**********************************************!*\
   !*** ./~/core-js/library/fn/get-iterator.js ***!
   \**********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(/*! ../modules/web.dom.iterable */ 635);
-	__webpack_require__(/*! ../modules/es6.string.iterator */ 613);
-	module.exports = __webpack_require__(/*! ../modules/core.get-iterator */ 855);
+	__webpack_require__(/*! ../modules/web.dom.iterable */ 361);
+	__webpack_require__(/*! ../modules/es6.string.iterator */ 339);
+	module.exports = __webpack_require__(/*! ../modules/core.get-iterator */ 403);
 
 /***/ },
 
-/***/ 855:
+/***/ 403:
 /*!********************************************************!*\
   !*** ./~/core-js/library/modules/core.get-iterator.js ***!
   \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var anObject = __webpack_require__(/*! ./_an-object */ 596)
-	  , get      = __webpack_require__(/*! ./core.get-iterator-method */ 856);
-	module.exports = __webpack_require__(/*! ./_core */ 591).getIterator = function(it){
+	var anObject = __webpack_require__(/*! ./_an-object */ 322)
+	  , get      = __webpack_require__(/*! ./core.get-iterator-method */ 404);
+	module.exports = __webpack_require__(/*! ./_core */ 317).getIterator = function(it){
 	  var iterFn = get(it);
 	  if(typeof iterFn != 'function')throw TypeError(it + ' is not iterable!');
 	  return anObject(iterFn.call(it));
@@ -1294,16 +1305,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 856:
+/***/ 404:
 /*!***************************************************************!*\
   !*** ./~/core-js/library/modules/core.get-iterator-method.js ***!
   \***************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var classof   = __webpack_require__(/*! ./_classof */ 852)
-	  , ITERATOR  = __webpack_require__(/*! ./_wks */ 634)('iterator')
-	  , Iterators = __webpack_require__(/*! ./_iterators */ 619);
-	module.exports = __webpack_require__(/*! ./_core */ 591).getIteratorMethod = function(it){
+	var classof   = __webpack_require__(/*! ./_classof */ 400)
+	  , ITERATOR  = __webpack_require__(/*! ./_wks */ 360)('iterator')
+	  , Iterators = __webpack_require__(/*! ./_iterators */ 345);
+	module.exports = __webpack_require__(/*! ./_core */ 317).getIteratorMethod = function(it){
 	  if(it != undefined)return it[ITERATOR]
 	    || it['@@iterator']
 	    || Iterators[classof(it)];
@@ -1311,7 +1322,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 857:
+/***/ 405:
 /*!**************************************!*\
   !*** ./src/components/SongOption.js ***!
   \**************************************/
@@ -1346,14 +1357,9 @@ webpackJsonp([0],{
 	                    'li',
 	                    { onClick: function onClick() {
 	                            props.onHideSongOption();
-	                            // props.onPlaySong(props.objectId);
-	                            // browserHistory.push('/all/'+props.objectId);
+	                            props.onPlaySong(props.object.id);
 	                        } },
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: window.basePath + 'all/' + props.object.id },
-	                        'Nghe b\xE2y gi\u1EDD'
-	                    )
+	                    'Nghe b\xE2y gi\u1EDD'
 	                ),
 	                _react2.default.createElement(
 	                    'li',
@@ -1377,15 +1383,232 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 858:
+/***/ 406:
+/*!*************************************************!*\
+  !*** ./src/components/PlaylistCreator/index.js ***!
+  \*************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
+	
+	var _style = __webpack_require__(/*! ./style.scss */ 407);
+	
+	var _style2 = _interopRequireDefault(_style);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PlaylistCreator = function (_React$Component) {
+	    _inherits(PlaylistCreator, _React$Component);
+	
+	    function PlaylistCreator(props) {
+	        _classCallCheck(this, PlaylistCreator);
+	
+	        var _this = _possibleConstructorReturn(this, (PlaylistCreator.__proto__ || Object.getPrototypeOf(PlaylistCreator)).call(this, props));
+	
+	        _this.state = _extends({}, props.playlist, {
+	            newPlaylistName: ''
+	        });
+	        return _this;
+	    }
+	
+	    _createClass(PlaylistCreator, [{
+	        key: 'inputChange',
+	        value: function inputChange(e) {
+	            this.setState(_extends({}, this.state, {
+	                newPlaylistName: e.target.value
+	            }));
+	        }
+	    }, {
+	        key: 'savePlaylist',
+	        value: function savePlaylist() {
+	            // const playListName;
+	            this.props.onCreateNew(this.state.newPlaylistName, this.state.callbackSongId);
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            this.setState(_extends({}, nextProps.playlist, {
+	                newPlaylistName: ''
+	            }));
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var playlists = void 0;
+	            if (this.state.data.length > 0) {
+	                playlists = this.state.data.map(function (playlist, index) {
+	                    return _react2.default.createElement(
+	                        'div',
+	                        { key: index, className: _style2.default.item, onClick: function onClick() {
+	                                _this2.props.addSongToPlaylist(_this2.state.callbackSongId, index);
+	                            } },
+	                        playlist.name,
+	                        _react2.default.createElement(
+	                            'em',
+	                            null,
+	                            playlist.list.length,
+	                            ' b\xE0i h\xE1t'
+	                        )
+	                    );
+	                });
+	            }
+	            return _react2.default.createElement(
+	                'div',
+	                { style: { display: this.state.showAddPopup ? 'block' : 'none' } },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _style2.default.root },
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: _style2.default.hideLink, onClick: function onClick() {
+	                                _this2.props.onHideClick();
+	                            } },
+	                        _react2.default.createElement('i', { className: 'ion-android-close' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: _style2.default.container },
+	                        _react2.default.createElement(
+	                            'h3',
+	                            { className: _style2.default.heading },
+	                            'Ch\u1ECDn t\u1EEB danh s\xE1ch Playlist'
+	                        ),
+	                        playlists,
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: _style2.default.newForm },
+	                            _react2.default.createElement(
+	                                'span',
+	                                null,
+	                                'Ho\u1EB7c t\u1EA1o m\u1EDBi'
+	                            ),
+	                            _react2.default.createElement('input', { className: _style2.default.input, onChange: this.inputChange.bind(this), value: this.state.newPlaylistName }),
+	                            _react2.default.createElement(
+	                                'button',
+	                                { className: _style2.default.submit, disabled: this.state.newPlaylistName === '', onClick: this.savePlaylist.bind(this) },
+	                                'L\u01B0u'
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return PlaylistCreator;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)(_style2.default)(PlaylistCreator);
+
+/***/ },
+
+/***/ 407:
+/*!***************************************************!*\
+  !*** ./src/components/PlaylistCreator/style.scss ***!
+  \***************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./style.scss */ 408);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./style.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./style.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 408:
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/PlaylistCreator/style.scss ***!
+  \**************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".style_root_2hJ {\n  position: fixed;\n  z-index: 999;\n  background: white;\n  left: 0;\n  bottom: 0;\n  top: 0;\n  right: 0; }\n\n.style_container_3-u {\n  padding: 20px 0; }\n\n.style_heading_1JA {\n  margin-bottom: 20px;\n  font-size: 30px;\n  padding: 0 20px; }\n\n.style_item_1nh {\n  color: #fff;\n  padding: 10px;\n  font-size: 23px;\n  font-weight: 400;\n  display: inline-block;\n  width: 100%;\n  line-height: 16px;\n  background: #4267b2;\n  border-top: 1px solid #5776b7;\n  border-bottom: 1px solid #264d9a;\n  text-decoration: none; }\n\n.style_item_1nh em {\n    color: #9E9E9E;\n    font-size: 16px;\n    display: block;\n    margin-top: 10px; }\n\n.style_hideLink_3vN {\n  position: absolute;\n  right: 10px;\n  font-size: 30px;\n  color: #4267b2; }\n\n.style_newForm_2Ce {\n  margin-top: 40px;\n  padding: 0 20px; }\n\n.style_newForm_2Ce span {\n    font-size: 24px; }\n\n.style_input_288 {\n  border: 0px;\n  background: #ffffff;\n  border: 1px solid #375ca8;\n  margin: 10px 0 0 0;\n  font-size: 22px;\n  font-weight: bold;\n  padding: 10px 10px;\n  text-align: center;\n  color: #424242;\n  width: 100%; }\n\n.style_submit_1uA {\n  width: 100%;\n  border: 0px;\n  font-size: 16px;\n  padding: 10px;\n  margin: 10px 0 0 0;\n  background: #4267b2;\n  color: #fff;\n  border: 1px solid #254c9c; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "style_root_2hJ",
+		"root": "style_root_2hJ",
+		"container": "style_container_3-u",
+		"container": "style_container_3-u",
+		"heading": "style_heading_1JA",
+		"heading": "style_heading_1JA",
+		"item": "style_item_1nh",
+		"item": "style_item_1nh",
+		"hideLink": "style_hideLink_3vN",
+		"hideLink": "style_hideLink_3vN",
+		"newForm": "style_newForm_2Ce",
+		"newForm": "style_newForm_2Ce",
+		"input": "style_input_288",
+		"input": "style_input_288",
+		"submit": "style_submit_1uA",
+		"submit": "style_submit_1uA"
+	};
+
+/***/ },
+
+/***/ 409:
 /*!****************************************!*\
   !*** ./src/components/css/search.scss ***!
   \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./search.scss */ 859);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 845);
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./search.scss */ 410);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
 	
 	    if (typeof content === 'string') {
 	      content = [[module.id, content, '']];
@@ -1416,34 +1639,34 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 859:
+/***/ 410:
 /*!***************************************************************************************************************************************************************!*\
   !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/search.scss ***!
   \***************************************************************************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 844)();
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".search_root_odU {\n  width: 100%;\n  background: #4267b2;\n  padding: 5px;\n  position: relative; }\n\n.search_form_39o {\n  position: relative; }\n\n.search_input_2jk {\n  border: 0;\n  padding: 8px;\n  font-size: 24px;\n  display: table-row-group;\n  width: 100%;\n  height: 40px; }\n\n.search_optionWrap_Nj1 {\n  position: fixed;\n  z-index: 999;\n  background: rgba(66, 103, 178, 0.04);\n  left: 0;\n  bottom: 0;\n  top: 0;\n  right: 0; }\n\n.search_optionWrap_Nj1 ul {\n    left: 20px;\n    right: 20px;\n    margin: auto;\n    list-style: none;\n    background: #fff;\n    border-radius: 5px;\n    top: 50%;\n    position: absolute;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    overflow: hidden; }\n\n.search_optionWrap_Nj1 li {\n    padding: 10px 5px;\n    text-align: center;\n    font-size: 20px;\n    background: #4267b2;\n    border-top: 1px solid #5776b7;\n    border-bottom: 1px solid #264d9a;\n    color: #fff; }\n\n.search_optionWrap_Nj1 li a {\n      text-decoration: none;\n      color: #fff; }\n", ""]);
+	exports.push([module.id, ".search_root_11s {\n  width: 100%;\n  background: #4267b2;\n  padding: 5px;\n  position: relative; }\n\n.search_form_3tJ {\n  position: relative; }\n\n.search_input_3Im {\n  border: 0;\n  padding: 8px;\n  font-size: 24px;\n  display: table-row-group;\n  width: 100%;\n  height: 40px; }\n\n.search_optionWrap_2vi {\n  position: fixed;\n  z-index: 999;\n  background: rgba(66, 103, 178, 0.04);\n  left: 0;\n  bottom: 0;\n  top: 0;\n  right: 0; }\n\n.search_optionWrap_2vi ul {\n    left: 20px;\n    right: 20px;\n    margin: auto;\n    list-style: none;\n    background: #fff;\n    border-radius: 5px;\n    top: 50%;\n    position: absolute;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    overflow: hidden; }\n\n.search_optionWrap_2vi li {\n    padding: 10px 5px;\n    text-align: center;\n    font-size: 20px;\n    background: #4267b2;\n    border-top: 1px solid #5776b7;\n    border-bottom: 1px solid #264d9a;\n    color: #fff; }\n\n.search_optionWrap_2vi li a {\n      text-decoration: none;\n      color: #fff; }\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"root": "search_root_odU",
-		"root": "search_root_odU",
-		"form": "search_form_39o",
-		"form": "search_form_39o",
-		"input": "search_input_2jk",
-		"input": "search_input_2jk",
-		"optionWrap": "search_optionWrap_Nj1",
-		"optionWrap": "search_optionWrap_Nj1"
+		"root": "search_root_11s",
+		"root": "search_root_11s",
+		"form": "search_form_3tJ",
+		"form": "search_form_3tJ",
+		"input": "search_input_3Im",
+		"input": "search_input_3Im",
+		"optionWrap": "search_optionWrap_2vi",
+		"optionWrap": "search_optionWrap_2vi"
 	};
 
 /***/ },
 
-/***/ 860:
+/***/ 411:
 /*!*****************************************!*\
   !*** ./src/containers/ContainerUser.js ***!
   \*****************************************/
@@ -1454,60 +1677,22 @@ webpackJsonp([0],{
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.User = undefined;
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _user = __webpack_require__(/*! ./../actions/user */ 861);
+	var _user = __webpack_require__(/*! ./../actions/user */ 412);
 	
 	var _react = __webpack_require__(/*! react */ 4);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 394);
+	var _UserDashboard = __webpack_require__(/*! ./../components/UserDashboard */ 899);
 	
-	var _redux = __webpack_require__(/*! redux */ 401);
+	var _UserDashboard2 = _interopRequireDefault(_UserDashboard);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 244);
+	
+	var _redux = __webpack_require__(/*! redux */ 251);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var User = exports.User = function (_React$Component) {
-	    _inherits(User, _React$Component);
-	
-	    function User(props) {
-	        _classCallCheck(this, User);
-	
-	        var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
-	
-	        console.log(1);
-	        var uid = localStorage.getItem('uid');
-	        if (!uid) {
-	            props.actions.loginWithFacebook();
-	        } else {
-	            props.actions.parseUserData(uid);
-	        }
-	        return _this;
-	    }
-	
-	    _createClass(User, [{
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            console.log(nextProps);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return null;
-	        }
-	    }]);
-	
-	    return User;
-	}(_react2.default.Component);
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	    return {
@@ -1519,18 +1704,20 @@ webpackJsonp([0],{
 	    return {
 	        actions: (0, _redux.bindActionCreators)({
 	            loginWithFacebook: _user.loginWithFacebook,
+	            loginWithGoogle: _user.loginWithGoogle,
 	            parseUserData: _user.parseUserData,
-	            commitUserData: _user.commitUserData
+	            commitUserData: _user.commitUserData,
+	            connectToDropbox: _user.connectToDropbox
 	        }, dispatch)
 	    };
 	};
 	
-	var ContainerUser = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(User);
+	var ContainerUser = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_UserDashboard2.default);
 	exports.default = ContainerUser;
 
 /***/ },
 
-/***/ 861:
+/***/ 412:
 /*!*****************************!*\
   !*** ./src/actions/user.js ***!
   \*****************************/
@@ -1541,27 +1728,61 @@ webpackJsonp([0],{
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.commitUserData = exports.parseUserData = exports.loginWithFacebook = exports.loginWithGoogle = undefined;
+	exports.appenUserData = exports.commitUserData = exports.parseUserData = exports.loginWithFacebook = exports.loginWithGoogle = exports.connectToDropbox = undefined;
 	
-	var _firebase = __webpack_require__(/*! ./../store/firebase */ 862);
+	var _FirebaseInstance = __webpack_require__(/*! ./../store/FirebaseInstance */ 922);
 	
-	var _firebase2 = _interopRequireDefault(_firebase);
+	var _FirebaseInstance2 = _interopRequireDefault(_FirebaseInstance);
+	
+	var _dropbox = __webpack_require__(/*! ./../store/dropbox */ 902);
+	
+	var _dropbox2 = _interopRequireDefault(_dropbox);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	var parseParram = function parseParram(parramStr) {
+		var parrams = {};
+		parramStr.split('&').map(function (item) {
+			var itemArr = item.split('=');
+			parrams[itemArr[0]] = itemArr[1];
+		});
+		return parrams;
+	};
+	
+	var connectToDropbox = exports.connectToDropbox = function connectToDropbox() {
+		return function (dispatch) {
+			var authUrl = _dropbox2.default.getAuthenticationUrl(window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/auth');
+			var form = window.open(authUrl, true);
+			window.connectSuccess = function (parramStr) {
+				var parram = parseParram(parramStr);
+				dispatch({
+					type: 'CONNECT_DX_SUCCESS',
+					accessToken: parram.access_token
+				});
+			};
+		};
+	};
+	
 	var loginWithGoogle = exports.loginWithGoogle = function loginWithGoogle() {
 		return function (dispatch) {
-			var provider = new _firebase2.default.auth.GoogleAuthProvider();
+			var provider = new _FirebaseInstance2.default.auth.GoogleAuthProvider();
 			provider.addScope('profile');
 			provider.addScope('email');
-			_firebase2.default.auth().signInWithPopup(provider).then(function (result) {
+			_FirebaseInstance2.default.auth().signInWithPopup(provider).then(function (result) {
+	
 				// The signed-in user info.
-				var user = result.user;
-				localStorage.setItem('uid', user.uid);
-				// dispatch({
-				// 	type: 'LOGIN_GG_SUCCESS',
-				// 	uid: user.uid
-				// });
+				var user = {
+					uid: result.user.uid,
+					ggToken: result.credential.accessToken,
+					name: result.user.displayName,
+					email: result.user.email,
+					displayName: result.user.displayName
+				};
+	
+				dispatch({
+					type: 'LOGIN_SOCIAL_SUCCESS',
+					user: user
+				});
 			}).catch(function (error) {
 				// Handle Errors here.
 				var errorCode = error.code;
@@ -1573,25 +1794,21 @@ webpackJsonp([0],{
 	};
 	var loginWithFacebook = exports.loginWithFacebook = function loginWithFacebook() {
 		return function (dispatch) {
-			var provider = new _firebase2.default.auth.FacebookAuthProvider();
+			var provider = new _FirebaseInstance2.default.auth.FacebookAuthProvider();
 			provider.addScope('email, user_photos');
-			_firebase2.default.auth().signInWithPopup(provider).then(function (result) {
+			_FirebaseInstance2.default.auth().signInWithPopup(provider).then(function (result) {
 				// The signed-in user info.
 				var user = {
 					uid: result.user.uid,
 					fbToken: result.credential.accessToken,
-					ggToken: '',
 					name: result.user.displayName,
 					email: result.user.email,
 					displayName: result.user.displayName
 				};
 	
-				console.log('loged with fb: ', user);
-				dispatch(commitUserData(user.uid, user));
 				dispatch({
-					type: 'LOGIN_FB_SUCCESS',
+					type: 'LOGIN_SOCIAL_SUCCESS',
 					user: user
-	
 				});
 			}).catch(function (error) {
 				// Handle Errors here.
@@ -1606,64 +1823,50 @@ webpackJsonp([0],{
 	var parseUserData = exports.parseUserData = function parseUserData(uid) {
 		console.log('parse uid: ', uid);
 		return function (dispatch) {
-			var db = _firebase2.default.database();
+			var db = _FirebaseInstance2.default.database();
 			db.ref('/users/' + uid).once('value').then(function (snap) {
-				var user = snap.val();
+				var userData = snap.val();
 				dispatch({
 					type: 'USERDATA_PARSED',
-					user: user
+					userData: userData
 				});
 			});
 		};
 	};
 	
-	var commitUserData = exports.commitUserData = function commitUserData(uid, data) {
+	var commitUserData = exports.commitUserData = function commitUserData(uid, data, path) {
 		console.log("commit data: ", data, uid);
-		return function (dispatch) {
-			var db = _firebase2.default.database();
-			db.ref('/users/' + uid).set(data).then(function () {
-				dispatch({
-					type: 'USERDATA_COMMITED'
-				});
-			});
-		};
+	
+		var db = _FirebaseInstance2.default.database();
+		db.ref('/users/' + uid + '/' + path).set(data).then(function (res) {
+			console.log(res);
+		}).catch(function (error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			console.log(errorCode, errorMessage);
+			// ...
+		});
+	};
+	
+	var appenUserData = exports.appenUserData = function appenUserData(uid, data, path) {
+		console.log("commit data: ", data, uid);
+	
+		var db = _FirebaseInstance2.default.database();
+		db.ref('/users/' + uid + '/' + path).push(data).then(function (res) {
+			console.log(res);
+		}).catch(function (error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			console.log(errorCode, errorMessage);
+			// ...
+		});
 	};
 
 /***/ },
 
-/***/ 862:
-/*!*******************************!*\
-  !*** ./src/store/firebase.js ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _firebase = __webpack_require__(/*! firebase */ 863);
-	
-	var _firebase2 = _interopRequireDefault(_firebase);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var config = {
-		apiKey: "AIzaSyBNiaBVWEvAg1HnN_XBlo70ATLT0ef6gJ0",
-		authDomain: "luminous-heat-3458.firebaseapp.com",
-		databaseURL: "https://luminous-heat-3458.firebaseio.com",
-		storageBucket: "luminous-heat-3458.appspot.com",
-		messagingSenderId: "635828897166"
-	};
-	
-	_firebase2.default.initializeApp(config);
-	
-	exports.default = _firebase2.default;
-
-/***/ },
-
-/***/ 863:
+/***/ 414:
 /*!****************************************!*\
   !*** ./~/firebase/firebase-browser.js ***!
   \****************************************/
@@ -1676,17 +1879,17 @@ webpackJsonp([0],{
 	 *
 	 *   firebase = require('firebase');
 	 */
-	var firebase = __webpack_require__(/*! ./app */ 864);
-	__webpack_require__(/*! ./auth */ 865);
-	__webpack_require__(/*! ./database */ 866);
-	__webpack_require__(/*! ./storage */ 867);
-	__webpack_require__(/*! ./messaging */ 868);
+	var firebase = __webpack_require__(/*! ./app */ 415);
+	__webpack_require__(/*! ./auth */ 416);
+	__webpack_require__(/*! ./database */ 417);
+	__webpack_require__(/*! ./storage */ 418);
+	__webpack_require__(/*! ./messaging */ 419);
 	module.exports = firebase;
 
 
 /***/ },
 
-/***/ 864:
+/***/ 415:
 /*!***************************!*\
   !*** ./~/firebase/app.js ***!
   \***************************/
@@ -1736,13 +1939,13 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 865:
+/***/ 416:
 /*!****************************!*\
   !*** ./~/firebase/auth.js ***!
   \****************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(/*! ./app */ 864);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(/*! ./app */ 415);
 	(function(){
 	/*! @license Firebase v3.7.4
 	    Build: 3.7.4-rc.1
@@ -1996,13 +2199,13 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 866:
+/***/ 417:
 /*!********************************!*\
   !*** ./~/firebase/database.js ***!
   \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(/*! ./app */ 864);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(/*! ./app */ 415);
 	(function(){
 	/*! @license Firebase v3.7.4
 	    Build: 3.7.4-rc.1
@@ -2270,13 +2473,13 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 867:
+/***/ 418:
 /*!*******************************!*\
   !*** ./~/firebase/storage.js ***!
   \*******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(/*! ./app */ 864);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(/*! ./app */ 415);
 	(function(){
 	/*! @license Firebase v3.7.4
 	    Build: 3.7.4-rc.1
@@ -2338,13 +2541,13 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 868:
+/***/ 419:
 /*!*********************************!*\
   !*** ./~/firebase/messaging.js ***!
   \*********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(/*! ./app */ 864);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(/*! ./app */ 415);
 	(function(){
 	/*! @license Firebase v3.7.4
 	    Build: 3.7.4-rc.1
@@ -2388,7 +2591,463 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 869:
+/***/ 420:
+/*!*********************************************!*\
+  !*** ./src/containers/ContainerPlaylist.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 244);
+	
+	var _redux = __webpack_require__(/*! redux */ 251);
+	
+	var _PlaylistExplorer = __webpack_require__(/*! ../components/PlaylistExplorer */ 421);
+	
+	var _PlaylistExplorer2 = _interopRequireDefault(_PlaylistExplorer);
+	
+	var _playlist = __webpack_require__(/*! ../actions/playlist */ 300);
+	
+	var _player = __webpack_require__(/*! ../actions/player */ 299);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        playlist: state.playlist,
+	        player: state.player
+	    };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        actions: (0, _redux.bindActionCreators)({
+	            addSongToPlaylist: _playlist.addSongToPlaylist,
+	            createNew: _playlist.createNew,
+	            onHideClick: _playlist.hidePopupAddToPlaylist,
+	            setCurentPlaylist: _playlist.setCurentPlaylist,
+	            fetchById: _player.fetchById,
+	            setPlayerId: _player.setPlayerId,
+	            clearError: _player.clearError
+	        }, dispatch)
+	    };
+	};
+	
+	var ContainerPlaylist = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PlaylistExplorer2.default);
+	
+	exports.default = ContainerPlaylist;
+
+/***/ },
+
+/***/ 421:
+/*!********************************************!*\
+  !*** ./src/components/PlaylistExplorer.js ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 35);
+	
+	var _PlaylistCreator = __webpack_require__(/*! ./PlaylistCreator/ */ 406);
+	
+	var _PlaylistCreator2 = _interopRequireDefault(_PlaylistCreator);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
+	
+	var _playlist = __webpack_require__(/*! ./css/playlist.scss */ 422);
+	
+	var _playlist2 = _interopRequireDefault(_playlist);
+	
+	var _songItem = __webpack_require__(/*! ./css/song-item.scss */ 424);
+	
+	var _songItem2 = _interopRequireDefault(_songItem);
+	
+	var _Player = __webpack_require__(/*! ./Player */ 426);
+	
+	var _Player2 = _interopRequireDefault(_Player);
+	
+	var _colors = __webpack_require__(/*! ./../helpers/colors */ 546);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PlaylistExplorer = function (_React$Component) {
+	    _inherits(PlaylistExplorer, _React$Component);
+	
+	    function PlaylistExplorer(props) {
+	        _classCallCheck(this, PlaylistExplorer);
+	
+	        var _this = _possibleConstructorReturn(this, (PlaylistExplorer.__proto__ || Object.getPrototypeOf(PlaylistExplorer)).call(this, props));
+	
+	        _this.state = {
+	            playlist: props.playlist,
+	            player: props.player
+	        };
+	        _this.actions = props.actions;
+	        return _this;
+	    }
+	
+	    _createClass(PlaylistExplorer, [{
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            this.setTitle();
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.parseProps(this.props);
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            this.parseProps(nextProps);
+	        }
+	    }, {
+	        key: 'parseProps',
+	        value: function parseProps(props) {
+	            // let playlist_id = typeof props.ownProps.params.playlist_id !== 'undefined' ? props.ownProps.params.playlist_id : -1;
+	            // if(playlist_id !== props.playlist.currentIndex){
+	            //     this.actions.setCurentPlaylist(playlist_id);
+	            // }
+	
+	            // if(typeof props.ownProps.params.song_id !== 'undefined' && props.ownProps.params.song_id !== props.player.player_id){
+	            //     const rolloutPlaylist = this.getSelectedPlaylist(this.props.playlist, props.params.playlist_id, props.ownProps.params.song_id);
+	            //     this.actions.setPlayerId(props.ownProps.params.song_id, rolloutPlaylist, props.params.playlist_id);     
+	            //     // this.fetchPlayerId = true;
+	            // }
+	
+	            this.setState({
+	                playlist: props.playlist,
+	                player: props.player
+	            });
+	        }
+	    }, {
+	        key: '_onPlaylistClick',
+	        value: function _onPlaylistClick(index) {
+	            this.actions.setCurentPlaylist(index);
+	        }
+	    }, {
+	        key: '_onSongClick',
+	        value: function _onSongClick(index, rolloutPlaylist, currentIndex) {
+	            this.actions.setPlayerId(index, rolloutPlaylist, currentIndex);
+	        }
+	    }, {
+	        key: '_onCreateNew',
+	        value: function _onCreateNew(playlistName, callbackSongId) {
+	            this.actions.createNew(playlistName, callbackSongId);
+	        }
+	    }, {
+	        key: 'setTitle',
+	        value: function setTitle() {
+	            var playlist = this.props.playlist;
+	            if (parseInt(playlist.currentIndex) !== -1) {
+	                document.title = playlist.data[playlist.currentIndex].name;
+	            } else {
+	                document.title = 'Rezux - Chỉ để vui';
+	            }
+	        }
+	    }, {
+	        key: 'getSelectedPlaylist',
+	        value: function getSelectedPlaylist(playlist, playlist_id, song_id) {
+	            if (typeof playlist.data[playlist_id] !== 'undefined') {
+	                var currentPlaylist = playlist.data[playlist_id];
+	                // check if list not contain song
+	                var exist = false;
+	                currentPlaylist.list.map(function (song) {
+	                    if (song.id === song_id) {
+	                        exist = true;
+	                    }
+	                });
+	                if (exist) {
+	                    return currentPlaylist;
+	                }
+	            }
+	            return false;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var playlist = this.props.playlist;
+	            var player = this.props.player;
+	            var directoryTitle = _react2.default.createElement(
+	                'h3',
+	                { className: _playlist2.default.directoryTitle },
+	                _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    'Danh s\xE1ch Playlist'
+	                )
+	            );
+	
+	            var playlists = void 0,
+	                playerDom = void 0;
+	
+	            if (playlist.currentIndex === -1) {
+	
+	                playerDom = _react2.default.createElement(_Player2.default, { clearError: this.actions.clearError, key: player.player_id, state: player, fetch: this.actions.fetchById });
+	
+	                if (playlist.data.length > 0) {
+	                    playlists = playlist.data.map(function (playlist, index) {
+	                        return _react2.default.createElement(
+	                            'div',
+	                            { onClick: function onClick() {
+	                                    _this2._onPlaylistClick(index);
+	                                }, className: _playlist2.default.item, key: index },
+	                            playlist.name,
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement(
+	                                'em',
+	                                null,
+	                                playlist.list.length,
+	                                ' b\xE0i h\xE1t'
+	                            )
+	                        );
+	                    });
+	                } else {
+	                    playlists = _react2.default.createElement(
+	                        'p',
+	                        { className: _playlist2.default.empty },
+	                        'Ch\u01B0a c\xF3 Playlist n\xE0o!'
+	                    );
+	                }
+	            } else {
+	                var selectedPlaylist = playlist.data[playlist.currentIndex];
+	                directoryTitle = _react2.default.createElement(
+	                    'h3',
+	                    { className: _playlist2.default.directoryTitle },
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: _playlist2.default.icon, onClick: function onClick() {
+	                                _this2._onPlaylistClick(-1);
+	                            } },
+	                        _react2.default.createElement('i', { className: 'ion-ios-arrow-thin-left' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        selectedPlaylist.name
+	                    )
+	                );
+	
+	                playerDom = _react2.default.createElement(_Player2.default, { clearError: this.actions.clearError, key: player.player_id, state: player, fetch: this.actions.fetchById });
+	
+	                if (selectedPlaylist.list.length > 0) {
+	                    playlists = selectedPlaylist.list.map(function (song, index) {
+	                        return _react2.default.createElement(
+	                            'li',
+	                            { className: _songItem2.default.root, onClick: function onClick() {
+	                                    _this2._onSongClick(song.id, selectedPlaylist, playlist.currentIndex);
+	                                } },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: _songItem2.default.link },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: _songItem2.default.content },
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        null,
+	                                        song.name
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        null,
+	                                        song.artist
+	                                    )
+	                                )
+	                            )
+	                        );
+	                    });
+	                } else {
+	                    playlists = _react2.default.createElement(
+	                        'p',
+	                        { className: _playlist2.default.empty },
+	                        'Ch\u01B0a c\xF3 b\xE0i h\xE1t n\xE0o!'
+	                    );
+	                }
+	            }
+	
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _playlist2.default.root },
+	                    directoryTitle,
+	                    playlists
+	                ),
+	                playerDom
+	            );
+	        }
+	    }]);
+	
+	    return PlaylistExplorer;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)([_playlist2.default, _songItem2.default])(PlaylistExplorer);
+
+/***/ },
+
+/***/ 422:
+/*!******************************************!*\
+  !*** ./src/components/css/playlist.scss ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./playlist.scss */ 423);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./playlist.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./playlist.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 423:
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/playlist.scss ***!
+  \*****************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".playlist_root_OT1 {\n  padding: 0 0 20px 0; }\n\n.playlist_heading_3MU {\n  margin-bottom: 20px;\n  font-size: 30px; }\n\n.playlist_empty_2ri {\n  margin: 0 20px; }\n\n.playlist_item_38V {\n  color: #fff;\n  padding: 10px;\n  font-size: 23px;\n  font-weight: 400;\n  display: inline-block;\n  width: 100%;\n  line-height: 16px;\n  background: #4267b2;\n  border-top: 1px solid #5776b7;\n  border-bottom: 1px solid #264d9a;\n  text-decoration: none; }\n\n.playlist_item_38V em {\n    color: #9E9E9E;\n    font-size: 16px;\n    display: block;\n    margin-top: 10px; }\n\n.playlist_directoryTitle_2yN {\n  margin: 0 0 10px 0;\n  font-size: 26px;\n  color: #4267b2; }\n\n.playlist_directoryTitle_2yN span:last-child {\n    margin-left: 20px;\n    line-height: 1;\n    padding: 12px 0;\n    vertical-align: middle;\n    font-size: 26px;\n    display: inline-block; }\n\n.playlist_directoryTitle_2yN .playlist_icon_b98 {\n    display: inline-block;\n    vertical-align: middle;\n    background: #4267b2;\n    color: #fff;\n    padding: 10px; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "playlist_root_OT1",
+		"root": "playlist_root_OT1",
+		"heading": "playlist_heading_3MU",
+		"heading": "playlist_heading_3MU",
+		"empty": "playlist_empty_2ri",
+		"empty": "playlist_empty_2ri",
+		"item": "playlist_item_38V",
+		"item": "playlist_item_38V",
+		"directoryTitle": "playlist_directoryTitle_2yN",
+		"directoryTitle": "playlist_directoryTitle_2yN",
+		"icon": "playlist_icon_b98",
+		"icon": "playlist_icon_b98"
+	};
+
+/***/ },
+
+/***/ 424:
+/*!*******************************************!*\
+  !*** ./src/components/css/song-item.scss ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./song-item.scss */ 425);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./song-item.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./song-item.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 425:
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/song-item.scss ***!
+  \******************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".song-item_root_2nr {\n  display: inline-block;\n  width: 100%;\n  padding: 5px 0;\n  border-top: 1px solid #eef0f5; }\n\n.song-item_link_359 {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-decoration: none; }\n\n.song-item_link_359 img {\n    border-radius: 50%;\n    width: 60px;\n    height: 60px; }\n\n.song-item_content_K8p {\n  margin-left: 10px;\n  color: #333;\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center; }\n\n.song-item_content_K8p span:first-child {\n    color: #333;\n    display: block;\n    text-decoration: none;\n    width: 100%;\n    font-size: 22px; }\n\n.song-item_content_K8p span:last-child {\n    color: #666;\n    text-decoration: none;\n    font-size: 18px; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "song-item_root_2nr",
+		"root": "song-item_root_2nr",
+		"link": "song-item_link_359",
+		"link": "song-item_link_359",
+		"content": "song-item_content_K8p",
+		"content": "song-item_content_K8p"
+	};
+
+/***/ },
+
+/***/ 426:
 /*!**********************************!*\
   !*** ./src/components/Player.js ***!
   \**********************************/
@@ -2408,19 +3067,19 @@ webpackJsonp([0],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _moment = __webpack_require__(/*! moment */ 717);
+	var _moment = __webpack_require__(/*! moment */ 427);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 577);
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
 	
 	var _withStyles2 = _interopRequireDefault(_withStyles);
 	
-	var _player = __webpack_require__(/*! ./css/player.scss */ 870);
+	var _player = __webpack_require__(/*! ./css/player.scss */ 544);
 	
 	var _player2 = _interopRequireDefault(_player);
 	
-	var _colors = __webpack_require__(/*! ./../helpers/colors */ 872);
+	var _colors = __webpack_require__(/*! ./../helpers/colors */ 546);
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 35);
 	
@@ -2506,6 +3165,7 @@ webpackJsonp([0],{
 	            if (newState.fetched) {
 	                if (!this.state.player.play) {
 	                    newState.player.play = true;
+	                    this.load();
 	                    this.play();
 	                }
 	                newState.player.disabled = false;
@@ -2577,7 +3237,7 @@ webpackJsonp([0],{
 	            var nextSongId = this.getNextSongId();
 	            var rolloutId = this.state.rolloutId;
 	            if (nextSongId) {
-	                _reactRouter.browserHistory.push('/' + rolloutId + '/' + nextSongId);
+	                this.fetch(nextSongId);
 	            }
 	        }
 	    }, {
@@ -2629,6 +3289,7 @@ webpackJsonp([0],{
 	                'div',
 	                { className: _player2.default.root, style: { backgroundImage: "url(" + image + ")", filter: player.disabled ? 'grayscale(100%)' : 'none' } },
 	                _react2.default.createElement('audio', { src: this.getBestSource(source), autoPlay: 'true', id: 'player',
+	                    onLoadedData: this.play.bind(this),
 	                    onEnded: this.next.bind(this),
 	                    onTimeUpdate: this.updateDuration.bind(this) }),
 	                errorDiv,
@@ -2668,15 +3329,15 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 870:
+/***/ 544:
 /*!****************************************!*\
   !*** ./src/components/css/player.scss ***!
   \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./player.scss */ 871);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 845);
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./player.scss */ 545);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
 	
 	    if (typeof content === 'string') {
 	      content = [[module.id, content, '']];
@@ -2707,42 +3368,42 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 871:
+/***/ 545:
 /*!***************************************************************************************************************************************************************!*\
   !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/player.scss ***!
   \***************************************************************************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 844)();
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".player_root_23u {\n  background-repeat: no-repeat !important;\n  background-position: 100% 5% !important;\n  background-size: 53% !important;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  background: #4267b2;\n  padding: 10px;\n  /* Special styling for WebKit/Blink */\n  /* All the same stuff for Firefox */\n  /* All the same stuff for IE */ }\n  .player_root_23u [class^=ion] {\n    font-size: 30px;\n    line-height: 30px; }\n  .player_root_23u video {\n    width: 100%;\n    height: 48px; }\n  .player_root_23u input[type=range] {\n    -webkit-appearance: none;\n    /* Hides the slider so that custom slider can be made */\n    width: 100%;\n    /* Specific width is required for Firefox. */\n    background: transparent;\n    /* Otherwise white in Chrome */\n    float: left;\n    margin-top: 10px;\n    margin-bottom: 10px; }\n  .player_root_23u input[type=range]::-webkit-slider-thumb {\n    -webkit-appearance: none; }\n  .player_root_23u input[type=range]:focus {\n    outline: none;\n    /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ }\n  .player_root_23u input[type=range]::-ms-track {\n    width: 100%;\n    cursor: pointer;\n    /* Hides the slider so custom styles can be added */\n    background: transparent;\n    border-color: transparent;\n    color: transparent; }\n  .player_root_23u input[type=range]::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer;\n    margin-top: -6px; }\n  .player_root_23u input[type=range]::-moz-range-thumb {\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer; }\n  .player_root_23u input[type=range]::-ms-thumb {\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer; }\n  .player_root_23u input[type=range]::-webkit-slider-runnable-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: #fff; }\n  .player_root_23u input[type=range]:focus::-webkit-slider-runnable-track {\n    background: #fff; }\n  .player_root_23u input[type=range]::-moz-range-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: #fff; }\n  .player_root_23u input[type=range]::-ms-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: transparent;\n    border-color: transparent;\n    color: transparent; }\n  .player_root_23u input[type=range]::-ms-fill-lower {\n    background: #fff; }\n  .player_root_23u input[type=range]:focus::-ms-fill-lower {\n    background: #fff; }\n  .player_root_23u input[type=range]::-ms-fill-upper {\n    background: #fff; }\n  .player_root_23u input[type=range]:focus::-ms-fill-upper {\n    background: #fff; }\n  .player_error_1_3 {\n  position: fixed;\n  top: -100%;\n  width: 100%;\n  left: 0;\n  background: #4267b2;\n  font-size: 20px;\n  text-align: center;\n  padding: 10px 0;\n  color: #ffffff;\n  -webkit-animation: player_faceOut_3ZI 2.5s;\n          animation: player_faceOut_3ZI 2.5s; }\n  .player_control_oqD button {\n  border: 0;\n  font-size: 0;\n  padding: 0 5px;\n  background: transparent;\n  width: 40px;\n  color: #f5f8fd; }\n  .player_durationWrap_M50 {\n  float: right;\n  width: calc(100% - 40px);\n  color: #fff; }\n  .player_duration_HWo {\n  float: left; }\n  .player_totalDuration_1dU {\n  float: right; }\n  .player_cover_1Ya {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  width: 100%;\n  height: 100%; }\n  @-webkit-keyframes player_faceOut_3ZI {\n  0% {\n    opacity: 1;\n    top: 0; }\n  60% {\n    opacity: 1;\n    top: 0%; }\n  80% {\n    opacity: 1;\n    top: 0%; }\n  90% {\n    opacity: 0;\n    top: -50%; }\n  95% {\n    opacity: 0;\n    top: -80%; }\n  100% {\n    opacity: 0;\n    top: -100%; } }\n  /* Standard syntax */\n  @keyframes player_faceOut_3ZI {\n  0% {\n    opacity: 1;\n    top: 0; }\n  60% {\n    opacity: 1;\n    top: 0%; }\n  80% {\n    opacity: 1;\n    top: 0%; }\n  90% {\n    opacity: 0;\n    top: -50%; }\n  95% {\n    opacity: 0;\n    top: -80%; }\n  100% {\n    opacity: 0;\n    top: -100%; } }\n", ""]);
+	exports.push([module.id, ".player_root_qfm {\n  background-repeat: no-repeat !important;\n  background-position: 100% 5% !important;\n  background-size: 53% !important;\n  position: fixed;\n  bottom: 40px;\n  left: 0;\n  width: 100%;\n  background: #4267b2;\n  padding: 10px 10px 5px 0;\n  box-shadow: 0 0 1px #4267b2 inset;\n  /* Special styling for WebKit/Blink */\n  /* All the same stuff for Firefox */\n  /* All the same stuff for IE */ }\n  .player_root_qfm [class^=ion] {\n    font-size: 30px;\n    line-height: 30px; }\n  .player_root_qfm video {\n    width: 100%;\n    height: 48px; }\n  .player_root_qfm input[type=range] {\n    -webkit-appearance: none;\n    /* Hides the slider so that custom slider can be made */\n    width: 100%;\n    /* Specific width is required for Firefox. */\n    background: transparent;\n    /* Otherwise white in Chrome */\n    float: left;\n    margin-top: 10px;\n    margin-bottom: 10px; }\n  .player_root_qfm input[type=range]::-webkit-slider-thumb {\n    -webkit-appearance: none; }\n  .player_root_qfm input[type=range]:focus {\n    outline: none;\n    /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ }\n  .player_root_qfm input[type=range]::-ms-track {\n    width: 100%;\n    cursor: pointer;\n    /* Hides the slider so custom styles can be added */\n    background: transparent;\n    border-color: transparent;\n    color: transparent; }\n  .player_root_qfm input[type=range]::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer;\n    margin-top: -6px; }\n  .player_root_qfm input[type=range]::-moz-range-thumb {\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer; }\n  .player_root_qfm input[type=range]::-ms-thumb {\n    height: 16px;\n    width: 16px;\n    border-radius: 50%;\n    background: #ffffff;\n    cursor: pointer; }\n  .player_root_qfm input[type=range]::-webkit-slider-runnable-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: #fff; }\n  .player_root_qfm input[type=range]:focus::-webkit-slider-runnable-track {\n    background: #fff; }\n  .player_root_qfm input[type=range]::-moz-range-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: #fff; }\n  .player_root_qfm input[type=range]::-ms-track {\n    width: 100%;\n    height: 3px;\n    cursor: pointer;\n    background: transparent;\n    border-color: transparent;\n    color: transparent; }\n  .player_root_qfm input[type=range]::-ms-fill-lower {\n    background: #fff; }\n  .player_root_qfm input[type=range]:focus::-ms-fill-lower {\n    background: #fff; }\n  .player_root_qfm input[type=range]::-ms-fill-upper {\n    background: #fff; }\n  .player_root_qfm input[type=range]:focus::-ms-fill-upper {\n    background: #fff; }\n  .player_error_x9V {\n  position: fixed;\n  top: -100%;\n  width: 100%;\n  left: 0;\n  background: #4267b2;\n  font-size: 20px;\n  text-align: center;\n  padding: 10px 0;\n  color: #ffffff;\n  -webkit-animation: player_faceOut_3wv 2.5s;\n          animation: player_faceOut_3wv 2.5s; }\n  .player_control_2O1 button {\n  border: 0;\n  font-size: 0;\n  padding: 0 5px;\n  background: transparent;\n  width: 40px;\n  color: #f5f8fd; }\n  .player_durationWrap_7kb {\n  float: right;\n  width: calc(100% - 40px);\n  color: #fff;\n  font-size: 16px; }\n  .player_duration_2KW {\n  float: left; }\n  .player_totalDuration_35Z {\n  float: right; }\n  .player_cover_3OU {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  width: 100%;\n  height: 100%; }\n  @-webkit-keyframes player_faceOut_3wv {\n  0% {\n    opacity: 1;\n    top: 0; }\n  60% {\n    opacity: 1;\n    top: 0%; }\n  80% {\n    opacity: 1;\n    top: 0%; }\n  90% {\n    opacity: 0;\n    top: -50%; }\n  95% {\n    opacity: 0;\n    top: -80%; }\n  100% {\n    opacity: 0;\n    top: -100%; } }\n  /* Standard syntax */\n  @keyframes player_faceOut_3wv {\n  0% {\n    opacity: 1;\n    top: 0; }\n  60% {\n    opacity: 1;\n    top: 0%; }\n  80% {\n    opacity: 1;\n    top: 0%; }\n  90% {\n    opacity: 0;\n    top: -50%; }\n  95% {\n    opacity: 0;\n    top: -80%; }\n  100% {\n    opacity: 0;\n    top: -100%; } }\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"root": "player_root_23u",
-		"root": "player_root_23u",
-		"error": "player_error_1_3",
-		"error": "player_error_1_3",
-		"faceOut": "player_faceOut_3ZI",
-		"faceOut": "player_faceOut_3ZI",
-		"control": "player_control_oqD",
-		"control": "player_control_oqD",
-		"durationWrap": "player_durationWrap_M50",
-		"durationWrap": "player_durationWrap_M50",
-		"duration": "player_duration_HWo",
-		"duration": "player_duration_HWo",
-		"totalDuration": "player_totalDuration_1dU",
-		"totalDuration": "player_totalDuration_1dU",
-		"cover": "player_cover_1Ya",
-		"cover": "player_cover_1Ya"
+		"root": "player_root_qfm",
+		"root": "player_root_qfm",
+		"error": "player_error_x9V",
+		"error": "player_error_x9V",
+		"faceOut": "player_faceOut_3wv",
+		"faceOut": "player_faceOut_3wv",
+		"control": "player_control_2O1",
+		"control": "player_control_2O1",
+		"durationWrap": "player_durationWrap_7kb",
+		"durationWrap": "player_durationWrap_7kb",
+		"duration": "player_duration_2KW",
+		"duration": "player_duration_2KW",
+		"totalDuration": "player_totalDuration_35Z",
+		"totalDuration": "player_totalDuration_35Z",
+		"cover": "player_cover_3OU",
+		"cover": "player_cover_3OU"
 	};
 
 /***/ },
 
-/***/ 872:
+/***/ 546:
 /*!*******************************!*\
   !*** ./src/helpers/colors.js ***!
   \*******************************/
@@ -2774,15 +3435,488 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 873:
+/***/ 547:
+/*!******************************************!*\
+  !*** ./src/containers/ContainerPhoto.js ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 244);
+	
+	var _redux = __webpack_require__(/*! redux */ 251);
+	
+	var _PhotoExplorer = __webpack_require__(/*! ../components/PhotoExplorer */ 548);
+	
+	var _PhotoExplorer2 = _interopRequireDefault(_PhotoExplorer);
+	
+	var _photo = __webpack_require__(/*! ../actions/photo */ 551);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        photo: state.photo
+	    };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        actions: (0, _redux.bindActionCreators)({
+	            upload: _photo.upload,
+	            getThumbnail: _photo.getThumbnail
+	        }, dispatch)
+	    };
+	};
+	
+	var ContainerPhoto = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PhotoExplorer2.default);
+	
+	exports.default = ContainerPhoto;
+
+/***/ },
+
+/***/ 548:
+/*!*****************************************!*\
+  !*** ./src/components/PhotoExplorer.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 35);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
+	
+	var _PhotoItem = __webpack_require__(/*! ./PhotoItem */ 924);
+	
+	var _PhotoItem2 = _interopRequireDefault(_PhotoItem);
+	
+	var _photoexplorer = __webpack_require__(/*! ./css/photoexplorer.scss */ 549);
+	
+	var _photoexplorer2 = _interopRequireDefault(_photoexplorer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PhotoExplorer = function (_React$Component) {
+	    _inherits(PhotoExplorer, _React$Component);
+	
+	    function PhotoExplorer(props) {
+	        _classCallCheck(this, PhotoExplorer);
+	
+	        return _possibleConstructorReturn(this, (PhotoExplorer.__proto__ || Object.getPrototypeOf(PhotoExplorer)).call(this, props));
+	    }
+	
+	    _createClass(PhotoExplorer, [{
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {}
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {}
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {}
+	    }, {
+	        key: 'submit',
+	        value: function submit(e) {
+	            e.preventDefault();
+	        }
+	    }, {
+	        key: 'cameraChange',
+	        value: function cameraChange(e) {
+	            var file = e.target.files[0];
+	            this.props.actions.upload(file);
+	            e.target.value = '';
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var photo = this.props.photo;
+	            var photoHtml = Object.keys(photo.albums[0].list).map(function (key) {
+	                return _react2.default.createElement(_PhotoItem2.default, { getThumbnail: _this2.props.actions.getThumbnail, _key: key, key: key, photo: photo.albums[0].list[key] });
+	            });
+	            return _react2.default.createElement(
+	                'div',
+	                { className: _photoexplorer2.default.root },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _photoexplorer2.default.photoList },
+	                    photoHtml
+	                ),
+	                _react2.default.createElement(
+	                    'label',
+	                    { 'for': 'capture', className: _photoexplorer2.default.captureBtn },
+	                    _react2.default.createElement('input', { type: 'file', accept: 'image/*', id: 'capture', capture: 'camera', onChange: this.cameraChange.bind(this) }),
+	                    _react2.default.createElement('i', { className: 'ion-ios-camera' })
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return PhotoExplorer;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)(_photoexplorer2.default)(PhotoExplorer);
+
+/***/ },
+
+/***/ 549:
+/*!***********************************************!*\
+  !*** ./src/components/css/photoexplorer.scss ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./photoexplorer.scss */ 550);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photoexplorer.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photoexplorer.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 550:
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/photoexplorer.scss ***!
+  \**********************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".photoexplorer_root_3PP {\n  padding: 20px 0;\n  background: #fff;\n  position: fixed;\n  top: 0;\n  bottom: 100px;\n  width: 100%;\n  overflow: auto; }\n\n.photoexplorer_photoList_1Id {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap; }\n\n.photoexplorer_captureBtn_3ep {\n  width: 100%;\n  display: inline-block;\n  text-align: center;\n  position: fixed;\n  bottom: 40px;\n  background: #ffffff; }\n\n.photoexplorer_captureBtn_3ep input {\n    display: none; }\n\n.photoexplorer_captureBtn_3ep i {\n    font-size: 56px;\n    width: 60px;\n    height: 60px;\n    display: inline-block;\n    line-height: 60px;\n    text-align: center;\n    color: #E91E63; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "photoexplorer_root_3PP",
+		"root": "photoexplorer_root_3PP",
+		"photoList": "photoexplorer_photoList_1Id",
+		"photoList": "photoexplorer_photoList_1Id",
+		"captureBtn": "photoexplorer_captureBtn_3ep",
+		"captureBtn": "photoexplorer_captureBtn_3ep"
+	};
+
+/***/ },
+
+/***/ 551:
+/*!******************************!*\
+  !*** ./src/actions/photo.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getThumbnail = exports.upload = undefined;
+	
+	var _FirebaseInstance = __webpack_require__(/*! ./../store/FirebaseInstance */ 922);
+	
+	var _FirebaseInstance2 = _interopRequireDefault(_FirebaseInstance);
+	
+	var _dropbox = __webpack_require__(/*! ./../store/dropbox */ 902);
+	
+	var _dropbox2 = _interopRequireDefault(_dropbox);
+	
+	var _store = __webpack_require__(/*! ./../store */ 558);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var upload = exports.upload = function upload(file) {
+	    var user = _store2.default.getState().user;
+	    if (user.uid && user.dxToken !== '') {
+	        return function (dispatch) {
+	            _dropbox2.default.accessToken = user.dxToken;
+	            _dropbox2.default.filesUpload({ path: '/' + file.name, contents: file }).then(function (response) {
+	                _dropbox2.default.filesGetThumbnail({
+	                    path: response.path_lower,
+	                    format: 'png',
+	                    size: 'w128h128'
+	                }).then(function (thumbResponse) {
+	                    response.thumbnail = thumbResponse;
+	                    dispatch({
+	                        type: 'UPLOAD_SUCCESS',
+	                        response: response
+	                    });
+	                });
+	            }).catch(function (error) {
+	                dispatch({
+	                    type: 'UPLOAD_ERROR',
+	                    error: error
+	                });
+	            });
+	        };
+	    } else {
+	        return {
+	            type: 'UPLOAD_REQUIRE_LOGIN'
+	        };
+	    }
+	};
+	
+	var getThumbnail = exports.getThumbnail = function getThumbnail(photo, key) {
+	    var user = _store2.default.getState().user;
+	    if (user.uid && user.dxToken !== '') {
+	        return function (dispatch) {
+	            _dropbox2.default.accessToken = user.dxToken;
+	            _dropbox2.default.filesGetThumbnail({
+	                path: photo.path_lower,
+	                format: 'png',
+	                size: 'w128h128'
+	            }).then(function (response) {
+	                photo.thumbnail = response;
+	                dispatch({
+	                    type: 'GET_THUMB_SUCCESS',
+	                    photo: photo,
+	                    key: key
+	                });
+	            });
+	        };
+	    }
+	};
+
+/***/ },
+
+/***/ 552:
+/*!*******************************!*\
+  !*** ./src/components/Tab.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _tab = __webpack_require__(/*! ./css/tab.scss */ 553);
+	
+	var _tab2 = _interopRequireDefault(_tab);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Tab = function (_React$Component) {
+	    _inherits(Tab, _React$Component);
+	
+	    function Tab(props) {
+	        _classCallCheck(this, Tab);
+	
+	        return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).call(this, props));
+	    }
+	
+	    _createClass(Tab, [{
+	        key: 'render',
+	        value: function render() {
+	            var props = this.props;
+	            var tabs = props.tabs.map(function (tabComponent, index) {
+	                if (tabComponent !== null) {
+	                    return _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === index + 1 ? _tab2.default.tabActive : _tab2.default.tab },
+	                        tabComponent
+	                    );
+	                }
+	            });
+	            return _react2.default.createElement(
+	                'div',
+	                { className: _tab2.default.root },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _tab2.default.tabList },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === 1 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
+	                                props.setCurrentTab(1);
+	                            } },
+	                        _react2.default.createElement('span', { className: 'ion-ios-personadd' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === 2 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
+	                                props.setCurrentTab(2);
+	                            } },
+	                        _react2.default.createElement('span', { className: 'ion-images' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === 3 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
+	                                props.setCurrentTab(3);
+	                            } },
+	                        _react2.default.createElement('span', { className: 'ion-music-note' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: props.currentTab === 4 ? _tab2.default.itemActive : _tab2.default.item, onClick: function onClick() {
+	                                props.setCurrentTab(4);
+	                            } },
+	                        _react2.default.createElement('span', { className: 'ion-ios-search-strong' })
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _tab2.default.tabContent },
+	                    tabs
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Tab;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)(_tab2.default)(Tab);
+
+/***/ },
+
+/***/ 553:
+/*!*************************************!*\
+  !*** ./src/components/css/tab.scss ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./tab.scss */ 554);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./tab.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./tab.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 554:
+/*!************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/tab.scss ***!
+  \************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".tab_root_2wR {\n  background: #4267b2;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  height: 40px; }\n\n.tab_tabList_8VU {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.tab_item_fvy {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 0%;\n          flex: 1 1 0%;\n  text-align: center;\n  color: #fff;\n  line-height: 47px;\n  font-size: 30px;\n  border-top: 1px solid #375dab;\n  box-shadow: 0 1px 0 #4c6daf inset; }\n\n.tab_itemActive_PfX {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 0%;\n          flex: 1 1 0%;\n  text-align: center;\n  color: #4267b2;\n  background: #fff;\n  line-height: 47px;\n  font-size: 30px; }\n\n.tab_tab_2LT {\n  display: none; }\n\n.tab_tabActive_oVl {\n  display: block; }\n\n.tab_tabContent_1Ng {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  bottom: 40px; }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "tab_root_2wR",
+		"root": "tab_root_2wR",
+		"tabList": "tab_tabList_8VU",
+		"tabList": "tab_tabList_8VU",
+		"item": "tab_item_fvy",
+		"item": "tab_item_fvy",
+		"itemActive": "tab_itemActive_PfX",
+		"itemActive": "tab_itemActive_PfX",
+		"tab": "tab_tab_2LT",
+		"tab": "tab_tab_2LT",
+		"tabActive": "tab_tabActive_oVl",
+		"tabActive": "tab_tabActive_oVl",
+		"tabContent": "tab_tabContent_1Ng",
+		"tabContent": "tab_tabContent_1Ng"
+	};
+
+/***/ },
+
+/***/ 555:
 /*!*************************************!*\
   !*** ./src/components/css/app.scss ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./app.scss */ 874);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 845);
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./app.scss */ 556);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
 	
 	    if (typeof content === 'string') {
 	      content = [[module.id, content, '']];
@@ -2813,31 +3947,31 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 874:
+/***/ 556:
 /*!************************************************************************************************************************************************************!*\
   !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/app.scss ***!
   \************************************************************************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 844)();
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".app_root_2qP {\n  position: fixed;\n  bottom: 0;\n  top: 0;\n  left: 0;\n  right: 0;\n  background: rgba(234, 240, 251, 0.5); }\n  .app_root_2qP * {\n    font-family: 'Yanone Kaffeesatz', sans-serif; }\n", ""]);
+	exports.push([module.id, ".app_root_1Ax {\n  position: fixed;\n  bottom: 0;\n  top: 0;\n  left: 0;\n  right: 0;\n  background: rgba(234, 240, 251, 0.5); }\n  .app_root_1Ax * {\n    font-family: 'Yanone Kaffeesatz', sans-serif; }\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"root": "app_root_2qP",
-		"root": "app_root_2qP"
+		"root": "app_root_1Ax",
+		"root": "app_root_1Ax"
 	};
 
 /***/ },
 
-/***/ 875:
-/*!*********************************************!*\
-  !*** ./src/containers/ContainerPlaylist.js ***!
-  \*********************************************/
+/***/ 557:
+/*!*****************************!*\
+  !*** ./src/routes/index.js ***!
+  \*****************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2845,62 +3979,6 @@ webpackJsonp([0],{
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 394);
-	
-	var _redux = __webpack_require__(/*! redux */ 401);
-	
-	var _PlaylistExplorer = __webpack_require__(/*! ../components/PlaylistExplorer */ 876);
-	
-	var _PlaylistExplorer2 = _interopRequireDefault(_PlaylistExplorer);
-	
-	var _playlist = __webpack_require__(/*! ../actions/playlist */ 838);
-	
-	var _player = __webpack_require__(/*! ../actions/player */ 839);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    return {
-	        playlist: state.playlist,
-	        player: state.player,
-	        ownProps: ownProps
-	    };
-	};
-	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	    return {
-	        actions: (0, _redux.bindActionCreators)({
-	            addSongToPlaylist: _playlist.addSongToPlaylist,
-	            createNew: _playlist.createNew,
-	            onHideClick: _playlist.hidePopupAddToPlaylist,
-	            setCurentPlaylist: _playlist.setCurentPlaylist,
-	            fetchById: _player.fetchById,
-	            setPlayerId: _player.setPlayerId,
-	            clearError: _player.clearError
-	        }, dispatch)
-	    };
-	};
-	
-	var ContainerPlaylist = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PlaylistExplorer2.default);
-	
-	exports.default = ContainerPlaylist;
-
-/***/ },
-
-/***/ 876:
-/*!********************************************!*\
-  !*** ./src/components/PlaylistExplorer.js ***!
-  \********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 4);
 	
@@ -2908,587 +3986,38 @@ webpackJsonp([0],{
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 35);
 	
-	var _PlaylistCreator = __webpack_require__(/*! ./PlaylistCreator/ */ 877);
+	var _App = __webpack_require__(/*! ./../components/App */ 271);
 	
-	var _PlaylistCreator2 = _interopRequireDefault(_PlaylistCreator);
+	var _App2 = _interopRequireDefault(_App);
 	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 577);
+	var _ContainerPlaylist = __webpack_require__(/*! ./../containers/ContainerPlaylist */ 420);
 	
-	var _withStyles2 = _interopRequireDefault(_withStyles);
+	var _ContainerPlaylist2 = _interopRequireDefault(_ContainerPlaylist);
 	
-	var _playlist = __webpack_require__(/*! ./css/playlist.scss */ 880);
+	var _ContainerPhoto = __webpack_require__(/*! ./../containers/ContainerPhoto */ 547);
 	
-	var _playlist2 = _interopRequireDefault(_playlist);
-	
-	var _songItem = __webpack_require__(/*! ./css/song-item.scss */ 882);
-	
-	var _songItem2 = _interopRequireDefault(_songItem);
-	
-	var _Player = __webpack_require__(/*! ./Player */ 869);
-	
-	var _Player2 = _interopRequireDefault(_Player);
-	
-	var _colors = __webpack_require__(/*! ./../helpers/colors */ 872);
+	var _ContainerPhoto2 = _interopRequireDefault(_ContainerPhoto);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var basePath = typeof _basePath !== 'undefined' ? _basePath : '/';
+	window.basePath = basePath;
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	var Routes = _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: basePath, component: _App2.default },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { components: _ContainerPlaylist2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: basePath + 'all/:song_id', components: _ContainerPlaylist2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: basePath + ':playlist_id', components: _ContainerPlaylist2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: basePath + ':playlist_id/:song_id', components: _ContainerPlaylist2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: basePath + 'photos/', components: _ContainerPhoto2.default })
+	);
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var PlaylistExplorer = function (_React$Component) {
-	    _inherits(PlaylistExplorer, _React$Component);
-	
-	    function PlaylistExplorer(props) {
-	        _classCallCheck(this, PlaylistExplorer);
-	
-	        var _this = _possibleConstructorReturn(this, (PlaylistExplorer.__proto__ || Object.getPrototypeOf(PlaylistExplorer)).call(this, props));
-	
-	        _this.state = {
-	            playlist: props.playlist,
-	            player: props.player
-	        };
-	        _this.actions = props.actions;
-	        return _this;
-	    }
-	
-	    _createClass(PlaylistExplorer, [{
-	        key: 'parseProps',
-	        value: function parseProps(props) {
-	            var playlist_id = typeof props.ownProps.params.playlist_id !== 'undefined' ? props.ownProps.params.playlist_id : -1;
-	            if (playlist_id !== props.playlist.currentIndex) {
-	                this.actions.setCurentPlaylist(playlist_id);
-	            }
-	
-	            if (typeof props.ownProps.params.song_id !== 'undefined' && props.ownProps.params.song_id !== props.player.player_id) {
-	                var rolloutPlaylist = this.getSelectedPlaylist(this.props.playlist, props.params.playlist_id, props.ownProps.params.song_id);
-	                this.actions.setPlayerId(props.ownProps.params.song_id, rolloutPlaylist, props.params.playlist_id);
-	                // this.fetchPlayerId = true;
-	            }
-	
-	            // this.setState ({
-	            //     playlist: props.playlist,
-	            //     player: props.player,
-	            // });
-	        }
-	    }, {
-	        key: '_onCreateNew',
-	        value: function _onCreateNew(playlistName, callbackSongId) {
-	            this.actions.createNew(playlistName, callbackSongId);
-	        }
-	    }, {
-	        key: 'setTitle',
-	        value: function setTitle() {
-	            var playlist = this.props.playlist;
-	            if (parseInt(playlist.currentIndex) !== -1) {
-	                document.title = playlist.data[playlist.currentIndex].name;
-	            } else {
-	                document.title = 'Rezux - Chỉ để vui';
-	            }
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            this.setTitle();
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.parseProps(this.props);
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            this.parseProps(nextProps);
-	        }
-	    }, {
-	        key: 'getSelectedPlaylist',
-	        value: function getSelectedPlaylist(playlist, playlist_id, song_id) {
-	            if (typeof playlist.data[playlist_id] !== 'undefined') {
-	                var currentPlaylist = playlist.data[playlist_id];
-	                // check if list not contain song
-	                var exist = false;
-	                currentPlaylist.list.map(function (song) {
-	                    if (song.id === song_id) {
-	                        exist = true;
-	                    }
-	                });
-	                if (exist) {
-	                    return currentPlaylist;
-	                }
-	            }
-	            return false;
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var playlist = this.props.playlist;
-	            var player = this.props.player;
-	            var directoryTitle = _react2.default.createElement(
-	                'h3',
-	                { className: _playlist2.default.directoryTitle },
-	                _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    'Danh s\xE1ch Playlist'
-	                )
-	            );
-	
-	            var playlists = void 0,
-	                playerDom = void 0;
-	
-	            if (playlist.currentIndex === -1) {
-	
-	                playerDom = _react2.default.createElement(_Player2.default, { clearError: this.actions.clearError, key: player.player_id, state: player, fetch: this.actions.fetchById });
-	
-	                if (playlist.data.length > 0) {
-	                    playlists = playlist.data.map(function (playlist, index) {
-	                        return _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: window.basePath + index, className: _playlist2.default.item, key: index },
-	                            playlist.name,
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'em',
-	                                null,
-	                                playlist.list.length,
-	                                ' b\xE0i h\xE1t'
-	                            )
-	                        );
-	                    });
-	                } else {
-	                    playlists = _react2.default.createElement(
-	                        'p',
-	                        { className: _playlist2.default.empty },
-	                        'Ch\u01B0a c\xF3 Playlist n\xE0o!'
-	                    );
-	                }
-	            } else {
-	                var selectedPlaylist = playlist.data[playlist.currentIndex];
-	                directoryTitle = _react2.default.createElement(
-	                    'h3',
-	                    { className: _playlist2.default.directoryTitle },
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: window.basePath, className: _playlist2.default.directoryTitle.icon },
-	                        _react2.default.createElement('span', { className: 'ion-ios-arrow-thin-left' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'span',
-	                        null,
-	                        selectedPlaylist.name
-	                    )
-	                );
-	
-	                playerDom = _react2.default.createElement(_Player2.default, { clearError: this.actions.clearError, key: player.player_id, state: player, fetch: this.actions.fetchById });
-	
-	                if (selectedPlaylist.list.length > 0) {
-	                    playlists = selectedPlaylist.list.map(function (song, index) {
-	                        return _react2.default.createElement(
-	                            'li',
-	                            { className: _songItem2.default.root },
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: window.basePath + playlist.currentIndex + '/' + song.id, className: _songItem2.default.link },
-	                                _react2.default.createElement(
-	                                    'span',
-	                                    { className: _songItem2.default.content },
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        song.name
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'span',
-	                                        null,
-	                                        song.artist
-	                                    )
-	                                )
-	                            )
-	                        );
-	                    });
-	                } else {
-	                    playlists = _react2.default.createElement(
-	                        'p',
-	                        { className: _playlist2.default.empty },
-	                        'Ch\u01B0a c\xF3 b\xE0i h\xE1t n\xE0o!'
-	                    );
-	                }
-	            }
-	
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: _playlist2.default.root },
-	                    directoryTitle,
-	                    playlists,
-	                    _react2.default.createElement(_PlaylistCreator2.default, { playlist: playlist, onCreateNew: this._onCreateNew.bind(this), onHideClick: this.actions.onHideClick, addSongToPlaylist: this.actions.addSongToPlaylist })
-	                ),
-	                playerDom
-	            );
-	        }
-	    }]);
-	
-	    return PlaylistExplorer;
-	}(_react2.default.Component);
-	
-	exports.default = (0, _withStyles2.default)([_playlist2.default, _songItem2.default])(PlaylistExplorer);
+	exports.default = Routes;
 
 /***/ },
 
-/***/ 877:
-/*!*************************************************!*\
-  !*** ./src/components/PlaylistCreator/index.js ***!
-  \*************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 577);
-	
-	var _withStyles2 = _interopRequireDefault(_withStyles);
-	
-	var _style = __webpack_require__(/*! ./style.scss */ 878);
-	
-	var _style2 = _interopRequireDefault(_style);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var PlaylistCreator = function (_React$Component) {
-	    _inherits(PlaylistCreator, _React$Component);
-	
-	    function PlaylistCreator(props) {
-	        _classCallCheck(this, PlaylistCreator);
-	
-	        var _this = _possibleConstructorReturn(this, (PlaylistCreator.__proto__ || Object.getPrototypeOf(PlaylistCreator)).call(this, props));
-	
-	        _this.state = _extends({}, props.playlist, {
-	            newPlaylistName: ''
-	        });
-	        return _this;
-	    }
-	
-	    _createClass(PlaylistCreator, [{
-	        key: 'inputChange',
-	        value: function inputChange(e) {
-	            this.setState(_extends({}, this.state, {
-	                newPlaylistName: e.target.value
-	            }));
-	        }
-	    }, {
-	        key: 'savePlaylist',
-	        value: function savePlaylist() {
-	            // const playListName;
-	            this.props.onCreateNew(this.state.newPlaylistName, this.state.callbackSongId);
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            this.setState(_extends({}, nextProps.playlist, {
-	                newPlaylistName: ''
-	            }));
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-	
-	            var playlists = void 0;
-	            if (this.state.data.length > 0) {
-	                playlists = this.state.data.map(function (playlist, index) {
-	                    return _react2.default.createElement(
-	                        'div',
-	                        { key: index, className: _style2.default.item, onClick: function onClick() {
-	                                _this2.props.addSongToPlaylist(_this2.state.callbackSongId, index);
-	                            } },
-	                        playlist.name,
-	                        _react2.default.createElement(
-	                            'em',
-	                            null,
-	                            playlist.list.length
-	                        )
-	                    );
-	                });
-	            }
-	            return _react2.default.createElement(
-	                'div',
-	                { style: { display: this.state.showAddPopup ? 'block' : 'none' } },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: _style2.default.root },
-	                    _react2.default.createElement(
-	                        'span',
-	                        { className: _style2.default.hideLink, onClick: function onClick() {
-	                                _this2.props.onHideClick();
-	                            } },
-	                        _react2.default.createElement('i', { className: 'ion-android-close' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: _style2.default.container },
-	                        _react2.default.createElement(
-	                            'h3',
-	                            { className: _style2.default.heading },
-	                            'Ch\u1ECDn t\u1EEB danh s\xE1ch Playlist'
-	                        ),
-	                        playlists,
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: _style2.default.newForm },
-	                            _react2.default.createElement(
-	                                'span',
-	                                null,
-	                                'Ho\u1EB7c t\u1EA1o m\u1EDBi'
-	                            ),
-	                            _react2.default.createElement('input', { className: _style2.default.input, onChange: this.inputChange.bind(this), value: this.state.newPlaylistName }),
-	                            _react2.default.createElement(
-	                                'button',
-	                                { className: _style2.default.submit, disabled: this.state.newPlaylistName === '', onClick: this.savePlaylist.bind(this) },
-	                                'L\u01B0u'
-	                            )
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return PlaylistCreator;
-	}(_react2.default.Component);
-	
-	exports.default = (0, _withStyles2.default)(_style2.default)(PlaylistCreator);
-
-/***/ },
-
-/***/ 878:
-/*!***************************************************!*\
-  !*** ./src/components/PlaylistCreator/style.scss ***!
-  \***************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./style.scss */ 879);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 845);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./style.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./style.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 879:
-/*!**************************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/PlaylistCreator/style.scss ***!
-  \**************************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 844)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".style_root_2_B {\n  position: fixed;\n  z-index: 999;\n  background: white;\n  left: 0;\n  bottom: 0;\n  top: 0;\n  right: 0; }\n\n.style_container_3Mp {\n  padding: 20px; }\n\n.style_heading_3Tu {\n  margin-bottom: 20px;\n  font-size: 30px; }\n\n.style_item_2DL {\n  color: #fff;\n  padding: 10px;\n  font-size: 23px;\n  font-weight: 400;\n  display: inline-block;\n  width: 100%;\n  line-height: 16px;\n  background: #4267b2;\n  border-top: 1px solid #5776b7;\n  border-bottom: 1px solid #264d9a;\n  text-decoration: none; }\n\n.style_item_2DL em {\n    color: #9E9E9E;\n    font-size: 16px;\n    display: block;\n    margin-top: 10px; }\n\n.style_hideLink_XX4 {\n  position: absolute;\n  right: 10px;\n  font-size: 30px;\n  color: #4267b2; }\n\n.style_newForm_3lZ {\n  margin-top: 40px; }\n\n.style_input_2SS {\n  border: 0px;\n  background: #4267b2;\n  margin: 10px 0 0 0;\n  font-size: 22px;\n  font-weight: 300;\n  padding: 10px 10px;\n  text-align: center;\n  color: #fff;\n  width: 100%; }\n\n.style_submit_3zC {\n  width: 100%;\n  border: 0px;\n  font-size: 16px;\n  padding: 10px;\n  margin: 10px 0 0 0;\n  background: #4267b2;\n  color: #fff;\n  border: 1px solid #254c9c; }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "style_root_2_B",
-		"root": "style_root_2_B",
-		"container": "style_container_3Mp",
-		"container": "style_container_3Mp",
-		"heading": "style_heading_3Tu",
-		"heading": "style_heading_3Tu",
-		"item": "style_item_2DL",
-		"item": "style_item_2DL",
-		"hideLink": "style_hideLink_XX4",
-		"hideLink": "style_hideLink_XX4",
-		"newForm": "style_newForm_3lZ",
-		"newForm": "style_newForm_3lZ",
-		"input": "style_input_2SS",
-		"input": "style_input_2SS",
-		"submit": "style_submit_3zC",
-		"submit": "style_submit_3zC"
-	};
-
-/***/ },
-
-/***/ 880:
-/*!******************************************!*\
-  !*** ./src/components/css/playlist.scss ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./playlist.scss */ 881);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 845);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./playlist.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./playlist.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 881:
-/*!*****************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/playlist.scss ***!
-  \*****************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 844)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".playlist_root_2fa {\n  padding: 20px 0; }\n\n.playlist_heading_-Qw {\n  margin-bottom: 20px;\n  font-size: 30px; }\n\n.playlist_empty_2R2 {\n  margin: 0 20px; }\n\n.playlist_item_2_- {\n  color: #fff;\n  padding: 10px;\n  font-size: 23px;\n  font-weight: 400;\n  display: inline-block;\n  width: 100%;\n  line-height: 16px;\n  background: #4267b2;\n  border-top: 1px solid #5776b7;\n  border-bottom: 1px solid #264d9a;\n  text-decoration: none; }\n\n.playlist_item_2_- em {\n    color: #9E9E9E;\n    font-size: 16px;\n    display: block;\n    margin-top: 10px; }\n\n.playlist_directoryTitle_1L6 {\n  margin: 10px 0;\n  font-size: 26px;\n  color: #4267b2; }\n\n.playlist_directoryTitle_1L6 > span {\n    margin-left: 20px; }\n\n.playlist_directoryTitle_1L6 a {\n    background: #4267b2;\n    color: #fff;\n    padding: 10px; }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "playlist_root_2fa",
-		"root": "playlist_root_2fa",
-		"heading": "playlist_heading_-Qw",
-		"heading": "playlist_heading_-Qw",
-		"empty": "playlist_empty_2R2",
-		"empty": "playlist_empty_2R2",
-		"item": "playlist_item_2_-",
-		"item": "playlist_item_2_-",
-		"directoryTitle": "playlist_directoryTitle_1L6",
-		"directoryTitle": "playlist_directoryTitle_1L6"
-	};
-
-/***/ },
-
-/***/ 882:
-/*!*******************************************!*\
-  !*** ./src/components/css/song-item.scss ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./song-item.scss */ 883);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 845);
-	
-	    if (typeof content === 'string') {
-	      content = [[module.id, content, '']];
-	    }
-	
-	    module.exports = content.locals || {};
-	    module.exports._getContent = function() { return content; };
-	    module.exports._getCss = function() { return content.toString(); };
-	    module.exports._insertCss = function(options) { return insertCss(content, options) };
-	    
-	    // Hot Module Replacement
-	    // https://webpack.github.io/docs/hot-module-replacement
-	    // Only activated in browser context
-	    if (false) {
-	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./song-item.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./song-item.scss");
-	
-	        if (typeof content === 'string') {
-	          content = [[module.id, content, '']];
-	        }
-	
-	        removeCss = insertCss(content, { replace: true });
-	      });
-	      module.hot.dispose(function() { removeCss(); });
-	    }
-	  
-
-/***/ },
-
-/***/ 883:
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/song-item.scss ***!
-  \******************************************************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 844)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".song-item_root_2Kx {\n  display: inline-block;\n  width: 100%;\n  padding: 5px 0;\n  border-top: 1px solid #eef0f5; }\n\n.song-item_link_1-x {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  text-decoration: none; }\n\n.song-item_link_1-x img {\n    border-radius: 50%;\n    width: 60px;\n    height: 60px; }\n\n.song-item_content_2qB {\n  margin-left: 10px;\n  color: #333;\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center; }\n\n.song-item_content_2qB span:first-child {\n    color: #333;\n    display: block;\n    text-decoration: none;\n    width: 100%;\n    font-size: 22px; }\n\n.song-item_content_2qB span:last-child {\n    color: #666;\n    text-decoration: none;\n    font-size: 18px; }\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"root": "song-item_root_2Kx",
-		"root": "song-item_root_2Kx",
-		"link": "song-item_link_1-x",
-		"link": "song-item_link_1-x",
-		"content": "song-item_content_2qB",
-		"content": "song-item_content_2qB"
-	};
-
-/***/ },
-
-/***/ 884:
+/***/ 558:
 /*!****************************!*\
   !*** ./src/store/index.js ***!
   \****************************/
@@ -3502,17 +4031,17 @@ webpackJsonp([0],{
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _redux = __webpack_require__(/*! redux */ 401);
+	var _redux = __webpack_require__(/*! redux */ 251);
 	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 677);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 559);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
-	var _reduxLogger = __webpack_require__(/*! redux-logger */ 678);
+	var _reduxLogger = __webpack_require__(/*! redux-logger */ 560);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
-	var _reducers = __webpack_require__(/*! ./..//reducers */ 885);
+	var _reducers = __webpack_require__(/*! ./..//reducers */ 566);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
@@ -3558,7 +4087,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 885:
+/***/ 566:
 /*!*******************************!*\
   !*** ./src/reducers/index.js ***!
   \*******************************/
@@ -3567,41 +4096,46 @@ webpackJsonp([0],{
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+				value: true
 	});
 	
-	var _redux = __webpack_require__(/*! redux */ 401);
+	var _redux = __webpack_require__(/*! redux */ 251);
 	
-	var _search = __webpack_require__(/*! ./search */ 886);
+	var _search = __webpack_require__(/*! ./search */ 567);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
-	var _playlist = __webpack_require__(/*! ./playlist */ 887);
+	var _playlist = __webpack_require__(/*! ./playlist */ 568);
 	
 	var _playlist2 = _interopRequireDefault(_playlist);
 	
-	var _player = __webpack_require__(/*! ./player */ 888);
+	var _player = __webpack_require__(/*! ./player */ 569);
 	
 	var _player2 = _interopRequireDefault(_player);
 	
-	var _user = __webpack_require__(/*! ./user */ 894);
+	var _user = __webpack_require__(/*! ./user */ 570);
 	
 	var _user2 = _interopRequireDefault(_user);
+	
+	var _photo = __webpack_require__(/*! ./photo */ 923);
+	
+	var _photo2 = _interopRequireDefault(_photo);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var reducer = (0, _redux.combineReducers)({
-		search: _search2.default,
-		player: _player2.default,
-		playlist: _playlist2.default,
-		user: _user2.default
+				search: _search2.default,
+				player: _player2.default,
+				playlist: _playlist2.default,
+				user: _user2.default,
+				photo: _photo2.default
 	});
 	
 	exports.default = reducer;
 
 /***/ },
 
-/***/ 886:
+/***/ 567:
 /*!********************************!*\
   !*** ./src/reducers/search.js ***!
   \********************************/
@@ -3630,6 +4164,7 @@ webpackJsonp([0],{
 	            "song": []
 	        }]
 	    },
+	    showAddPopup: false,
 	    keyword: '',
 	    showSongOption: false,
 	    optionObjectId: -1
@@ -3653,6 +4188,18 @@ webpackJsonp([0],{
 	    var action = arguments[1];
 	
 	    switch (action.type) {
+	        case 'SHOW_POPUP_ADDTOPLAYLIST':
+	            return _extends({}, state, {
+	                callbackSongId: action.songId,
+	                showAddPopup: true
+	            });
+	            break;
+	        case 'HIDE_POPUP_ADDTOPLAYLIST':
+	            return _extends({}, state, {
+	                callbackSongId: false,
+	                showAddPopup: false
+	            });
+	            break;
 	        case 'HIDE_SONG_OPTION':
 	            return _extends({}, state, {
 	                showSongOption: false
@@ -3694,7 +4241,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 887:
+/***/ 568:
 /*!**********************************!*\
   !*** ./src/reducers/playlist.js ***!
   \**********************************/
@@ -3812,7 +4359,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 888:
+/***/ 569:
 /*!********************************!*\
   !*** ./src/reducers/player.js ***!
   \********************************/
@@ -3881,7 +4428,69 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 889:
+/***/ 570:
+/*!******************************!*\
+  !*** ./src/reducers/user.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _user = __webpack_require__(/*! ./../actions/user */ 412);
+	
+	var intinalState = {
+	    uid: false,
+	    fbToken: '',
+	    ggToken: '',
+	    dxToken: '',
+	    email: '',
+	    name: '',
+	    displayName: ''
+	};
+	
+	exports.default = function () {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intinalState;
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case 'USERDATA_PARSED':
+	            // action[user]
+	            return _extends({}, state, action.userData.user);
+	        case 'USERDATA_COMMITED':
+	            return _extends({}, state);
+	            break;
+	        case 'CONNECT_DX_SUCCESS':
+	            var newState = _extends({}, state, {
+	                dxToken: action.accessToken
+	            });
+	            if (state.uid !== false) {
+	                (0, _user.commitUserData)(newState.uid, newState, 'user');
+	            }
+	            return newState;
+	            break;
+	        case 'LOGIN_SOCIAL_SUCCESS':
+	            {
+	                // save uid to local
+	                var _newState = _extends({}, state, action.user);
+	                localStorage.setItem('uid', action.user.uid);
+	                (0, _user.commitUserData)(_newState.uid, _newState, 'user');
+	                return _newState;
+	                break;
+	            }
+	        default:
+	            return state;
+	    }
+	};
+
+/***/ },
+
+/***/ 571:
 /*!****************************************!*\
   !*** ./src/global/WithStylesContex.js ***!
   \****************************************/
@@ -3944,49 +4553,9 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 890:
-/*!******************************************!*\
-  !*** ./src/containers/ContainerPhoto.js ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 394);
-	
-	var _redux = __webpack_require__(/*! redux */ 401);
-	
-	var _PhotoExplorer = __webpack_require__(/*! ../components/PhotoExplorer */ 891);
-	
-	var _PhotoExplorer2 = _interopRequireDefault(_PhotoExplorer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        state: state
-	    };
-	};
-	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	    return {
-	        actions: (0, _redux.bindActionCreators)({}, dispatch)
-	    };
-	};
-	
-	var ContainerPhoto = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_PhotoExplorer2.default);
-	
-	exports.default = ContainerPhoto;
-
-/***/ },
-
-/***/ 891:
+/***/ 899:
 /*!*****************************************!*\
-  !*** ./src/components/PhotoExplorer.js ***!
+  !*** ./src/components/UserDashboard.js ***!
   \*****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
@@ -4002,15 +4571,13 @@ webpackJsonp([0],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(/*! react-router */ 35);
+	var _userDashboard = __webpack_require__(/*! ./css/user-dashboard.scss */ 900);
 	
-	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 577);
+	var _userDashboard2 = _interopRequireDefault(_userDashboard);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
 	
 	var _withStyles2 = _interopRequireDefault(_withStyles);
-	
-	var _photoexplorer = __webpack_require__(/*! ./css/photoexplorer.scss */ 892);
-	
-	var _photoexplorer2 = _interopRequireDefault(_photoexplorer);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -4020,56 +4587,135 @@ webpackJsonp([0],{
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var PhotoExplorer = function (_React$Component) {
-	    _inherits(PhotoExplorer, _React$Component);
+	var UserDashboard = function (_React$Component) {
+	    _inherits(UserDashboard, _React$Component);
 	
-	    function PhotoExplorer(props) {
-	        _classCallCheck(this, PhotoExplorer);
+	    function UserDashboard(props) {
+	        _classCallCheck(this, UserDashboard);
 	
-	        return _possibleConstructorReturn(this, (PhotoExplorer.__proto__ || Object.getPrototypeOf(PhotoExplorer)).call(this, props));
+	        return _possibleConstructorReturn(this, (UserDashboard.__proto__ || Object.getPrototypeOf(UserDashboard)).call(this, props));
 	    }
 	
-	    _createClass(PhotoExplorer, [{
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            this.setTitle();
-	        }
-	    }, {
+	    _createClass(UserDashboard, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            this.parseProps(this.props);
+	            var uid = localStorage.getItem('uid');
+	            if (uid) {
+	                this.props.actions.parseUserData(uid);
+	            }
 	        }
 	    }, {
 	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {}
+	        value: function componentWillReceiveProps(nextProps) {
+	            console.log(nextProps);
+	        }
+	    }, {
+	        key: 'getUserLoginBlock',
+	        value: function getUserLoginBlock() {
+	            var _this2 = this;
+	
+	            var user = this.props.user;
+	            if (!user.uid) {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: _userDashboard2.default.loginMethod },
+	                    _react2.default.createElement(
+	                        'h3',
+	                        { className: _userDashboard2.default.blockHeading },
+	                        'Ch\u1ECDn c\xE1ch \u0111\u0103ng nh\u1EADp'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { onClick: function onClick() {
+	                                _this2.props.actions.loginWithFacebook();
+	                            }, className: _userDashboard2.default.btn + ' ' + _userDashboard2.default.btnFb },
+	                        _react2.default.createElement('i', { className: 'ion-social-facebook' }),
+	                        'Facebook'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { onClick: function onClick() {
+	                                _this2.props.actions.loginWithGoogle();
+	                            }, className: _userDashboard2.default.btn + ' ' + _userDashboard2.default.btnGg },
+	                        _react2.default.createElement('i', { className: 'ion-social-google' }),
+	                        'Google'
+	                    )
+	                );
+	            } else {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: _userDashboard2.default.userInfo },
+	                    _react2.default.createElement(
+	                        'h3',
+	                        { className: _userDashboard2.default.blockHeading },
+	                        user.displayName
+	                    )
+	                );
+	            }
+	        }
+	    }, {
+	        key: 'getUserDropboxStatusBlock',
+	        value: function getUserDropboxStatusBlock() {
+	            var _this3 = this;
+	
+	            var user = this.props.user;
+	            if (user.dxToken === '') {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: _userDashboard2.default.dropboxStatus },
+	                    _react2.default.createElement(
+	                        'h3',
+	                        { className: _userDashboard2.default.blockHeading },
+	                        'K\u1EBFt n\u1ED1i v\u1EDBi Dropbox'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: _userDashboard2.default.btn + ' ' + _userDashboard2.default.btnDx, onClick: function onClick() {
+	                                _this3.props.actions.connectToDropbox();
+	                            } },
+	                        _react2.default.createElement('i', { className: 'ion-social-dropbox' }),
+	                        'Dropbox'
+	                    )
+	                );
+	            } else {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: _userDashboard2.default.dropboxStatusSuccess },
+	                    _react2.default.createElement('i', { className: 'ion-social-dropbox' }),
+	                    '\u0110\xE3 k\u1EBFt n\u1ED1i'
+	                );
+	            }
+	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	
 	            return _react2.default.createElement(
 	                'div',
-	                null,
-	                'Photo explorer'
+	                { className: _userDashboard2.default.root },
+	                this.getUserLoginBlock(),
+	                _react2.default.createElement('span', { className: _userDashboard2.default.breakLine }),
+	                this.getUserDropboxStatusBlock(),
+	                _react2.default.createElement('span', { className: _userDashboard2.default.breakLine })
 	            );
 	        }
 	    }]);
 	
-	    return PhotoExplorer;
+	    return UserDashboard;
 	}(_react2.default.Component);
 	
-	exports.default = (0, _withStyles2.default)(_photoexplorer2.default)(PhotoExplorer);
+	exports.default = (0, _withStyles2.default)(_userDashboard2.default)(UserDashboard);
 
 /***/ },
 
-/***/ 892:
-/*!***********************************************!*\
-  !*** ./src/components/css/photoexplorer.scss ***!
-  \***********************************************/
+/***/ 900:
+/*!************************************************!*\
+  !*** ./src/components/css/user-dashboard.scss ***!
+  \************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./photoexplorer.scss */ 893);
-	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 845);
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./user-dashboard.scss */ 901);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
 	
 	    if (typeof content === 'string') {
 	      content = [[module.id, content, '']];
@@ -4085,8 +4731,8 @@ webpackJsonp([0],{
 	    // Only activated in browser context
 	    if (false) {
 	      var removeCss = function() {};
-	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photoexplorer.scss", function() {
-	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photoexplorer.scss");
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./user-dashboard.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./user-dashboard.scss");
 	
 	        if (typeof content === 'string') {
 	          content = [[module.id, content, '']];
@@ -4100,40 +4746,4636 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 893:
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/photoexplorer.scss ***!
-  \**********************************************************************************************************************************************************************/
+/***/ 901:
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/user-dashboard.scss ***!
+  \***********************************************************************************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 844)();
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".photoexplorer_root_qQE {\n  padding: 20px 0; }\n\n.photoexplorer_heading_gI1 {\n  margin-bottom: 20px;\n  font-size: 30px; }\n\n.photoexplorer_empty_2uB {\n  margin: 0 20px; }\n\n.photoexplorer_item_1GC {\n  color: #fff;\n  padding: 10px;\n  font-size: 23px;\n  font-weight: 400;\n  display: inline-block;\n  width: 100%;\n  line-height: 16px;\n  background: #4267b2;\n  border-top: 1px solid #5776b7;\n  border-bottom: 1px solid #264d9a;\n  text-decoration: none; }\n\n.photoexplorer_item_1GC em {\n    color: #9E9E9E;\n    font-size: 16px;\n    display: block;\n    margin-top: 10px; }\n\n.photoexplorer_directoryTitle_216 {\n  margin: 10px 0;\n  font-size: 26px;\n  color: #4267b2; }\n\n.photoexplorer_directoryTitle_216 > span {\n    margin-left: 20px; }\n\n.photoexplorer_directoryTitle_216 a {\n    background: #4267b2;\n    color: #fff;\n    padding: 10px; }\n", ""]);
+	exports.push([module.id, ".user-dashboard_root_1mJ {\n  padding: 20px 0; }\n\n.user-dashboard_blockHeading_3m0 {\n  padding: 0 20px;\n  font-size: 24px;\n  font-weight: 300; }\n\n.user-dashboard_breakLine_1Pg {\n  margin: 20px 0;\n  width: 100%;\n  height: 1px;\n  background: #ddd;\n  display: block; }\n\n.user-dashboard_btn_3km {\n  border: 1px solid;\n  max-width: 275px;\n  margin: 20px auto 20px auto;\n  border-radius: 5px;\n  font-size: 38px;\n  color: #fff; }\n\n.user-dashboard_btn_3km i {\n    font-size: 42px;\n    margin-right: 39px;\n    padding: 10px 20px;\n    display: inline-block;\n    border-right: 1px solid; }\n\n.user-dashboard_btnFb_lVa {\n  background: #4267b2;\n  border-color: #2d55a7; }\n\n.user-dashboard_btnGg_32U {\n  background: #ea4335;\n  border-color: #c52e22; }\n\n.user-dashboard_btnDx_c8H {\n  background: #1081de;\n  border: 1px solid #0967b5; }\n\n.user-dashboard_dropboxStatusSuccess_3WS {\n  text-align: center;\n  font-size: 26px;\n  background: #A5D6A7;\n  color: #3c5d3d;\n  padding: 14px 0 10px 0; }\n\n.user-dashboard_dropboxStatusSuccess_3WS i {\n    color: #4CAF50;\n    font-size: 47px;\n    display: inline-block;\n    vertical-align: middle;\n    margin-right: 10px; }\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"root": "photoexplorer_root_qQE",
-		"root": "photoexplorer_root_qQE",
-		"heading": "photoexplorer_heading_gI1",
-		"heading": "photoexplorer_heading_gI1",
-		"empty": "photoexplorer_empty_2uB",
-		"empty": "photoexplorer_empty_2uB",
-		"item": "photoexplorer_item_1GC",
-		"item": "photoexplorer_item_1GC",
-		"directoryTitle": "photoexplorer_directoryTitle_216",
-		"directoryTitle": "photoexplorer_directoryTitle_216"
+		"root": "user-dashboard_root_1mJ",
+		"root": "user-dashboard_root_1mJ",
+		"blockHeading": "user-dashboard_blockHeading_3m0",
+		"blockHeading": "user-dashboard_blockHeading_3m0",
+		"breakLine": "user-dashboard_breakLine_1Pg",
+		"breakLine": "user-dashboard_breakLine_1Pg",
+		"btn": "user-dashboard_btn_3km",
+		"btn": "user-dashboard_btn_3km",
+		"btnFb": "user-dashboard_btnFb_lVa",
+		"btnFb": "user-dashboard_btnFb_lVa",
+		"btnGg": "user-dashboard_btnGg_32U",
+		"btnGg": "user-dashboard_btnGg_32U",
+		"btnDx": "user-dashboard_btnDx_c8H",
+		"btnDx": "user-dashboard_btnDx_c8H",
+		"dropboxStatusSuccess": "user-dashboard_dropboxStatusSuccess_3WS",
+		"dropboxStatusSuccess": "user-dashboard_dropboxStatusSuccess_3WS"
 	};
 
 /***/ },
 
-/***/ 894:
+/***/ 902:
 /*!******************************!*\
-  !*** ./src/reducers/user.js ***!
+  !*** ./src/store/dropbox.js ***!
   \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _dropbox = __webpack_require__(/*! dropbox */ 903);
+	
+	var _dropbox2 = _interopRequireDefault(_dropbox);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var CLIENT_ID = 'g048eqdv71saczl';
+	
+	var dx = new _dropbox2.default({ clientId: CLIENT_ID });
+	
+	exports.default = dx;
+
+/***/ },
+
+/***/ 903:
+/*!********************************!*\
+  !*** ./~/dropbox/src/index.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var Dropbox = __webpack_require__(/*! ./dropbox */ 904);
+	
+	module.exports = Dropbox;
+
+
+/***/ },
+
+/***/ 904:
+/*!**********************************!*\
+  !*** ./~/dropbox/src/dropbox.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var DropboxBase = __webpack_require__(/*! ./dropbox-base */ 905);
+	var routes = __webpack_require__(/*! ./routes */ 921);
+	var Dropbox;
+	
+	/**
+	 * @class Dropbox
+	 * @extends DropboxBase
+	 * @classdesc The Dropbox SDK class that provides methods to read, write and
+	 * create files or folders in a user's Dropbox.
+	 * @arg {Object} options
+	 * @arg {String} [options.accessToken] - An access token for making authenticated
+	 * requests.
+	 * @arg {String} [options.clientId] - The client id for your app. Used to create
+	 * authentication URL.
+	 * @arg {String} [options.selectUser] - Select user is only used by DropboxTeam.
+	 * It specifies which user the team access token should be acting as.
+	 */
+	Dropbox = function (options) {
+	  DropboxBase.call(this, options);
+	};
+	
+	Dropbox.prototype = Object.create(DropboxBase.prototype);
+	
+	Dropbox.prototype.constructor = Dropbox;
+	
+	// Add the user endpoint methods to the prototype
+	Dropbox.prototype = Object.assign(Dropbox.prototype, routes);
+	
+	Dropbox.prototype.filesGetSharedLinkFile = function (arg) {
+	  return this.request('sharing/get_shared_link_file', arg, 'api', 'download');
+	};
+	
+	module.exports = Dropbox;
+
+
+/***/ },
+
+/***/ 905:
+/*!***************************************!*\
+  !*** ./~/dropbox/src/dropbox-base.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var REQUEST_CONSTANTS = __webpack_require__(/*! ./request-constants */ 906);
+	var DropboxBase;
+	
+	// Polyfill Object.assign() for older browsers
+	__webpack_require__(/*! ./object-assign-polyfill */ 907);
+	
+	/**
+	 * @private
+	 * @class DropboxBase
+	 * @classdesc The main Dropbox SDK class. This contains the methods that are
+	 * shared between Dropbox and DropboxTeam classes. It is marked as private so
+	 * that it doesn't show up in the docs because it is never used directly.
+	 * @arg {Object} options
+	 * @arg {String} [options.accessToken] - An access token for making authenticated
+	 * requests.
+	 * @arg {String} [options.clientId] - The client id fo ryour app. Used to create
+	 * authentication URL.
+	 * @arg {Number} [options.selectUser] - User is the team access token would like
+	 * to act as.
+	 */
+	DropboxBase = function (options) {
+	  options = options || {};
+	  this.accessToken = options.accessToken;
+	  this.clientId = options.clientId;
+	  this.selectUser = options.selectUser;
+	};
+	
+	/**
+	 * Set the access token used to authenticate requests to the API.
+	 * @arg {String} accessToken - An access token
+	 * @returns {undefined}
+	 */
+	DropboxBase.prototype.setAccessToken = function (accessToken) {
+	  this.accessToken = accessToken;
+	};
+	
+	/**
+	 * Get the access token
+	 * @returns {String} Access token
+	 */
+	DropboxBase.prototype.getAccessToken = function () {
+	  return this.accessToken;
+	};
+	
+	/**
+	 * Set the client id, which is used to help gain an access token.
+	 * @arg {String} clientId - Your apps client id
+	 * @returns {undefined}
+	 */
+	DropboxBase.prototype.setClientId = function (clientId) {
+	  this.clientId = clientId;
+	};
+	
+	/**
+	 * Get the client id
+	 * @returns {String} Client id
+	 */
+	DropboxBase.prototype.getClientId = function () {
+	  return this.clientId;
+	};
+	
+	/**
+	 * Get a URL that can be used to authenticate users for the Dropbox API.
+	 * @arg {String} redirectUri - A URL to redirect the user to after
+	 * authenticating. This must be added to your app through the admin interface.
+	 * @arg {String} [state] - State that will be returned in the redirect URL to help
+	 * prevent cross site scripting attacks.
+	 * @returns {String} Url to send user to for Dropbox API authentication
+	 */
+	DropboxBase.prototype.getAuthenticationUrl = function (redirectUri, state) {
+	  var AUTH_BASE_URL = 'https://www.dropbox.com/oauth2/authorize';
+	  var clientId = this.getClientId();
+	  var authUrl;
+	  if (!clientId) {
+	    throw new Error('A client id is required. You can set the client id using .setClientId().');
+	  }
+	  if (!redirectUri) {
+	    throw new Error('A redirect uri is required.');
+	  }
+	
+	  authUrl = AUTH_BASE_URL + '?response_type=token&client_id=' + clientId;
+	  if (redirectUri) {
+	    authUrl = authUrl + '&redirect_uri=' + redirectUri;
+	  }
+	  if (state) {
+	    authUrl = authUrl + '&state=' + state;
+	  }
+	  return authUrl;
+	};
+	
+	DropboxBase.prototype.request = function (path, args, auth, host, style) {
+	  var request = null;
+	  switch (style) {
+	    case REQUEST_CONSTANTS.RPC:
+	      request = this.getRpcRequest();
+	      break;
+	    case REQUEST_CONSTANTS.DOWNLOAD:
+	      request = this.getDownloadRequest();
+	      break;
+	    case REQUEST_CONSTANTS.UPLOAD:
+	      request = this.getUploadRequest();
+	      break;
+	    default:
+	      throw new Error('Invalid request style: ' + style);
+	  }
+	
+	  return request(path, args, auth, host, this.getAccessToken(), this.selectUser);
+	};
+	
+	DropboxBase.prototype.setRpcRequest = function (newRpcRequest) {
+	  DropboxBase.prototype.rpcRequest = newRpcRequest;
+	};
+	
+	DropboxBase.prototype.getRpcRequest = function () {
+	  if (DropboxBase.prototype.rpcRequest === undefined) {
+	    DropboxBase.prototype.rpcRequest = __webpack_require__(/*! ./rpc-request */ 908);
+	  }
+	
+	  return DropboxBase.prototype.rpcRequest;
+	};
+	
+	DropboxBase.prototype.setDownloadRequest = function (newDownloadRequest) {
+	  DropboxBase.prototype.downloadRequest = newDownloadRequest;
+	};
+	
+	DropboxBase.prototype.getDownloadRequest = function () {
+	  if (DropboxBase.prototype.downloadRequest === undefined) {
+	    DropboxBase.prototype.downloadRequest = __webpack_require__(/*! ./download-request */ 918);
+	  }
+	
+	  return DropboxBase.prototype.downloadRequest;
+	};
+	
+	DropboxBase.prototype.setUploadRequest = function (newUploadRequest) {
+	  DropboxBase.prototype.uploadRequest = newUploadRequest;
+	};
+	
+	DropboxBase.prototype.getUploadRequest = function () {
+	  if (DropboxBase.prototype.uploadRequest === undefined) {
+	    DropboxBase.prototype.uploadRequest = __webpack_require__(/*! ./upload-request */ 920);
+	  }
+	
+	  return DropboxBase.prototype.uploadRequest;
+	};
+	
+	module.exports = DropboxBase;
+
+
+/***/ },
+
+/***/ 906:
+/*!********************************************!*\
+  !*** ./~/dropbox/src/request-constants.js ***!
+  \********************************************/
 /***/ function(module, exports) {
+
+	var REQUEST_CONSTANTS = {
+	  RPC: 'rpc',
+	  DOWNLOAD: 'download',
+	  UPLOAD: 'upload'
+	};
+	
+	module.exports = REQUEST_CONSTANTS;
+
+
+/***/ },
+
+/***/ 907:
+/*!*************************************************!*\
+  !*** ./~/dropbox/src/object-assign-polyfill.js ***!
+  \*************************************************/
+/***/ function(module, exports) {
+
+	// Polyfill object.assign for legacy browsers
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+	if (typeof Object.assign !== 'function') {
+	  (function () {
+	    Object.assign = function (target) {
+	      'use strict';
+	      var output;
+	      var index;
+	      var source;
+	      var nextKey;
+	      if (target === undefined || target === null) {
+	        throw new TypeError('Cannot convert undefined or null to object');
+	      }
+	
+	      output = Object(target);
+	      for (index = 1; index < arguments.length; index++) {
+	        source = arguments[index];
+	        if (source !== undefined && source !== null) {
+	          for (nextKey in source) {
+	            if (source.hasOwnProperty(nextKey)) {
+	              output[nextKey] = source[nextKey];
+	            }
+	          }
+	        }
+	      }
+	      return output;
+	    };
+	  }());
+	}
+
+
+/***/ },
+
+/***/ 908:
+/*!**************************************!*\
+  !*** ./~/dropbox/src/rpc-request.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var request = __webpack_require__(/*! superagent */ 909);
+	var Promise = __webpack_require__(/*! es6-promise */ 915).Promise;
+	var getBaseURL = __webpack_require__(/*! ./get-base-url */ 917);
+	
+	// This doesn't match what was spec'd in paper doc yet
+	var buildCustomError = function (error, response) {
+	  return {
+	    status: error.status,
+	    error: (response ? response.text : null) || error.toString(),
+	    response: response
+	  };
+	};
+	
+	var rpcRequest = function (path, body, auth, host, accessToken, selectUser) {
+	  var promiseFunction = function (resolve, reject) {
+	    var apiRequest;
+	
+	    function success(data) {
+	      if (resolve) {
+	        resolve(data);
+	      }
+	    }
+	
+	    function failure(error) {
+	      if (reject) {
+	        reject(error);
+	      }
+	    }
+	
+	    function responseHandler(error, response) {
+	      if (error) {
+	        failure(buildCustomError(error, response));
+	      } else {
+	        success(response.body);
+	      }
+	    }
+	
+	    // The API expects null to be passed for endpoints that dont accept any
+	    // parameters
+	    if (!body) {
+	      body = null;
+	    }
+	
+	    apiRequest = request.post(getBaseURL(host) + path)
+	      .type('application/json');
+	
+	    switch (auth) {
+	      case 'team':
+	      case 'user':
+	        apiRequest.set('Authorization', 'Bearer ' + accessToken);
+	        break;
+	      case 'noauth':
+	        break;
+	      default:
+	        throw new Error('Unhandled auth type: ' + auth);
+	    }
+	
+	    if (selectUser) {
+	      apiRequest = apiRequest.set('Dropbox-API-Select-User', selectUser);
+	    }
+	
+	    apiRequest.send(body)
+	      .end(responseHandler);
+	  };
+	
+	  return new Promise(promiseFunction);
+	};
+	
+	module.exports = rpcRequest;
+
+
+/***/ },
+
+/***/ 909:
+/*!************************************!*\
+  !*** ./~/superagent/lib/client.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Module dependencies.
+	 */
+	
+	var Emitter = __webpack_require__(/*! emitter */ 910);
+	var reduce = __webpack_require__(/*! reduce */ 911);
+	var requestBase = __webpack_require__(/*! ./request-base */ 912);
+	var isObject = __webpack_require__(/*! ./is-object */ 913);
+	
+	/**
+	 * Root reference for iframes.
+	 */
+	
+	var root;
+	if (typeof window !== 'undefined') { // Browser window
+	  root = window;
+	} else if (typeof self !== 'undefined') { // Web Worker
+	  root = self;
+	} else { // Other environments
+	  root = this;
+	}
+	
+	/**
+	 * Noop.
+	 */
+	
+	function noop(){};
+	
+	/**
+	 * Check if `obj` is a host object,
+	 * we don't want to serialize these :)
+	 *
+	 * TODO: future proof, move to compoent land
+	 *
+	 * @param {Object} obj
+	 * @return {Boolean}
+	 * @api private
+	 */
+	
+	function isHost(obj) {
+	  var str = {}.toString.call(obj);
+	
+	  switch (str) {
+	    case '[object File]':
+	    case '[object Blob]':
+	    case '[object FormData]':
+	      return true;
+	    default:
+	      return false;
+	  }
+	}
+	
+	/**
+	 * Expose `request`.
+	 */
+	
+	var request = module.exports = __webpack_require__(/*! ./request */ 914).bind(null, Request);
+	
+	/**
+	 * Determine XHR.
+	 */
+	
+	request.getXHR = function () {
+	  if (root.XMLHttpRequest
+	      && (!root.location || 'file:' != root.location.protocol
+	          || !root.ActiveXObject)) {
+	    return new XMLHttpRequest;
+	  } else {
+	    try { return new ActiveXObject('Microsoft.XMLHTTP'); } catch(e) {}
+	    try { return new ActiveXObject('Msxml2.XMLHTTP.6.0'); } catch(e) {}
+	    try { return new ActiveXObject('Msxml2.XMLHTTP.3.0'); } catch(e) {}
+	    try { return new ActiveXObject('Msxml2.XMLHTTP'); } catch(e) {}
+	  }
+	  return false;
+	};
+	
+	/**
+	 * Removes leading and trailing whitespace, added to support IE.
+	 *
+	 * @param {String} s
+	 * @return {String}
+	 * @api private
+	 */
+	
+	var trim = ''.trim
+	  ? function(s) { return s.trim(); }
+	  : function(s) { return s.replace(/(^\s*|\s*$)/g, ''); };
+	
+	/**
+	 * Serialize the given `obj`.
+	 *
+	 * @param {Object} obj
+	 * @return {String}
+	 * @api private
+	 */
+	
+	function serialize(obj) {
+	  if (!isObject(obj)) return obj;
+	  var pairs = [];
+	  for (var key in obj) {
+	    if (null != obj[key]) {
+	      pushEncodedKeyValuePair(pairs, key, obj[key]);
+	        }
+	      }
+	  return pairs.join('&');
+	}
+	
+	/**
+	 * Helps 'serialize' with serializing arrays.
+	 * Mutates the pairs array.
+	 *
+	 * @param {Array} pairs
+	 * @param {String} key
+	 * @param {Mixed} val
+	 */
+	
+	function pushEncodedKeyValuePair(pairs, key, val) {
+	  if (Array.isArray(val)) {
+	    return val.forEach(function(v) {
+	      pushEncodedKeyValuePair(pairs, key, v);
+	    });
+	  }
+	  pairs.push(encodeURIComponent(key)
+	    + '=' + encodeURIComponent(val));
+	}
+	
+	/**
+	 * Expose serialization method.
+	 */
+	
+	 request.serializeObject = serialize;
+	
+	 /**
+	  * Parse the given x-www-form-urlencoded `str`.
+	  *
+	  * @param {String} str
+	  * @return {Object}
+	  * @api private
+	  */
+	
+	function parseString(str) {
+	  var obj = {};
+	  var pairs = str.split('&');
+	  var parts;
+	  var pair;
+	
+	  for (var i = 0, len = pairs.length; i < len; ++i) {
+	    pair = pairs[i];
+	    parts = pair.split('=');
+	    obj[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+	  }
+	
+	  return obj;
+	}
+	
+	/**
+	 * Expose parser.
+	 */
+	
+	request.parseString = parseString;
+	
+	/**
+	 * Default MIME type map.
+	 *
+	 *     superagent.types.xml = 'application/xml';
+	 *
+	 */
+	
+	request.types = {
+	  html: 'text/html',
+	  json: 'application/json',
+	  xml: 'application/xml',
+	  urlencoded: 'application/x-www-form-urlencoded',
+	  'form': 'application/x-www-form-urlencoded',
+	  'form-data': 'application/x-www-form-urlencoded'
+	};
+	
+	/**
+	 * Default serialization map.
+	 *
+	 *     superagent.serialize['application/xml'] = function(obj){
+	 *       return 'generated xml here';
+	 *     };
+	 *
+	 */
+	
+	 request.serialize = {
+	   'application/x-www-form-urlencoded': serialize,
+	   'application/json': JSON.stringify
+	 };
+	
+	 /**
+	  * Default parsers.
+	  *
+	  *     superagent.parse['application/xml'] = function(str){
+	  *       return { object parsed from str };
+	  *     };
+	  *
+	  */
+	
+	request.parse = {
+	  'application/x-www-form-urlencoded': parseString,
+	  'application/json': JSON.parse
+	};
+	
+	/**
+	 * Parse the given header `str` into
+	 * an object containing the mapped fields.
+	 *
+	 * @param {String} str
+	 * @return {Object}
+	 * @api private
+	 */
+	
+	function parseHeader(str) {
+	  var lines = str.split(/\r?\n/);
+	  var fields = {};
+	  var index;
+	  var line;
+	  var field;
+	  var val;
+	
+	  lines.pop(); // trailing CRLF
+	
+	  for (var i = 0, len = lines.length; i < len; ++i) {
+	    line = lines[i];
+	    index = line.indexOf(':');
+	    field = line.slice(0, index).toLowerCase();
+	    val = trim(line.slice(index + 1));
+	    fields[field] = val;
+	  }
+	
+	  return fields;
+	}
+	
+	/**
+	 * Check if `mime` is json or has +json structured syntax suffix.
+	 *
+	 * @param {String} mime
+	 * @return {Boolean}
+	 * @api private
+	 */
+	
+	function isJSON(mime) {
+	  return /[\/+]json\b/.test(mime);
+	}
+	
+	/**
+	 * Return the mime type for the given `str`.
+	 *
+	 * @param {String} str
+	 * @return {String}
+	 * @api private
+	 */
+	
+	function type(str){
+	  return str.split(/ *; */).shift();
+	};
+	
+	/**
+	 * Return header field parameters.
+	 *
+	 * @param {String} str
+	 * @return {Object}
+	 * @api private
+	 */
+	
+	function params(str){
+	  return reduce(str.split(/ *; */), function(obj, str){
+	    var parts = str.split(/ *= */)
+	      , key = parts.shift()
+	      , val = parts.shift();
+	
+	    if (key && val) obj[key] = val;
+	    return obj;
+	  }, {});
+	};
+	
+	/**
+	 * Initialize a new `Response` with the given `xhr`.
+	 *
+	 *  - set flags (.ok, .error, etc)
+	 *  - parse header
+	 *
+	 * Examples:
+	 *
+	 *  Aliasing `superagent` as `request` is nice:
+	 *
+	 *      request = superagent;
+	 *
+	 *  We can use the promise-like API, or pass callbacks:
+	 *
+	 *      request.get('/').end(function(res){});
+	 *      request.get('/', function(res){});
+	 *
+	 *  Sending data can be chained:
+	 *
+	 *      request
+	 *        .post('/user')
+	 *        .send({ name: 'tj' })
+	 *        .end(function(res){});
+	 *
+	 *  Or passed to `.send()`:
+	 *
+	 *      request
+	 *        .post('/user')
+	 *        .send({ name: 'tj' }, function(res){});
+	 *
+	 *  Or passed to `.post()`:
+	 *
+	 *      request
+	 *        .post('/user', { name: 'tj' })
+	 *        .end(function(res){});
+	 *
+	 * Or further reduced to a single call for simple cases:
+	 *
+	 *      request
+	 *        .post('/user', { name: 'tj' }, function(res){});
+	 *
+	 * @param {XMLHTTPRequest} xhr
+	 * @param {Object} options
+	 * @api private
+	 */
+	
+	function Response(req, options) {
+	  options = options || {};
+	  this.req = req;
+	  this.xhr = this.req.xhr;
+	  // responseText is accessible only if responseType is '' or 'text' and on older browsers
+	  this.text = ((this.req.method !='HEAD' && (this.xhr.responseType === '' || this.xhr.responseType === 'text')) || typeof this.xhr.responseType === 'undefined')
+	     ? this.xhr.responseText
+	     : null;
+	  this.statusText = this.req.xhr.statusText;
+	  this.setStatusProperties(this.xhr.status);
+	  this.header = this.headers = parseHeader(this.xhr.getAllResponseHeaders());
+	  // getAllResponseHeaders sometimes falsely returns "" for CORS requests, but
+	  // getResponseHeader still works. so we get content-type even if getting
+	  // other headers fails.
+	  this.header['content-type'] = this.xhr.getResponseHeader('content-type');
+	  this.setHeaderProperties(this.header);
+	  this.body = this.req.method != 'HEAD'
+	    ? this.parseBody(this.text ? this.text : this.xhr.response)
+	    : null;
+	}
+	
+	/**
+	 * Get case-insensitive `field` value.
+	 *
+	 * @param {String} field
+	 * @return {String}
+	 * @api public
+	 */
+	
+	Response.prototype.get = function(field){
+	  return this.header[field.toLowerCase()];
+	};
+	
+	/**
+	 * Set header related properties:
+	 *
+	 *   - `.type` the content type without params
+	 *
+	 * A response of "Content-Type: text/plain; charset=utf-8"
+	 * will provide you with a `.type` of "text/plain".
+	 *
+	 * @param {Object} header
+	 * @api private
+	 */
+	
+	Response.prototype.setHeaderProperties = function(header){
+	  // content-type
+	  var ct = this.header['content-type'] || '';
+	  this.type = type(ct);
+	
+	  // params
+	  var obj = params(ct);
+	  for (var key in obj) this[key] = obj[key];
+	};
+	
+	/**
+	 * Parse the given body `str`.
+	 *
+	 * Used for auto-parsing of bodies. Parsers
+	 * are defined on the `superagent.parse` object.
+	 *
+	 * @param {String} str
+	 * @return {Mixed}
+	 * @api private
+	 */
+	
+	Response.prototype.parseBody = function(str){
+	  var parse = request.parse[this.type];
+	  if (!parse && isJSON(this.type)) {
+	    parse = request.parse['application/json'];
+	  }
+	  return parse && str && (str.length || str instanceof Object)
+	    ? parse(str)
+	    : null;
+	};
+	
+	/**
+	 * Set flags such as `.ok` based on `status`.
+	 *
+	 * For example a 2xx response will give you a `.ok` of __true__
+	 * whereas 5xx will be __false__ and `.error` will be __true__. The
+	 * `.clientError` and `.serverError` are also available to be more
+	 * specific, and `.statusType` is the class of error ranging from 1..5
+	 * sometimes useful for mapping respond colors etc.
+	 *
+	 * "sugar" properties are also defined for common cases. Currently providing:
+	 *
+	 *   - .noContent
+	 *   - .badRequest
+	 *   - .unauthorized
+	 *   - .notAcceptable
+	 *   - .notFound
+	 *
+	 * @param {Number} status
+	 * @api private
+	 */
+	
+	Response.prototype.setStatusProperties = function(status){
+	  // handle IE9 bug: http://stackoverflow.com/questions/10046972/msie-returns-status-code-of-1223-for-ajax-request
+	  if (status === 1223) {
+	    status = 204;
+	  }
+	
+	  var type = status / 100 | 0;
+	
+	  // status / class
+	  this.status = this.statusCode = status;
+	  this.statusType = type;
+	
+	  // basics
+	  this.info = 1 == type;
+	  this.ok = 2 == type;
+	  this.clientError = 4 == type;
+	  this.serverError = 5 == type;
+	  this.error = (4 == type || 5 == type)
+	    ? this.toError()
+	    : false;
+	
+	  // sugar
+	  this.accepted = 202 == status;
+	  this.noContent = 204 == status;
+	  this.badRequest = 400 == status;
+	  this.unauthorized = 401 == status;
+	  this.notAcceptable = 406 == status;
+	  this.notFound = 404 == status;
+	  this.forbidden = 403 == status;
+	};
+	
+	/**
+	 * Return an `Error` representative of this response.
+	 *
+	 * @return {Error}
+	 * @api public
+	 */
+	
+	Response.prototype.toError = function(){
+	  var req = this.req;
+	  var method = req.method;
+	  var url = req.url;
+	
+	  var msg = 'cannot ' + method + ' ' + url + ' (' + this.status + ')';
+	  var err = new Error(msg);
+	  err.status = this.status;
+	  err.method = method;
+	  err.url = url;
+	
+	  return err;
+	};
+	
+	/**
+	 * Expose `Response`.
+	 */
+	
+	request.Response = Response;
+	
+	/**
+	 * Initialize a new `Request` with the given `method` and `url`.
+	 *
+	 * @param {String} method
+	 * @param {String} url
+	 * @api public
+	 */
+	
+	function Request(method, url) {
+	  var self = this;
+	  this._query = this._query || [];
+	  this.method = method;
+	  this.url = url;
+	  this.header = {}; // preserves header name case
+	  this._header = {}; // coerces header names to lowercase
+	  this.on('end', function(){
+	    var err = null;
+	    var res = null;
+	
+	    try {
+	      res = new Response(self);
+	    } catch(e) {
+	      err = new Error('Parser is unable to parse the response');
+	      err.parse = true;
+	      err.original = e;
+	      // issue #675: return the raw response if the response parsing fails
+	      err.rawResponse = self.xhr && self.xhr.responseText ? self.xhr.responseText : null;
+	      // issue #876: return the http status code if the response parsing fails
+	      err.statusCode = self.xhr && self.xhr.status ? self.xhr.status : null;
+	      return self.callback(err);
+	    }
+	
+	    self.emit('response', res);
+	
+	    if (err) {
+	      return self.callback(err, res);
+	    }
+	
+	    if (res.status >= 200 && res.status < 300) {
+	      return self.callback(err, res);
+	    }
+	
+	    var new_err = new Error(res.statusText || 'Unsuccessful HTTP response');
+	    new_err.original = err;
+	    new_err.response = res;
+	    new_err.status = res.status;
+	
+	    self.callback(new_err, res);
+	  });
+	}
+	
+	/**
+	 * Mixin `Emitter` and `requestBase`.
+	 */
+	
+	Emitter(Request.prototype);
+	for (var key in requestBase) {
+	  Request.prototype[key] = requestBase[key];
+	}
+	
+	/**
+	 * Abort the request, and clear potential timeout.
+	 *
+	 * @return {Request}
+	 * @api public
+	 */
+	
+	Request.prototype.abort = function(){
+	  if (this.aborted) return;
+	  this.aborted = true;
+	  this.xhr && this.xhr.abort();
+	  this.clearTimeout();
+	  this.emit('abort');
+	  return this;
+	};
+	
+	/**
+	 * Set Content-Type to `type`, mapping values from `request.types`.
+	 *
+	 * Examples:
+	 *
+	 *      superagent.types.xml = 'application/xml';
+	 *
+	 *      request.post('/')
+	 *        .type('xml')
+	 *        .send(xmlstring)
+	 *        .end(callback);
+	 *
+	 *      request.post('/')
+	 *        .type('application/xml')
+	 *        .send(xmlstring)
+	 *        .end(callback);
+	 *
+	 * @param {String} type
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	Request.prototype.type = function(type){
+	  this.set('Content-Type', request.types[type] || type);
+	  return this;
+	};
+	
+	/**
+	 * Set responseType to `val`. Presently valid responseTypes are 'blob' and 
+	 * 'arraybuffer'.
+	 *
+	 * Examples:
+	 *
+	 *      req.get('/')
+	 *        .responseType('blob')
+	 *        .end(callback);
+	 *
+	 * @param {String} val
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	Request.prototype.responseType = function(val){
+	  this._responseType = val;
+	  return this;
+	};
+	
+	/**
+	 * Set Accept to `type`, mapping values from `request.types`.
+	 *
+	 * Examples:
+	 *
+	 *      superagent.types.json = 'application/json';
+	 *
+	 *      request.get('/agent')
+	 *        .accept('json')
+	 *        .end(callback);
+	 *
+	 *      request.get('/agent')
+	 *        .accept('application/json')
+	 *        .end(callback);
+	 *
+	 * @param {String} accept
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	Request.prototype.accept = function(type){
+	  this.set('Accept', request.types[type] || type);
+	  return this;
+	};
+	
+	/**
+	 * Set Authorization field value with `user` and `pass`.
+	 *
+	 * @param {String} user
+	 * @param {String} pass
+	 * @param {Object} options with 'type' property 'auto' or 'basic' (default 'basic')
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	Request.prototype.auth = function(user, pass, options){
+	  if (!options) {
+	    options = {
+	      type: 'basic'
+	    }
+	  }
+	
+	  switch (options.type) {
+	    case 'basic':
+	      var str = btoa(user + ':' + pass);
+	      this.set('Authorization', 'Basic ' + str);
+	    break;
+	
+	    case 'auto':
+	      this.username = user;
+	      this.password = pass;
+	    break;
+	  }
+	  return this;
+	};
+	
+	/**
+	* Add query-string `val`.
+	*
+	* Examples:
+	*
+	*   request.get('/shoes')
+	*     .query('size=10')
+	*     .query({ color: 'blue' })
+	*
+	* @param {Object|String} val
+	* @return {Request} for chaining
+	* @api public
+	*/
+	
+	Request.prototype.query = function(val){
+	  if ('string' != typeof val) val = serialize(val);
+	  if (val) this._query.push(val);
+	  return this;
+	};
+	
+	/**
+	 * Queue the given `file` as an attachment to the specified `field`,
+	 * with optional `filename`.
+	 *
+	 * ``` js
+	 * request.post('/upload')
+	 *   .attach(new Blob(['<a id="a"><b id="b">hey!</b></a>'], { type: "text/html"}))
+	 *   .end(callback);
+	 * ```
+	 *
+	 * @param {String} field
+	 * @param {Blob|File} file
+	 * @param {String} filename
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	Request.prototype.attach = function(field, file, filename){
+	  this._getFormData().append(field, file, filename || file.name);
+	  return this;
+	};
+	
+	Request.prototype._getFormData = function(){
+	  if (!this._formData) {
+	    this._formData = new root.FormData();
+	  }
+	  return this._formData;
+	};
+	
+	/**
+	 * Send `data` as the request body, defaulting the `.type()` to "json" when
+	 * an object is given.
+	 *
+	 * Examples:
+	 *
+	 *       // manual json
+	 *       request.post('/user')
+	 *         .type('json')
+	 *         .send('{"name":"tj"}')
+	 *         .end(callback)
+	 *
+	 *       // auto json
+	 *       request.post('/user')
+	 *         .send({ name: 'tj' })
+	 *         .end(callback)
+	 *
+	 *       // manual x-www-form-urlencoded
+	 *       request.post('/user')
+	 *         .type('form')
+	 *         .send('name=tj')
+	 *         .end(callback)
+	 *
+	 *       // auto x-www-form-urlencoded
+	 *       request.post('/user')
+	 *         .type('form')
+	 *         .send({ name: 'tj' })
+	 *         .end(callback)
+	 *
+	 *       // defaults to x-www-form-urlencoded
+	  *      request.post('/user')
+	  *        .send('name=tobi')
+	  *        .send('species=ferret')
+	  *        .end(callback)
+	 *
+	 * @param {String|Object} data
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	Request.prototype.send = function(data){
+	  var obj = isObject(data);
+	  var type = this._header['content-type'];
+	
+	  // merge
+	  if (obj && isObject(this._data)) {
+	    for (var key in data) {
+	      this._data[key] = data[key];
+	    }
+	  } else if ('string' == typeof data) {
+	    if (!type) this.type('form');
+	    type = this._header['content-type'];
+	    if ('application/x-www-form-urlencoded' == type) {
+	      this._data = this._data
+	        ? this._data + '&' + data
+	        : data;
+	    } else {
+	      this._data = (this._data || '') + data;
+	    }
+	  } else {
+	    this._data = data;
+	  }
+	
+	  if (!obj || isHost(data)) return this;
+	  if (!type) this.type('json');
+	  return this;
+	};
+	
+	/**
+	 * @deprecated
+	 */
+	Response.prototype.parse = function serialize(fn){
+	  if (root.console) {
+	    console.warn("Client-side parse() method has been renamed to serialize(). This method is not compatible with superagent v2.0");
+	  }
+	  this.serialize(fn);
+	  return this;
+	};
+	
+	Response.prototype.serialize = function serialize(fn){
+	  this._parser = fn;
+	  return this;
+	};
+	
+	/**
+	 * Invoke the callback with `err` and `res`
+	 * and handle arity check.
+	 *
+	 * @param {Error} err
+	 * @param {Response} res
+	 * @api private
+	 */
+	
+	Request.prototype.callback = function(err, res){
+	  var fn = this._callback;
+	  this.clearTimeout();
+	  fn(err, res);
+	};
+	
+	/**
+	 * Invoke callback with x-domain error.
+	 *
+	 * @api private
+	 */
+	
+	Request.prototype.crossDomainError = function(){
+	  var err = new Error('Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc.');
+	  err.crossDomain = true;
+	
+	  err.status = this.status;
+	  err.method = this.method;
+	  err.url = this.url;
+	
+	  this.callback(err);
+	};
+	
+	/**
+	 * Invoke callback with timeout error.
+	 *
+	 * @api private
+	 */
+	
+	Request.prototype.timeoutError = function(){
+	  var timeout = this._timeout;
+	  var err = new Error('timeout of ' + timeout + 'ms exceeded');
+	  err.timeout = timeout;
+	  this.callback(err);
+	};
+	
+	/**
+	 * Enable transmission of cookies with x-domain requests.
+	 *
+	 * Note that for this to work the origin must not be
+	 * using "Access-Control-Allow-Origin" with a wildcard,
+	 * and also must set "Access-Control-Allow-Credentials"
+	 * to "true".
+	 *
+	 * @api public
+	 */
+	
+	Request.prototype.withCredentials = function(){
+	  this._withCredentials = true;
+	  return this;
+	};
+	
+	/**
+	 * Initiate request, invoking callback `fn(res)`
+	 * with an instanceof `Response`.
+	 *
+	 * @param {Function} fn
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	Request.prototype.end = function(fn){
+	  var self = this;
+	  var xhr = this.xhr = request.getXHR();
+	  var query = this._query.join('&');
+	  var timeout = this._timeout;
+	  var data = this._formData || this._data;
+	
+	  // store callback
+	  this._callback = fn || noop;
+	
+	  // state change
+	  xhr.onreadystatechange = function(){
+	    if (4 != xhr.readyState) return;
+	
+	    // In IE9, reads to any property (e.g. status) off of an aborted XHR will
+	    // result in the error "Could not complete the operation due to error c00c023f"
+	    var status;
+	    try { status = xhr.status } catch(e) { status = 0; }
+	
+	    if (0 == status) {
+	      if (self.timedout) return self.timeoutError();
+	      if (self.aborted) return;
+	      return self.crossDomainError();
+	    }
+	    self.emit('end');
+	  };
+	
+	  // progress
+	  var handleProgress = function(e){
+	    if (e.total > 0) {
+	      e.percent = e.loaded / e.total * 100;
+	    }
+	    e.direction = 'download';
+	    self.emit('progress', e);
+	  };
+	  if (this.hasListeners('progress')) {
+	    xhr.onprogress = handleProgress;
+	  }
+	  try {
+	    if (xhr.upload && this.hasListeners('progress')) {
+	      xhr.upload.onprogress = handleProgress;
+	    }
+	  } catch(e) {
+	    // Accessing xhr.upload fails in IE from a web worker, so just pretend it doesn't exist.
+	    // Reported here:
+	    // https://connect.microsoft.com/IE/feedback/details/837245/xmlhttprequest-upload-throws-invalid-argument-when-used-from-web-worker-context
+	  }
+	
+	  // timeout
+	  if (timeout && !this._timer) {
+	    this._timer = setTimeout(function(){
+	      self.timedout = true;
+	      self.abort();
+	    }, timeout);
+	  }
+	
+	  // querystring
+	  if (query) {
+	    query = request.serializeObject(query);
+	    this.url += ~this.url.indexOf('?')
+	      ? '&' + query
+	      : '?' + query;
+	  }
+	
+	  // initiate request
+	  if (this.username && this.password) {
+	    xhr.open(this.method, this.url, true, this.username, this.password);
+	  } else {
+	    xhr.open(this.method, this.url, true);
+	  }
+	
+	  // CORS
+	  if (this._withCredentials) xhr.withCredentials = true;
+	
+	  // body
+	  if ('GET' != this.method && 'HEAD' != this.method && 'string' != typeof data && !isHost(data)) {
+	    // serialize stuff
+	    var contentType = this._header['content-type'];
+	    var serialize = this._parser || request.serialize[contentType ? contentType.split(';')[0] : ''];
+	    if (!serialize && isJSON(contentType)) serialize = request.serialize['application/json'];
+	    if (serialize) data = serialize(data);
+	  }
+	
+	  // set header fields
+	  for (var field in this.header) {
+	    if (null == this.header[field]) continue;
+	    xhr.setRequestHeader(field, this.header[field]);
+	  }
+	
+	  if (this._responseType) {
+	    xhr.responseType = this._responseType;
+	  }
+	
+	  // send stuff
+	  this.emit('request', this);
+	
+	  // IE11 xhr.send(undefined) sends 'undefined' string as POST payload (instead of nothing)
+	  // We need null here if data is undefined
+	  xhr.send(typeof data !== 'undefined' ? data : null);
+	  return this;
+	};
+	
+	
+	/**
+	 * Expose `Request`.
+	 */
+	
+	request.Request = Request;
+	
+	/**
+	 * GET `url` with optional callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed|Function} data or fn
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+	
+	request.get = function(url, data, fn){
+	  var req = request('GET', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.query(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+	
+	/**
+	 * HEAD `url` with optional callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed|Function} data or fn
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+	
+	request.head = function(url, data, fn){
+	  var req = request('HEAD', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+	
+	/**
+	 * DELETE `url` with optional callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+	
+	function del(url, fn){
+	  var req = request('DELETE', url);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+	
+	request['del'] = del;
+	request['delete'] = del;
+	
+	/**
+	 * PATCH `url` with optional `data` and callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed} data
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+	
+	request.patch = function(url, data, fn){
+	  var req = request('PATCH', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+	
+	/**
+	 * POST `url` with optional `data` and callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed} data
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+	
+	request.post = function(url, data, fn){
+	  var req = request('POST', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+	
+	/**
+	 * PUT `url` with optional `data` and callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed|Function} data or fn
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+	
+	request.put = function(url, data, fn){
+	  var req = request('PUT', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+
+/***/ },
+
+/***/ 910:
+/*!**************************************!*\
+  !*** ./~/component-emitter/index.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	/**
+	 * Expose `Emitter`.
+	 */
+	
+	if (true) {
+	  module.exports = Emitter;
+	}
+	
+	/**
+	 * Initialize a new `Emitter`.
+	 *
+	 * @api public
+	 */
+	
+	function Emitter(obj) {
+	  if (obj) return mixin(obj);
+	};
+	
+	/**
+	 * Mixin the emitter properties.
+	 *
+	 * @param {Object} obj
+	 * @return {Object}
+	 * @api private
+	 */
+	
+	function mixin(obj) {
+	  for (var key in Emitter.prototype) {
+	    obj[key] = Emitter.prototype[key];
+	  }
+	  return obj;
+	}
+	
+	/**
+	 * Listen on the given `event` with `fn`.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+	
+	Emitter.prototype.on =
+	Emitter.prototype.addEventListener = function(event, fn){
+	  this._callbacks = this._callbacks || {};
+	  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
+	    .push(fn);
+	  return this;
+	};
+	
+	/**
+	 * Adds an `event` listener that will be invoked a single
+	 * time then automatically removed.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+	
+	Emitter.prototype.once = function(event, fn){
+	  function on() {
+	    this.off(event, on);
+	    fn.apply(this, arguments);
+	  }
+	
+	  on.fn = fn;
+	  this.on(event, on);
+	  return this;
+	};
+	
+	/**
+	 * Remove the given callback for `event` or all
+	 * registered callbacks.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+	
+	Emitter.prototype.off =
+	Emitter.prototype.removeListener =
+	Emitter.prototype.removeAllListeners =
+	Emitter.prototype.removeEventListener = function(event, fn){
+	  this._callbacks = this._callbacks || {};
+	
+	  // all
+	  if (0 == arguments.length) {
+	    this._callbacks = {};
+	    return this;
+	  }
+	
+	  // specific event
+	  var callbacks = this._callbacks['$' + event];
+	  if (!callbacks) return this;
+	
+	  // remove all handlers
+	  if (1 == arguments.length) {
+	    delete this._callbacks['$' + event];
+	    return this;
+	  }
+	
+	  // remove specific handler
+	  var cb;
+	  for (var i = 0; i < callbacks.length; i++) {
+	    cb = callbacks[i];
+	    if (cb === fn || cb.fn === fn) {
+	      callbacks.splice(i, 1);
+	      break;
+	    }
+	  }
+	  return this;
+	};
+	
+	/**
+	 * Emit `event` with the given args.
+	 *
+	 * @param {String} event
+	 * @param {Mixed} ...
+	 * @return {Emitter}
+	 */
+	
+	Emitter.prototype.emit = function(event){
+	  this._callbacks = this._callbacks || {};
+	  var args = [].slice.call(arguments, 1)
+	    , callbacks = this._callbacks['$' + event];
+	
+	  if (callbacks) {
+	    callbacks = callbacks.slice(0);
+	    for (var i = 0, len = callbacks.length; i < len; ++i) {
+	      callbacks[i].apply(this, args);
+	    }
+	  }
+	
+	  return this;
+	};
+	
+	/**
+	 * Return array of callbacks for `event`.
+	 *
+	 * @param {String} event
+	 * @return {Array}
+	 * @api public
+	 */
+	
+	Emitter.prototype.listeners = function(event){
+	  this._callbacks = this._callbacks || {};
+	  return this._callbacks['$' + event] || [];
+	};
+	
+	/**
+	 * Check if this emitter has `event` handlers.
+	 *
+	 * @param {String} event
+	 * @return {Boolean}
+	 * @api public
+	 */
+	
+	Emitter.prototype.hasListeners = function(event){
+	  return !! this.listeners(event).length;
+	};
+
+
+/***/ },
+
+/***/ 911:
+/*!*************************************!*\
+  !*** ./~/reduce-component/index.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	
+	/**
+	 * Reduce `arr` with `fn`.
+	 *
+	 * @param {Array} arr
+	 * @param {Function} fn
+	 * @param {Mixed} initial
+	 *
+	 * TODO: combatible error handling?
+	 */
+	
+	module.exports = function(arr, fn, initial){  
+	  var idx = 0;
+	  var len = arr.length;
+	  var curr = arguments.length == 3
+	    ? initial
+	    : arr[idx++];
+	
+	  while (idx < len) {
+	    curr = fn.call(null, curr, arr[idx], ++idx, arr);
+	  }
+	  
+	  return curr;
+	};
+
+/***/ },
+
+/***/ 912:
+/*!******************************************!*\
+  !*** ./~/superagent/lib/request-base.js ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Module of mixed-in functions shared between node and client code
+	 */
+	var isObject = __webpack_require__(/*! ./is-object */ 913);
+	
+	/**
+	 * Clear previous timeout.
+	 *
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	exports.clearTimeout = function _clearTimeout(){
+	  this._timeout = 0;
+	  clearTimeout(this._timer);
+	  return this;
+	};
+	
+	/**
+	 * Force given parser
+	 *
+	 * Sets the body parser no matter type.
+	 *
+	 * @param {Function}
+	 * @api public
+	 */
+	
+	exports.parse = function parse(fn){
+	  this._parser = fn;
+	  return this;
+	};
+	
+	/**
+	 * Set timeout to `ms`.
+	 *
+	 * @param {Number} ms
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	exports.timeout = function timeout(ms){
+	  this._timeout = ms;
+	  return this;
+	};
+	
+	/**
+	 * Faux promise support
+	 *
+	 * @param {Function} fulfill
+	 * @param {Function} reject
+	 * @return {Request}
+	 */
+	
+	exports.then = function then(fulfill, reject) {
+	  return this.end(function(err, res) {
+	    err ? reject(err) : fulfill(res);
+	  });
+	}
+	
+	/**
+	 * Allow for extension
+	 */
+	
+	exports.use = function use(fn) {
+	  fn(this);
+	  return this;
+	}
+	
+	
+	/**
+	 * Get request header `field`.
+	 * Case-insensitive.
+	 *
+	 * @param {String} field
+	 * @return {String}
+	 * @api public
+	 */
+	
+	exports.get = function(field){
+	  return this._header[field.toLowerCase()];
+	};
+	
+	/**
+	 * Get case-insensitive header `field` value.
+	 * This is a deprecated internal API. Use `.get(field)` instead.
+	 *
+	 * (getHeader is no longer used internally by the superagent code base)
+	 *
+	 * @param {String} field
+	 * @return {String}
+	 * @api private
+	 * @deprecated
+	 */
+	
+	exports.getHeader = exports.get;
+	
+	/**
+	 * Set header `field` to `val`, or multiple fields with one object.
+	 * Case-insensitive.
+	 *
+	 * Examples:
+	 *
+	 *      req.get('/')
+	 *        .set('Accept', 'application/json')
+	 *        .set('X-API-Key', 'foobar')
+	 *        .end(callback);
+	 *
+	 *      req.get('/')
+	 *        .set({ Accept: 'application/json', 'X-API-Key': 'foobar' })
+	 *        .end(callback);
+	 *
+	 * @param {String|Object} field
+	 * @param {String} val
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	
+	exports.set = function(field, val){
+	  if (isObject(field)) {
+	    for (var key in field) {
+	      this.set(key, field[key]);
+	    }
+	    return this;
+	  }
+	  this._header[field.toLowerCase()] = val;
+	  this.header[field] = val;
+	  return this;
+	};
+	
+	/**
+	 * Remove header `field`.
+	 * Case-insensitive.
+	 *
+	 * Example:
+	 *
+	 *      req.get('/')
+	 *        .unset('User-Agent')
+	 *        .end(callback);
+	 *
+	 * @param {String} field
+	 */
+	exports.unset = function(field){
+	  delete this._header[field.toLowerCase()];
+	  delete this.header[field];
+	  return this;
+	};
+	
+	/**
+	 * Write the field `name` and `val` for "multipart/form-data"
+	 * request bodies.
+	 *
+	 * ``` js
+	 * request.post('/upload')
+	 *   .field('foo', 'bar')
+	 *   .end(callback);
+	 * ```
+	 *
+	 * @param {String} name
+	 * @param {String|Blob|File|Buffer|fs.ReadStream} val
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+	exports.field = function(name, val) {
+	  this._getFormData().append(name, val);
+	  return this;
+	};
+
+
+/***/ },
+
+/***/ 913:
+/*!***************************************!*\
+  !*** ./~/superagent/lib/is-object.js ***!
+  \***************************************/
+/***/ function(module, exports) {
+
+	/**
+	 * Check if `obj` is an object.
+	 *
+	 * @param {Object} obj
+	 * @return {Boolean}
+	 * @api private
+	 */
+	
+	function isObject(obj) {
+	  return null != obj && 'object' == typeof obj;
+	}
+	
+	module.exports = isObject;
+
+
+/***/ },
+
+/***/ 914:
+/*!*************************************!*\
+  !*** ./~/superagent/lib/request.js ***!
+  \*************************************/
+/***/ function(module, exports) {
+
+	// The node and browser modules expose versions of this with the
+	// appropriate constructor function bound as first argument
+	/**
+	 * Issue a request:
+	 *
+	 * Examples:
+	 *
+	 *    request('GET', '/users').end(callback)
+	 *    request('/users').end(callback)
+	 *    request('/users', callback)
+	 *
+	 * @param {String} method
+	 * @param {String|Function} url or callback
+	 * @return {Request}
+	 * @api public
+	 */
+	
+	function request(RequestConstructor, method, url) {
+	  // callback
+	  if ('function' == typeof url) {
+	    return new RequestConstructor('GET', method).end(url);
+	  }
+	
+	  // url first
+	  if (2 == arguments.length) {
+	    return new RequestConstructor('GET', method);
+	  }
+	
+	  return new RequestConstructor(method, url);
+	}
+	
+	module.exports = request;
+
+
+/***/ },
+
+/***/ 915:
+/*!*****************************************************!*\
+  !*** ./~/dropbox/~/es6-promise/dist/es6-promise.js ***!
+  \*****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var require;/* WEBPACK VAR INJECTION */(function(process, global) {/*!
+	 * @overview es6-promise - a tiny implementation of Promises/A+.
+	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
+	 * @license   Licensed under MIT license
+	 *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
+	 * @version   3.3.1
+	 */
+	
+	(function (global, factory) {
+	     true ? module.exports = factory() :
+	    typeof define === 'function' && define.amd ? define(factory) :
+	    (global.ES6Promise = factory());
+	}(this, (function () { 'use strict';
+	
+	function objectOrFunction(x) {
+	  return typeof x === 'function' || typeof x === 'object' && x !== null;
+	}
+	
+	function isFunction(x) {
+	  return typeof x === 'function';
+	}
+	
+	var _isArray = undefined;
+	if (!Array.isArray) {
+	  _isArray = function (x) {
+	    return Object.prototype.toString.call(x) === '[object Array]';
+	  };
+	} else {
+	  _isArray = Array.isArray;
+	}
+	
+	var isArray = _isArray;
+	
+	var len = 0;
+	var vertxNext = undefined;
+	var customSchedulerFn = undefined;
+	
+	var asap = function asap(callback, arg) {
+	  queue[len] = callback;
+	  queue[len + 1] = arg;
+	  len += 2;
+	  if (len === 2) {
+	    // If len is 2, that means that we need to schedule an async flush.
+	    // If additional callbacks are queued before the queue is flushed, they
+	    // will be processed by this flush that we are scheduling.
+	    if (customSchedulerFn) {
+	      customSchedulerFn(flush);
+	    } else {
+	      scheduleFlush();
+	    }
+	  }
+	};
+	
+	function setScheduler(scheduleFn) {
+	  customSchedulerFn = scheduleFn;
+	}
+	
+	function setAsap(asapFn) {
+	  asap = asapFn;
+	}
+	
+	var browserWindow = typeof window !== 'undefined' ? window : undefined;
+	var browserGlobal = browserWindow || {};
+	var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.WebKitMutationObserver;
+	var isNode = typeof self === 'undefined' && typeof process !== 'undefined' && ({}).toString.call(process) === '[object process]';
+	
+	// test for web worker but not in IE10
+	var isWorker = typeof Uint8ClampedArray !== 'undefined' && typeof importScripts !== 'undefined' && typeof MessageChannel !== 'undefined';
+	
+	// node
+	function useNextTick() {
+	  // node version 0.10.x displays a deprecation warning when nextTick is used recursively
+	  // see https://github.com/cujojs/when/issues/410 for details
+	  return function () {
+	    return process.nextTick(flush);
+	  };
+	}
+	
+	// vertx
+	function useVertxTimer() {
+	  return function () {
+	    vertxNext(flush);
+	  };
+	}
+	
+	function useMutationObserver() {
+	  var iterations = 0;
+	  var observer = new BrowserMutationObserver(flush);
+	  var node = document.createTextNode('');
+	  observer.observe(node, { characterData: true });
+	
+	  return function () {
+	    node.data = iterations = ++iterations % 2;
+	  };
+	}
+	
+	// web worker
+	function useMessageChannel() {
+	  var channel = new MessageChannel();
+	  channel.port1.onmessage = flush;
+	  return function () {
+	    return channel.port2.postMessage(0);
+	  };
+	}
+	
+	function useSetTimeout() {
+	  // Store setTimeout reference so es6-promise will be unaffected by
+	  // other code modifying setTimeout (like sinon.useFakeTimers())
+	  var globalSetTimeout = setTimeout;
+	  return function () {
+	    return globalSetTimeout(flush, 1);
+	  };
+	}
+	
+	var queue = new Array(1000);
+	function flush() {
+	  for (var i = 0; i < len; i += 2) {
+	    var callback = queue[i];
+	    var arg = queue[i + 1];
+	
+	    callback(arg);
+	
+	    queue[i] = undefined;
+	    queue[i + 1] = undefined;
+	  }
+	
+	  len = 0;
+	}
+	
+	function attemptVertx() {
+	  try {
+	    var r = require;
+	    var vertx = __webpack_require__(/*! vertx */ 916);
+	    vertxNext = vertx.runOnLoop || vertx.runOnContext;
+	    return useVertxTimer();
+	  } catch (e) {
+	    return useSetTimeout();
+	  }
+	}
+	
+	var scheduleFlush = undefined;
+	// Decide what async method to use to triggering processing of queued callbacks:
+	if (isNode) {
+	  scheduleFlush = useNextTick();
+	} else if (BrowserMutationObserver) {
+	  scheduleFlush = useMutationObserver();
+	} else if (isWorker) {
+	  scheduleFlush = useMessageChannel();
+	} else if (browserWindow === undefined && "function" === 'function') {
+	  scheduleFlush = attemptVertx();
+	} else {
+	  scheduleFlush = useSetTimeout();
+	}
+	
+	function then(onFulfillment, onRejection) {
+	  var _arguments = arguments;
+	
+	  var parent = this;
+	
+	  var child = new this.constructor(noop);
+	
+	  if (child[PROMISE_ID] === undefined) {
+	    makePromise(child);
+	  }
+	
+	  var _state = parent._state;
+	
+	  if (_state) {
+	    (function () {
+	      var callback = _arguments[_state - 1];
+	      asap(function () {
+	        return invokeCallback(_state, child, callback, parent._result);
+	      });
+	    })();
+	  } else {
+	    subscribe(parent, child, onFulfillment, onRejection);
+	  }
+	
+	  return child;
+	}
+	
+	/**
+	  `Promise.resolve` returns a promise that will become resolved with the
+	  passed `value`. It is shorthand for the following:
+	
+	  ```javascript
+	  let promise = new Promise(function(resolve, reject){
+	    resolve(1);
+	  });
+	
+	  promise.then(function(value){
+	    // value === 1
+	  });
+	  ```
+	
+	  Instead of writing the above, your code now simply becomes the following:
+	
+	  ```javascript
+	  let promise = Promise.resolve(1);
+	
+	  promise.then(function(value){
+	    // value === 1
+	  });
+	  ```
+	
+	  @method resolve
+	  @static
+	  @param {Any} value value that the returned promise will be resolved with
+	  Useful for tooling.
+	  @return {Promise} a promise that will become fulfilled with the given
+	  `value`
+	*/
+	function resolve(object) {
+	  /*jshint validthis:true */
+	  var Constructor = this;
+	
+	  if (object && typeof object === 'object' && object.constructor === Constructor) {
+	    return object;
+	  }
+	
+	  var promise = new Constructor(noop);
+	  _resolve(promise, object);
+	  return promise;
+	}
+	
+	var PROMISE_ID = Math.random().toString(36).substring(16);
+	
+	function noop() {}
+	
+	var PENDING = void 0;
+	var FULFILLED = 1;
+	var REJECTED = 2;
+	
+	var GET_THEN_ERROR = new ErrorObject();
+	
+	function selfFulfillment() {
+	  return new TypeError("You cannot resolve a promise with itself");
+	}
+	
+	function cannotReturnOwn() {
+	  return new TypeError('A promises callback cannot return that same promise.');
+	}
+	
+	function getThen(promise) {
+	  try {
+	    return promise.then;
+	  } catch (error) {
+	    GET_THEN_ERROR.error = error;
+	    return GET_THEN_ERROR;
+	  }
+	}
+	
+	function tryThen(then, value, fulfillmentHandler, rejectionHandler) {
+	  try {
+	    then.call(value, fulfillmentHandler, rejectionHandler);
+	  } catch (e) {
+	    return e;
+	  }
+	}
+	
+	function handleForeignThenable(promise, thenable, then) {
+	  asap(function (promise) {
+	    var sealed = false;
+	    var error = tryThen(then, thenable, function (value) {
+	      if (sealed) {
+	        return;
+	      }
+	      sealed = true;
+	      if (thenable !== value) {
+	        _resolve(promise, value);
+	      } else {
+	        fulfill(promise, value);
+	      }
+	    }, function (reason) {
+	      if (sealed) {
+	        return;
+	      }
+	      sealed = true;
+	
+	      _reject(promise, reason);
+	    }, 'Settle: ' + (promise._label || ' unknown promise'));
+	
+	    if (!sealed && error) {
+	      sealed = true;
+	      _reject(promise, error);
+	    }
+	  }, promise);
+	}
+	
+	function handleOwnThenable(promise, thenable) {
+	  if (thenable._state === FULFILLED) {
+	    fulfill(promise, thenable._result);
+	  } else if (thenable._state === REJECTED) {
+	    _reject(promise, thenable._result);
+	  } else {
+	    subscribe(thenable, undefined, function (value) {
+	      return _resolve(promise, value);
+	    }, function (reason) {
+	      return _reject(promise, reason);
+	    });
+	  }
+	}
+	
+	function handleMaybeThenable(promise, maybeThenable, then$$) {
+	  if (maybeThenable.constructor === promise.constructor && then$$ === then && maybeThenable.constructor.resolve === resolve) {
+	    handleOwnThenable(promise, maybeThenable);
+	  } else {
+	    if (then$$ === GET_THEN_ERROR) {
+	      _reject(promise, GET_THEN_ERROR.error);
+	    } else if (then$$ === undefined) {
+	      fulfill(promise, maybeThenable);
+	    } else if (isFunction(then$$)) {
+	      handleForeignThenable(promise, maybeThenable, then$$);
+	    } else {
+	      fulfill(promise, maybeThenable);
+	    }
+	  }
+	}
+	
+	function _resolve(promise, value) {
+	  if (promise === value) {
+	    _reject(promise, selfFulfillment());
+	  } else if (objectOrFunction(value)) {
+	    handleMaybeThenable(promise, value, getThen(value));
+	  } else {
+	    fulfill(promise, value);
+	  }
+	}
+	
+	function publishRejection(promise) {
+	  if (promise._onerror) {
+	    promise._onerror(promise._result);
+	  }
+	
+	  publish(promise);
+	}
+	
+	function fulfill(promise, value) {
+	  if (promise._state !== PENDING) {
+	    return;
+	  }
+	
+	  promise._result = value;
+	  promise._state = FULFILLED;
+	
+	  if (promise._subscribers.length !== 0) {
+	    asap(publish, promise);
+	  }
+	}
+	
+	function _reject(promise, reason) {
+	  if (promise._state !== PENDING) {
+	    return;
+	  }
+	  promise._state = REJECTED;
+	  promise._result = reason;
+	
+	  asap(publishRejection, promise);
+	}
+	
+	function subscribe(parent, child, onFulfillment, onRejection) {
+	  var _subscribers = parent._subscribers;
+	  var length = _subscribers.length;
+	
+	  parent._onerror = null;
+	
+	  _subscribers[length] = child;
+	  _subscribers[length + FULFILLED] = onFulfillment;
+	  _subscribers[length + REJECTED] = onRejection;
+	
+	  if (length === 0 && parent._state) {
+	    asap(publish, parent);
+	  }
+	}
+	
+	function publish(promise) {
+	  var subscribers = promise._subscribers;
+	  var settled = promise._state;
+	
+	  if (subscribers.length === 0) {
+	    return;
+	  }
+	
+	  var child = undefined,
+	      callback = undefined,
+	      detail = promise._result;
+	
+	  for (var i = 0; i < subscribers.length; i += 3) {
+	    child = subscribers[i];
+	    callback = subscribers[i + settled];
+	
+	    if (child) {
+	      invokeCallback(settled, child, callback, detail);
+	    } else {
+	      callback(detail);
+	    }
+	  }
+	
+	  promise._subscribers.length = 0;
+	}
+	
+	function ErrorObject() {
+	  this.error = null;
+	}
+	
+	var TRY_CATCH_ERROR = new ErrorObject();
+	
+	function tryCatch(callback, detail) {
+	  try {
+	    return callback(detail);
+	  } catch (e) {
+	    TRY_CATCH_ERROR.error = e;
+	    return TRY_CATCH_ERROR;
+	  }
+	}
+	
+	function invokeCallback(settled, promise, callback, detail) {
+	  var hasCallback = isFunction(callback),
+	      value = undefined,
+	      error = undefined,
+	      succeeded = undefined,
+	      failed = undefined;
+	
+	  if (hasCallback) {
+	    value = tryCatch(callback, detail);
+	
+	    if (value === TRY_CATCH_ERROR) {
+	      failed = true;
+	      error = value.error;
+	      value = null;
+	    } else {
+	      succeeded = true;
+	    }
+	
+	    if (promise === value) {
+	      _reject(promise, cannotReturnOwn());
+	      return;
+	    }
+	  } else {
+	    value = detail;
+	    succeeded = true;
+	  }
+	
+	  if (promise._state !== PENDING) {
+	    // noop
+	  } else if (hasCallback && succeeded) {
+	      _resolve(promise, value);
+	    } else if (failed) {
+	      _reject(promise, error);
+	    } else if (settled === FULFILLED) {
+	      fulfill(promise, value);
+	    } else if (settled === REJECTED) {
+	      _reject(promise, value);
+	    }
+	}
+	
+	function initializePromise(promise, resolver) {
+	  try {
+	    resolver(function resolvePromise(value) {
+	      _resolve(promise, value);
+	    }, function rejectPromise(reason) {
+	      _reject(promise, reason);
+	    });
+	  } catch (e) {
+	    _reject(promise, e);
+	  }
+	}
+	
+	var id = 0;
+	function nextId() {
+	  return id++;
+	}
+	
+	function makePromise(promise) {
+	  promise[PROMISE_ID] = id++;
+	  promise._state = undefined;
+	  promise._result = undefined;
+	  promise._subscribers = [];
+	}
+	
+	function Enumerator(Constructor, input) {
+	  this._instanceConstructor = Constructor;
+	  this.promise = new Constructor(noop);
+	
+	  if (!this.promise[PROMISE_ID]) {
+	    makePromise(this.promise);
+	  }
+	
+	  if (isArray(input)) {
+	    this._input = input;
+	    this.length = input.length;
+	    this._remaining = input.length;
+	
+	    this._result = new Array(this.length);
+	
+	    if (this.length === 0) {
+	      fulfill(this.promise, this._result);
+	    } else {
+	      this.length = this.length || 0;
+	      this._enumerate();
+	      if (this._remaining === 0) {
+	        fulfill(this.promise, this._result);
+	      }
+	    }
+	  } else {
+	    _reject(this.promise, validationError());
+	  }
+	}
+	
+	function validationError() {
+	  return new Error('Array Methods must be provided an Array');
+	};
+	
+	Enumerator.prototype._enumerate = function () {
+	  var length = this.length;
+	  var _input = this._input;
+	
+	  for (var i = 0; this._state === PENDING && i < length; i++) {
+	    this._eachEntry(_input[i], i);
+	  }
+	};
+	
+	Enumerator.prototype._eachEntry = function (entry, i) {
+	  var c = this._instanceConstructor;
+	  var resolve$$ = c.resolve;
+	
+	  if (resolve$$ === resolve) {
+	    var _then = getThen(entry);
+	
+	    if (_then === then && entry._state !== PENDING) {
+	      this._settledAt(entry._state, i, entry._result);
+	    } else if (typeof _then !== 'function') {
+	      this._remaining--;
+	      this._result[i] = entry;
+	    } else if (c === Promise) {
+	      var promise = new c(noop);
+	      handleMaybeThenable(promise, entry, _then);
+	      this._willSettleAt(promise, i);
+	    } else {
+	      this._willSettleAt(new c(function (resolve$$) {
+	        return resolve$$(entry);
+	      }), i);
+	    }
+	  } else {
+	    this._willSettleAt(resolve$$(entry), i);
+	  }
+	};
+	
+	Enumerator.prototype._settledAt = function (state, i, value) {
+	  var promise = this.promise;
+	
+	  if (promise._state === PENDING) {
+	    this._remaining--;
+	
+	    if (state === REJECTED) {
+	      _reject(promise, value);
+	    } else {
+	      this._result[i] = value;
+	    }
+	  }
+	
+	  if (this._remaining === 0) {
+	    fulfill(promise, this._result);
+	  }
+	};
+	
+	Enumerator.prototype._willSettleAt = function (promise, i) {
+	  var enumerator = this;
+	
+	  subscribe(promise, undefined, function (value) {
+	    return enumerator._settledAt(FULFILLED, i, value);
+	  }, function (reason) {
+	    return enumerator._settledAt(REJECTED, i, reason);
+	  });
+	};
+	
+	/**
+	  `Promise.all` accepts an array of promises, and returns a new promise which
+	  is fulfilled with an array of fulfillment values for the passed promises, or
+	  rejected with the reason of the first passed promise to be rejected. It casts all
+	  elements of the passed iterable to promises as it runs this algorithm.
+	
+	  Example:
+	
+	  ```javascript
+	  let promise1 = resolve(1);
+	  let promise2 = resolve(2);
+	  let promise3 = resolve(3);
+	  let promises = [ promise1, promise2, promise3 ];
+	
+	  Promise.all(promises).then(function(array){
+	    // The array here would be [ 1, 2, 3 ];
+	  });
+	  ```
+	
+	  If any of the `promises` given to `all` are rejected, the first promise
+	  that is rejected will be given as an argument to the returned promises's
+	  rejection handler. For example:
+	
+	  Example:
+	
+	  ```javascript
+	  let promise1 = resolve(1);
+	  let promise2 = reject(new Error("2"));
+	  let promise3 = reject(new Error("3"));
+	  let promises = [ promise1, promise2, promise3 ];
+	
+	  Promise.all(promises).then(function(array){
+	    // Code here never runs because there are rejected promises!
+	  }, function(error) {
+	    // error.message === "2"
+	  });
+	  ```
+	
+	  @method all
+	  @static
+	  @param {Array} entries array of promises
+	  @param {String} label optional string for labeling the promise.
+	  Useful for tooling.
+	  @return {Promise} promise that is fulfilled when all `promises` have been
+	  fulfilled, or rejected if any of them become rejected.
+	  @static
+	*/
+	function all(entries) {
+	  return new Enumerator(this, entries).promise;
+	}
+	
+	/**
+	  `Promise.race` returns a new promise which is settled in the same way as the
+	  first passed promise to settle.
+	
+	  Example:
+	
+	  ```javascript
+	  let promise1 = new Promise(function(resolve, reject){
+	    setTimeout(function(){
+	      resolve('promise 1');
+	    }, 200);
+	  });
+	
+	  let promise2 = new Promise(function(resolve, reject){
+	    setTimeout(function(){
+	      resolve('promise 2');
+	    }, 100);
+	  });
+	
+	  Promise.race([promise1, promise2]).then(function(result){
+	    // result === 'promise 2' because it was resolved before promise1
+	    // was resolved.
+	  });
+	  ```
+	
+	  `Promise.race` is deterministic in that only the state of the first
+	  settled promise matters. For example, even if other promises given to the
+	  `promises` array argument are resolved, but the first settled promise has
+	  become rejected before the other promises became fulfilled, the returned
+	  promise will become rejected:
+	
+	  ```javascript
+	  let promise1 = new Promise(function(resolve, reject){
+	    setTimeout(function(){
+	      resolve('promise 1');
+	    }, 200);
+	  });
+	
+	  let promise2 = new Promise(function(resolve, reject){
+	    setTimeout(function(){
+	      reject(new Error('promise 2'));
+	    }, 100);
+	  });
+	
+	  Promise.race([promise1, promise2]).then(function(result){
+	    // Code here never runs
+	  }, function(reason){
+	    // reason.message === 'promise 2' because promise 2 became rejected before
+	    // promise 1 became fulfilled
+	  });
+	  ```
+	
+	  An example real-world use case is implementing timeouts:
+	
+	  ```javascript
+	  Promise.race([ajax('foo.json'), timeout(5000)])
+	  ```
+	
+	  @method race
+	  @static
+	  @param {Array} promises array of promises to observe
+	  Useful for tooling.
+	  @return {Promise} a promise which settles in the same way as the first passed
+	  promise to settle.
+	*/
+	function race(entries) {
+	  /*jshint validthis:true */
+	  var Constructor = this;
+	
+	  if (!isArray(entries)) {
+	    return new Constructor(function (_, reject) {
+	      return reject(new TypeError('You must pass an array to race.'));
+	    });
+	  } else {
+	    return new Constructor(function (resolve, reject) {
+	      var length = entries.length;
+	      for (var i = 0; i < length; i++) {
+	        Constructor.resolve(entries[i]).then(resolve, reject);
+	      }
+	    });
+	  }
+	}
+	
+	/**
+	  `Promise.reject` returns a promise rejected with the passed `reason`.
+	  It is shorthand for the following:
+	
+	  ```javascript
+	  let promise = new Promise(function(resolve, reject){
+	    reject(new Error('WHOOPS'));
+	  });
+	
+	  promise.then(function(value){
+	    // Code here doesn't run because the promise is rejected!
+	  }, function(reason){
+	    // reason.message === 'WHOOPS'
+	  });
+	  ```
+	
+	  Instead of writing the above, your code now simply becomes the following:
+	
+	  ```javascript
+	  let promise = Promise.reject(new Error('WHOOPS'));
+	
+	  promise.then(function(value){
+	    // Code here doesn't run because the promise is rejected!
+	  }, function(reason){
+	    // reason.message === 'WHOOPS'
+	  });
+	  ```
+	
+	  @method reject
+	  @static
+	  @param {Any} reason value that the returned promise will be rejected with.
+	  Useful for tooling.
+	  @return {Promise} a promise rejected with the given `reason`.
+	*/
+	function reject(reason) {
+	  /*jshint validthis:true */
+	  var Constructor = this;
+	  var promise = new Constructor(noop);
+	  _reject(promise, reason);
+	  return promise;
+	}
+	
+	function needsResolver() {
+	  throw new TypeError('You must pass a resolver function as the first argument to the promise constructor');
+	}
+	
+	function needsNew() {
+	  throw new TypeError("Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.");
+	}
+	
+	/**
+	  Promise objects represent the eventual result of an asynchronous operation. The
+	  primary way of interacting with a promise is through its `then` method, which
+	  registers callbacks to receive either a promise's eventual value or the reason
+	  why the promise cannot be fulfilled.
+	
+	  Terminology
+	  -----------
+	
+	  - `promise` is an object or function with a `then` method whose behavior conforms to this specification.
+	  - `thenable` is an object or function that defines a `then` method.
+	  - `value` is any legal JavaScript value (including undefined, a thenable, or a promise).
+	  - `exception` is a value that is thrown using the throw statement.
+	  - `reason` is a value that indicates why a promise was rejected.
+	  - `settled` the final resting state of a promise, fulfilled or rejected.
+	
+	  A promise can be in one of three states: pending, fulfilled, or rejected.
+	
+	  Promises that are fulfilled have a fulfillment value and are in the fulfilled
+	  state.  Promises that are rejected have a rejection reason and are in the
+	  rejected state.  A fulfillment value is never a thenable.
+	
+	  Promises can also be said to *resolve* a value.  If this value is also a
+	  promise, then the original promise's settled state will match the value's
+	  settled state.  So a promise that *resolves* a promise that rejects will
+	  itself reject, and a promise that *resolves* a promise that fulfills will
+	  itself fulfill.
+	
+	
+	  Basic Usage:
+	  ------------
+	
+	  ```js
+	  let promise = new Promise(function(resolve, reject) {
+	    // on success
+	    resolve(value);
+	
+	    // on failure
+	    reject(reason);
+	  });
+	
+	  promise.then(function(value) {
+	    // on fulfillment
+	  }, function(reason) {
+	    // on rejection
+	  });
+	  ```
+	
+	  Advanced Usage:
+	  ---------------
+	
+	  Promises shine when abstracting away asynchronous interactions such as
+	  `XMLHttpRequest`s.
+	
+	  ```js
+	  function getJSON(url) {
+	    return new Promise(function(resolve, reject){
+	      let xhr = new XMLHttpRequest();
+	
+	      xhr.open('GET', url);
+	      xhr.onreadystatechange = handler;
+	      xhr.responseType = 'json';
+	      xhr.setRequestHeader('Accept', 'application/json');
+	      xhr.send();
+	
+	      function handler() {
+	        if (this.readyState === this.DONE) {
+	          if (this.status === 200) {
+	            resolve(this.response);
+	          } else {
+	            reject(new Error('getJSON: `' + url + '` failed with status: [' + this.status + ']'));
+	          }
+	        }
+	      };
+	    });
+	  }
+	
+	  getJSON('/posts.json').then(function(json) {
+	    // on fulfillment
+	  }, function(reason) {
+	    // on rejection
+	  });
+	  ```
+	
+	  Unlike callbacks, promises are great composable primitives.
+	
+	  ```js
+	  Promise.all([
+	    getJSON('/posts'),
+	    getJSON('/comments')
+	  ]).then(function(values){
+	    values[0] // => postsJSON
+	    values[1] // => commentsJSON
+	
+	    return values;
+	  });
+	  ```
+	
+	  @class Promise
+	  @param {function} resolver
+	  Useful for tooling.
+	  @constructor
+	*/
+	function Promise(resolver) {
+	  this[PROMISE_ID] = nextId();
+	  this._result = this._state = undefined;
+	  this._subscribers = [];
+	
+	  if (noop !== resolver) {
+	    typeof resolver !== 'function' && needsResolver();
+	    this instanceof Promise ? initializePromise(this, resolver) : needsNew();
+	  }
+	}
+	
+	Promise.all = all;
+	Promise.race = race;
+	Promise.resolve = resolve;
+	Promise.reject = reject;
+	Promise._setScheduler = setScheduler;
+	Promise._setAsap = setAsap;
+	Promise._asap = asap;
+	
+	Promise.prototype = {
+	  constructor: Promise,
+	
+	  /**
+	    The primary way of interacting with a promise is through its `then` method,
+	    which registers callbacks to receive either a promise's eventual value or the
+	    reason why the promise cannot be fulfilled.
+	  
+	    ```js
+	    findUser().then(function(user){
+	      // user is available
+	    }, function(reason){
+	      // user is unavailable, and you are given the reason why
+	    });
+	    ```
+	  
+	    Chaining
+	    --------
+	  
+	    The return value of `then` is itself a promise.  This second, 'downstream'
+	    promise is resolved with the return value of the first promise's fulfillment
+	    or rejection handler, or rejected if the handler throws an exception.
+	  
+	    ```js
+	    findUser().then(function (user) {
+	      return user.name;
+	    }, function (reason) {
+	      return 'default name';
+	    }).then(function (userName) {
+	      // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
+	      // will be `'default name'`
+	    });
+	  
+	    findUser().then(function (user) {
+	      throw new Error('Found user, but still unhappy');
+	    }, function (reason) {
+	      throw new Error('`findUser` rejected and we're unhappy');
+	    }).then(function (value) {
+	      // never reached
+	    }, function (reason) {
+	      // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
+	      // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
+	    });
+	    ```
+	    If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
+	  
+	    ```js
+	    findUser().then(function (user) {
+	      throw new PedagogicalException('Upstream error');
+	    }).then(function (value) {
+	      // never reached
+	    }).then(function (value) {
+	      // never reached
+	    }, function (reason) {
+	      // The `PedgagocialException` is propagated all the way down to here
+	    });
+	    ```
+	  
+	    Assimilation
+	    ------------
+	  
+	    Sometimes the value you want to propagate to a downstream promise can only be
+	    retrieved asynchronously. This can be achieved by returning a promise in the
+	    fulfillment or rejection handler. The downstream promise will then be pending
+	    until the returned promise is settled. This is called *assimilation*.
+	  
+	    ```js
+	    findUser().then(function (user) {
+	      return findCommentsByAuthor(user);
+	    }).then(function (comments) {
+	      // The user's comments are now available
+	    });
+	    ```
+	  
+	    If the assimliated promise rejects, then the downstream promise will also reject.
+	  
+	    ```js
+	    findUser().then(function (user) {
+	      return findCommentsByAuthor(user);
+	    }).then(function (comments) {
+	      // If `findCommentsByAuthor` fulfills, we'll have the value here
+	    }, function (reason) {
+	      // If `findCommentsByAuthor` rejects, we'll have the reason here
+	    });
+	    ```
+	  
+	    Simple Example
+	    --------------
+	  
+	    Synchronous Example
+	  
+	    ```javascript
+	    let result;
+	  
+	    try {
+	      result = findResult();
+	      // success
+	    } catch(reason) {
+	      // failure
+	    }
+	    ```
+	  
+	    Errback Example
+	  
+	    ```js
+	    findResult(function(result, err){
+	      if (err) {
+	        // failure
+	      } else {
+	        // success
+	      }
+	    });
+	    ```
+	  
+	    Promise Example;
+	  
+	    ```javascript
+	    findResult().then(function(result){
+	      // success
+	    }, function(reason){
+	      // failure
+	    });
+	    ```
+	  
+	    Advanced Example
+	    --------------
+	  
+	    Synchronous Example
+	  
+	    ```javascript
+	    let author, books;
+	  
+	    try {
+	      author = findAuthor();
+	      books  = findBooksByAuthor(author);
+	      // success
+	    } catch(reason) {
+	      // failure
+	    }
+	    ```
+	  
+	    Errback Example
+	  
+	    ```js
+	  
+	    function foundBooks(books) {
+	  
+	    }
+	  
+	    function failure(reason) {
+	  
+	    }
+	  
+	    findAuthor(function(author, err){
+	      if (err) {
+	        failure(err);
+	        // failure
+	      } else {
+	        try {
+	          findBoooksByAuthor(author, function(books, err) {
+	            if (err) {
+	              failure(err);
+	            } else {
+	              try {
+	                foundBooks(books);
+	              } catch(reason) {
+	                failure(reason);
+	              }
+	            }
+	          });
+	        } catch(error) {
+	          failure(err);
+	        }
+	        // success
+	      }
+	    });
+	    ```
+	  
+	    Promise Example;
+	  
+	    ```javascript
+	    findAuthor().
+	      then(findBooksByAuthor).
+	      then(function(books){
+	        // found books
+	    }).catch(function(reason){
+	      // something went wrong
+	    });
+	    ```
+	  
+	    @method then
+	    @param {Function} onFulfilled
+	    @param {Function} onRejected
+	    Useful for tooling.
+	    @return {Promise}
+	  */
+	  then: then,
+	
+	  /**
+	    `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
+	    as the catch block of a try/catch statement.
+	  
+	    ```js
+	    function findAuthor(){
+	      throw new Error('couldn't find that author');
+	    }
+	  
+	    // synchronous
+	    try {
+	      findAuthor();
+	    } catch(reason) {
+	      // something went wrong
+	    }
+	  
+	    // async with promises
+	    findAuthor().catch(function(reason){
+	      // something went wrong
+	    });
+	    ```
+	  
+	    @method catch
+	    @param {Function} onRejection
+	    Useful for tooling.
+	    @return {Promise}
+	  */
+	  'catch': function _catch(onRejection) {
+	    return this.then(null, onRejection);
+	  }
+	};
+	
+	function polyfill() {
+	    var local = undefined;
+	
+	    if (typeof global !== 'undefined') {
+	        local = global;
+	    } else if (typeof self !== 'undefined') {
+	        local = self;
+	    } else {
+	        try {
+	            local = Function('return this')();
+	        } catch (e) {
+	            throw new Error('polyfill failed because global object is unavailable in this environment');
+	        }
+	    }
+	
+	    var P = local.Promise;
+	
+	    if (P) {
+	        var promiseToString = null;
+	        try {
+	            promiseToString = Object.prototype.toString.call(P.resolve());
+	        } catch (e) {
+	            // silently ignored
+	        }
+	
+	        if (promiseToString === '[object Promise]' && !P.cast) {
+	            return;
+	        }
+	    }
+	
+	    local.Promise = Promise;
+	}
+	
+	polyfill();
+	// Strange compat..
+	Promise.polyfill = polyfill;
+	Promise.Promise = Promise;
+	
+	return Promise;
+	
+	})));
+	//# sourceMappingURL=es6-promise.map
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../process/browser.js */ 6), (function() { return this; }())))
+
+/***/ },
+
+/***/ 916:
+/*!***********************!*\
+  !*** vertx (ignored) ***!
+  \***********************/
+/***/ function(module, exports) {
+
+	/* (ignored) */
+
+/***/ },
+
+/***/ 917:
+/*!***************************************!*\
+  !*** ./~/dropbox/src/get-base-url.js ***!
+  \***************************************/
+/***/ function(module, exports) {
+
+	function getBaseURL(host) {
+	  return 'https://' + host + '.dropboxapi.com/2/';
+	}
+	
+	module.exports = getBaseURL;
+
+
+/***/ },
+
+/***/ 918:
+/*!*******************************************!*\
+  !*** ./~/dropbox/src/download-request.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var request = __webpack_require__(/*! superagent */ 909);
+	var Promise = __webpack_require__(/*! es6-promise */ 915).Promise;
+	var getBaseURL = __webpack_require__(/*! ./get-base-url */ 917);
+	var httpHeaderSafeJson = __webpack_require__(/*! ./http-header-safe-json */ 919);
+	
+	var buildCustomError;
+	var downloadRequest;
+	var nodeBinaryParser;
+	
+	// Register a handler that will instruct superagent how to parse the response
+	request.parse['application/octect-stream'] = function (obj) {
+	  return obj;
+	};
+	
+	// This doesn't match what was spec'd in paper doc yet
+	buildCustomError = function (error, response) {
+	  return {
+	    status: error.status,
+	    error: (response ? response.text : null) || error.toString(),
+	    response: response
+	  };
+	};
+	
+	nodeBinaryParser = function (res, done) {
+	  res.text = '';
+	  res.setEncoding('binary');
+	  res.on('data', function (chunk) { res.text += chunk; });
+	  res.on('end', function () {
+	    done();
+	  });
+	};
+	
+	downloadRequest = function (path, args, auth, host, accessToken, selectUser) {
+	  if (auth !== 'user') {
+	    throw new Error('Unexpected auth type: ' + auth);
+	  }
+	
+	  var promiseFunction = function (resolve, reject) {
+	    var apiRequest;
+	
+	    function success(data) {
+	      if (resolve) {
+	        resolve(data);
+	      }
+	    }
+	
+	    function failure(error) {
+	      if (reject) {
+	        reject(error);
+	      }
+	    }
+	
+	    function responseHandler(error, response) {
+	      var data;
+	      if (error) {
+	        failure(buildCustomError(error, response));
+	      } else {
+	        // In the browser, the file is passed as a blob and in node the file is
+	        // passed as a string of binary data.
+	        data = JSON.parse(response.headers['dropbox-api-result']);
+	        if (response.xhr) {
+	          data.fileBlob = response.xhr.response;
+	        } else {
+	          data.fileBinary = response.res.text;
+	        }
+	        success(data);
+	      }
+	    }
+	
+	    apiRequest = request.post(getBaseURL(host) + path)
+	      .set('Authorization', 'Bearer ' + accessToken)
+	      .set('Dropbox-API-Arg', httpHeaderSafeJson(args))
+	      .on('request', function () {
+	        if (this.xhr) {
+	          this.xhr.responseType = 'blob';
+	        }
+	      });
+	
+	    if (selectUser) {
+	      apiRequest = apiRequest.set('Dropbox-API-Select-User', selectUser);
+	    }
+	
+	    // Apply the node binary parser to the response if executing in node
+	    if (typeof window === 'undefined') {
+	      apiRequest
+	        .buffer(true)
+	        .parse(nodeBinaryParser)
+	        .end(responseHandler);
+	    } else {
+	      apiRequest.end(responseHandler);
+	    }
+	  };
+	
+	  return new Promise(promiseFunction);
+	};
+	
+	module.exports = downloadRequest;
+
+
+/***/ },
+
+/***/ 919:
+/*!************************************************!*\
+  !*** ./~/dropbox/src/http-header-safe-json.js ***!
+  \************************************************/
+/***/ function(module, exports) {
+
+	// source https://www.dropboxforum.com/t5/API-support/HTTP-header-quot-Dropbox-API-Arg-quot-could-not-decode-input-as/m-p/173823/highlight/true#M6786
+	var charsToEncode = /[\u007f-\uffff]/g;
+	
+	function httpHeaderSafeJson(args) {
+	  return JSON.stringify(args).replace(charsToEncode, function (c) {
+	    return '\\u' + ('000' + c.charCodeAt(0).toString(16)).slice(-4);
+	  });
+	}
+	
+	module.exports = httpHeaderSafeJson;
+
+
+/***/ },
+
+/***/ 920:
+/*!*****************************************!*\
+  !*** ./~/dropbox/src/upload-request.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var request = __webpack_require__(/*! superagent */ 909);
+	var Promise = __webpack_require__(/*! es6-promise */ 915).Promise;
+	var getBaseURL = __webpack_require__(/*! ./get-base-url */ 917);
+	var httpHeaderSafeJson = __webpack_require__(/*! ./http-header-safe-json */ 919);
+	
+	// This doesn't match what was spec'd in paper doc yet
+	var buildCustomError = function (error, response) {
+	  return {
+	    status: error.status,
+	    error: (response ? response.text : null) || error.toString(),
+	    response: response
+	  };
+	};
+	
+	var uploadRequest = function (path, args, auth, host, accessToken, selectUser) {
+	  if (auth !== 'user') {
+	    throw new Error('Unexpected auth type: ' + auth);
+	  }
+	
+	  var promiseFunction = function (resolve, reject) {
+	    var apiRequest;
+	
+	    // Since args.contents is sent as the body of the request and not added to
+	    // the url, it needs to be remove it from args.
+	    var contents = args.contents;
+	    delete args.contents;
+	
+	    function success(data) {
+	      if (resolve) {
+	        resolve(data);
+	      }
+	    }
+	
+	    function failure(error) {
+	      if (reject) {
+	        reject(error);
+	      }
+	    }
+	
+	    function responseHandler(error, response) {
+	      if (error) {
+	        failure(buildCustomError(error, response));
+	      } else {
+	        success(response.body);
+	      }
+	    }
+	
+	    apiRequest = request.post(getBaseURL(host) + path)
+	      .type('application/octet-stream')
+	      .set('Authorization', 'Bearer ' + accessToken)
+	      .set('Dropbox-API-Arg', httpHeaderSafeJson(args));
+	
+	    if (selectUser) {
+	      apiRequest = apiRequest.set('Dropbox-API-Select-User', selectUser);
+	    }
+	
+	    apiRequest
+	      .send(contents)
+	      .end(responseHandler);
+	  };
+	
+	  return new Promise(promiseFunction);
+	};
+	
+	module.exports = uploadRequest;
+
+
+/***/ },
+
+/***/ 921:
+/*!*********************************!*\
+  !*** ./~/dropbox/src/routes.js ***!
+  \*********************************/
+/***/ function(module, exports) {
+
+	// Auto-generated by Stone, do not modify.
+	var routes = {};
+	
+	/**
+	 * Creates an OAuth 2.0 access token from the supplied OAuth 1.0 access token.
+	 * @function Dropbox#authTokenFromOauth1
+	 * @arg {AuthTokenFromOAuth1Arg} arg - The request parameters.
+	 * @returns {Promise.<AuthTokenFromOAuth1Result, Error.<AuthTokenFromOAuth1Error>>}
+	 */
+	routes.authTokenFromOauth1 = function (arg) {
+	  return this.request('auth/token/from_oauth1', arg, 'app', 'api', 'rpc');
+	};
+	
+	/**
+	 * Disables the access token used to authenticate the call.
+	 * @function Dropbox#authTokenRevoke
+	 * @arg {void} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<void>>}
+	 */
+	routes.authTokenRevoke = function (arg) {
+	  return this.request('auth/token/revoke', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns the metadata for a file or folder. This is an alpha endpoint
+	 * compatible with the properties API. Note: Metadata for the root folder is
+	 * unsupported.
+	 * @function Dropbox#filesAlphaGetMetadata
+	 * @arg {FilesAlphaGetMetadataArg} arg - The request parameters.
+	 * @returns {Promise.<(FilesFileMetadata|FilesFolderMetadata|FilesDeletedMetadata), Error.<FilesAlphaGetMetadataError>>}
+	 */
+	routes.filesAlphaGetMetadata = function (arg) {
+	  return this.request('files/alpha/get_metadata', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Create a new file with the contents provided in the request. Note that this
+	 * endpoint is part of the properties API alpha and is slightly different from
+	 * upload. Do not use this to upload a file larger than 150 MB. Instead, create
+	 * an upload session with upload_session/start.
+	 * @function Dropbox#filesAlphaUpload
+	 * @arg {FilesCommitInfoWithProperties} arg - The request parameters.
+	 * @returns {Promise.<FilesFileMetadata, Error.<FilesUploadErrorWithProperties>>}
+	 */
+	routes.filesAlphaUpload = function (arg) {
+	  return this.request('files/alpha/upload', arg, 'user', 'content', 'upload');
+	};
+	
+	/**
+	 * Copy a file or folder to a different location in the user's Dropbox. If the
+	 * source path is a folder all its contents will be copied.
+	 * @function Dropbox#filesCopy
+	 * @arg {FilesRelocationArg} arg - The request parameters.
+	 * @returns {Promise.<(FilesFileMetadata|FilesFolderMetadata|FilesDeletedMetadata), Error.<FilesRelocationError>>}
+	 */
+	routes.filesCopy = function (arg) {
+	  return this.request('files/copy', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Copy multiple files or folders to different locations at once in the user's
+	 * Dropbox. If RelocationBatchArg.allow_shared_folder is false, this route is
+	 * atomic. If on entry failes, the whole transaction will abort. If
+	 * RelocationBatchArg.allow_shared_folder is true, not atomicity is guaranteed,
+	 * but you will be able to copy the contents of shared folders to new locations.
+	 * This route will return job ID immediately and do the async copy job in
+	 * background. Please use copy_batch/check to check the job status.
+	 * @function Dropbox#filesCopyBatch
+	 * @arg {FilesRelocationBatchArg} arg - The request parameters.
+	 * @returns {Promise.<FilesRelocationBatchLaunch, Error.<void>>}
+	 */
+	routes.filesCopyBatch = function (arg) {
+	  return this.request('files/copy_batch', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns the status of an asynchronous job for copy_batch. If success, it
+	 * returns list of results for each entry.
+	 * @function Dropbox#filesCopyBatchCheck
+	 * @arg {AsyncPollArg} arg - The request parameters.
+	 * @returns {Promise.<FilesRelocationBatchJobStatus, Error.<AsyncPollError>>}
+	 */
+	routes.filesCopyBatchCheck = function (arg) {
+	  return this.request('files/copy_batch/check', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get a copy reference to a file or folder. This reference string can be used
+	 * to save that file or folder to another user's Dropbox by passing it to
+	 * copy_reference/save.
+	 * @function Dropbox#filesCopyReferenceGet
+	 * @arg {FilesGetCopyReferenceArg} arg - The request parameters.
+	 * @returns {Promise.<FilesGetCopyReferenceResult, Error.<FilesGetCopyReferenceError>>}
+	 */
+	routes.filesCopyReferenceGet = function (arg) {
+	  return this.request('files/copy_reference/get', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Save a copy reference returned by copy_reference/get to the user's Dropbox.
+	 * @function Dropbox#filesCopyReferenceSave
+	 * @arg {FilesSaveCopyReferenceArg} arg - The request parameters.
+	 * @returns {Promise.<FilesSaveCopyReferenceResult, Error.<FilesSaveCopyReferenceError>>}
+	 */
+	routes.filesCopyReferenceSave = function (arg) {
+	  return this.request('files/copy_reference/save', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Create a folder at a given path.
+	 * @function Dropbox#filesCreateFolder
+	 * @arg {FilesCreateFolderArg} arg - The request parameters.
+	 * @returns {Promise.<FilesFolderMetadata, Error.<FilesCreateFolderError>>}
+	 */
+	routes.filesCreateFolder = function (arg) {
+	  return this.request('files/create_folder', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Delete the file or folder at a given path. If the path is a folder, all its
+	 * contents will be deleted too. A successful response indicates that the file
+	 * or folder was deleted. The returned metadata will be the corresponding
+	 * FileMetadata or FolderMetadata for the item at time of deletion, and not a
+	 * DeletedMetadata object.
+	 * @function Dropbox#filesDelete
+	 * @arg {FilesDeleteArg} arg - The request parameters.
+	 * @returns {Promise.<(FilesFileMetadata|FilesFolderMetadata|FilesDeletedMetadata), Error.<FilesDeleteError>>}
+	 */
+	routes.filesDelete = function (arg) {
+	  return this.request('files/delete', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Delete multiple files/folders at once. This route is asynchronous, which
+	 * returns a job ID immediately and runs the delete batch asynchronously. Use
+	 * delete_batch/check to check the job status.
+	 * @function Dropbox#filesDeleteBatch
+	 * @arg {FilesDeleteBatchArg} arg - The request parameters.
+	 * @returns {Promise.<FilesDeleteBatchLaunch, Error.<void>>}
+	 */
+	routes.filesDeleteBatch = function (arg) {
+	  return this.request('files/delete_batch', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns the status of an asynchronous job for delete_batch. If success, it
+	 * returns list of result for each entry.
+	 * @function Dropbox#filesDeleteBatchCheck
+	 * @arg {AsyncPollArg} arg - The request parameters.
+	 * @returns {Promise.<FilesDeleteBatchJobStatus, Error.<AsyncPollError>>}
+	 */
+	routes.filesDeleteBatchCheck = function (arg) {
+	  return this.request('files/delete_batch/check', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Download a file from a user's Dropbox.
+	 * @function Dropbox#filesDownload
+	 * @arg {FilesDownloadArg} arg - The request parameters.
+	 * @returns {Promise.<FilesFileMetadata, Error.<FilesDownloadError>>}
+	 */
+	routes.filesDownload = function (arg) {
+	  return this.request('files/download', arg, 'user', 'content', 'download');
+	};
+	
+	/**
+	 * Returns the metadata for a file or folder. Note: Metadata for the root folder
+	 * is unsupported.
+	 * @function Dropbox#filesGetMetadata
+	 * @arg {FilesGetMetadataArg} arg - The request parameters.
+	 * @returns {Promise.<(FilesFileMetadata|FilesFolderMetadata|FilesDeletedMetadata), Error.<FilesGetMetadataError>>}
+	 */
+	routes.filesGetMetadata = function (arg) {
+	  return this.request('files/get_metadata', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get a preview for a file. Currently previews are only generated for the files
+	 * with  the following extensions: .doc, .docx, .docm, .ppt, .pps, .ppsx, .ppsm,
+	 * .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.
+	 * @function Dropbox#filesGetPreview
+	 * @arg {FilesPreviewArg} arg - The request parameters.
+	 * @returns {Promise.<FilesFileMetadata, Error.<FilesPreviewError>>}
+	 */
+	routes.filesGetPreview = function (arg) {
+	  return this.request('files/get_preview', arg, 'user', 'content', 'download');
+	};
+	
+	/**
+	 * Get a temporary link to stream content of a file. This link will expire in
+	 * four hours and afterwards you will get 410 Gone. Content-Type of the link is
+	 * determined automatically by the file's mime type.
+	 * @function Dropbox#filesGetTemporaryLink
+	 * @arg {FilesGetTemporaryLinkArg} arg - The request parameters.
+	 * @returns {Promise.<FilesGetTemporaryLinkResult, Error.<FilesGetTemporaryLinkError>>}
+	 */
+	routes.filesGetTemporaryLink = function (arg) {
+	  return this.request('files/get_temporary_link', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get a thumbnail for an image. This method currently supports files with the
+	 * following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos
+	 * that are larger than 20MB in size won't be converted to a thumbnail.
+	 * @function Dropbox#filesGetThumbnail
+	 * @arg {FilesThumbnailArg} arg - The request parameters.
+	 * @returns {Promise.<FilesFileMetadata, Error.<FilesThumbnailError>>}
+	 */
+	routes.filesGetThumbnail = function (arg) {
+	  return this.request('files/get_thumbnail', arg, 'user', 'content', 'download');
+	};
+	
+	/**
+	 * Starts returning the contents of a folder. If the result's
+	 * ListFolderResult.has_more field is true, call list_folder/continue with the
+	 * returned ListFolderResult.cursor to retrieve more entries. If you're using
+	 * ListFolderArg.recursive set to true to keep a local cache of the contents of
+	 * a Dropbox account, iterate through each entry in order and process them as
+	 * follows to keep your local state in sync: For each FileMetadata, store the
+	 * new entry at the given path in your local state. If the required parent
+	 * folders don't exist yet, create them. If there's already something else at
+	 * the given path, replace it and remove all its children. For each
+	 * FolderMetadata, store the new entry at the given path in your local state. If
+	 * the required parent folders don't exist yet, create them. If there's already
+	 * something else at the given path, replace it but leave the children as they
+	 * are. Check the new entry's FolderSharingInfo.read_only and set all its
+	 * children's read-only statuses to match. For each DeletedMetadata, if your
+	 * local state has something at the given path, remove it and all its children.
+	 * If there's nothing at the given path, ignore this entry.
+	 * @function Dropbox#filesListFolder
+	 * @arg {FilesListFolderArg} arg - The request parameters.
+	 * @returns {Promise.<FilesListFolderResult, Error.<FilesListFolderError>>}
+	 */
+	routes.filesListFolder = function (arg) {
+	  return this.request('files/list_folder', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Once a cursor has been retrieved from list_folder, use this to paginate
+	 * through all files and retrieve updates to the folder, following the same
+	 * rules as documented for list_folder.
+	 * @function Dropbox#filesListFolderContinue
+	 * @arg {FilesListFolderContinueArg} arg - The request parameters.
+	 * @returns {Promise.<FilesListFolderResult, Error.<FilesListFolderContinueError>>}
+	 */
+	routes.filesListFolderContinue = function (arg) {
+	  return this.request('files/list_folder/continue', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * A way to quickly get a cursor for the folder's state. Unlike list_folder,
+	 * list_folder/get_latest_cursor doesn't return any entries. This endpoint is
+	 * for app which only needs to know about new files and modifications and
+	 * doesn't need to know about files that already exist in Dropbox.
+	 * @function Dropbox#filesListFolderGetLatestCursor
+	 * @arg {FilesListFolderArg} arg - The request parameters.
+	 * @returns {Promise.<FilesListFolderGetLatestCursorResult, Error.<FilesListFolderError>>}
+	 */
+	routes.filesListFolderGetLatestCursor = function (arg) {
+	  return this.request('files/list_folder/get_latest_cursor', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * A longpoll endpoint to wait for changes on an account. In conjunction with
+	 * list_folder/continue, this call gives you a low-latency way to monitor an
+	 * account for file changes. The connection will block until there are changes
+	 * available or a timeout occurs. This endpoint is useful mostly for client-side
+	 * apps. If you're looking for server-side notifications, check out our webhooks
+	 * documentation https://www.dropbox.com/developers/reference/webhooks.
+	 * @function Dropbox#filesListFolderLongpoll
+	 * @arg {FilesListFolderLongpollArg} arg - The request parameters.
+	 * @returns {Promise.<FilesListFolderLongpollResult, Error.<FilesListFolderLongpollError>>}
+	 */
+	routes.filesListFolderLongpoll = function (arg) {
+	  return this.request('files/list_folder/longpoll', arg, 'noauth', 'notify', 'rpc');
+	};
+	
+	/**
+	 * Return revisions of a file.
+	 * @function Dropbox#filesListRevisions
+	 * @arg {FilesListRevisionsArg} arg - The request parameters.
+	 * @returns {Promise.<FilesListRevisionsResult, Error.<FilesListRevisionsError>>}
+	 */
+	routes.filesListRevisions = function (arg) {
+	  return this.request('files/list_revisions', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Move a file or folder to a different location in the user's Dropbox. If the
+	 * source path is a folder all its contents will be moved.
+	 * @function Dropbox#filesMove
+	 * @arg {FilesRelocationArg} arg - The request parameters.
+	 * @returns {Promise.<(FilesFileMetadata|FilesFolderMetadata|FilesDeletedMetadata), Error.<FilesRelocationError>>}
+	 */
+	routes.filesMove = function (arg) {
+	  return this.request('files/move', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Move multiple files or folders to different locations at once in the user's
+	 * Dropbox. This route is 'all or nothing', which means if one entry fails, the
+	 * whole transaction will abort. This route will return job ID immediately and
+	 * do the async moving job in background. Please use move_batch/check to check
+	 * the job status.
+	 * @function Dropbox#filesMoveBatch
+	 * @arg {FilesRelocationBatchArg} arg - The request parameters.
+	 * @returns {Promise.<FilesRelocationBatchLaunch, Error.<void>>}
+	 */
+	routes.filesMoveBatch = function (arg) {
+	  return this.request('files/move_batch', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns the status of an asynchronous job for move_batch. If success, it
+	 * returns list of results for each entry.
+	 * @function Dropbox#filesMoveBatchCheck
+	 * @arg {AsyncPollArg} arg - The request parameters.
+	 * @returns {Promise.<FilesRelocationBatchJobStatus, Error.<AsyncPollError>>}
+	 */
+	routes.filesMoveBatchCheck = function (arg) {
+	  return this.request('files/move_batch/check', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Permanently delete the file or folder at a given path (see
+	 * https://www.dropbox.com/en/help/40). Note: This endpoint is only available
+	 * for Dropbox Business apps.
+	 * @function Dropbox#filesPermanentlyDelete
+	 * @arg {FilesDeleteArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<FilesDeleteError>>}
+	 */
+	routes.filesPermanentlyDelete = function (arg) {
+	  return this.request('files/permanently_delete', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Add custom properties to a file using a filled property template. See
+	 * properties/template/add to create new property templates.
+	 * @function Dropbox#filesPropertiesAdd
+	 * @arg {FilesPropertyGroupWithPath} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<FilesAddPropertiesError>>}
+	 */
+	routes.filesPropertiesAdd = function (arg) {
+	  return this.request('files/properties/add', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Overwrite custom properties from a specified template associated with a file.
+	 * @function Dropbox#filesPropertiesOverwrite
+	 * @arg {FilesPropertyGroupWithPath} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<FilesInvalidPropertyGroupError>>}
+	 */
+	routes.filesPropertiesOverwrite = function (arg) {
+	  return this.request('files/properties/overwrite', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Remove all custom properties from a specified template associated with a
+	 * file. To remove specific property key value pairs, see properties/update. To
+	 * update a property template, see properties/template/update. Property
+	 * templates can't be removed once created.
+	 * @function Dropbox#filesPropertiesRemove
+	 * @arg {FilesRemovePropertiesArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<FilesRemovePropertiesError>>}
+	 */
+	routes.filesPropertiesRemove = function (arg) {
+	  return this.request('files/properties/remove', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get the schema for a specified template.
+	 * @function Dropbox#filesPropertiesTemplateGet
+	 * @arg {PropertiesGetPropertyTemplateArg} arg - The request parameters.
+	 * @returns {Promise.<PropertiesGetPropertyTemplateResult, Error.<PropertiesPropertyTemplateError>>}
+	 */
+	routes.filesPropertiesTemplateGet = function (arg) {
+	  return this.request('files/properties/template/get', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get the property template identifiers for a user. To get the schema of each
+	 * template use properties/template/get.
+	 * @function Dropbox#filesPropertiesTemplateList
+	 * @arg {void} arg - The request parameters.
+	 * @returns {Promise.<PropertiesListPropertyTemplateIds, Error.<PropertiesPropertyTemplateError>>}
+	 */
+	routes.filesPropertiesTemplateList = function (arg) {
+	  return this.request('files/properties/template/list', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Add, update or remove custom properties from a specified template associated
+	 * with a file. Fields that already exist and not described in the request will
+	 * not be modified.
+	 * @function Dropbox#filesPropertiesUpdate
+	 * @arg {FilesUpdatePropertyGroupArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<FilesUpdatePropertiesError>>}
+	 */
+	routes.filesPropertiesUpdate = function (arg) {
+	  return this.request('files/properties/update', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Restore a file to a specific revision.
+	 * @function Dropbox#filesRestore
+	 * @arg {FilesRestoreArg} arg - The request parameters.
+	 * @returns {Promise.<FilesFileMetadata, Error.<FilesRestoreError>>}
+	 */
+	routes.filesRestore = function (arg) {
+	  return this.request('files/restore', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Save a specified URL into a file in user's Dropbox. If the given path already
+	 * exists, the file will be renamed to avoid the conflict (e.g. myfile (1).txt).
+	 * @function Dropbox#filesSaveUrl
+	 * @arg {FilesSaveUrlArg} arg - The request parameters.
+	 * @returns {Promise.<FilesSaveUrlResult, Error.<FilesSaveUrlError>>}
+	 */
+	routes.filesSaveUrl = function (arg) {
+	  return this.request('files/save_url', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Check the status of a save_url job.
+	 * @function Dropbox#filesSaveUrlCheckJobStatus
+	 * @arg {AsyncPollArg} arg - The request parameters.
+	 * @returns {Promise.<FilesSaveUrlJobStatus, Error.<AsyncPollError>>}
+	 */
+	routes.filesSaveUrlCheckJobStatus = function (arg) {
+	  return this.request('files/save_url/check_job_status', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Searches for files and folders. Note: Recent changes may not immediately be
+	 * reflected in search results due to a short delay in indexing.
+	 * @function Dropbox#filesSearch
+	 * @arg {FilesSearchArg} arg - The request parameters.
+	 * @returns {Promise.<FilesSearchResult, Error.<FilesSearchError>>}
+	 */
+	routes.filesSearch = function (arg) {
+	  return this.request('files/search', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Create a new file with the contents provided in the request. Do not use this
+	 * to upload a file larger than 150 MB. Instead, create an upload session with
+	 * upload_session/start.
+	 * @function Dropbox#filesUpload
+	 * @arg {FilesCommitInfo} arg - The request parameters.
+	 * @returns {Promise.<FilesFileMetadata, Error.<FilesUploadError>>}
+	 */
+	routes.filesUpload = function (arg) {
+	  return this.request('files/upload', arg, 'user', 'content', 'upload');
+	};
+	
+	/**
+	 * Append more data to an upload session. A single request should not upload
+	 * more than 150 MB of file contents.
+	 * @function Dropbox#filesUploadSessionAppend
+	 * @deprecated
+	 * @arg {FilesUploadSessionCursor} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<FilesUploadSessionLookupError>>}
+	 */
+	routes.filesUploadSessionAppend = function (arg) {
+	  return this.request('files/upload_session/append', arg, 'user', 'content', 'upload');
+	};
+	
+	/**
+	 * Append more data to an upload session. When the parameter close is set, this
+	 * call will close the session. A single request should not upload more than 150
+	 * MB of file contents.
+	 * @function Dropbox#filesUploadSessionAppendV2
+	 * @arg {FilesUploadSessionAppendArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<FilesUploadSessionLookupError>>}
+	 */
+	routes.filesUploadSessionAppendV2 = function (arg) {
+	  return this.request('files/upload_session/append_v2', arg, 'user', 'content', 'upload');
+	};
+	
+	/**
+	 * Finish an upload session and save the uploaded data to the given file path. A
+	 * single request should not upload more than 150 MB of file contents.
+	 * @function Dropbox#filesUploadSessionFinish
+	 * @arg {FilesUploadSessionFinishArg} arg - The request parameters.
+	 * @returns {Promise.<FilesFileMetadata, Error.<FilesUploadSessionFinishError>>}
+	 */
+	routes.filesUploadSessionFinish = function (arg) {
+	  return this.request('files/upload_session/finish', arg, 'user', 'content', 'upload');
+	};
+	
+	/**
+	 * This route helps you commit many files at once into a user's Dropbox. Use
+	 * upload_session/start and upload_session/append_v2 to upload file contents. We
+	 * recommend uploading many files in parallel to increase throughput. Once the
+	 * file contents have been uploaded, rather than calling upload_session/finish,
+	 * use this route to finish all your upload sessions in a single request.
+	 * UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true
+	 * for the last upload_session/start or upload_session/append_v2 call. This
+	 * route will return a job_id immediately and do the async commit job in
+	 * background. Use upload_session/finish_batch/check to check the job status.
+	 * For the same account, this route should be executed serially. That means you
+	 * should not start the next job before current job finishes. We allow up to
+	 * 1000 entries in a single request.
+	 * @function Dropbox#filesUploadSessionFinishBatch
+	 * @arg {FilesUploadSessionFinishBatchArg} arg - The request parameters.
+	 * @returns {Promise.<FilesUploadSessionFinishBatchLaunch, Error.<void>>}
+	 */
+	routes.filesUploadSessionFinishBatch = function (arg) {
+	  return this.request('files/upload_session/finish_batch', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns the status of an asynchronous job for upload_session/finish_batch. If
+	 * success, it returns list of result for each entry.
+	 * @function Dropbox#filesUploadSessionFinishBatchCheck
+	 * @arg {AsyncPollArg} arg - The request parameters.
+	 * @returns {Promise.<FilesUploadSessionFinishBatchJobStatus, Error.<AsyncPollError>>}
+	 */
+	routes.filesUploadSessionFinishBatchCheck = function (arg) {
+	  return this.request('files/upload_session/finish_batch/check', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Upload sessions allow you to upload a single file in one or more requests,
+	 * for example where the size of the file is greater than 150 MB.  This call
+	 * starts a new upload session with the given data. You can then use
+	 * upload_session/append_v2 to add more data and upload_session/finish to save
+	 * all the data to a file in Dropbox. A single request should not upload more
+	 * than 150 MB of file contents.
+	 * @function Dropbox#filesUploadSessionStart
+	 * @arg {FilesUploadSessionStartArg} arg - The request parameters.
+	 * @returns {Promise.<FilesUploadSessionStartResult, Error.<void>>}
+	 */
+	routes.filesUploadSessionStart = function (arg) {
+	  return this.request('files/upload_session/start', arg, 'user', 'content', 'upload');
+	};
+	
+	/**
+	 * Marks the given Paper doc as deleted. This operation is non-destructive and
+	 * the doc can be revived by the owner.  Note: This action can be performed only
+	 * by the doc owner.
+	 * @function Dropbox#paperDocsArchive
+	 * @arg {PaperRefPaperDoc} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsArchive = function (arg) {
+	  return this.request('paper/docs/archive', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Exports and downloads Paper doc either as HTML or markdown.
+	 * @function Dropbox#paperDocsDownload
+	 * @arg {PaperPaperDocExport} arg - The request parameters.
+	 * @returns {Promise.<PaperPaperDocExportResult, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsDownload = function (arg) {
+	  return this.request('paper/docs/download', arg, 'user', 'api', 'download');
+	};
+	
+	/**
+	 * Lists the users who are explicitly invited to the Paper folder in which the
+	 * Paper doc is contained. For private folders all users (including owner)
+	 * shared on the folder are listed and for team folders all non-team users
+	 * shared on the folder are returned.
+	 * @function Dropbox#paperDocsFolderUsersList
+	 * @arg {PaperListUsersOnFolderArgs} arg - The request parameters.
+	 * @returns {Promise.<PaperListUsersOnFolderResponse, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsFolderUsersList = function (arg) {
+	  return this.request('paper/docs/folder_users/list', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Once a cursor has been retrieved from docs/folder_users/list, use this to
+	 * paginate through all users on the Paper folder.
+	 * @function Dropbox#paperDocsFolderUsersListContinue
+	 * @arg {PaperListUsersOnFolderContinueArgs} arg - The request parameters.
+	 * @returns {Promise.<PaperListUsersOnFolderResponse, Error.<PaperListUsersCursorError>>}
+	 */
+	routes.paperDocsFolderUsersListContinue = function (arg) {
+	  return this.request('paper/docs/folder_users/list/continue', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Retrieves folder information for the given Paper doc. This includes:   -
+	 * folder sharing policy; permissions for subfolders are set by the top-level
+	 * folder.   - full 'filepath', i.e. the list of folders (both folderId and
+	 * folderName) from the root folder to the folder directly containing the Paper
+	 * doc.  Note: If the Paper doc is not in any folder (aka unfiled) the response
+	 * will be empty.
+	 * @function Dropbox#paperDocsGetFolderInfo
+	 * @arg {PaperRefPaperDoc} arg - The request parameters.
+	 * @returns {Promise.<PaperFoldersContainingPaperDoc, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsGetFolderInfo = function (arg) {
+	  return this.request('paper/docs/get_folder_info', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Return the list of all Paper docs according to the argument specifications.
+	 * To iterate over through the full pagination, pass the cursor to
+	 * docs/list/continue.
+	 * @function Dropbox#paperDocsList
+	 * @arg {PaperListPaperDocsArgs} arg - The request parameters.
+	 * @returns {Promise.<PaperListPaperDocsResponse, Error.<void>>}
+	 */
+	routes.paperDocsList = function (arg) {
+	  return this.request('paper/docs/list', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Once a cursor has been retrieved from docs/list, use this to paginate through
+	 * all Paper doc.
+	 * @function Dropbox#paperDocsListContinue
+	 * @arg {PaperListPaperDocsContinueArgs} arg - The request parameters.
+	 * @returns {Promise.<PaperListPaperDocsResponse, Error.<PaperListDocsCursorError>>}
+	 */
+	routes.paperDocsListContinue = function (arg) {
+	  return this.request('paper/docs/list/continue', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Permanently deletes the given Paper doc. This operation is final as the doc
+	 * cannot be recovered.  Note: This action can be performed only by the doc
+	 * owner.
+	 * @function Dropbox#paperDocsPermanentlyDelete
+	 * @arg {PaperRefPaperDoc} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsPermanentlyDelete = function (arg) {
+	  return this.request('paper/docs/permanently_delete', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Gets the default sharing policy for the given Paper doc.
+	 * @function Dropbox#paperDocsSharingPolicyGet
+	 * @arg {PaperRefPaperDoc} arg - The request parameters.
+	 * @returns {Promise.<PaperSharingPolicy, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsSharingPolicyGet = function (arg) {
+	  return this.request('paper/docs/sharing_policy/get', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Sets the default sharing policy for the given Paper doc. The default
+	 * 'team_sharing_policy' can be changed only by teams, omit this field for
+	 * personal accounts.  Note: 'public_sharing_policy' cannot be set to the value
+	 * 'disabled' because this setting can be changed only via the team admin
+	 * console.
+	 * @function Dropbox#paperDocsSharingPolicySet
+	 * @arg {PaperPaperDocSharingPolicy} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsSharingPolicySet = function (arg) {
+	  return this.request('paper/docs/sharing_policy/set', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Allows an owner or editor to add users to a Paper doc or change their
+	 * permissions using their email or Dropbox account id.  Note: The Doc owner's
+	 * permissions cannot be changed.
+	 * @function Dropbox#paperDocsUsersAdd
+	 * @arg {PaperAddPaperDocUser} arg - The request parameters.
+	 * @returns {Promise.<Array.<PaperAddPaperDocUserMemberResult>, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsUsersAdd = function (arg) {
+	  return this.request('paper/docs/users/add', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Lists all users who visited the Paper doc or users with explicit access. This
+	 * call excludes users who have been removed. The list is sorted by the date of
+	 * the visit or the share date. The list will include both users, the explicitly
+	 * shared ones as well as those who came in using the Paper url link.
+	 * @function Dropbox#paperDocsUsersList
+	 * @arg {PaperListUsersOnPaperDocArgs} arg - The request parameters.
+	 * @returns {Promise.<PaperListUsersOnPaperDocResponse, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsUsersList = function (arg) {
+	  return this.request('paper/docs/users/list', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Once a cursor has been retrieved from docs/users/list, use this to paginate
+	 * through all users on the Paper doc.
+	 * @function Dropbox#paperDocsUsersListContinue
+	 * @arg {PaperListUsersOnPaperDocContinueArgs} arg - The request parameters.
+	 * @returns {Promise.<PaperListUsersOnPaperDocResponse, Error.<PaperListUsersCursorError>>}
+	 */
+	routes.paperDocsUsersListContinue = function (arg) {
+	  return this.request('paper/docs/users/list/continue', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Allows an owner or editor to remove users from a Paper doc using their email
+	 * or Dropbox account id.  Note: Doc owner cannot be removed.
+	 * @function Dropbox#paperDocsUsersRemove
+	 * @arg {PaperRemovePaperDocUser} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<PaperDocLookupError>>}
+	 */
+	routes.paperDocsUsersRemove = function (arg) {
+	  return this.request('paper/docs/users/remove', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Adds specified members to a file.
+	 * @function Dropbox#sharingAddFileMember
+	 * @arg {SharingAddFileMemberArgs} arg - The request parameters.
+	 * @returns {Promise.<Array.<SharingFileMemberActionResult>, Error.<SharingAddFileMemberError>>}
+	 */
+	routes.sharingAddFileMember = function (arg) {
+	  return this.request('sharing/add_file_member', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Allows an owner or editor (if the ACL update policy allows) of a shared
+	 * folder to add another member. For the new member to get access to all the
+	 * functionality for this folder, you will need to call mount_folder on their
+	 * behalf. Apps must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingAddFolderMember
+	 * @arg {SharingAddFolderMemberArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<SharingAddFolderMemberError>>}
+	 */
+	routes.sharingAddFolderMember = function (arg) {
+	  return this.request('sharing/add_folder_member', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Identical to update_file_member but with less information returned.
+	 * @function Dropbox#sharingChangeFileMemberAccess
+	 * @deprecated
+	 * @arg {SharingChangeFileMemberAccessArgs} arg - The request parameters.
+	 * @returns {Promise.<SharingFileMemberActionResult, Error.<SharingFileMemberActionError>>}
+	 */
+	routes.sharingChangeFileMemberAccess = function (arg) {
+	  return this.request('sharing/change_file_member_access', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns the status of an asynchronous job. Apps must have full Dropbox access
+	 * to use this endpoint.
+	 * @function Dropbox#sharingCheckJobStatus
+	 * @arg {AsyncPollArg} arg - The request parameters.
+	 * @returns {Promise.<SharingJobStatus, Error.<AsyncPollError>>}
+	 */
+	routes.sharingCheckJobStatus = function (arg) {
+	  return this.request('sharing/check_job_status', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns the status of an asynchronous job for sharing a folder. Apps must
+	 * have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingCheckRemoveMemberJobStatus
+	 * @arg {AsyncPollArg} arg - The request parameters.
+	 * @returns {Promise.<SharingRemoveMemberJobStatus, Error.<AsyncPollError>>}
+	 */
+	routes.sharingCheckRemoveMemberJobStatus = function (arg) {
+	  return this.request('sharing/check_remove_member_job_status', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns the status of an asynchronous job for sharing a folder. Apps must
+	 * have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingCheckShareJobStatus
+	 * @arg {AsyncPollArg} arg - The request parameters.
+	 * @returns {Promise.<SharingShareFolderJobStatus, Error.<AsyncPollError>>}
+	 */
+	routes.sharingCheckShareJobStatus = function (arg) {
+	  return this.request('sharing/check_share_job_status', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Create a shared link. If a shared link already exists for the given path,
+	 * that link is returned. Note that in the returned PathLinkMetadata, the
+	 * PathLinkMetadata.url field is the shortened URL if
+	 * CreateSharedLinkArg.short_url argument is set to true. Previously, it was
+	 * technically possible to break a shared link by moving or renaming the
+	 * corresponding file or folder. In the future, this will no longer be the case,
+	 * so your app shouldn't rely on this behavior. Instead, if your app needs to
+	 * revoke a shared link, use revoke_shared_link.
+	 * @function Dropbox#sharingCreateSharedLink
+	 * @deprecated
+	 * @arg {SharingCreateSharedLinkArg} arg - The request parameters.
+	 * @returns {Promise.<SharingPathLinkMetadata, Error.<SharingCreateSharedLinkError>>}
+	 */
+	routes.sharingCreateSharedLink = function (arg) {
+	  return this.request('sharing/create_shared_link', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Create a shared link with custom settings. If no settings are given then the
+	 * default visibility is RequestedVisibility.public (The resolved visibility,
+	 * though, may depend on other aspects such as team and shared folder settings).
+	 * @function Dropbox#sharingCreateSharedLinkWithSettings
+	 * @arg {SharingCreateSharedLinkWithSettingsArg} arg - The request parameters.
+	 * @returns {Promise.<(SharingFileLinkMetadata|SharingFolderLinkMetadata|SharingSharedLinkMetadata), Error.<SharingCreateSharedLinkWithSettingsError>>}
+	 */
+	routes.sharingCreateSharedLinkWithSettings = function (arg) {
+	  return this.request('sharing/create_shared_link_with_settings', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns shared file metadata.
+	 * @function Dropbox#sharingGetFileMetadata
+	 * @arg {SharingGetFileMetadataArg} arg - The request parameters.
+	 * @returns {Promise.<SharingSharedFileMetadata, Error.<SharingGetFileMetadataError>>}
+	 */
+	routes.sharingGetFileMetadata = function (arg) {
+	  return this.request('sharing/get_file_metadata', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns shared file metadata.
+	 * @function Dropbox#sharingGetFileMetadataBatch
+	 * @arg {SharingGetFileMetadataBatchArg} arg - The request parameters.
+	 * @returns {Promise.<Array.<SharingGetFileMetadataBatchResult>, Error.<SharingSharingUserError>>}
+	 */
+	routes.sharingGetFileMetadataBatch = function (arg) {
+	  return this.request('sharing/get_file_metadata/batch', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns shared folder metadata by its folder ID. Apps must have full Dropbox
+	 * access to use this endpoint.
+	 * @function Dropbox#sharingGetFolderMetadata
+	 * @arg {SharingGetMetadataArgs} arg - The request parameters.
+	 * @returns {Promise.<SharingSharedFolderMetadata, Error.<SharingSharedFolderAccessError>>}
+	 */
+	routes.sharingGetFolderMetadata = function (arg) {
+	  return this.request('sharing/get_folder_metadata', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Download the shared link's file from a user's Dropbox.
+	 * @function Dropbox#sharingGetSharedLinkFile
+	 * @arg {Object} arg - The request parameters.
+	 * @returns {Promise.<(SharingFileLinkMetadata|SharingFolderLinkMetadata|SharingSharedLinkMetadata), Error.<SharingGetSharedLinkFileError>>}
+	 */
+	routes.sharingGetSharedLinkFile = function (arg) {
+	  return this.request('sharing/get_shared_link_file', arg, 'user', 'content', 'download');
+	};
+	
+	/**
+	 * Get the shared link's metadata.
+	 * @function Dropbox#sharingGetSharedLinkMetadata
+	 * @arg {SharingGetSharedLinkMetadataArg} arg - The request parameters.
+	 * @returns {Promise.<(SharingFileLinkMetadata|SharingFolderLinkMetadata|SharingSharedLinkMetadata), Error.<SharingSharedLinkError>>}
+	 */
+	routes.sharingGetSharedLinkMetadata = function (arg) {
+	  return this.request('sharing/get_shared_link_metadata', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns a list of LinkMetadata objects for this user, including collection
+	 * links. If no path is given, returns a list of all shared links for the
+	 * current user, including collection links. If a non-empty path is given,
+	 * returns a list of all shared links that allow access to the given path.
+	 * Collection links are never returned in this case. Note that the url field in
+	 * the response is never the shortened URL.
+	 * @function Dropbox#sharingGetSharedLinks
+	 * @deprecated
+	 * @arg {SharingGetSharedLinksArg} arg - The request parameters.
+	 * @returns {Promise.<SharingGetSharedLinksResult, Error.<SharingGetSharedLinksError>>}
+	 */
+	routes.sharingGetSharedLinks = function (arg) {
+	  return this.request('sharing/get_shared_links', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Use to obtain the members who have been invited to a file, both inherited and
+	 * uninherited members.
+	 * @function Dropbox#sharingListFileMembers
+	 * @arg {SharingListFileMembersArg} arg - The request parameters.
+	 * @returns {Promise.<SharingSharedFileMembers, Error.<SharingListFileMembersError>>}
+	 */
+	routes.sharingListFileMembers = function (arg) {
+	  return this.request('sharing/list_file_members', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get members of multiple files at once. The arguments to this route are more
+	 * limited, and the limit on query result size per file is more strict. To
+	 * customize the results more, use the individual file endpoint. Inherited users
+	 * and groups are not included in the result, and permissions are not returned
+	 * for this endpoint.
+	 * @function Dropbox#sharingListFileMembersBatch
+	 * @arg {SharingListFileMembersBatchArg} arg - The request parameters.
+	 * @returns {Promise.<Array.<SharingListFileMembersBatchResult>, Error.<SharingSharingUserError>>}
+	 */
+	routes.sharingListFileMembersBatch = function (arg) {
+	  return this.request('sharing/list_file_members/batch', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Once a cursor has been retrieved from list_file_members or
+	 * list_file_members/batch, use this to paginate through all shared file
+	 * members.
+	 * @function Dropbox#sharingListFileMembersContinue
+	 * @arg {SharingListFileMembersContinueArg} arg - The request parameters.
+	 * @returns {Promise.<SharingSharedFileMembers, Error.<SharingListFileMembersContinueError>>}
+	 */
+	routes.sharingListFileMembersContinue = function (arg) {
+	  return this.request('sharing/list_file_members/continue', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns shared folder membership by its folder ID. Apps must have full
+	 * Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingListFolderMembers
+	 * @arg {SharingListFolderMembersArgs} arg - The request parameters.
+	 * @returns {Promise.<SharingSharedFolderMembers, Error.<SharingSharedFolderAccessError>>}
+	 */
+	routes.sharingListFolderMembers = function (arg) {
+	  return this.request('sharing/list_folder_members', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Once a cursor has been retrieved from list_folder_members, use this to
+	 * paginate through all shared folder members. Apps must have full Dropbox
+	 * access to use this endpoint.
+	 * @function Dropbox#sharingListFolderMembersContinue
+	 * @arg {SharingListFolderMembersContinueArg} arg - The request parameters.
+	 * @returns {Promise.<SharingSharedFolderMembers, Error.<SharingListFolderMembersContinueError>>}
+	 */
+	routes.sharingListFolderMembersContinue = function (arg) {
+	  return this.request('sharing/list_folder_members/continue', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Return the list of all shared folders the current user has access to. Apps
+	 * must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingListFolders
+	 * @arg {SharingListFoldersArgs} arg - The request parameters.
+	 * @returns {Promise.<SharingListFoldersResult, Error.<void>>}
+	 */
+	routes.sharingListFolders = function (arg) {
+	  return this.request('sharing/list_folders', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Once a cursor has been retrieved from list_folders, use this to paginate
+	 * through all shared folders. The cursor must come from a previous call to
+	 * list_folders or list_folders/continue. Apps must have full Dropbox access to
+	 * use this endpoint.
+	 * @function Dropbox#sharingListFoldersContinue
+	 * @arg {SharingListFoldersContinueArg} arg - The request parameters.
+	 * @returns {Promise.<SharingListFoldersResult, Error.<SharingListFoldersContinueError>>}
+	 */
+	routes.sharingListFoldersContinue = function (arg) {
+	  return this.request('sharing/list_folders/continue', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Return the list of all shared folders the current user can mount or unmount.
+	 * Apps must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingListMountableFolders
+	 * @arg {SharingListFoldersArgs} arg - The request parameters.
+	 * @returns {Promise.<SharingListFoldersResult, Error.<void>>}
+	 */
+	routes.sharingListMountableFolders = function (arg) {
+	  return this.request('sharing/list_mountable_folders', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Once a cursor has been retrieved from list_mountable_folders, use this to
+	 * paginate through all mountable shared folders. The cursor must come from a
+	 * previous call to list_mountable_folders or list_mountable_folders/continue.
+	 * Apps must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingListMountableFoldersContinue
+	 * @arg {SharingListFoldersContinueArg} arg - The request parameters.
+	 * @returns {Promise.<SharingListFoldersResult, Error.<SharingListFoldersContinueError>>}
+	 */
+	routes.sharingListMountableFoldersContinue = function (arg) {
+	  return this.request('sharing/list_mountable_folders/continue', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Returns a list of all files shared with current user.  Does not include files
+	 * the user has received via shared folders, and does  not include unclaimed
+	 * invitations.
+	 * @function Dropbox#sharingListReceivedFiles
+	 * @arg {SharingListFilesArg} arg - The request parameters.
+	 * @returns {Promise.<SharingListFilesResult, Error.<SharingSharingUserError>>}
+	 */
+	routes.sharingListReceivedFiles = function (arg) {
+	  return this.request('sharing/list_received_files', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get more results with a cursor from list_received_files.
+	 * @function Dropbox#sharingListReceivedFilesContinue
+	 * @arg {SharingListFilesContinueArg} arg - The request parameters.
+	 * @returns {Promise.<SharingListFilesResult, Error.<SharingListFilesContinueError>>}
+	 */
+	routes.sharingListReceivedFilesContinue = function (arg) {
+	  return this.request('sharing/list_received_files/continue', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * List shared links of this user. If no path is given, returns a list of all
+	 * shared links for the current user. If a non-empty path is given, returns a
+	 * list of all shared links that allow access to the given path - direct links
+	 * to the given path and links to parent folders of the given path. Links to
+	 * parent folders can be suppressed by setting direct_only to true.
+	 * @function Dropbox#sharingListSharedLinks
+	 * @arg {SharingListSharedLinksArg} arg - The request parameters.
+	 * @returns {Promise.<SharingListSharedLinksResult, Error.<SharingListSharedLinksError>>}
+	 */
+	routes.sharingListSharedLinks = function (arg) {
+	  return this.request('sharing/list_shared_links', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Modify the shared link's settings. If the requested visibility conflict with
+	 * the shared links policy of the team or the shared folder (in case the linked
+	 * file is part of a shared folder) then the LinkPermissions.resolved_visibility
+	 * of the returned SharedLinkMetadata will reflect the actual visibility of the
+	 * shared link and the LinkPermissions.requested_visibility will reflect the
+	 * requested visibility.
+	 * @function Dropbox#sharingModifySharedLinkSettings
+	 * @arg {SharingModifySharedLinkSettingsArgs} arg - The request parameters.
+	 * @returns {Promise.<(SharingFileLinkMetadata|SharingFolderLinkMetadata|SharingSharedLinkMetadata), Error.<SharingModifySharedLinkSettingsError>>}
+	 */
+	routes.sharingModifySharedLinkSettings = function (arg) {
+	  return this.request('sharing/modify_shared_link_settings', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * The current user mounts the designated folder. Mount a shared folder for a
+	 * user after they have been added as a member. Once mounted, the shared folder
+	 * will appear in their Dropbox. Apps must have full Dropbox access to use this
+	 * endpoint.
+	 * @function Dropbox#sharingMountFolder
+	 * @arg {SharingMountFolderArg} arg - The request parameters.
+	 * @returns {Promise.<SharingSharedFolderMetadata, Error.<SharingMountFolderError>>}
+	 */
+	routes.sharingMountFolder = function (arg) {
+	  return this.request('sharing/mount_folder', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * The current user relinquishes their membership in the designated file. Note
+	 * that the current user may still have inherited access to this file through
+	 * the parent folder. Apps must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingRelinquishFileMembership
+	 * @arg {SharingRelinquishFileMembershipArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<SharingRelinquishFileMembershipError>>}
+	 */
+	routes.sharingRelinquishFileMembership = function (arg) {
+	  return this.request('sharing/relinquish_file_membership', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * The current user relinquishes their membership in the designated shared
+	 * folder and will no longer have access to the folder.  A folder owner cannot
+	 * relinquish membership in their own folder. This will run synchronously if
+	 * leave_a_copy is false, and asynchronously if leave_a_copy is true. Apps must
+	 * have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingRelinquishFolderMembership
+	 * @arg {SharingRelinquishFolderMembershipArg} arg - The request parameters.
+	 * @returns {Promise.<AsyncLaunchEmptyResult, Error.<SharingRelinquishFolderMembershipError>>}
+	 */
+	routes.sharingRelinquishFolderMembership = function (arg) {
+	  return this.request('sharing/relinquish_folder_membership', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Identical to remove_file_member_2 but with less information returned.
+	 * @function Dropbox#sharingRemoveFileMember
+	 * @deprecated
+	 * @arg {SharingRemoveFileMemberArg} arg - The request parameters.
+	 * @returns {Promise.<SharingFileMemberActionIndividualResult, Error.<SharingRemoveFileMemberError>>}
+	 */
+	routes.sharingRemoveFileMember = function (arg) {
+	  return this.request('sharing/remove_file_member', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Removes a specified member from the file.
+	 * @function Dropbox#sharingRemoveFileMember2
+	 * @arg {SharingRemoveFileMemberArg} arg - The request parameters.
+	 * @returns {Promise.<SharingFileMemberRemoveActionResult, Error.<SharingRemoveFileMemberError>>}
+	 */
+	routes.sharingRemoveFileMember2 = function (arg) {
+	  return this.request('sharing/remove_file_member_2', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Allows an owner or editor (if the ACL update policy allows) of a shared
+	 * folder to remove another member. Apps must have full Dropbox access to use
+	 * this endpoint.
+	 * @function Dropbox#sharingRemoveFolderMember
+	 * @arg {SharingRemoveFolderMemberArg} arg - The request parameters.
+	 * @returns {Promise.<AsyncLaunchResultBase, Error.<SharingRemoveFolderMemberError>>}
+	 */
+	routes.sharingRemoveFolderMember = function (arg) {
+	  return this.request('sharing/remove_folder_member', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Revoke a shared link. Note that even after revoking a shared link to a file,
+	 * the file may be accessible if there are shared links leading to any of the
+	 * file parent folders. To list all shared links that enable access to a
+	 * specific file, you can use the list_shared_links with the file as the
+	 * ListSharedLinksArg.path argument.
+	 * @function Dropbox#sharingRevokeSharedLink
+	 * @arg {SharingRevokeSharedLinkArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<SharingRevokeSharedLinkError>>}
+	 */
+	routes.sharingRevokeSharedLink = function (arg) {
+	  return this.request('sharing/revoke_shared_link', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Share a folder with collaborators. Most sharing will be completed
+	 * synchronously. Large folders will be completed asynchronously. To make
+	 * testing the async case repeatable, set `ShareFolderArg.force_async`. If a
+	 * ShareFolderLaunch.async_job_id is returned, you'll need to call
+	 * check_share_job_status until the action completes to get the metadata for the
+	 * folder. Apps must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingShareFolder
+	 * @arg {SharingShareFolderArg} arg - The request parameters.
+	 * @returns {Promise.<SharingShareFolderLaunch, Error.<SharingShareFolderError>>}
+	 */
+	routes.sharingShareFolder = function (arg) {
+	  return this.request('sharing/share_folder', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Transfer ownership of a shared folder to a member of the shared folder. User
+	 * must have AccessLevel.owner access to the shared folder to perform a
+	 * transfer. Apps must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingTransferFolder
+	 * @arg {SharingTransferFolderArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<SharingTransferFolderError>>}
+	 */
+	routes.sharingTransferFolder = function (arg) {
+	  return this.request('sharing/transfer_folder', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * The current user unmounts the designated folder. They can re-mount the folder
+	 * at a later time using mount_folder. Apps must have full Dropbox access to use
+	 * this endpoint.
+	 * @function Dropbox#sharingUnmountFolder
+	 * @arg {SharingUnmountFolderArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<SharingUnmountFolderError>>}
+	 */
+	routes.sharingUnmountFolder = function (arg) {
+	  return this.request('sharing/unmount_folder', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Remove all members from this file. Does not remove inherited members.
+	 * @function Dropbox#sharingUnshareFile
+	 * @arg {SharingUnshareFileArg} arg - The request parameters.
+	 * @returns {Promise.<void, Error.<SharingUnshareFileError>>}
+	 */
+	routes.sharingUnshareFile = function (arg) {
+	  return this.request('sharing/unshare_file', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Allows a shared folder owner to unshare the folder. You'll need to call
+	 * check_job_status to determine if the action has completed successfully. Apps
+	 * must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingUnshareFolder
+	 * @arg {SharingUnshareFolderArg} arg - The request parameters.
+	 * @returns {Promise.<AsyncLaunchEmptyResult, Error.<SharingUnshareFolderError>>}
+	 */
+	routes.sharingUnshareFolder = function (arg) {
+	  return this.request('sharing/unshare_folder', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Changes a member's access on a shared file.
+	 * @function Dropbox#sharingUpdateFileMember
+	 * @arg {SharingUpdateFileMemberArgs} arg - The request parameters.
+	 * @returns {Promise.<SharingMemberAccessLevelResult, Error.<SharingFileMemberActionError>>}
+	 */
+	routes.sharingUpdateFileMember = function (arg) {
+	  return this.request('sharing/update_file_member', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Allows an owner or editor of a shared folder to update another member's
+	 * permissions. Apps must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingUpdateFolderMember
+	 * @arg {SharingUpdateFolderMemberArg} arg - The request parameters.
+	 * @returns {Promise.<SharingMemberAccessLevelResult, Error.<SharingUpdateFolderMemberError>>}
+	 */
+	routes.sharingUpdateFolderMember = function (arg) {
+	  return this.request('sharing/update_folder_member', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Update the sharing policies for a shared folder. User must have
+	 * AccessLevel.owner access to the shared folder to update its policies. Apps
+	 * must have full Dropbox access to use this endpoint.
+	 * @function Dropbox#sharingUpdateFolderPolicy
+	 * @arg {SharingUpdateFolderPolicyArg} arg - The request parameters.
+	 * @returns {Promise.<SharingSharedFolderMetadata, Error.<SharingUpdateFolderPolicyError>>}
+	 */
+	routes.sharingUpdateFolderPolicy = function (arg) {
+	  return this.request('sharing/update_folder_policy', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get information about a user's account.
+	 * @function Dropbox#usersGetAccount
+	 * @arg {UsersGetAccountArg} arg - The request parameters.
+	 * @returns {Promise.<UsersBasicAccount, Error.<UsersGetAccountError>>}
+	 */
+	routes.usersGetAccount = function (arg) {
+	  return this.request('users/get_account', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get information about multiple user accounts.  At most 300 accounts may be
+	 * queried per request.
+	 * @function Dropbox#usersGetAccountBatch
+	 * @arg {UsersGetAccountBatchArg} arg - The request parameters.
+	 * @returns {Promise.<Object, Error.<UsersGetAccountBatchError>>}
+	 */
+	routes.usersGetAccountBatch = function (arg) {
+	  return this.request('users/get_account_batch', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get information about the current user's account.
+	 * @function Dropbox#usersGetCurrentAccount
+	 * @arg {void} arg - The request parameters.
+	 * @returns {Promise.<UsersFullAccount, Error.<void>>}
+	 */
+	routes.usersGetCurrentAccount = function (arg) {
+	  return this.request('users/get_current_account', arg, 'user', 'api', 'rpc');
+	};
+	
+	/**
+	 * Get the space usage information for the current user's account.
+	 * @function Dropbox#usersGetSpaceUsage
+	 * @arg {void} arg - The request parameters.
+	 * @returns {Promise.<UsersSpaceUsage, Error.<void>>}
+	 */
+	routes.usersGetSpaceUsage = function (arg) {
+	  return this.request('users/get_space_usage', arg, 'user', 'api', 'rpc');
+	};
+	
+	module.exports = routes;
+
+
+/***/ },
+
+/***/ 922:
+/*!***************************************!*\
+  !*** ./src/store/FirebaseInstance.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _firebase = __webpack_require__(/*! firebase */ 414);
+	
+	var _firebase2 = _interopRequireDefault(_firebase);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var config = {
+	    apiKey: "AIzaSyBNiaBVWEvAg1HnN_XBlo70ATLT0ef6gJ0",
+	    authDomain: "luminous-heat-3458.firebaseapp.com",
+	    databaseURL: "https://luminous-heat-3458.firebaseio.com",
+	    storageBucket: "luminous-heat-3458.appspot.com",
+	    messagingSenderId: "635828897166"
+	};
+	
+	_firebase2.default.initializeApp(config);
+	
+	exports.default = _firebase2.default;
+
+/***/ },
+
+/***/ 923:
+/*!*******************************!*\
+  !*** ./src/reducers/photo.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -4143,13 +9385,20 @@ webpackJsonp([0],{
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
+	var _user = __webpack_require__(/*! ./../actions/user */ 412);
+	
+	var _store = __webpack_require__(/*! ./../store */ 558);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	var intinalState = {
-	    uid: false,
-	    fbToken: false,
-	    ggToken: false,
-	    email: '',
-	    name: '',
-	    displayName: ''
+	    albums: [{
+	        name: 'Ảnh mới',
+	        list: {}
+	    }]
+	
 	};
 	
 	exports.default = function () {
@@ -4158,19 +9407,196 @@ webpackJsonp([0],{
 	
 	    switch (action.type) {
 	        case 'USERDATA_PARSED':
-	            // action[user]
-	            return _extends({}, state, action.user);
-	        case 'USERDATA_COMMITED':
-	            return _extends({}, state);
+	            return _extends({}, state, action.userData.photo);
 	            break;
-	        case 'LOGIN_FB_SUCCESS':
-	            // save uid to local
-	            localStorage.setItem('uid', action.user.uid);
-	            return _extends({}, state, action.user);
+	
+	        case 'GET_THUMB_SUCCESS':
+	            {
+	                var _newState = _extends({}, state);
+	                _newState.albums[0].list[action.key] = action.photo;
+	                return _newState;
+	                break;
+	            }
+	        case 'UPLOAD_SUCCESS':
+	            var newState = _extends({}, state);
+	
+	            newState.albums[0].list[action.response.id] = action.response;
+	            (0, _user.appenUserData)(_store2.default.getState().user.uid, _extends({}, action.response, {
+	                thumbnail: null
+	            }), 'photo/albums/0/list');
+	            return _extends({}, newState);
 	            break;
+	
 	        default:
 	            return state;
 	    }
+	};
+
+/***/ },
+
+/***/ 924:
+/*!*************************************!*\
+  !*** ./src/components/PhotoItem.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _withStyles = __webpack_require__(/*! isomorphic-style-loader/lib/withStyles */ 303);
+	
+	var _withStyles2 = _interopRequireDefault(_withStyles);
+	
+	var _photoItem = __webpack_require__(/*! ./css/photo-item.scss */ 925);
+	
+	var _photoItem2 = _interopRequireDefault(_photoItem);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PhotoItem = function (_React$Component) {
+	    _inherits(PhotoItem, _React$Component);
+	
+	    function PhotoItem(props) {
+	        _classCallCheck(this, PhotoItem);
+	
+	        var _this2 = _possibleConstructorReturn(this, (PhotoItem.__proto__ || Object.getPrototypeOf(PhotoItem)).call(this, props));
+	
+	        _this2.state = {
+	            photo: props.photo,
+	            src: ''
+	        };
+	        return _this2;
+	    }
+	
+	    _createClass(PhotoItem, [{
+	        key: 'convertThumbnail',
+	        value: function convertThumbnail() {
+	            if (this.state.photo.thumbnail) {
+	                var _this = this;
+	                var reader = new FileReader();
+	                reader.onload = function (e) {
+	                    _this.setState({
+	                        src: e.target.result
+	                    });
+	                };
+	                reader.readAsDataURL(this.state.photo.thumbnail.fileBlob);
+	            } else {
+	                this.props.getThumbnail(this.state.photo, this.props._key);
+	            }
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {}
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            this.setState(_extends({}, this.state, {
+	                photo: nextProps.photo
+	            }));
+	            this.convertThumbnail();
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.convertThumbnail();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var state = this.state;
+	            var image = _react2.default.createElement('img', { className: state.src === '' ? _photoItem2.default.skeleton : '', src: state.src });
+	            return _react2.default.createElement(
+	                'div',
+	                { className: _photoItem2.default.root },
+	                image
+	            );
+	        }
+	    }]);
+	
+	    return PhotoItem;
+	}(_react2.default.Component);
+	
+	exports.default = (0, _withStyles2.default)(_photoItem2.default)(PhotoItem);
+
+/***/ },
+
+/***/ 925:
+/*!********************************************!*\
+  !*** ./src/components/css/photo-item.scss ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	    var content = __webpack_require__(/*! !../../../~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../~/postcss-loader!../../../~/sass-loader!./photo-item.scss */ 926);
+	    var insertCss = __webpack_require__(/*! ../../../~/isomorphic-style-loader/lib/insertCss.js */ 393);
+	
+	    if (typeof content === 'string') {
+	      content = [[module.id, content, '']];
+	    }
+	
+	    module.exports = content.locals || {};
+	    module.exports._getContent = function() { return content; };
+	    module.exports._getCss = function() { return content.toString(); };
+	    module.exports._insertCss = function(options) { return insertCss(content, options) };
+	    
+	    // Hot Module Replacement
+	    // https://webpack.github.io/docs/hot-module-replacement
+	    // Only activated in browser context
+	    if (false) {
+	      var removeCss = function() {};
+	      module.hot.accept("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photo-item.scss", function() {
+	        content = require("!!../../../node_modules/css-loader/index.js?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js!./photo-item.scss");
+	
+	        if (typeof content === 'string') {
+	          content = [[module.id, content, '']];
+	        }
+	
+	        removeCss = insertCss(content, { replace: true });
+	      });
+	      module.hot.dispose(function() { removeCss(); });
+	    }
+	  
+
+/***/ },
+
+/***/ 926:
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?modules&camelCase&-url&localIdentName=[name]_[local]_[hash:base64:3]!./~/postcss-loader!./~/sass-loader!./src/components/css/photo-item.scss ***!
+  \*******************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 392)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".photo-item_root_2-8 {\n  width: 33.3333%;\n  height: 128px;\n  text-align: center;\n  position: relative;\n  padding-top: 128px; }\n  .photo-item_root_2-8 img {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto; }\n  .photo-item_skeleton_3YN {\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-fill-mode: forwards;\n          animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite;\n  -webkit-animation-name: photo-item_placeHolderShimmer_22q;\n          animation-name: photo-item_placeHolderShimmer_22q;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n  background: #f6f7f8;\n  background: -webkit-linear-gradient(left, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);\n  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);\n  background-size: 800px 104px;\n  width: 100%;\n  height: 100%; }\n  @-webkit-keyframes photo-item_placeHolderShimmer_22q {\n  0% {\n    background-position: -468px 0; }\n  100% {\n    background-position: 468px 0; } }\n  @keyframes photo-item_placeHolderShimmer_22q {\n  0% {\n    background-position: -468px 0; }\n  100% {\n    background-position: 468px 0; } }\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"root": "photo-item_root_2-8",
+		"root": "photo-item_root_2-8",
+		"skeleton": "photo-item_skeleton_3YN",
+		"skeleton": "photo-item_skeleton_3YN",
+		"placeHolderShimmer": "photo-item_placeHolderShimmer_22q",
+		"placeHolderShimmer": "photo-item_placeHolderShimmer_22q"
 	};
 
 /***/ }

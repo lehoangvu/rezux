@@ -27,7 +27,7 @@ class PhotoExplorer extends React.Component {
     cameraChange(e){
         const file = e.target.files[0];
         this.props.actions.upload(file);
-        e.target.value = null;
+        $(e.currentTarget).val('');
     }
 
     render(){

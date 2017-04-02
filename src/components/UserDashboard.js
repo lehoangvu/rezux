@@ -9,6 +9,9 @@ class UserDashboard extends React.Component{
     }
 
     componentDidMount(){
+        // check to remove localStorage parseUserData
+        const storageVersion = localStorage.getItem('storageVersion');
+        
         let uid = localStorage.getItem('uid');
         if(uid){
             this.props.actions.parseUserData(uid);

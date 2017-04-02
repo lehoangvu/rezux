@@ -37,7 +37,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// __webpack_hash__
-/******/ 	__webpack_require__.h = "8dd3ee9286882b55fa86";
+/******/ 	__webpack_require__.h = "a49fcc968a525299bb83";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -50056,6 +50056,9 @@
 	    _createClass(UserDashboard, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
+	            // check to remove localStorage parseUserData
+	            var storageVersion = localStorage.getItem('storageVersion');
+	
 	            var uid = localStorage.getItem('uid');
 	            if (uid) {
 	                this.props.actions.parseUserData(uid);
@@ -67580,7 +67583,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".photoexplorer_root_3PP {\n  padding: 20px 0;\n  background: #fff;\n  position: absolute;\n  top: 0;\n  bottom: 0px;\n  width: 100%;\n  overflow: auto; }\n\n.photoexplorer_photoList_1Id {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding-bottom: 60px; }\n\n.photoexplorer_captureBtn_3ep {\n  width: 100%;\n  display: inline-block;\n  text-align: center;\n  position: absolute;\n  bottom: 40px;\n  background: #ffffff; }\n\n.photoexplorer_captureBtn_3ep input {\n    display: none; }\n\n.photoexplorer_captureBtn_3ep i {\n    font-size: 56px;\n    width: 60px;\n    height: 60px;\n    display: inline-block;\n    line-height: 60px;\n    text-align: center;\n    color: #E91E63; }\n", ""]);
+	exports.push([module.id, ".photoexplorer_root_3PP {\n  padding: 20px 0;\n  background: #fff;\n  position: absolute;\n  top: 0;\n  bottom: 0px;\n  width: 100%;\n  overflow: auto; }\n\n.photoexplorer_photoList_1Id {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding-bottom: 60px; }\n\n.photoexplorer_captureBtn_3ep {\n  width: 100%;\n  display: inline-block;\n  text-align: center;\n  position: fixed;\n  bottom: 40px;\n  background: #ffffff; }\n\n.photoexplorer_captureBtn_3ep input {\n    display: none; }\n\n.photoexplorer_captureBtn_3ep i {\n    font-size: 56px;\n    width: 60px;\n    height: 60px;\n    display: inline-block;\n    line-height: 60px;\n    text-align: center;\n    color: #E91E63; }\n", ""]);
 	
 	// exports
 	exports.locals = {

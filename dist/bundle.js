@@ -37,7 +37,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// __webpack_hash__
-/******/ 	__webpack_require__.h = "a66e79627e265f094235";
+/******/ 	__webpack_require__.h = "1addcf2ec0ea1b0ab09c";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -39712,19 +39712,17 @@
 	        // }).fail((xhr)=>{
 	
 	        // });
-	        _axios2.default.get("http://ac.mp3.zing.vn/complete/desktop", {
-	            params: {
-	                type: 'artist,album,video,song',
-	                num: 20,
-	                query: keyword
-	            }
-	        }).then(function (response) {
+	        $.ajax({
+	            url: "/pharser",
+	            type: 'POST',
+	            data: { request: 'http://ac.mp3.zing.vn/complete/desktop?type=artist,album,video,song&num=20&query=' + keyword }
+	        }).done(function (response) {
 	            dispatch({
 	                type: 'GET_SUGGESS',
 	                keyword: keyword,
-	                data: response.data.data
+	                data: response.data
 	            });
-	        }).catch(function (error) {});
+	        }).fail(function (error) {});
 	    };
 	};
 	var addSongToPlaylist = exports.addSongToPlaylist = function addSongToPlaylist(songObj, playlistId) {

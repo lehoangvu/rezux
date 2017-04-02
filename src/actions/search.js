@@ -21,19 +21,17 @@ export const getSuggess = (keyword) => {
         // }).fail((xhr)=>{
 
         // });
-        axios.get("http://ac.mp3.zing.vn/complete/desktop", {
-            params: {
-                type: 'artist,album,video,song',
-                num: 20,
-                query: keyword
-            }
-        }).then((response)=>{
+        $.ajax({
+            url: "/pharser",
+            type: 'POST',
+            data: {request: 'http://ac.mp3.zing.vn/complete/desktop?type=artist,album,video,song&num=20&query='+keyword}
+        }).done((response)=>{
             dispatch({
                 type: 'GET_SUGGESS',    
                 keyword: keyword,
-                data: response.data.data
+                data: response.data
             });
-        }).catch((error)=>{
+        }).fail((error)=>{
 
         });
     }

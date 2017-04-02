@@ -9,6 +9,9 @@ import s from './css/photoexplorer.scss';
 class PhotoExplorer extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            inputKey: 'inputFile_1'
+        }
     }
     componentDidUpdate(){
     }
@@ -27,7 +30,10 @@ class PhotoExplorer extends React.Component {
     cameraChange(e){
         const file = e.target.files[0];
         this.props.actions.upload(file);
-        $(e.currentTarget).val('');
+        // $(e.currentTarget).val('');
+        this.setState({
+            inputKey: this.state.inputKey + '1'
+        })
     }
 
     render(){
@@ -41,7 +47,7 @@ class PhotoExplorer extends React.Component {
                         {photoHtml}
                     </div>
                     <label for="capture" className={s.captureBtn}>
-                        <input type="file" accept="image/*" id="capture" capture="camera" onChange={this.cameraChange.bind(this)} />
+                        <input key={this.state.inputKey} type="file" accept="image/*" id="capture" capture="camera" onChange={this.cameraChange.bind(this)} />
                         <i className="ion-ios-camera" />
                     </label>
             </div>

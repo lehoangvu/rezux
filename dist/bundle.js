@@ -37,7 +37,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// __webpack_hash__
-/******/ 	__webpack_require__.h = "a49fcc968a525299bb83";
+/******/ 	__webpack_require__.h = "3610e5dcf7a1ced805aa";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -67313,7 +67313,12 @@
 	    function PhotoExplorer(props) {
 	        _classCallCheck(this, PhotoExplorer);
 	
-	        return _possibleConstructorReturn(this, (PhotoExplorer.__proto__ || Object.getPrototypeOf(PhotoExplorer)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (PhotoExplorer.__proto__ || Object.getPrototypeOf(PhotoExplorer)).call(this, props));
+	
+	        _this.state = {
+	            inputKey: 'inputFile_1'
+	        };
+	        return _this;
 	    }
 	
 	    _createClass(PhotoExplorer, [{
@@ -67335,7 +67340,10 @@
 	        value: function cameraChange(e) {
 	            var file = e.target.files[0];
 	            this.props.actions.upload(file);
-	            $(e.currentTarget).val('');
+	            // $(e.currentTarget).val('');
+	            this.setState({
+	                inputKey: this.state.inputKey + '1'
+	            });
 	        }
 	    }, {
 	        key: 'render',
@@ -67357,7 +67365,7 @@
 	                _react2.default.createElement(
 	                    'label',
 	                    { 'for': 'capture', className: _photoexplorer2.default.captureBtn },
-	                    _react2.default.createElement('input', { type: 'file', accept: 'image/*', id: 'capture', capture: 'camera', onChange: this.cameraChange.bind(this) }),
+	                    _react2.default.createElement('input', { key: this.state.inputKey, type: 'file', accept: 'image/*', id: 'capture', capture: 'camera', onChange: this.cameraChange.bind(this) }),
 	                    _react2.default.createElement('i', { className: 'ion-ios-camera' })
 	                )
 	            );

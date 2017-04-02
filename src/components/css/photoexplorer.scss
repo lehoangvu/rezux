@@ -1,22 +1,23 @@
 .root{
     padding: 20px 0;
     background: #fff;
-    position: fixed;
+    position: absolute;
     top: 0;
-    bottom: 100px;
+    bottom: 0px;
     width: 100%;
     overflow: auto;
 }
 .photoList{
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 60px;
 }
 .captureBtn{
     width: 100%;
     display: inline-block;
     text-align: center;
-    position: fixed;
-    bottom: 40px;
+    position: absolute;
+    bottom: 0px;
     background: #ffffff;
     input{
         display: none;

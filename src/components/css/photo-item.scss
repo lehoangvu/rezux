@@ -1,15 +1,20 @@
 .root{
     width: 33.3333%;
-    height: 128px;
     text-align: center;
     position: relative;
-    padding-top: 128px;
+    &:after{
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
     img{
         position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
+        max-width: 100%;
+        max-height: 100%;
         margin:auto;
     }
 }

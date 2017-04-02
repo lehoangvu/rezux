@@ -1,11 +1,11 @@
 var http       = require('http');
 var express = require('express');
 var app = express();
-
 // set up a route to redirect http to https
 app.all('*',function(req,res, next){  
-    if (!/^https$/.test(req.protocol) && process.env.APP_ENV && process.env.APP_ENV === 'production') {
-        return res.redirect('https://' + req.headers.host + req.url)
+    console.log(req.protocol);
+    if (req.protocol === 'http' && process.env.APP_ENV && process.env.APP_ENV === 'production') {
+        return res.redirect('https://' + req.headers.host + req.url);
     } else {
         return next();
     }

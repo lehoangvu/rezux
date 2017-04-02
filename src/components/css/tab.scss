@@ -29,7 +29,13 @@
     display: none;
 }
 .tabActive{
-    display: block;     
+    display: block;
+    position: fixed;
+    bottom: 40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: scroll;
 }
 .tabContent{
     position: fixed;

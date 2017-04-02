@@ -41,7 +41,8 @@
     "source-map-support": "^0.4.3",
     "webpack": "^1.13.2",
     "spdy": "^3.4.3",
-    "dropbox": "^2.5.2"
+    "dropbox": "^2.5.2",
+    "request": "*"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.0",

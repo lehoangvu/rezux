@@ -1,7 +1,7 @@
 export const fetchById = (id) => {
     return dispatch => {
         $.ajax({
-            url: "http://trondesign.vn/parser.php",
+            url: "/pharser",
             data: {request: "http://api.mp3.zing.vn/api/mobile/song/getsonginfo?requestdata={%22id%22:%22"+id+"%22}"},
             type: 'POST',
             dataType: 'JSON',

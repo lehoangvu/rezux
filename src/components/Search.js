@@ -61,7 +61,7 @@ const Search = ({state, playlist, actions}) => {
                         keyword = node;
                     }}
                     type="text"
-                    placeholder="Nhập từ khóa"
+                    placeholder="Tìm bài hát, ca sĩ..."
                 />
             </form>
             <SearchSuggess suggess={state.suggess} onHideClick={()=>_onHideClick()} onSongClick={(id)=>{_onSongClick(id)}} />

@@ -37,7 +37,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// __webpack_hash__
-/******/ 	__webpack_require__.h = "3610e5dcf7a1ced805aa";
+/******/ 	__webpack_require__.h = "a66e79627e265f094235";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -41352,7 +41352,7 @@
 	var fetchById = exports.fetchById = function fetchById(id) {
 	    return function (dispatch) {
 	        $.ajax({
-	            url: "http://trondesign.vn/parser.php",
+	            url: "/pharser",
 	            data: { request: "http://api.mp3.zing.vn/api/mobile/song/getsonginfo?requestdata={%22id%22:%22" + id + "%22}" },
 	            type: 'POST',
 	            dataType: 'JSON',
@@ -41542,7 +41542,7 @@
 	                    keyword = node;
 	                },
 	                type: 'text',
-	                placeholder: 'Nh\u1EADp t\u1EEB kh\xF3a'
+	                placeholder: 'T\xECm b\xE0i h\xE1t, ca s\u0129...'
 	            })
 	        ),
 	        _react2.default.createElement(_SearchSuggess2.default, { suggess: state.suggess, onHideClick: function onHideClick() {

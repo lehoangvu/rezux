@@ -7,8 +7,9 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './css/search.scss';
 
 const Search = ({state, playlist, actions}) => {
+    
     let keyword;
-
+    let timeout = false;
 
     const _onSubmit = () => {
 
@@ -27,7 +28,10 @@ const Search = ({state, playlist, actions}) => {
     };
 
     const _onChange = () => {
-        actions.getSuggess(keyword.value);
+        if(timeout) clearTimeout(timeout);
+        timeout = setTimeout(()=>{
+            actions.getSuggess(keyword.value);
+        }, 700);
     };
 
     const _onPlaySong = (id) => {

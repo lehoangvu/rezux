@@ -42,7 +42,8 @@
     "webpack": "^1.13.2",
     "spdy": "^3.4.3",
     "dropbox": "^2.5.2",
-    "request": "*"
+    "request": "*",
+    "raven-js": "*"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.0",

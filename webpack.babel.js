@@ -10,8 +10,8 @@ const config = {
 	debug: true,
     devtool: 'cheap-module-eval-source-map',
 	entry:  {
-		bundle: ['./src/bundle.js']
-		// vendor: Vendor
+		bundle: ['./src/bundle.js'],
+		vendor: Vendor
 	},
 	output: {
 		filename: '[name].js',
@@ -27,8 +27,8 @@ const config = {
             __APPNAME__: JSON.stringify(Package.name)
 		}),
 		// new ModernizrPlugin(ModernizrConfig),
-		new webpack.ExtendedAPIPlugin()
-		// new webpack.optimize.CommonsChunkPlugin("vendor","vendor.js")
+		new webpack.ExtendedAPIPlugin(),
+		new webpack.optimize.CommonsChunkPlugin("vendor","vendor.js")
 	],
 	module: {
 		// preLoaders: [{

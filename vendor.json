@@ -17,5 +17,6 @@
 	"react-router-redux",
 	"numeral",
 	"react-swipe",
-	"moment"
+	"moment",
+	"raven-js"
 ]

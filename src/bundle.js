@@ -7,7 +7,8 @@ import App from './components/App';
 import Routes from './routes';
 import store from './store';
 import WithStylesContex from './global/WithStylesContex';
-
+import Raven from 'raven-js';
+Raven.config('https://c891be18cd6b4f7789dd3dce0bfa38ab@sentry.io/154463').install();
 window.jQuery = jQuery;
 window.$ = jQuery;
 const basePath = typeof _basePath !== 'undefined' ? _basePath : '/';
